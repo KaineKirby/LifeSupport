@@ -14,6 +14,8 @@ public class Controller {
 	
 	public static Controller controller ;
 	
+	private Input input ;
+	
 	//all game controls and their binds
 	public int moveUp ;
 	public int moveDown ;
@@ -23,6 +25,8 @@ public class Controller {
 	
 	private Controller() {
 		controller = this ;
+		
+		input = new Input(Settings.getSettings().height) ;
 		
 		//TODO these are hardcoded for now, they should be read from settings file later
 		this.moveUp = Input.KEY_W ;
@@ -37,6 +41,13 @@ public class Controller {
 			return controller ;
 		else 
 			return new Controller() ;
+	}
+	
+	public boolean isKeyDown(int key) {
+		if (input.isKeyDown(key))
+			return true ;
+		else
+			return false ;
 	}
 
 }
