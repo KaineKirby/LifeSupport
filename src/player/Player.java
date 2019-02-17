@@ -28,7 +28,7 @@ public class Player extends GameObject {
 		super(xPos, yPos, width, height, rotation, sprite, isStatic) ;
 		
 		//the move speed of the player (pixels on screen)
-		this.moveSpeed = .5f ;
+		this.moveSpeed = .3f ;
 		
 		//not sure why this needs the height of the screen
 		this.input = new Input(Settings.getSettings().height) ;
@@ -41,30 +41,33 @@ public class Player extends GameObject {
 		
 		//for the player we update their position based on keyboard presses
 		//TODO we need to move slower on diagonals, need to think about the math
+		
+		//the time delta and the scale constants are included
+		//scale constants for letting the screen scale and the delta for different framerates
 		if (input.isKeyDown(Controller.getController().moveUp) && input.isKeyDown(Controller.getController().moveRight)) {
-			this.xPos = this.xPos + moveSpeed*delta ;
-			this.yPos = this.yPos - moveSpeed*delta ;
+			this.xPos = this.xPos + moveSpeed*delta*scaleConstantX ;
+			this.yPos = this.yPos - moveSpeed*delta*scaleConstantY ;
 		}
 		else if (input.isKeyDown(Controller.getController().moveUp) && input.isKeyDown(Controller.getController().moveLeft)) {
-			this.xPos = this.xPos - moveSpeed*delta ;
-			this.yPos = this.yPos - moveSpeed*delta ;
+			this.xPos = this.xPos - moveSpeed*delta*scaleConstantX ;
+			this.yPos = this.yPos - moveSpeed*delta*scaleConstantY ;
 		}
 		else if (input.isKeyDown(Controller.getController().moveDown) && input.isKeyDown(Controller.getController().moveLeft)) {
-			this.xPos = this.xPos - moveSpeed*delta ;
-			this.yPos = this.yPos + moveSpeed*delta ;
+			this.xPos = this.xPos - moveSpeed*delta*scaleConstantX ;
+			this.yPos = this.yPos + moveSpeed*delta*scaleConstantY ;
 		}
 		else if (input.isKeyDown(Controller.getController().moveDown) && input.isKeyDown(Controller.getController().moveRight)) {
-			this.xPos = this.xPos + moveSpeed*delta ;
-			this.yPos = this.yPos + moveSpeed*delta ;
+			this.xPos = this.xPos + moveSpeed*delta*scaleConstantX ;
+			this.yPos = this.yPos + moveSpeed*delta*scaleConstantY ;
 		}
 		else if (input.isKeyDown(Controller.getController().moveUp))
-			this.yPos = this.yPos - moveSpeed*delta ;
+			this.yPos = this.yPos - moveSpeed*delta*scaleConstantY ;
 		else if (input.isKeyDown(Controller.getController().moveDown))
-			this.yPos = this.yPos + moveSpeed*delta ;
+			this.yPos = this.yPos + moveSpeed*delta*scaleConstantY ;
 		else if (input.isKeyDown(Controller.getController().moveLeft))
-			this.xPos = this.xPos - moveSpeed*delta ;
+			this.xPos = this.xPos - moveSpeed*delta*scaleConstantX ;
 		else if (input.isKeyDown(Controller.getController().moveRight))
-			this.xPos = this.xPos + moveSpeed*delta ;
+			this.xPos = this.xPos + moveSpeed*delta*scaleConstantX ;
 		
 	}
 	

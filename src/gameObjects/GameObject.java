@@ -3,6 +3,8 @@ package gameObjects;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
+import settings.Settings;
+
 /*
  * GameObject Class (Abstract)
  * 
@@ -10,6 +12,8 @@ import org.newdawn.slick.Image;
  * This can include the player, enemies, barriers, etc, anything drawn on screen (probably)
  * 
  * Anything that we plan to implement must use the gameobject as its parent, otherwise we can not use it nicely in the Main (or level)
+ * 
+ * For the width and height of the image representation, we assume the pixels at 1920x1080, and then scaling is taken into account for 16:9
  */
 
 public abstract class GameObject {
@@ -27,6 +31,9 @@ public abstract class GameObject {
 	//may need to switch to animation class later
 	public Image sprite ;
 	
+	public float scaleConstantX ;
+	public float scaleConstantY ;
+	
 	//whether or not the object is static (static objects need to be checked for collision)
 	public boolean isStatic ;
 	
@@ -34,9 +41,17 @@ public abstract class GameObject {
 		this.xPos = xPos ;
 		this.yPos = yPos ;
 		
-		this.width = width ;
-		this.height = height ;
+		//for the width and height of the object (in px) we need to scale it relative to the screen resolution
+		Settings settings = Settings.getSettings() ;
+		this.width = width*settings.width/1920 ;
+		this.height = height*settings.height/1080 ;
 		this.rotation = rotation ;
+		
+		//scale constants for movement in class
+		//these scale constants will be needed for updating movement for varying screen resolutions
+		this.scaleConstantX = (float)settings.width/1920 ;
+		this.scaleConstantY = (float)settings.height/1080 ;
+		System.out.println(scaleConstantX) ;
 		
 		this.sprite = sprite ;
 		
@@ -46,8 +61,7 @@ public abstract class GameObject {
 	//render the sprite with its current position (independent of update)
 	//subclasses will likely have to call super(g) ;
 	public void render(Graphics g) {
-		//TODO: this is probably wrong, don't think I am understanding this correctly
-		g.drawImage(sprite, xPos, yPos) ;
+		sprite.draw(xPos, yPos, width, height) ;
 	}
 	
 	//update the position of the object (this may be empty if the object is static, this is okay)

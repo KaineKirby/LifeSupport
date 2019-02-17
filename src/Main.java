@@ -43,8 +43,6 @@ public class Main extends BasicGame {
 	@Override
 	public void render(GameContainer cont, Graphics g) throws SlickException {
 		testRoom.renderObjects(g) ;
-
-		
 	}
 	
 	//this is the update method that is called every frame, this is where you do movement
@@ -52,10 +50,7 @@ public class Main extends BasicGame {
 	//we may need to pass the delta to lower classes so they can update their positions properly
 	@Override
 	public void update(GameContainer cont, int delta) throws SlickException {
-
 		testRoom.updateObjectPositions(delta) ; 
-
-		
 	}
 	
 	public static void main(String[] args) throws SlickException {
