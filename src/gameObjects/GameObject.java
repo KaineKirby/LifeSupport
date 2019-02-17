@@ -31,31 +31,18 @@ public abstract class GameObject {
 	//may need to switch to animation class later
 	public Image sprite ;
 	
-	public float scaleConstantX ;
-	public float scaleConstantY ;
-	
-	//whether or not the object is static (static objects need to be checked for collision)
-	public boolean isStatic ;
-	
-	public GameObject(float xPos, float yPos, int width, int height, int rotation, Image sprite, boolean isStatic) {
-		this.xPos = xPos ;
-		this.yPos = yPos ;
-		
-		//for the width and height of the object (in px) we need to scale it relative to the screen resolution
+	public GameObject(float xPos, float yPos, int width, int height, int rotation, Image sprite) {
+		//for the width and height of the object as well as the position (in px) we need to scale it relative to the screen resolution
 		Settings settings = Settings.getSettings() ;
+		this.xPos = xPos*((float)settings.width/1920) ;
+		this.yPos = yPos*((float)settings.height/1080) ;
+		
 		this.width = width*settings.width/1920 ;
 		this.height = height*settings.height/1080 ;
 		this.rotation = rotation ;
 		
-		//scale constants for movement in class
-		//these scale constants will be needed for updating movement for varying screen resolutions
-		this.scaleConstantX = (float)settings.width/1920 ;
-		this.scaleConstantY = (float)settings.height/1080 ;
-		System.out.println(scaleConstantX) ;
-		
 		this.sprite = sprite ;
 		
-		this.isStatic = isStatic ;
 	}
 	
 	//render the sprite with its current position (independent of update)

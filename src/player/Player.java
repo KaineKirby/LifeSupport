@@ -1,34 +1,26 @@
 package player;
 
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
-import gameObjects.GameObject;
+import gameObjects.Actor;
 import settings.Assets;
 import settings.Controller;
-import settings.Settings;
 
 /*
  * Player Class (Singleton)
  * This is the class that represents the player
  */
 
-public class Player extends GameObject {
+public class Player extends Actor {
 	
 	public static Player player ;
-	
-	//move speed of player
-	public float moveSpeed ;
 	
 	//input controller
 	Controller controller ;
 
 	private Player(float xPos, float yPos, int width, int height, int rotation, Image sprite, boolean isStatic) {
-		super(xPos, yPos, width, height, rotation, sprite, isStatic) ;
-		
-		//the move speed of the player (pixels on screen)
-		this.moveSpeed = .3f ;
+		super(xPos, yPos, width, height, rotation, .3f, sprite) ;
 		
 		//not sure why this needs the height of the screen
 		this.controller = Controller.getController() ;
@@ -46,29 +38,29 @@ public class Player extends GameObject {
 		//the time delta and the scale constants are included
 		//scale constants for letting the screen scale and the delta for different framerates
 		if (controller.isKeyDown(controller.moveUp) && controller.isKeyDown(controller.moveRight)) {
-			this.xPos = this.xPos + moveSpeed*delta*scaleConstantX ;
-			this.yPos = this.yPos - moveSpeed*delta*scaleConstantY ;
+			this.xPos = this.xPos + moveSpeedX*delta ;
+			this.yPos = this.yPos - moveSpeedY*delta ;
 		}
 		else if (controller.isKeyDown(controller.moveUp) && controller.isKeyDown(controller.moveLeft)) {
-			this.xPos = this.xPos - moveSpeed*delta*scaleConstantX ;
-			this.yPos = this.yPos - moveSpeed*delta*scaleConstantY ;
+			this.xPos = this.xPos - moveSpeedX*delta ;
+			this.yPos = this.yPos - moveSpeedY*delta ;
 		}
 		else if (controller.isKeyDown(controller.moveDown) && controller.isKeyDown(controller.moveLeft)) {
-			this.xPos = this.xPos - moveSpeed*delta*scaleConstantX ;
-			this.yPos = this.yPos + moveSpeed*delta*scaleConstantY ;
+			this.xPos = this.xPos - moveSpeedX*delta ;
+			this.yPos = this.yPos + moveSpeedY*delta ;
 		}
 		else if (controller.isKeyDown(controller.moveDown) && controller.isKeyDown(controller.moveRight)) {
-			this.xPos = this.xPos + moveSpeed*delta*scaleConstantX ;
-			this.yPos = this.yPos + moveSpeed*delta*scaleConstantY ;
+			this.xPos = this.xPos + moveSpeedX*delta ;
+			this.yPos = this.yPos + moveSpeedY*delta ;
 		}
 		else if (controller.isKeyDown(controller.moveUp))
-			this.yPos = this.yPos - moveSpeed*delta*scaleConstantY ;
+			this.yPos = this.yPos - moveSpeedY*delta ;
 		else if (controller.isKeyDown(controller.moveDown))
-			this.yPos = this.yPos + moveSpeed*delta*scaleConstantY ;
+			this.yPos = this.yPos + moveSpeedY*delta ;
 		else if (controller.isKeyDown(controller.moveLeft))
-			this.xPos = this.xPos - moveSpeed*delta*scaleConstantX ;
+			this.xPos = this.xPos - moveSpeedX*delta ;
 		else if (controller.isKeyDown(controller.moveRight))
-			this.xPos = this.xPos + moveSpeed*delta*scaleConstantX ;
+			this.xPos = this.xPos + moveSpeedX*delta ;
 		
 	}
 	
@@ -76,7 +68,7 @@ public class Player extends GameObject {
 		if (player != null)
 			return player ;
 		else
-			return new Player(50, 50, 128, 128, 0, new Image(Assets.getAssets().playerIcon), false) ;
+			return new Player(100, 100, 32, 32, 0, new Image(Assets.getAssets().playerIcon), false) ;
 	}
 
 }
