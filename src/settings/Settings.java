@@ -51,7 +51,7 @@ public class Settings {
 		if (settings != null)
 			return settings ;
 		else //NOTE: TODO: Eventually this will have to read settings in from the file (game started not changing active settings)
-			return new Settings(1920, 1080, true, true, false, 300, 1, 1) ;
+			return new Settings(1920, 1080, true, false, true, 300, 1, 1) ;
 		
 	}
 
