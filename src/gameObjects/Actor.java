@@ -3,6 +3,7 @@ package gameObjects;
 import org.newdawn.slick.Image;
 import settings.Settings;
 import gameObjects.Actor ;
+import gameObjects.GameObject ;
 
 /*
  * Actor Class (Abstract)
