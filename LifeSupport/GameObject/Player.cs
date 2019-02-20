@@ -8,10 +8,15 @@ using LifeSupport.GameObject ;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+/*
+* Player Class (Singleton)
+* This is the class that represents the player
+*/
+
 namespace LifeSupport.GameObject {
 
     class Player : Actor {
-
+        
         private static Player instance ;
         public static Player Instance {
             get {
@@ -25,16 +30,20 @@ namespace LifeSupport.GameObject {
             }
         }
 
+        //the controller instance since the player will be manipulated with controls
         private readonly Controller controller ;
 
+        //will probably be constant
         private Player() : base(100, 100, 32, 32, 0, "img/player/player", 200f) {
 
             this.controller = Controller.Instance ;
 
         }
-
+        
+        //use the controller class to update the positions
         public override void UpdatePosition(GameTime gameTime) {
 
+            //on the various vectors
             if (controller.IsKeyDown(controller.MoveUp) && controller.IsKeyDown(controller.MoveRight)) {
                 UpdateDirection(new Vector2(1, -1)) ;
                 base.UpdatePosition(gameTime) ;
