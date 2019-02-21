@@ -60,9 +60,9 @@ namespace LifeSupport.Config {
         private Settings() {
 
             //just set all the fields
-            this.Width = 1280 ;
-            this.Height = 720 ;
-            this.Fullscreen = false ;
+            this.Width = 1920 ;
+            this.Height = 1080 ;
+            this.Fullscreen = true ;
             this.FpsCapped = false ;
             this.ShowFps = false ;
             this.Fps = 300 ;

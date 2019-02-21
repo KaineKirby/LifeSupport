@@ -22,7 +22,7 @@ using Microsoft.Xna.Framework.Content;
 * For the width and height of the image representation, we assume the pixels at 1920x1080, and then scaling is taken into account for 16:9
 */
 
-namespace LifeSupport.GameObject {
+namespace LifeSupport.GameObjects {
 
     abstract class GameObject {
 
@@ -38,7 +38,7 @@ namespace LifeSupport.GameObject {
         //image for the game object
         private readonly Texture2D sprite ;
 
-        public GameObject(int xPos, int yPos, int width, int height, int rotation, String spritePath) {
+        public GameObject(int xPos, int yPos, int width, int height, int rotation, String spritePath, Game game) {
 
             //we must scale to the screen resolution that is set in settings
             this.XPos = xPos;
@@ -48,7 +48,7 @@ namespace LifeSupport.GameObject {
 
             this.Rotation = rotation ;
 
-            this.sprite = MainGame.Instance.Content.Load<Texture2D>(spritePath) ;
+            this.sprite = game.Content.Load<Texture2D>(spritePath) ;
 
         }
 
@@ -59,7 +59,7 @@ namespace LifeSupport.GameObject {
         }
 
         //update the position of the object (this may be empty if the object is static, this is okay)
-        public abstract void UpdatePosition(GameTime gameTime) ;
+        public abstract void UpdatePosition(GameTime gameTime, GameObject[] objects) ;
 
     }
 }

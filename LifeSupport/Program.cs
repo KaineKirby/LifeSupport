@@ -11,7 +11,7 @@ namespace LifeSupport {
         /// </summary>
         [STAThread]
         static void Main() {
-            using (var game = MainGame.Instance)
+            using (var game = new MainGame())
                 game.Run() ;
         }
     }
