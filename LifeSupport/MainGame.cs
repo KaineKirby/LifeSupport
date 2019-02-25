@@ -23,8 +23,8 @@ namespace LifeSupport {
             graphics.PreferredBackBufferHeight = Settings.Instance.Height ;
             graphics.PreferredBackBufferWidth = Settings.Instance.Width ;
             graphics.IsFullScreen = Settings.Instance.Fullscreen ;
-            graphics.SynchronizeWithVerticalRetrace = Settings.Instance.FpsCapped ;
-            this.IsFixedTimeStep = Settings.Instance.FpsCapped ;
+   //         graphics.SynchronizeWithVerticalRetrace = Settings.Instance.FpsCapped ;
+    //        this.IsFixedTimeStep = Settings.Instance.FpsCapped ;
            
 
             Content.RootDirectory = "Content";

@@ -45,7 +45,7 @@ namespace LifeSupport.Config {
 
         //fullscreen, framerate settings
         public bool Fullscreen ;
-        public bool FpsCapped ;
+  //      public bool FpsCapped ;
         public bool ShowFps ;
         public int Fps ;
 
@@ -63,7 +63,7 @@ namespace LifeSupport.Config {
             this.Width = 1920 ;
             this.Height = 1080 ;
             this.Fullscreen = true ;
-            this.FpsCapped = false ;
+     //       this.FpsCapped = false ;
             this.ShowFps = false ;
             this.Fps = 300 ;
             this.SfxVolume = 100 ;

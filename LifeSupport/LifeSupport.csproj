@@ -54,6 +54,7 @@
     <Compile Include="Config\Assets.cs" />
     <Compile Include="Config\Controller.cs" />
     <Compile Include="Config\Settings.cs" />
+    <Compile Include="Utilities\JSONParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
