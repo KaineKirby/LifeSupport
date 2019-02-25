@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using LifeSupport.Config ;
 using LifeSupport.GameObjects ;
 using LifeSupport.Levels;
+using LifeSupport.Utilities;
 
 namespace LifeSupport {
     /// <summary>
@@ -17,12 +18,17 @@ namespace LifeSupport {
 
         Player player ;
         Room testRoom ;
+        Settings instance;
+
+       //  readJSON(Settings, "Utilities/JSONsettings.json");
 
         public MainGame() {
+            
+            instance = JSONParser.readJSON(instance, "JSON/JSONsettings.json");
             graphics = new GraphicsDeviceManager(this) ;
-            graphics.PreferredBackBufferHeight = Settings.Instance.Height ;
-            graphics.PreferredBackBufferWidth = Settings.Instance.Width ;
-            graphics.IsFullScreen = Settings.Instance.Fullscreen ;
+            graphics.PreferredBackBufferHeight = instance.Height;//Settings.Instance.Height ;
+            graphics.PreferredBackBufferWidth = instance.Width;//Settings.Instance.Width ;
+            graphics.IsFullScreen = instance.Fullscreen;//Settings.Instance.Fullscreen ;
    //         graphics.SynchronizeWithVerticalRetrace = Settings.Instance.FpsCapped ;
     //        this.IsFixedTimeStep = Settings.Instance.FpsCapped ;
            

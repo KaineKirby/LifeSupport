@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LifeSupport.Utilities;
 
 /*
  * Settings Class (Singleton)
@@ -45,7 +46,6 @@ namespace LifeSupport.Config {
 
         //fullscreen, framerate settings
         public bool Fullscreen ;
-  //      public bool FpsCapped ;
         public bool ShowFps ;
         public int Fps ;
 
@@ -59,20 +59,21 @@ namespace LifeSupport.Config {
         //private constructor for the singleton
         private Settings() {
 
+            
             //just set all the fields
             this.Width = 1920 ;
             this.Height = 1080 ;
             this.Fullscreen = true ;
-     //       this.FpsCapped = false ;
             this.ShowFps = false ;
             this.Fps = 300 ;
             this.SfxVolume = 100 ;
             this.MusVolume = 100 ;
-
+            
             //get the controller instance since we may need to see it
             Controller = Controller.Instance ;
 
-            Instance = this ;
+           Instance = this ;
+        
 
         }
 
