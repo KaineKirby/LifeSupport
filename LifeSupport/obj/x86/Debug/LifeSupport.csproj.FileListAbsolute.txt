@@ -23,3 +23,8 @@ C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.p
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\player\player.xnb
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\objects\barrier.xnb
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\fonts\default_ui.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csprojAssemblyReference.cache
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Newtonsoft.Json.dll
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Newtonsoft.Json.pdb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Newtonsoft.Json.xml
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\Settings\settings.json

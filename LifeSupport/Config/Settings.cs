@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LifeSupport.Utilities;
-using Newtonsoft.Json;
 
 /*
  * Settings Class (Singleton)
@@ -63,17 +62,19 @@ namespace LifeSupport.Config {
         //private constructor for the singleton
         private Settings() {
 
-
+            //use JSONParser to read the settings file
+            dynamic data = JSONParser.ReadJsonFile("Content/Settings/settings.json") ;
+                                               
             //just set all the fields
-            this.Width = 1920 ;
-            this.Height = 1080 ;
-            this.Fullscreen = true ;
-            this.ShowFps = false ;
-            this.Fps = 300 ;
-            this.SfxVolume = 100 ;
-            this.MusVolume = 100 ;
+            this.Width = data.Width ;
+            this.Height = data.Height ;
+            this.Fullscreen = data.Fullscreen ;
+            this.ShowFps = data.ShowFps ;
+            this.Fps = data.Fps ;
+            this.SfxVolume = data.SfxVolume ;
+            this.MusVolume = data.MusVolume ;
 
-            Instance = this;
+            Instance = this ;
 
 
             //get the controller instance since we may need to see it

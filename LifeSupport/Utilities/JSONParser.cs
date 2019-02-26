@@ -1,5 +1,4 @@
 ﻿using LifeSupport.Config;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -8,36 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LifeSupport.Utilities
-{
-    class JSONParser
-    {
-        public JSONParser()
-        {
+namespace LifeSupport.Utilities {
+    class JSONParser {
 
-        }
-
-
-        public static T readJSON<T>(T obj, String jsonFile)
-        {
-            using (StreamReader r = new StreamReader(jsonFile))
-            {
-                string JSONdata = r.ReadToEnd();
-                obj = JsonConvert.DeserializeObject<T>(JSONdata);
-            }
-            return obj;
-
-        }
-
-        //This works with a singleton
-        public static dynamic readJSONfile(String jsonfile)
-        {
-
-         //   List<String> Units = JsonConvert.DeserializeObject<IEnumerable<String>>(File.ReadAllText(jsonfile)).ToList();
+        //GIVEN: A string to the JSON file path
+        //RETURNED: the data from the json file
+        public static dynamic ReadJsonFile(String jsonfile) {
             string JSONdata ;
             dynamic data;
-            using (StreamReader r = new StreamReader(jsonfile))
-            {
+            using (StreamReader r = new StreamReader(jsonfile)) {
                 JSONdata = r.ReadToEnd();
                 data = JObject.Parse(JSONdata);
             }

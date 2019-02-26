@@ -44,3 +44,6 @@
 /processorParam:TextureFormat=Color
 /build:img/player/player.png
 
+#begin Settings/settings.json
+/copy:Settings/settings.json
+
