@@ -32,3 +32,6 @@ obj/
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
+
+#Visual Studio Cache directory
+*.vs/
