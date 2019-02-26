@@ -5,6 +5,12 @@ using LifeSupport.Config ;
 using LifeSupport.GameObjects ;
 using LifeSupport.Levels;
 using LifeSupport.Utilities;
+using System;
+
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace LifeSupport {
     /// <summary>
@@ -18,20 +24,39 @@ namespace LifeSupport {
 
         Player player ;
         Room testRoom ;
-        Settings instance;
 
-       //  readJSON(Settings, "Utilities/JSONsettings.json");
+        /* No singleton method
+        //Create an object called instance to read json data into it from the JSON folder
+        Settings instance;  
+        */
+
+
+        //read json data using a singleton 
+        dynamic settingValues;
 
         public MainGame() {
-            
+
+            /* No singleton method
             instance = JSONParser.readJSON(instance, "JSON/JSONsettings.json");
+            graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = instance.Height;
+            graphics.PreferredBackBufferWidth = instance.Width;
+            graphics.IsFullScreen = instance.Fullscreen;
+            */
+
+            //load the json data into the dynamic variable
+            settingValues = JSONParser.readJSONfile("JSON/JSONsettings.json");
+
+            //Set the singleton values with the dynamic values
+            Settings.Instance.Height = settingValues.Height ;
+            Settings.Instance.Width = settingValues.Width;
+            Settings.Instance.Fullscreen = settingValues.Fullscreen;
+
             graphics = new GraphicsDeviceManager(this) ;
-            graphics.PreferredBackBufferHeight = instance.Height;//Settings.Instance.Height ;
-            graphics.PreferredBackBufferWidth = instance.Width;//Settings.Instance.Width ;
-            graphics.IsFullScreen = instance.Fullscreen;//Settings.Instance.Fullscreen ;
-   //         graphics.SynchronizeWithVerticalRetrace = Settings.Instance.FpsCapped ;
-    //        this.IsFixedTimeStep = Settings.Instance.FpsCapped ;
-           
+            graphics.PreferredBackBufferHeight = Settings.Instance.Height; // instance.Height;
+            graphics.PreferredBackBufferWidth = Settings.Instance.Width;  // instance.Width;
+            graphics.IsFullScreen = Settings.Instance.Fullscreen;// instance.Fullscreen;
+
 
             Content.RootDirectory = "Content";
         }

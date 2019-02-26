@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LifeSupport.Utilities;
+using Newtonsoft.Json;
 
 /*
  * Settings Class (Singleton)
@@ -25,7 +26,8 @@ namespace LifeSupport.Config {
         */ 
 
         //settings object singleton
-        private static Settings instance ;
+        private static Settings instance;
+
 
         public static Settings Instance {
             get {
@@ -56,10 +58,12 @@ namespace LifeSupport.Config {
         //controller object
         public Controller Controller ;
 
+
+
         //private constructor for the singleton
         private Settings() {
 
-            
+
             //just set all the fields
             this.Width = 1920 ;
             this.Height = 1080 ;
@@ -68,13 +72,14 @@ namespace LifeSupport.Config {
             this.Fps = 300 ;
             this.SfxVolume = 100 ;
             this.MusVolume = 100 ;
-            
+
+            Instance = this;
+
+
             //get the controller instance since we may need to see it
-            Controller = Controller.Instance ;
-
-           Instance = this ;
-        
-
+            Controller = Controller.Instance;
+            
+    
         }
 
     }
