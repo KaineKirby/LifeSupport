@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace LifeSupport.Levels {
     class Room {
 
         //an array of game objects
-        public GameObject[] Objects ;
+        public ArrayList Objects ;
 
         //the player (to know whether player is in room or not)
         private Player player ;
@@ -42,6 +43,8 @@ namespace LifeSupport.Levels {
             this.isActive = true ;
             this.game = game ;
 
+            this.Objects = new ArrayList() ;
+
             GenerateRoom() ;
 
         }
@@ -50,8 +53,8 @@ namespace LifeSupport.Levels {
         public void UpdateObjects(GameTime gameTime) {
 
             if (isActive) {
-                for (int i = 0 ; i < Objects.Length ; i++) {
-                    Objects[i].UpdatePosition(gameTime, this.Objects) ;
+                foreach (GameObject obj in Objects) {
+                    obj.UpdatePosition(gameTime) ;
                 }
             }
 
@@ -59,8 +62,8 @@ namespace LifeSupport.Levels {
 
         public void RenderObjects(SpriteBatch spriteBatch) {
             if (isActive) {
-                for (int i = 0 ; i < Objects.Length ; i++) {
-                    Objects[i].Render(spriteBatch) ;
+                foreach (GameObject obj in Objects) {
+                    obj.Render(spriteBatch) ;
                 }
             }
         }
@@ -69,22 +72,15 @@ namespace LifeSupport.Levels {
         //TODO for now this just makes a box
         private void GenerateRoom() {
 
-            this.Objects = new GameObject[184] ;
-
-            int x = 0 ; 
-
             for (int i = 0 ; i < 60 ; i++) {
                 for (int j = 0 ; j < 34 ; j++) {
                     if (i == 0 || i == 59 || j == 0 || j == 33) {
-                        this.Objects[x] = new Barrier(i*32, j*32, this.game) ;
-                        x++ ;
+                        Objects.Add(new Barrier(i*32, j*32, this.game)) ;
                     }
                 }
             }
 
         }
-
-
 
     }
 

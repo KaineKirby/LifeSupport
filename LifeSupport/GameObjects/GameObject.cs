@@ -9,6 +9,7 @@ using LifeSupport.Config ;
 using Microsoft.Xna.Framework;
 using System.IO;
 using Microsoft.Xna.Framework.Content;
+using System.Collections;
 
 
 /*
@@ -59,7 +60,7 @@ namespace LifeSupport.GameObjects {
         }
 
         //update the position of the object (this may be empty if the object is static, this is okay)
-        public abstract void UpdatePosition(GameTime gameTime, GameObject[] objects) ;
+        public abstract void UpdatePosition(GameTime gameTime) ;
 
     }
 }

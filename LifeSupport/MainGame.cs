@@ -56,9 +56,10 @@ namespace LifeSupport {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice) ;
 
-            player = new Player(this) ;
             testRoom = new Room(player, this) ;
-            frames = new FrameCounter() ;
+            player = new Player(this, testRoom) ;
+            if (Settings.Instance.ShowFps)
+                frames = new FrameCounter(this) ;
             
 
             // TODO: use this.Content to load your game content here
@@ -81,7 +82,7 @@ namespace LifeSupport {
             if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame))
                 Exit();
 
-            player.UpdatePosition(gameTime, testRoom.Objects) ;
+            player.UpdatePosition(gameTime) ;
             testRoom.UpdateObjects(gameTime) ;
 
             // TODO: Add your update logic here
@@ -96,15 +97,13 @@ namespace LifeSupport {
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
 
-            frames.Update((float)gameTime.ElapsedGameTime.TotalSeconds) ;
-            string fps = string.Format("FPS: {0}", (int)frames.AverageFramesPerSecond) ;
-
             spriteBatch.Begin() ;
             //render the player and the objects in the room
             player.Render(spriteBatch) ;
             testRoom.RenderObjects(spriteBatch) ;
-            //render the FPS counter
-            spriteBatch.DrawString(Content.Load<SpriteFont>("fonts/default_ui"), fps, new Vector2(0, 0), Color.White) ;
+            //render the FPS counter if it is enabled
+            if (Settings.Instance.ShowFps)
+                frames.Draw(spriteBatch, gameTime) ;
             spriteBatch.End() ;
 
             base.Draw(gameTime);

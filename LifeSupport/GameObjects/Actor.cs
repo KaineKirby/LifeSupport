@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using LifeSupport.Config ;
 using Microsoft.Xna.Framework;
+using System.Collections;
+using LifeSupport.Levels;
 
 /*
 * Actor Class (Abstract)
@@ -27,10 +29,12 @@ namespace LifeSupport.GameObjects {
         public float MoveSpeed ;
         //the direction the actor is moving in at a particular moment (Vector2)
         private Vector2 MoveDirection ; //enemies may need to see the player direction and this has to change
+        private Room Room ;
 
-        public Actor(int xPos, int yPos, int width, int height, int rotation, String spritePath, Game game, float moveSpeed) : base(xPos, yPos, width, height, rotation, spritePath, game) {
+        public Actor(int xPos, int yPos, int width, int height, int rotation, String spritePath, Game game, Room room, float moveSpeed) : base(xPos, yPos, width, height, rotation, spritePath, game) {
             //set the passed movespeed
             this.MoveSpeed = moveSpeed ;
+            this.Room = room ;
         }
 
         //updates the direction of the actor
@@ -39,7 +43,7 @@ namespace LifeSupport.GameObjects {
             this.MoveDirection.Normalize() ;
         }
 
-        public override void UpdatePosition(GameTime gameTime, GameObject[] objects) {
+        public override void UpdatePosition(GameTime gameTime) {
 
             float x = this.XPos + (MoveDirection * MoveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds).X ;
             float y = this.YPos + (MoveDirection * MoveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds).Y ;
@@ -48,13 +52,12 @@ namespace LifeSupport.GameObjects {
 
             //TODO collision detection is not perfect, it works but there is a scenario i want to make work
             //when the player is going diagonal towards a collidable surface they should be able to apply the force from their diagonal vector in the perpendicular direction of the collision
-            for (int i = 0 ; i < objects.Length ; i++) {
-                if (x < objects[i].XPos+objects[i].Width && x+this.Width > objects[i].XPos && 
-                    y < objects[i].YPos+objects[i].Height && y+this.Height > objects[i].YPos) {
+            foreach (GameObject obj in Room.Objects) {
+                if (x < obj.XPos+obj.Width && x+this.Width > obj.XPos && 
+                    y < obj.YPos+obj.Height && y+this.Height > obj.YPos) {
                     hasCollided = true ;
                 }
             }
-
             if (!hasCollided) {
                 this.XPos = x ;
                 this.YPos = y ;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace LifeSupport.GameObjects {
             //do nothing
         }
 
-        public override void UpdatePosition(GameTime gameTime, GameObject[] objects) {
+        public override void UpdatePosition(GameTime gameTime) {
             //also do nothing because it does not move
         }
 
