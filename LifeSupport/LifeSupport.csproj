@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Config\MouseControl.cs" />
     <Compile Include="Utilities\FrameCounter.cs" />
     <Compile Include="GameObjects\Actor.cs" />
     <Compile Include="GameObjects\Barrier.cs" />

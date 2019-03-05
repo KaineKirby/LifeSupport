@@ -23,6 +23,7 @@ namespace LifeSupport {
 
         Player player ;
         Room testRoom ;
+        MouseControl mouse;
 
         public MainGame() {
 
@@ -58,6 +59,7 @@ namespace LifeSupport {
 
             testRoom = new Room(player, this) ;
             player = new Player(this, testRoom) ;
+            mouse = new MouseControl(this);
             if (Settings.Instance.ShowFps)
                 frames = new FrameCounter(this) ;
             
@@ -82,6 +84,7 @@ namespace LifeSupport {
             if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame))
                 Exit();
 
+            mouse.Update(gameTime);
             player.UpdatePosition(gameTime) ;
             testRoom.UpdateObjects(gameTime) ;
 
@@ -98,6 +101,8 @@ namespace LifeSupport {
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin() ;
+
+            mouse.Draw(spriteBatch);
             //render the player and the objects in the room
             player.Render(spriteBatch) ;
             testRoom.RenderObjects(spriteBatch) ;
