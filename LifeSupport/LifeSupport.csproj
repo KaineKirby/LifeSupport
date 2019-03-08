@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Config\MouseControl.cs" />
+    <Compile Include="Projectiles\PlayerProjectiles.cs" />
     <Compile Include="Utilities\FrameCounter.cs" />
     <Compile Include="GameObjects\Actor.cs" />
     <Compile Include="GameObjects\Barrier.cs" />

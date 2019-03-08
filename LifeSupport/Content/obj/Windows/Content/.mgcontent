@@ -4,11 +4,15 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player.png</File>
+    <File>C:/Users/anton/Desktop/vs/LifeSupport/LifeSupport/Content/crosshair.png</File>
+    <File>C:/Users/anton/Desktop/vs/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
+    <File>C:/Users/anton/Desktop/vs/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
+    <File>C:/Users/anton/Desktop/vs/LifeSupport/LifeSupport/Content/img/player/player.png</File>
+    <File>C:/Users/anton/Desktop/vs/LifeSupport/LifeSupport/Content/square.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
