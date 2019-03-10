@@ -19,6 +19,7 @@ namespace LifeSupport {
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        SpriteBatch hud ;
         FrameCounter frames ;
 
         Player player ;
@@ -55,6 +56,7 @@ namespace LifeSupport {
         protected override void LoadContent() {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice) ;
+            hud = new SpriteBatch(GraphicsDevice) ;
 
             testRoom = new Room(player, this) ;
             player = new Player(this, testRoom) ;
@@ -97,13 +99,19 @@ namespace LifeSupport {
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin() ;
+            //two separate sprite batches for HUD/UI elements and then game content itself
+            //the coordinate systems should be different for these two
+
+            hud.Begin() ;
+            //render the FPS counter if it is enabled
+            if (Settings.Instance.ShowFps)
+                frames.Draw(hud, gameTime) ;
+            hud.End() ;
+
+            spriteBatch.Begin(SpriteSortMode.Texture, null, null, null, null, null, Matrix.CreateTranslation(-player.XPos+960, -player.YPos+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
             //render the player and the objects in the room
             player.Render(spriteBatch) ;
             testRoom.RenderObjects(spriteBatch) ;
-            //render the FPS counter if it is enabled
-            if (Settings.Instance.ShowFps)
-                frames.Draw(spriteBatch, gameTime) ;
             spriteBatch.End() ;
 
             base.Draw(gameTime);

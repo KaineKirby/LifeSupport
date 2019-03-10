@@ -72,9 +72,9 @@ namespace LifeSupport.Levels {
         //TODO for now this just makes a box
         private void GenerateRoom() {
 
-            for (int i = 0 ; i < 60 ; i++) {
-                for (int j = 0 ; j < 34 ; j++) {
-                    if (i == 0 || i == 59 || j == 0 || j == 33) {
+            for (int i = 0 ; i < 30 ; i++) {
+                for (int j = 0 ; j < 17 ; j++) {
+                    if (i == 0 || i == 29 || j == 0 || j == 16) {
                         Objects.Add(new Barrier(i*32, j*32, this.game)) ;
                     }
                 }
