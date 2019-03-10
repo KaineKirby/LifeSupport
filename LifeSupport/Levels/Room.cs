@@ -55,8 +55,9 @@ namespace LifeSupport.Levels {
             this.StartX = startX*32 ;
             this.StartY = startY*32 ;
 
-            this.Width = 100 ;
-            this.Height = 50 ;
+            //width and height of room in pixels
+            this.Width = 1920 ;
+            this.Height = 1080 ;
 
             this.Objects = new ArrayList() ;
 
@@ -77,7 +78,7 @@ namespace LifeSupport.Levels {
 
         public void RenderObjects(SpriteBatch spriteBatch) {
             //render the tile floor
-            spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(0, 0), new Rectangle(StartX, StartY, Width*32, Height*32), Color.White) ;
+            spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(0, 0), new Rectangle(StartX, StartY, Width, Height), Color.White) ;
 
             if (isActive) {
                 foreach (GameObject obj in Objects) {
@@ -91,13 +92,11 @@ namespace LifeSupport.Levels {
         private void GenerateRoom() {
 
             //build the walls for the room
-            for (int i = 0 ; i <= Width ; i++) {
-                for (int j = 0 ; j <= Height ; j++) {
-                    if (i == 0 || i == Width || j == 0 || j == Height) {
-                        Objects.Add(new Barrier(StartX+i*32, StartY+j*32, this.game)) ;
-                    }
-                }
-            }
+            Objects.Add(new Barrier(StartX, StartY, game, Width, Barrier.wallThickness)) ;
+            Objects.Add(new Barrier(StartX, StartY+Height, game, Width, Barrier.wallThickness+Height)) ;
+            Objects.Add(new Barrier(StartX, StartY+Barrier.wallThickness, game, StartX+Barrier.wallThickness, Height)) ;
+            Objects.Add(new Barrier(StartX+Width-Barrier.wallThickness, StartY+Barrier.wallThickness, game, StartX+Width, Height)) ;
+
 
         }
 

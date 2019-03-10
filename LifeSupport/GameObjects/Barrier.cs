@@ -9,14 +9,22 @@ using Microsoft.Xna.Framework;
 
 namespace LifeSupport.GameObjects {
 
+    /*
+    * New vision for this class:
+    * Barriers should no longer be 32x32 squares, but dynamically sized.
+    * This will make map creation easier, and rooms less computationally expensive
+    * (less objects, less collision detection)
+    * 
+    * New constructor will ask for starting point (top left) and ending point (bottom right)
+    */
+
     class Barrier : GameObject {
 
-        //these are configurable but should be the same for all barriers
-        private static readonly int width = 32 ;
-        private static readonly int height = 32 ;
         private static readonly int rotation = 0 ;
 
-        public Barrier(int xPos, int yPos, Game game) : base(xPos, yPos, width, height, rotation, Assets.Instance.barrier, game) {
+        public static readonly int wallThickness = 32 ;
+
+        public Barrier(int xPos, int yPos, Game game, int endX, int endY) : base(xPos, yPos, endX-xPos, endY-yPos, rotation, Assets.Instance.barrier, game) {
             //do nothing
         }
 
