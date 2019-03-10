@@ -21,10 +21,10 @@ namespace LifeSupport.GameObjects {
         //the controller instance since the player will be manipulated with controls
         private readonly Controller controller ;
 
-        private static readonly float startPlayerSpeed = 300f ;
+        private static readonly float startPlayerSpeed = 500f ;
 
         //will probably be constant
-        public Player(Game game, Room startingRoom) : base(100, 100, 32, 32, 0, "img/player/player", game, startingRoom, startPlayerSpeed) {
+        public Player(Game game, Room startingRoom) : base(100, 100, 32, 32, 0, Assets.Instance.player, game, startingRoom, startPlayerSpeed) {
 
             this.controller = Controller.Instance ;
 
@@ -69,11 +69,6 @@ namespace LifeSupport.GameObjects {
 
 
         }
-
-
-
-
-
 
 
     }

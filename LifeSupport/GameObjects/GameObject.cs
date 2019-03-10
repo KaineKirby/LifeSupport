@@ -39,7 +39,7 @@ namespace LifeSupport.GameObjects {
         //image for the game object
         private readonly Texture2D sprite ;
 
-        public GameObject(int xPos, int yPos, int width, int height, int rotation, String spritePath, Game game) {
+        public GameObject(int xPos, int yPos, int width, int height, int rotation, Texture2D sprite, Game game) {
 
             //we must scale to the screen resolution that is set in settings
             this.XPos = xPos;
@@ -49,7 +49,7 @@ namespace LifeSupport.GameObjects {
 
             this.Rotation = rotation ;
 
-            this.sprite = game.Content.Load<Texture2D>(spritePath) ;
+            this.sprite = sprite ;
 
         }
 

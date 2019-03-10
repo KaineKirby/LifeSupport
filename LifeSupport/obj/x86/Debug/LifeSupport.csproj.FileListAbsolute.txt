@@ -28,3 +28,6 @@ C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Newto
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Newtonsoft.Json.xml
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\Settings\settings.json
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\crosshair.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\square.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\background.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\objects\floor_tile.xnb

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LifeSupport.Config;
 using Microsoft.Xna.Framework;
 
 namespace LifeSupport.GameObjects {
@@ -15,7 +16,7 @@ namespace LifeSupport.GameObjects {
         private static readonly int height = 32 ;
         private static readonly int rotation = 0 ;
 
-        public Barrier(int xPos, int yPos, Game game) : base(xPos, yPos, width, height, rotation, "img/objects/barrier", game) {
+        public Barrier(int xPos, int yPos, Game game) : base(xPos, yPos, width, height, rotation, Assets.Instance.barrier, game) {
             //do nothing
         }
 

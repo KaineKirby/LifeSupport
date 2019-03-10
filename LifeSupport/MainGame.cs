@@ -20,6 +20,7 @@ namespace LifeSupport {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteBatch hud ;
+        SpriteBatch bg ;
         FrameCounter frames ;
 
         Player player ;
@@ -57,8 +58,11 @@ namespace LifeSupport {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice) ;
             hud = new SpriteBatch(GraphicsDevice) ;
+            bg = new SpriteBatch(GraphicsDevice) ;
+            
+            Assets.Instance.LoadContent(this) ;
 
-            testRoom = new Room(player, this) ;
+            testRoom = new Room(player, this, 0, 0) ;
             player = new Player(this, testRoom) ;
             if (Settings.Instance.ShowFps)
                 frames = new FrameCounter(this) ;
@@ -99,20 +103,27 @@ namespace LifeSupport {
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
 
-            //two separate sprite batches for HUD/UI elements and then game content itself
+            //two separate sprite batches for HUD/UI/background elements and then game content itself
             //the coordinate systems should be different for these two
+   
+            //draw the background
+            bg.Begin() ;
+            bg.Draw(Assets.Instance.background, new Rectangle(0, 0, 1920, 1080), Color.White) ;
+            bg.End() ;
+            
+            //draw the game objects
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.LinearWrap, null, null, null, Matrix.CreateTranslation(-player.XPos+960, -player.YPos+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
+            //render the player and the objects in the room
+            testRoom.RenderObjects(spriteBatch) ;
+            player.Render(spriteBatch) ;
+            spriteBatch.End() ;
 
+            //draw HUD elements
             hud.Begin() ;
             //render the FPS counter if it is enabled
             if (Settings.Instance.ShowFps)
                 frames.Draw(hud, gameTime) ;
             hud.End() ;
-
-            spriteBatch.Begin(SpriteSortMode.Texture, null, null, null, null, null, Matrix.CreateTranslation(-player.XPos+960, -player.YPos+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
-            //render the player and the objects in the room
-            player.Render(spriteBatch) ;
-            testRoom.RenderObjects(spriteBatch) ;
-            spriteBatch.End() ;
 
             base.Draw(gameTime);
         }

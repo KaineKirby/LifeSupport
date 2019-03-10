@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LifeSupport.Config;
 using LifeSupport.GameObjects ;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -36,12 +37,26 @@ namespace LifeSupport.Levels {
         //whether the room has the player in it or not
         private bool isActive ;
 
-        public Room(Player player, Game game) {
+        //the width and height of the room in barrier walls
+        public int Width ;
+        public int Height ;
+
+        //the starting point for room construction
+        public int StartX ;
+        public int StartY ;
+
+        public Room(Player player, Game game, int startX, int startY) {
 
             this.player = player ;
             this.isBeaten = false ;
             this.isActive = true ;
             this.game = game ;
+
+            this.StartX = startX*32 ;
+            this.StartY = startY*32 ;
+
+            this.Width = 100 ;
+            this.Height = 50 ;
 
             this.Objects = new ArrayList() ;
 
@@ -61,6 +76,9 @@ namespace LifeSupport.Levels {
         }
 
         public void RenderObjects(SpriteBatch spriteBatch) {
+            //render the tile floor
+            spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(0, 0), new Rectangle(StartX, StartY, Width*32, Height*32), Color.White) ;
+
             if (isActive) {
                 foreach (GameObject obj in Objects) {
                     obj.Render(spriteBatch) ;
@@ -72,10 +90,11 @@ namespace LifeSupport.Levels {
         //TODO for now this just makes a box
         private void GenerateRoom() {
 
-            for (int i = 0 ; i < 30 ; i++) {
-                for (int j = 0 ; j < 17 ; j++) {
-                    if (i == 0 || i == 29 || j == 0 || j == 16) {
-                        Objects.Add(new Barrier(i*32, j*32, this.game)) ;
+            //build the walls for the room
+            for (int i = 0 ; i <= Width ; i++) {
+                for (int j = 0 ; j <= Height ; j++) {
+                    if (i == 0 || i == Width || j == 0 || j == Height) {
+                        Objects.Add(new Barrier(StartX+i*32, StartY+j*32, this.game)) ;
                     }
                 }
             }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,5 +8,36 @@ using System.Threading.Tasks;
 
 namespace LifeSupport.Config {
     class Assets {
+
+        //singleton reference
+        public static Assets instance ;
+        public static Assets Instance {
+            get {
+                if (instance != null)
+                    return instance ;
+                else 
+                    return new Assets() ;
+            }
+            private set {
+                instance = value ;
+            }
+        }
+
+        public Texture2D background ;
+        public Texture2D player ;
+        public Texture2D barrier ;
+        public Texture2D floorTile ;
+
+        private Assets() {
+            instance = this ;
+        }
+
+        public void LoadContent(Game game) {
+            background = game.Content.Load<Texture2D>("img/background") ;
+            player = game.Content.Load<Texture2D>("img/player/player") ;
+            barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;
+            floorTile = game.Content.Load<Texture2D>("img/objects/floor_tile") ;
+        }
+
     }
 }
