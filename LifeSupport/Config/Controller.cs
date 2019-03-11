@@ -54,7 +54,7 @@ namespace LifeSupport.Config {
         }
 
         //just for that central access point to get in our game context
-        public Boolean IsKeyDown(Keys key) {
+        public bool IsKeyDown(Keys key) {
             return Keyboard.GetState().IsKeyDown(key) ;
         }
 

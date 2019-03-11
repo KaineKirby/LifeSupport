@@ -37,7 +37,10 @@ namespace LifeSupport.GameObjects {
         public int Rotation ;
 
         //image for the game object
-        private readonly Texture2D sprite ;
+        protected Texture2D sprite ;
+
+        //whether or not the object has collision
+        public bool HasCollision ;
 
         public GameObject(int xPos, int yPos, int width, int height, int rotation, Texture2D sprite, Game game) {
 
@@ -46,17 +49,16 @@ namespace LifeSupport.GameObjects {
             this.YPos = yPos ;
             this.Width = width;
             this.Height = height ;
-
             this.Rotation = rotation ;
-
             this.sprite = sprite ;
+            this.HasCollision = true ;
 
         }
 
         //render the sprite with its current position (independent of update)
 	    //subclasses will likely have to call base() ;
         public void Render(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(sprite, new Rectangle((int)XPos, (int)YPos, Width, Height), Color.White) ;
+            spriteBatch.Draw(sprite, new Vector2(XPos, YPos), new Rectangle(0, 0, Width, Height), Color.White, Rotation, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0) ;
         }
 
         //update the position of the object (this may be empty if the object is static, this is okay)

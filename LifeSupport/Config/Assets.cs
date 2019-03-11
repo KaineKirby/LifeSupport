@@ -27,6 +27,9 @@ namespace LifeSupport.Config {
         public Texture2D player ;
         public Texture2D barrier ;
         public Texture2D floorTile ;
+        public Texture2D openDoor ;
+        public Texture2D closeDoor ;
+        
 
         private Assets() {
             instance = this ;
@@ -37,6 +40,8 @@ namespace LifeSupport.Config {
             player = game.Content.Load<Texture2D>("img/player/player") ;
             barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;
             floorTile = game.Content.Load<Texture2D>("img/objects/floor_tile") ;
+            openDoor = game.Content.Load<Texture2D>("img/objects/open_door") ;
+            closeDoor = game.Content.Load<Texture2D>("img/objects/closed_door") ;
         }
 
     }

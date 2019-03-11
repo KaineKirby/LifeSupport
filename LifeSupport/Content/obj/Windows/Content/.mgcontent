@@ -7,10 +7,14 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/background.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/closed_door.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/floor_tile.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/open_door.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
