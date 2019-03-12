@@ -102,11 +102,11 @@ namespace LifeSupport {
 
             spriteBatch.Begin() ;
 
-            mouse.Draw(spriteBatch);
             //render the player and the objects in the room
             player.Render(spriteBatch) ;
             player.DrawPlayerProjectiles(spriteBatch);
             testRoom.RenderObjects(spriteBatch) ;
+            mouse.Draw(spriteBatch);
             //render the FPS counter if it is enabled
             if (Settings.Instance.ShowFps)
                 frames.Draw(spriteBatch, gameTime) ;

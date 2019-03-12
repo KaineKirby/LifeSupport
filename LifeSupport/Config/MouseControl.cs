@@ -13,9 +13,10 @@ namespace LifeSupport.Config
     class MouseControl
     {
 
+
         private float mouseImageCenterX;
         private float mouseImageCenterY;
-        private Vector2 mousePosition;
+        public Vector2 mousePosition;
         private Texture2D mouseImage;
         public MouseState mouseState;
         private float scale = 0.15f;
@@ -31,16 +32,23 @@ namespace LifeSupport.Config
             mousePosition = new Vector2(mouseState.X - mouseImageCenterX, mouseState.Y - mouseImageCenterY);
         }
 
-        public  void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             mouseState = Mouse.GetState();
-            mousePosition = new Vector2(mouseState.X - mouseImageCenterX, mouseState.Y - mouseImageCenterY);
+            this.mousePosition = new Vector2(mouseState.X - mouseImageCenterX, mouseState.Y - mouseImageCenterY);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(mouseImage, mousePosition,null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         }
+
+        public Vector2 getMousePosition()
+        {
+            return this.mousePosition;
+        }
+
+
 
 
     }

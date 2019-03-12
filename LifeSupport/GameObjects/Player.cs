@@ -18,32 +18,33 @@ using Microsoft.Xna.Framework.Input;
 
 namespace LifeSupport.GameObjects {
 
-    class Player : Actor {
+    class Player : Actor
+    {
 
         //the controller instance since the player will be manipulated with controls
-        private readonly Controller controller ;
+        private readonly Controller controller;
 
-    //    public Texture2D playerProjectileTexture;
-   //     public float playerProjectileDelay;
         public List<PlayerProjectiles> playerProjectilesList;
         public Vector2 playerPosition;
-     //   public float bulletDelay = 1000;
+
         public float bulletTimeSeconds = 0f;
         public float bulletTimeMilliSeconds = 0f;
         public Boolean firstShot = true;
         public PlayerProjectiles newProjectile = new PlayerProjectiles();
         public Texture2D projectileTexture;
-        
+        public MouseControl MouseCursor;
 
         //will probably be constant
-        public Player(Game game, Room startingRoom) : base(100, 100, 32, 32, 0, "img/player/player", game, startingRoom, 200f) {
+        public Player(Game game, Room startingRoom) : base(100, 100, 32, 32, 0, "img/player/player", game, startingRoom, 200f)
+        {
 
-            this.controller = Controller.Instance ;
+            this.controller = Controller.Instance;
 
-        //    playerProjectileDelay = bulletDelay;
+            //    playerProjectileDelay = bulletDelay;
             playerPosition = new Vector2(XPos, YPos);
             playerProjectilesList = new List<PlayerProjectiles>();
             projectileTexture = newProjectile.setSprite(game, "square");
+            this.MouseCursor = new MouseControl(game);
         }
 
 
@@ -54,54 +55,63 @@ namespace LifeSupport.GameObjects {
             foreach (PlayerProjectiles pp in playerProjectilesList)
                 pp.DrawPlayerProjectile(spriteBatch);
         }
-        
+
         //use the controller class to update the positions
-        public new void UpdatePosition(GameTime gameTime) {
+        public new void UpdatePosition(GameTime gameTime)
+        {
 
-          
+
+            this.playerPosition = new Vector2(base.XPos, base.YPos);
             MouseState mouseState = Mouse.GetState();
-
+            MouseCursor.Update(gameTime);
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                
                 Shoot(gameTime);
             }
 
-            UpdateProjectiles();
+            UpdateProjectiles(gameTime);
 
             //on the various vectors
-            if (controller.IsKeyDown(controller.MoveUp) && controller.IsKeyDown(controller.MoveRight)) {
-                UpdateDirection(new Vector2(1, -1)) ;
-                base.UpdatePosition(gameTime) ;
+            if (controller.IsKeyDown(controller.MoveUp) && controller.IsKeyDown(controller.MoveRight))
+            {
+                UpdateDirection(new Vector2(1, -1));
+                base.UpdatePosition(gameTime);
             }
-            else if (controller.IsKeyDown(controller.MoveUp) && controller.IsKeyDown(controller.MoveLeft)) {
-                UpdateDirection(new Vector2(-1, -1)) ;
-                base.UpdatePosition(gameTime) ;
+            else if (controller.IsKeyDown(controller.MoveUp) && controller.IsKeyDown(controller.MoveLeft))
+            {
+                UpdateDirection(new Vector2(-1, -1));
+                base.UpdatePosition(gameTime);
             }
-            else if (controller.IsKeyDown(controller.MoveDown) && controller.IsKeyDown(controller.MoveRight)) {
-                UpdateDirection(new Vector2(1, 1)) ;
-                base.UpdatePosition(gameTime) ;
+            else if (controller.IsKeyDown(controller.MoveDown) && controller.IsKeyDown(controller.MoveRight))
+            {
+                UpdateDirection(new Vector2(1, 1));
+                base.UpdatePosition(gameTime);
             }
-            else if (controller.IsKeyDown(controller.MoveDown) && controller.IsKeyDown(controller.MoveLeft)) {
-                UpdateDirection(new Vector2(-1, 1)) ;
-                base.UpdatePosition(gameTime) ;
+            else if (controller.IsKeyDown(controller.MoveDown) && controller.IsKeyDown(controller.MoveLeft))
+            {
+                UpdateDirection(new Vector2(-1, 1));
+                base.UpdatePosition(gameTime);
             }
-            else if (controller.IsKeyDown(controller.MoveUp)) {
-                UpdateDirection(new Vector2(0, -1)) ;
-                base.UpdatePosition(gameTime) ;
+            else if (controller.IsKeyDown(controller.MoveUp))
+            {
+                UpdateDirection(new Vector2(0, -1));
+                base.UpdatePosition(gameTime);
             }
-            else if (controller.IsKeyDown(controller.MoveDown)) {
-                UpdateDirection(new Vector2(0, 1)) ;
-                base.UpdatePosition(gameTime) ;
-            }  
-            else if (controller.IsKeyDown(controller.MoveLeft)) {
-                UpdateDirection(new Vector2(-1, 0)) ;
-                base.UpdatePosition(gameTime) ;
-            }  
-            else if (controller.IsKeyDown(controller.MoveRight)) {
-                UpdateDirection(new Vector2(1, 0)) ;
-                base.UpdatePosition(gameTime) ;
+            else if (controller.IsKeyDown(controller.MoveDown))
+            {
+                UpdateDirection(new Vector2(0, 1));
+                base.UpdatePosition(gameTime);
+            }
+            else if (controller.IsKeyDown(controller.MoveLeft))
+            {
+                UpdateDirection(new Vector2(-1, 0));
+                base.UpdatePosition(gameTime);
+            }
+            else if (controller.IsKeyDown(controller.MoveRight))
+            {
+                UpdateDirection(new Vector2(1, 0));
+                base.UpdatePosition(gameTime);
             }
 
         }
@@ -109,54 +119,57 @@ namespace LifeSupport.GameObjects {
 
         public void Shoot(GameTime gameTime)
         {
-            //   if (bulletTime >= 0)
-            //     playerProjectileDelay--;
-
-
 
             bulletTimeSeconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
             bulletTimeMilliSeconds += (float)gameTime.ElapsedGameTime.Milliseconds;
 
 
-            if (bulletTimeSeconds >= 1f /2 || firstShot == true) {
+            if (bulletTimeSeconds >= 1f / 2 || firstShot == true)
+            {
                 firstShot = false;
                 PlayerProjectiles newProjectile = new PlayerProjectiles();
-                  newProjectile.sprite = projectileTexture;
-                  newProjectile.projectilePosition = new Vector2(base.XPos, base.YPos);
+                newProjectile.sprite = projectileTexture;
+                newProjectile.projectilePosition = new Vector2(base.XPos, base.YPos);
 
-                  newProjectile.isVisible = true;
-
-                 if (playerProjectilesList.Count() < 6) { 
+                newProjectile.isVisible = true;
+                newProjectile.projectileDirection = getDirection();
+                if (playerProjectilesList.Count() < 6)
+                {
                     playerProjectilesList.Add(newProjectile);
-                 }
                 }
+            }
 
-            if (bulletTimeSeconds >= 1f /2)
+            if (bulletTimeSeconds >= 1f / 2)
             {
                 bulletTimeMilliSeconds -= bulletTimeMilliSeconds;
                 bulletTimeSeconds -= bulletTimeSeconds;
             }
-
-
-            //     if (playerProjectileDelay == 0)
-            //         playerProjectileDelay = bulletDelay;
         }
 
 
 
-        public void UpdateProjectiles()
+        public void UpdateProjectiles(GameTime gameTime)
         {
             foreach (PlayerProjectiles pp in playerProjectilesList)
             {
-                pp.projectilePosition.Y = pp.projectilePosition.Y - pp.projectileSpeed;
 
-                if (pp.projectilePosition.Y <= 0)
+         //       pp.projectileDirection = MouseCursor.getMousePosition() - playerPosition;
+          //      pp.projectileDirection.Normalize();
+           //     if (pp.projectileDirection != Vector2.Zero)
+            //        pp.projectileDirection.Normalize();
+
+                pp.projectilePosition.X += pp.projectileDirection.X * pp.projectileSpeed;
+                pp.projectilePosition.Y += pp.projectileDirection.Y * pp.projectileSpeed;
+
+                if (pp.projectilePosition.Y <= 0 || pp.projectilePosition.Y >= Settings.Instance.Height || pp.projectilePosition.X <= 0 || pp.projectilePosition.X >= Settings.Instance.Width)
                     pp.isVisible = false;
+
+
             }
 
-            for(int i = 0; i < playerProjectilesList.Count; i++)
+            for (int i = 0; i < playerProjectilesList.Count; i++)
             {
-                if(!playerProjectilesList[i].isVisible)
+                if (!playerProjectilesList[i].isVisible)
                 {
                     playerProjectilesList.RemoveAt(i);
                     i--;
@@ -166,10 +179,25 @@ namespace LifeSupport.GameObjects {
         }
 
 
+        public Vector2 getDirection()
+        {
+
+            Vector2 BDirection;
+
+            BDirection = MouseCursor.getMousePosition() - playerPosition;
+            BDirection.Normalize();
+            if(BDirection != Vector2.Zero)
+            {
+                BDirection.Normalize();
+                return BDirection;
+            }
+            return BDirection;
+
+        }
+
 
 
 
     }
-
 }
 

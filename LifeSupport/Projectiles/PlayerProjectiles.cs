@@ -14,8 +14,9 @@ namespace LifeSupport.Projectiles
     {
         public Rectangle collisionBox;
         public Texture2D sprite;
-        public Vector2 playerPosistion;
+        public Vector2 projectileOrigin;
         public Vector2 projectilePosition;
+        public Vector2 projectileDirection;
         public bool isVisible;
         public float projectileSpeed;
         public float scale = .05f;
