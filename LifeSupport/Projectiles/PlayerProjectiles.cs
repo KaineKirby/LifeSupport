@@ -18,11 +18,11 @@ namespace LifeSupport.Projectiles
         public Vector2 projectilePosition;
         public bool isVisible;
         public float projectileSpeed;
-        public float scale = .1f;
+        public float scale = .05f;
 
         public PlayerProjectiles()
         {
-            projectileSpeed = 10;
+            projectileSpeed = .2f;
             isVisible = false;
         }
 

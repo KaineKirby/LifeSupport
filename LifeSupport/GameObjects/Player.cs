@@ -24,20 +24,23 @@ namespace LifeSupport.GameObjects {
         private readonly Controller controller ;
 
     //    public Texture2D playerProjectileTexture;
-        public float playerProjectileDelay;
+   //     public float playerProjectileDelay;
         public List<PlayerProjectiles> playerProjectilesList;
         public Vector2 playerPosition;
-
+     //   public float bulletDelay = 1000;
+        public float bulletTimeSeconds = 0f;
+        public float bulletTimeMilliSeconds = 0f;
+        public Boolean firstShot = true;
         public PlayerProjectiles newProjectile = new PlayerProjectiles();
         public Texture2D projectileTexture;
-
+        
 
         //will probably be constant
         public Player(Game game, Room startingRoom) : base(100, 100, 32, 32, 0, "img/player/player", game, startingRoom, 200f) {
 
             this.controller = Controller.Instance ;
 
-            playerProjectileDelay = 20;
+        //    playerProjectileDelay = bulletDelay;
             playerPosition = new Vector2(XPos, YPos);
             playerProjectilesList = new List<PlayerProjectiles>();
             projectileTexture = newProjectile.setSprite(game, "square");
@@ -58,9 +61,11 @@ namespace LifeSupport.GameObjects {
           
             MouseState mouseState = Mouse.GetState();
 
-            if(mouseState.LeftButton == ButtonState.Pressed)
+
+            if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                Shoot();
+                
+                Shoot(gameTime);
             }
 
             UpdateProjectiles();
@@ -102,25 +107,39 @@ namespace LifeSupport.GameObjects {
         }
 
 
-        public void Shoot()
+        public void Shoot(GameTime gameTime)
         {
-            if (playerProjectileDelay >= 0)
-                playerProjectileDelay--;
+            //   if (bulletTime >= 0)
+            //     playerProjectileDelay--;
 
-            if(playerProjectileDelay <= 0)
-            {
+
+
+            bulletTimeSeconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            bulletTimeMilliSeconds += (float)gameTime.ElapsedGameTime.Milliseconds;
+
+
+            if (bulletTimeSeconds >= 1f /2 || firstShot == true) {
+                firstShot = false;
                 PlayerProjectiles newProjectile = new PlayerProjectiles();
-                newProjectile.sprite = projectileTexture;
-                newProjectile.projectilePosition = new Vector2(base.XPos + 32 - newProjectile.sprite.Width / 2, base.YPos + 30);
+                  newProjectile.sprite = projectileTexture;
+                  newProjectile.projectilePosition = new Vector2(base.XPos, base.YPos);
 
-                newProjectile.isVisible = true;
+                  newProjectile.isVisible = true;
 
-                if (playerProjectilesList.Count() < 30)
+                 if (playerProjectilesList.Count() < 6) { 
                     playerProjectilesList.Add(newProjectile);
+                 }
+                }
+
+            if (bulletTimeSeconds >= 1f /2)
+            {
+                bulletTimeMilliSeconds -= bulletTimeMilliSeconds;
+                bulletTimeSeconds -= bulletTimeSeconds;
             }
 
-            if (playerProjectileDelay == 0)
-                playerProjectileDelay = 20;
+
+            //     if (playerProjectileDelay == 0)
+            //         playerProjectileDelay = bulletDelay;
         }
 
 
