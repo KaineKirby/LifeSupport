@@ -10,18 +10,30 @@ using System.Threading.Tasks;
 
 namespace LifeSupport.Config
 {
+
+    
     class MouseControl
     {
 
+        /*Get the center x point of the crosshair (mouse pointer) */
+        public float mouseImageCenterX;
 
-        private float mouseImageCenterX;
-        private float mouseImageCenterY;
-        public Vector2 mousePosition;
-        private Texture2D mouseImage;
+        /*Get the center y point of the crosshair (mouse pointer) */
+        public float mouseImageCenterY;
+
+        /* Store the (x,y) point of the mouse pointer */
+        public Vector2 MousePosition;
+
+        /*Load the crosshair image. This will act as the mouse pointer */
+        public Texture2D mouseImage;
+
+        /*Mouse state is a built in Monogame object that will be able to get the state of the mouse (pressed, released, not pressed) */
         public MouseState mouseState;
-        private float scale = 0.15f;
 
-      //  static extern void ClipCursor(ref Rectangle rect);
+        /*Scale the size of the crosshair image */
+        public float scale = 0.15f;
+
+        //  static extern void ClipCursor(ref Rectangle rect);
 
         public MouseControl(Game game)
         {
@@ -29,26 +41,20 @@ namespace LifeSupport.Config
             mouseImageCenterX = (mouseImage.Width * scale) / 2;
             mouseImageCenterY = (mouseImage.Height * scale) / 2;
             mouseState = Mouse.GetState();
-            mousePosition = new Vector2(mouseState.X - mouseImageCenterX, mouseState.Y - mouseImageCenterY);
+            this.MousePosition = new Vector2(mouseState.X - mouseImageCenterX, mouseState.Y - mouseImageCenterY);
         }
 
+        /* Continually update the mouse. This function will updates the mouse crosshair location */
         public void Update(GameTime gameTime)
         {
             mouseState = Mouse.GetState();
-            this.mousePosition = new Vector2(mouseState.X - mouseImageCenterX, mouseState.Y - mouseImageCenterY);
+            MousePosition = new Vector2(mouseState.X - mouseImageCenterX, mouseState.Y - mouseImageCenterY);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(mouseImage, mousePosition,null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(mouseImage, MousePosition,null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         }
-
-        public Vector2 getMousePosition()
-        {
-            return this.mousePosition;
-        }
-
-
 
 
     }

@@ -79,6 +79,7 @@ namespace LifeSupport.Levels {
                     }
                 }
             }
+            Objects.Add(new Barrier(600, 600, this.game));
 
         }
 
