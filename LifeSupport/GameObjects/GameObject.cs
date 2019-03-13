@@ -42,7 +42,7 @@ namespace LifeSupport.GameObjects {
         //whether or not the object has collision
         public bool HasCollision ;
 
-        public GameObject(int xPos, int yPos, int width, int height, int rotation, Texture2D sprite, Game game) {
+        public GameObject(int xPos, int yPos, int width, int height, int rotation, Texture2D sprite) {
 
             //we must scale to the screen resolution that is set in settings
             this.XPos = xPos;

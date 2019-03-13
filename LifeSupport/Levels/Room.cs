@@ -28,9 +28,6 @@ namespace LifeSupport.Levels {
         //the player (to know whether player is in room or not)
         private Player player ;
 
-        //the game the room is in
-        private Game game ;
-
         //whether the room has been defeated or not
         private bool isBeaten ;
 
@@ -45,12 +42,11 @@ namespace LifeSupport.Levels {
         public int StartX ;
         public int StartY ;
 
-        public Room(Player player, Game game, int startX, int startY) {
+        public Room(Player player, int startX, int startY) {
 
             this.player = player ;
             this.isBeaten = false ;
             this.isActive = true ;
-            this.game = game ;
 
             this.StartX = startX ;
             this.StartY = startY ;
@@ -94,25 +90,25 @@ namespace LifeSupport.Levels {
             //build the walls for the room
 
             //top no door
-            Objects.Add(new Barrier(StartX, StartY, game, StartX+Width, StartY+Barrier.wallThickness)) ;
+            Objects.Add(new Barrier(StartX, StartY, StartX+Width, StartY+Barrier.wallThickness)) ;
             //bottom no door
-            Objects.Add(new Barrier(StartX, StartY+Height, game, StartX+Width, StartY+Barrier.wallThickness+Height)) ;
+            Objects.Add(new Barrier(StartX, StartY+Height, StartX+Width, StartY+Barrier.wallThickness+Height)) ;
 
             //left no door
             //Objects.Add(new Barrier(StartX, StartY+Barrier.wallThickness, game, StartX+Barrier.wallThickness, StartY+Height)) ;
 
             //left with door 
-            Objects.Add(new Barrier(StartX, StartY+Barrier.wallThickness, game, StartX+Barrier.wallThickness, StartY+((Height/2)-32))) ;
-            Objects.Add(new Door(StartX, StartY+(Height/2)-32, game)) ;
-            Objects.Add(new Barrier(StartX, StartY+(Height/2)+32, game, StartX+Barrier.wallThickness, StartY+Height)) ;
+            Objects.Add(new Barrier(StartX, StartY+Barrier.wallThickness, StartX+Barrier.wallThickness, StartY+((Height/2)-32))) ;
+            Objects.Add(new Door(StartX, StartY+(Height/2)-32)) ;
+            Objects.Add(new Barrier(StartX, StartY+(Height/2)+32, StartX+Barrier.wallThickness, StartY+Height)) ;
             
             //right no door
             //Objects.Add(new Barrier(StartX+Width-Barrier.wallThickness, StartY+Barrier.wallThickness, game, StartX+Width, StartY+Height)) ;
 
             //right with door
-            Objects.Add(new Barrier(StartX+Width-Barrier.wallThickness, StartY+Barrier.wallThickness, game, StartX+Width, StartY+(Height/2)-32)) ;
-            Objects.Add(new Door(StartX+Width-Barrier.wallThickness, StartY+(Height/2)-32, game)) ;
-            Objects.Add(new Barrier(StartX+Width-Barrier.wallThickness, StartY+(Height/2)+32, game, StartX+Width, StartY+Height)) ;
+            Objects.Add(new Barrier(StartX+Width-Barrier.wallThickness, StartY+Barrier.wallThickness, StartX+Width, StartY+(Height/2)-32)) ;
+            Objects.Add(new Door(StartX+Width-Barrier.wallThickness, StartY+(Height/2)-32)) ;
+            Objects.Add(new Barrier(StartX+Width-Barrier.wallThickness, StartY+(Height/2)+32, StartX+Width, StartY+Height)) ;
           
 
         }

@@ -62,8 +62,8 @@ namespace LifeSupport {
             
             Assets.Instance.LoadContent(this) ;
 
-            testRoom = new Room(player, this, 400, 400) ;
-            player = new Player(this, testRoom) ;
+            testRoom = new Room(player, 400, 400) ;
+            player = new Player(testRoom) ;
             if (Settings.Instance.ShowFps)
                 frames = new FrameCounter(this) ;
             

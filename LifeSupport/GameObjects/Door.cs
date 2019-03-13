@@ -17,7 +17,7 @@ namespace LifeSupport.GameObjects {
         private Texture2D closeTexture ;
 
         //when a rotation is not passed we assume 0 
-        public Door(int xPos, int yPos, Game game) : base(xPos, yPos, 32, 64, 0, Assets.Instance.closeDoor, game) {
+        public Door(int xPos, int yPos) : base(xPos, yPos, 32, 64, 0, Assets.Instance.closeDoor) {
             IsOpen = false ;
 
             openTexture = Assets.Instance.openDoor ;
@@ -25,7 +25,7 @@ namespace LifeSupport.GameObjects {
         }
 
         //otherwise we use the passed rotation
-        public Door(int xPos, int yPos, Game game, int rotation) : base(xPos, yPos, 32, 64, rotation, Assets.Instance.closeDoor, game) {
+        public Door(int xPos, int yPos, int rotation) : base(xPos, yPos, 32, 64, rotation, Assets.Instance.closeDoor) {
             IsOpen = false ;
 
             openTexture = Assets.Instance.openDoor ;
@@ -36,7 +36,7 @@ namespace LifeSupport.GameObjects {
         public void OpenDoor() {
             this.sprite = openTexture ;
             IsOpen = true ;
-            this.HasCollision = false ;
+            this.HasCollision = false ; 
         }
 
         public void CloseDoor() {

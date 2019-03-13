@@ -31,7 +31,7 @@ namespace LifeSupport.GameObjects {
         private Vector2 MoveDirection ; //enemies may need to see the player direction and this has to change
         private Room Room ;
 
-        public Actor(int xPos, int yPos, int width, int height, int rotation, Texture2D sprite, Game game, Room room, float moveSpeed) : base(xPos, yPos, width, height, rotation, sprite, game) {
+        public Actor(int xPos, int yPos, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(xPos, yPos, width, height, rotation, sprite) {
             //set the passed movespeed
             this.MoveSpeed = moveSpeed ;
             this.Room = room ;
