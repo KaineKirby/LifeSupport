@@ -40,15 +40,6 @@ namespace LifeSupport.GameObjects {
         //whether or not the object has collision
         public bool HasCollision ;
 
-        public float XPos {
-            get; private set;
-        }
-
-        public float YPos
-        {
-            get; private set;
-        }
-
         public GameObject(Rectangle rect, int rotation, Texture2D sprite) {
 
             //we must scale to the screen resolution that is set in settings
@@ -56,8 +47,6 @@ namespace LifeSupport.GameObjects {
             this.Rotation = rotation ;
             this.sprite = sprite ;
             this.HasCollision = true ;
-            this.XPos = Rect.X;
-            this.YPos = Rect.Y;
 
         }
 
@@ -70,12 +59,5 @@ namespace LifeSupport.GameObjects {
         //update the position of the object (this may be empty if the object is static, this is okay)
         public abstract void UpdatePosition(GameTime gameTime) ;
 
-        public void MoveObject(float x, float y)
-        {
-            this.XPos = x;
-            this.YPos = y;
-            this.Rect.X = (int)XPos;
-            this.Rect.Y = (int)YPos;
-        }
     }
 }

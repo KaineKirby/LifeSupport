@@ -30,12 +30,25 @@ namespace LifeSupport.GameObjects {
         //the direction the actor is moving in at a particular moment (Vector2)
         private Vector2 MoveDirection ; //enemies may need to see the player direction and this has to change
         private Room Room ;
+
+        //the x and y position of actor must be expressed in float because of intermediary positions to keep consistent and reliably speeds
+        public float XPos {
+            get; private set;
+        }
+
+        public float YPos
+        {
+            get; private set;
+        }
         
 
         public Actor(Rectangle rect, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(rect, rotation, sprite) {
             //set the passed movespeed
             this.MoveSpeed = moveSpeed ;
             this.Room = room ;
+
+            this.XPos = Rect.X;
+            this.YPos = Rect.Y;
            
         }
 
@@ -56,14 +69,17 @@ namespace LifeSupport.GameObjects {
             //when the player is going diagonal towards a collidable surface they should be able to apply the force from their diagonal vector in the perpendicular direction of the collision
             foreach (GameObject obj in Room.Objects) {
                 if (obj.HasCollision &&
-                    x < obj.XPos + obj.Rect.Width && x + this.Rect.Width > obj.XPos &&
-                    y < obj.YPos + obj.Rect.Height && y + this.Rect.Height > obj.YPos)
+                    x < obj.Rect.X + obj.Rect.Width && x + this.Rect.Width > obj.Rect.X &&
+                    y < obj.Rect.Y + obj.Rect.Height && y + this.Rect.Height > obj.Rect.Y)
                 {
                     hasCollided = true ;
                 }
             }
             if (!hasCollided) {
-                base.MoveObject(x, y);
+                this.XPos = x;
+                this.YPos = y;
+                this.Rect.X = (int)XPos;
+                this.Rect.Y = (int)YPos;
             }
 
         }
