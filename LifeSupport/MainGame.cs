@@ -56,12 +56,12 @@ namespace LifeSupport {
         /// </summary>
         protected override void LoadContent() {
             // Create a new SpriteBatch, which can be used to draw textures.
+            Assets.Instance.LoadContent(this);
             spriteBatch = new SpriteBatch(GraphicsDevice) ;
             hud = new SpriteBatch(GraphicsDevice) ;
             bg = new SpriteBatch(GraphicsDevice) ;
             
-            Assets.Instance.LoadContent(this) ;
-
+            
             testRoom = new Room(player, 400, 400) ;
             player = new Player(testRoom) ;
             if (Settings.Instance.ShowFps)
@@ -112,10 +112,10 @@ namespace LifeSupport {
             bg.End() ;
             
             //draw the game objects
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.XPos+960, -player.YPos+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Rect.X+960, -player.Rect.Y+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
             //render the player and the objects in the room
             testRoom.RenderObjects(spriteBatch) ;
-            player.Render(spriteBatch) ;
+            player.Draw(spriteBatch) ;
             spriteBatch.End() ;
 
             //draw HUD elements

@@ -30,11 +30,13 @@ namespace LifeSupport.GameObjects {
         //the direction the actor is moving in at a particular moment (Vector2)
         private Vector2 MoveDirection ; //enemies may need to see the player direction and this has to change
         private Room Room ;
+        
 
-        public Actor(int xPos, int yPos, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(xPos, yPos, width, height, rotation, sprite) {
+        public Actor(Rectangle rect, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(rect, rotation, sprite) {
             //set the passed movespeed
             this.MoveSpeed = moveSpeed ;
             this.Room = room ;
+           
         }
 
         //updates the direction of the actor
@@ -53,15 +55,15 @@ namespace LifeSupport.GameObjects {
             //TODO collision detection is not perfect, it works but there is a scenario i want to make work
             //when the player is going diagonal towards a collidable surface they should be able to apply the force from their diagonal vector in the perpendicular direction of the collision
             foreach (GameObject obj in Room.Objects) {
-                if (obj.HasCollision && 
-                    x < obj.XPos+obj.Width && x+this.Width > obj.XPos && 
-                    y < obj.YPos+obj.Height && y+this.Height > obj.YPos) {
+                if (obj.HasCollision &&
+                    x < obj.XPos + obj.Rect.Width && x + this.Rect.Width > obj.XPos &&
+                    y < obj.YPos + obj.Rect.Height && y + this.Rect.Height > obj.YPos)
+                {
                     hasCollided = true ;
                 }
             }
             if (!hasCollided) {
-                this.XPos = x ;
-                this.YPos = y ;
+                base.MoveObject(x, y);
             }
 
         }

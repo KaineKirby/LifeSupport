@@ -58,6 +58,22 @@ namespace LifeSupport.Config {
             return Keyboard.GetState().IsKeyDown(key) ;
         }
 
+        public bool IsMovingUp()
+        {
+            return Keyboard.GetState().IsKeyDown(MoveUp);
+        }
+        public bool IsMovingDown()
+        {
+            return Keyboard.GetState().IsKeyDown(MoveDown);
+        }
+        public bool IsMovingLeft()
+        {
+            return Keyboard.GetState().IsKeyDown(MoveLeft);
+        }
+        public bool IsMovingRight()
+        {
+            return Keyboard.GetState().IsKeyDown(MoveRight);
+        }
     }
 
 }

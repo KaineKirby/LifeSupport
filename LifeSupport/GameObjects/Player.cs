@@ -8,6 +8,7 @@ using LifeSupport.Config ;
 using LifeSupport.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 /*
 * Player Class (Singleton)
@@ -24,45 +25,45 @@ namespace LifeSupport.GameObjects {
         private static readonly float startPlayerSpeed = 500f ;
 
         //will probably be constant
-        public Player(Room startingRoom) : base(100, 100, 32, 32, 0, Assets.Instance.player, startingRoom, startPlayerSpeed) {
+        public Player(Room startingRoom) : base(new Rectangle(100,100,32,32), 0, Assets.Instance.player, startingRoom, startPlayerSpeed) {
 
             this.controller = Controller.Instance ;
+            
 
         }
         
         //use the controller class to update the positions
         public new void UpdatePosition(GameTime gameTime) {
-
             //on the various vectors
-            if (controller.IsKeyDown(controller.MoveUp) && controller.IsKeyDown(controller.MoveRight)) {
+            if (controller.IsMovingUp() && controller.IsMovingRight()) {
                 UpdateDirection(new Vector2(1, -1)) ;
                 base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveUp) && controller.IsKeyDown(controller.MoveLeft)) {
+            else if (controller.IsMovingUp() && controller.IsMovingLeft()) {
                 UpdateDirection(new Vector2(-1, -1)) ;
                 base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveDown) && controller.IsKeyDown(controller.MoveRight)) {
+            else if (controller.IsMovingDown() && controller.IsMovingRight()) {
                 UpdateDirection(new Vector2(1, 1)) ;
                 base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveDown) && controller.IsKeyDown(controller.MoveLeft)) {
+            else if (controller.IsMovingDown() && controller.IsMovingLeft()) {
                 UpdateDirection(new Vector2(-1, 1)) ;
                 base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveUp)) {
+            else if (controller.IsMovingUp()) {
                 UpdateDirection(new Vector2(0, -1)) ;
                 base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveDown)) {
+            else if (controller.IsMovingDown()) {
                 UpdateDirection(new Vector2(0, 1)) ;
                 base.UpdatePosition(gameTime) ;
             }  
-            else if (controller.IsKeyDown(controller.MoveLeft)) {
+            else if (controller.IsMovingLeft()) {
                 UpdateDirection(new Vector2(-1, 0)) ;
                 base.UpdatePosition(gameTime) ;
             }  
-            else if (controller.IsKeyDown(controller.MoveRight)) {
+            else if (controller.IsMovingRight()) {
                 UpdateDirection(new Vector2(1, 0)) ;
                 base.UpdatePosition(gameTime) ;
             }

@@ -24,7 +24,7 @@ namespace LifeSupport.GameObjects {
 
         public static readonly int wallThickness = 32 ;
 
-        public Barrier(int xPos, int yPos, int endX, int endY) : base(xPos, yPos, endX-xPos, endY-yPos, rotation, Assets.Instance.barrier) {
+        public Barrier(Rectangle rect) : base(rect, rotation, Assets.Instance.barrier) {
             //do nothing
         }
 

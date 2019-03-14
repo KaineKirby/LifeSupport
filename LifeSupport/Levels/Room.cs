@@ -34,11 +34,11 @@ namespace LifeSupport.Levels {
         //whether the room has the player in it or not
         private bool isActive ;
 
-        //the width and height of the room in barrier walls
+        //the width and height of the room in pixels
         public int Width ;
         public int Height ;
 
-        //the starting point for room construction
+        //the starting point for room construction (top left)
         public int StartX ;
         public int StartY ;
 
@@ -78,7 +78,7 @@ namespace LifeSupport.Levels {
 
             if (isActive) {
                 foreach (GameObject obj in Objects) {
-                    obj.Render(spriteBatch) ;
+                    obj.Draw(spriteBatch) ;
                 }
             }
         }
@@ -90,26 +90,26 @@ namespace LifeSupport.Levels {
             //build the walls for the room
 
             //top no door
-            Objects.Add(new Barrier(StartX, StartY, StartX+Width, StartY+Barrier.wallThickness)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY, Width+Barrier.wallThickness, Barrier.wallThickness))) ;
             //bottom no door
-            Objects.Add(new Barrier(StartX, StartY+Height, StartX+Width, StartY+Barrier.wallThickness+Height)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY+Height, Width+Barrier.wallThickness, Barrier.wallThickness))) ;
 
             //left no door
-            //Objects.Add(new Barrier(StartX, StartY+Barrier.wallThickness, game, StartX+Barrier.wallThickness, StartY+Height)) ;
+            //Objects.Add(new Barrier(new Rectangle(StartX, StartY+Barrier.wallThickness, Barrier.wallThickness, Height))) ;
 
             //left with door 
-            Objects.Add(new Barrier(StartX, StartY+Barrier.wallThickness, StartX+Barrier.wallThickness, StartY+((Height/2)-32))) ;
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY+Barrier.wallThickness, Barrier.wallThickness, Height/2 - 32 ))) ;
             Objects.Add(new Door(StartX, StartY+(Height/2)-32)) ;
-            Objects.Add(new Barrier(StartX, StartY+(Height/2)+32, StartX+Barrier.wallThickness, StartY+Height)) ;
-            
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY+(Height/2)+32, Barrier.wallThickness, Height/2 - 32))) ;
+
             //right no door
-            //Objects.Add(new Barrier(StartX+Width-Barrier.wallThickness, StartY+Barrier.wallThickness, game, StartX+Width, StartY+Height)) ;
+            //Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.wallThickness, StartY+Barrier.wallThickness, Barrier.wallThickness, Height))) ;
 
             //right with door
-            Objects.Add(new Barrier(StartX+Width-Barrier.wallThickness, StartY+Barrier.wallThickness, StartX+Width, StartY+(Height/2)-32)) ;
-            Objects.Add(new Door(StartX+Width-Barrier.wallThickness, StartY+(Height/2)-32)) ;
-            Objects.Add(new Barrier(StartX+Width-Barrier.wallThickness, StartY+(Height/2)+32, StartX+Width, StartY+Height)) ;
-          
+            Objects.Add(new Barrier(new Rectangle(StartX + Width, StartY + Barrier.wallThickness, Barrier.wallThickness, Height / 2 - 32)));
+            Objects.Add(new Door(StartX + Width, StartY + (Height / 2) - 32));
+            Objects.Add(new Barrier(new Rectangle(StartX + Width, StartY + (Height / 2) + 32, Barrier.wallThickness, Height / 2 - 32)));
+
 
         }
 
