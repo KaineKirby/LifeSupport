@@ -24,18 +24,13 @@ namespace LifeSupport.GameObjects {
         //the controller instance since the player will be manipulated with controls
         private readonly Controller controller;
 
+        private static readonly float startPlayerSpeed = 500f ;
 
-        /* All of the following variables are used to set up the projectiles. 
-           First a list of projectiles of created.
-           Second, a projectile is created called newProjectile to set up a texture within the texture.
-           Third, a texture is defined to get the projectile sprite.
-           Fourth, the shooting time tracker keeps time within the game (always running) and resets when a shot is made.
-           Fifth, the reload time between shots is to prevent from all projectiles from shooting at once (using time)*/
-        public List<PlayerProjectiles> playerProjectilesList;
-        public PlayerProjectiles newProjectile = new PlayerProjectiles();
-        public Texture2D projectileTexture;
-        public float shootingTimeTracker = 0f;
-        public float reloadTimeBetweenShots = .5f;
+        //will probably be constant
+        public Player(Room startingRoom) : base(new Rectangle(100,100,32,32), 0, Assets.Instance.player, startingRoom, startPlayerSpeed) {
+
+            this.controller = Controller.Instance ;
+
 
 
         /* The player object position (x,y) */
@@ -65,7 +60,7 @@ namespace LifeSupport.GameObjects {
         }
 
 
-        /* Call this method in MainGame.cs. This function draws the bullets as they are fired 
+        /* Call this method in MainGame.cs. This function draws the bullets as they are fired
          It also calls DrawPlayerProjectile(spriteBatch), which is a method within PlayerProjectile.cs
          That method draws one bullet.*/
         public void DrawAllPlayerProjectiles(SpriteBatch spriteBatch)
@@ -75,58 +70,39 @@ namespace LifeSupport.GameObjects {
         }
 
         //use the controller class to update the positions
-        public new void UpdatePosition(GameTime gameTime)
-        {
-            /*Update the player position and retrieve the (x,y) coordinate through a vector */
-            PlayerPosition = new Vector2(base.XPos, base.YPos);
-
-            /*Call shoot */
-            Shoot(gameTime);
-
-            /*Call Update projectiles */
-            UpdateProjectiles(gameTime);
-        
-
+        public new void UpdatePosition(GameTime gameTime) {
             //on the various vectors
-            if (controller.IsKeyDown(controller.MoveUp) && controller.IsKeyDown(controller.MoveRight))
-            {
-                UpdateDirection(new Vector2(1, -1));
-                base.UpdatePosition(gameTime);
+            if (controller.IsMovingUp() && controller.IsMovingRight()) {
+                UpdateDirection(new Vector2(1, -1)) ;
+                base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveUp) && controller.IsKeyDown(controller.MoveLeft))
-            {
-                UpdateDirection(new Vector2(-1, -1));
-                base.UpdatePosition(gameTime);
+            else if (controller.IsMovingUp() && controller.IsMovingLeft()) {
+                UpdateDirection(new Vector2(-1, -1)) ;
+                base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveDown) && controller.IsKeyDown(controller.MoveRight))
-            {
-                UpdateDirection(new Vector2(1, 1));
-                base.UpdatePosition(gameTime);
+            else if (controller.IsMovingDown() && controller.IsMovingRight()) {
+                UpdateDirection(new Vector2(1, 1)) ;
+                base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveDown) && controller.IsKeyDown(controller.MoveLeft))
-            {
-                UpdateDirection(new Vector2(-1, 1));
-                base.UpdatePosition(gameTime);
+            else if (controller.IsMovingDown() && controller.IsMovingLeft()) {
+                UpdateDirection(new Vector2(-1, 1)) ;
+                base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveUp))
-            {
-                UpdateDirection(new Vector2(0, -1));
-                base.UpdatePosition(gameTime);
+            else if (controller.IsMovingUp()) {
+                UpdateDirection(new Vector2(0, -1)) ;
+                base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveDown))
-            {
-                UpdateDirection(new Vector2(0, 1));
-                base.UpdatePosition(gameTime);
+            else if (controller.IsMovingDown()) {
+                UpdateDirection(new Vector2(0, 1)) ;
+                base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveLeft))
-            {
-                UpdateDirection(new Vector2(-1, 0));
-                base.UpdatePosition(gameTime);
+            else if (controller.IsMovingLeft()) {
+                UpdateDirection(new Vector2(-1, 0)) ;
+                base.UpdatePosition(gameTime) ;
             }
-            else if (controller.IsKeyDown(controller.MoveRight))
-            {
-                UpdateDirection(new Vector2(1, 0));
-                base.UpdatePosition(gameTime);
+            else if (controller.IsMovingRight()) {
+                UpdateDirection(new Vector2(1, 0)) ;
+                base.UpdatePosition(gameTime) ;
             }
 
         }
@@ -174,43 +150,7 @@ namespace LifeSupport.GameObjects {
         }
 
 
-        /*The primary function of UpdateProjectiles is to update the position of the bulllet fired after shooting it, checking to see if the bullet
-         * collides with the edge of the screen or an object, and to remove the bullet from the list if it does collide. */
-
-        public void UpdateProjectiles(GameTime gameTime)
-        {
-
-            foreach (PlayerProjectiles bullet in playerProjectilesList) {
-
-                /*Update the position of the current bullet fired */
-                bullet.ProjectilePosition.X += bullet.ProjectileDirection.X * bullet.projectileSpeed ;
-                bullet.ProjectilePosition.Y += bullet.ProjectileDirection.Y * bullet.projectileSpeed;
-
-                /* Check for collisions with game window */
-                bullet.collisionBox = new Rectangle((int)bullet.ProjectilePosition.X, (int)bullet.ProjectilePosition.Y, ((int)projectileTexture.Width * (int)bullet.scale), ((int)projectileTexture.Height * (int)bullet.scale));
-                if (bullet.collisionBox.Y <= 0 || bullet.collisionBox.Y >= Settings.Instance.Height || bullet.collisionBox.X <= 0 || bullet.collisionBox.X >= Settings.Instance.Width){
-                    bullet.isVisible = false;
-                }
-
-                /* Check for collisions with game objects */
-                foreach (GameObject obj in Room.Objects) {
-                    if (bullet.collisionBox.X < obj.XPos + obj.Width && bullet.collisionBox.X > obj.XPos &&
-                       bullet.collisionBox.Y < obj.YPos + obj.Height && bullet.collisionBox.Y  > obj.YPos){
-                        bullet.isVisible = false;
-                    }
-                }
-
-            }
-
-            /* If there was a collision, remove the bullet from the player projectiles list */
-            for (int i = 0; i < playerProjectilesList.Count; i++) {
-                if (!playerProjectilesList[i].isVisible) {
-                    playerProjectilesList.RemoveAt(i);
-                    i--;
-                }
-            }
-
-        }
+    }
 
 
         /* This function returns a vector that calculates the direction of each individual bullet within the player projectile list. It is assigned to each
@@ -235,4 +175,3 @@ namespace LifeSupport.GameObjects {
 
     }
 }
-

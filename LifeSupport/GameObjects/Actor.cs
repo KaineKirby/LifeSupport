@@ -31,10 +31,25 @@ namespace LifeSupport.GameObjects {
         private Vector2 MoveDirection ; //enemies may need to see the player direction and this has to change
         private Room Room ;
 
-        public Actor(int xPos, int yPos, int width, int height, int rotation, String spritePath, Game game, Room room, float moveSpeed) : base(xPos, yPos, width, height, rotation, spritePath, game) {
+        //the x and y position of actor must be expressed in float because of intermediary positions to keep consistent and reliably speeds
+        public float XPos {
+            get; private set;
+        }
+
+        public float YPos
+        {
+            get; private set;
+        }
+        
+
+        public Actor(Rectangle rect, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(rect, rotation, sprite) {
             //set the passed movespeed
             this.MoveSpeed = moveSpeed ;
             this.Room = room ;
+
+            this.XPos = Rect.X;
+            this.YPos = Rect.Y;
+           
         }
 
         //updates the direction of the actor
@@ -53,14 +68,18 @@ namespace LifeSupport.GameObjects {
             //TODO collision detection is not perfect, it works but there is a scenario i want to make work
             //when the player is going diagonal towards a collidable surface they should be able to apply the force from their diagonal vector in the perpendicular direction of the collision
             foreach (GameObject obj in Room.Objects) {
-                if (x < obj.XPos+obj.Width && x+this.Width > obj.XPos && 
-                    y < obj.YPos+obj.Height && y+this.Height > obj.YPos) {
+                if (obj.HasCollision &&
+                    x < obj.Rect.X + obj.Rect.Width && x + this.Rect.Width > obj.Rect.X &&
+                    y < obj.Rect.Y + obj.Rect.Height && y + this.Rect.Height > obj.Rect.Y)
+                {
                     hasCollided = true ;
                 }
             }
             if (!hasCollided) {
-                this.XPos = x ;
-                this.YPos = y ;
+                this.XPos = x;
+                this.YPos = y;
+                this.Rect.X = (int)XPos;
+                this.Rect.Y = (int)YPos;
             }
 
         }
