@@ -29,6 +29,8 @@ namespace LifeSupport.Config {
         public Texture2D floorTile ;
         public Texture2D openDoor ;
         public Texture2D closeDoor ;
+        public Texture2D cursor;
+        public Texture2D projectile;
         
 
         private Assets() {
@@ -42,6 +44,8 @@ namespace LifeSupport.Config {
             floorTile = game.Content.Load<Texture2D>("img/objects/floor_tile") ;
             openDoor = game.Content.Load<Texture2D>("img/objects/open_door") ;
             closeDoor = game.Content.Load<Texture2D>("img/objects/closed_door") ;
+            cursor = game.Content.Load<Texture2D>("img/cursor");
+            projectile = game.Content.Load<Texture2D>("img/objects/projectile");
         }
 
     }

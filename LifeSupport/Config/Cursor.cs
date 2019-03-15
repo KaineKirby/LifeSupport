@@ -12,9 +12,8 @@ namespace LifeSupport.Config
 {
 
     
-    class MouseControl
+    class Cursor
     {
-
         /*Get the center x point of the crosshair (mouse pointer) */
         public float mouseImageCenterX;
 
@@ -31,13 +30,31 @@ namespace LifeSupport.Config
         public MouseState mouseState;
 
         /*Scale the size of the crosshair image */
-        public float scale = 0.15f;
+        public float scale = 1.0f;
 
         //  static extern void ClipCursor(ref Rectangle rect);
 
-        public MouseControl(Game game)
+
+        //singleton reference
+        public static Cursor instance;
+        public static Cursor Instance
         {
-            mouseImage = game.Content.Load<Texture2D>("crosshair");
+            get
+            {
+                if (instance != null)
+                    return instance;
+                else
+                    return new Cursor();
+            }
+            private set
+            {
+                instance = value;
+            }
+        }
+
+        private Cursor()
+        {
+            mouseImage = Assets.Instance.cursor;
             mouseImageCenterX = (mouseImage.Width * scale) / 2;
             mouseImageCenterY = (mouseImage.Height * scale) / 2;
             mouseState = Mouse.GetState();
@@ -53,9 +70,7 @@ namespace LifeSupport.Config
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(mouseImage, MousePosition,null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(mouseImage, MousePosition,new Rectangle(0,0,32,32), Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         }
-
-
     }
 }

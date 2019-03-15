@@ -23,7 +23,7 @@ namespace LifeSupport.Levels {
     class Room {
 
         //an array of game objects
-        public ArrayList Objects ;
+        public List<GameObject> Objects ;
 
         //the player (to know whether player is in room or not)
         private Player player ;
@@ -55,7 +55,7 @@ namespace LifeSupport.Levels {
             this.Width = 1920 ;
             this.Height = 1080 ;
 
-            this.Objects = new ArrayList() ;
+            this.Objects = new List<GameObject>() ;
 
             GenerateRoom() ;
 
@@ -65,8 +65,8 @@ namespace LifeSupport.Levels {
         public void UpdateObjects(GameTime gameTime) {
 
             if (isActive) {
-                foreach (GameObject obj in Objects) {
-                    obj.UpdatePosition(gameTime) ;
+                for (int i = 0; i < Objects.Count; i++) {
+                    Objects[i].UpdatePosition(gameTime) ;
                 }
             }
 
@@ -77,10 +77,16 @@ namespace LifeSupport.Levels {
             spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(StartX, StartY), new Rectangle(0, 0, Width, Height), Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 1) ;
 
             if (isActive) {
-                foreach (GameObject obj in Objects) {
-                    obj.Draw(spriteBatch) ;
+                for (int i = 0; i < Objects.Count; i++)
+                {
+                    Objects[i].Draw(spriteBatch) ;
                 }
             }
+        }
+
+        public void DestroyObject(GameObject obj)
+        {
+            Objects.Remove(obj);
         }
 
         //fills the room with game objects from our prefab set
@@ -110,7 +116,7 @@ namespace LifeSupport.Levels {
             Objects.Add(new Door(StartX + Width, StartY + (Height / 2) - 32));
             Objects.Add(new Barrier(new Rectangle(StartX + Width, StartY + (Height / 2) + 32, Barrier.wallThickness, Height / 2 - 32)));
 
-
+            Objects.Add(new Projectile(new Point(0, 0), new Vector2(1, 0), 0, 30f, 100f, this));
         }
 
     }

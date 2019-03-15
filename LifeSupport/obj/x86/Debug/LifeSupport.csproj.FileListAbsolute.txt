@@ -69,3 +69,5 @@ C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeS
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.exe
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.pdb
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\spritesheet_test.xnb
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\cursor.xnb
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\objects\projectile.xnb

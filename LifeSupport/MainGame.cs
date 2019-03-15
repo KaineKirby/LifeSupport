@@ -25,7 +25,8 @@ namespace LifeSupport {
 
         Player player ;
         Room testRoom ;
-        MouseControl mouse;
+        
+        
 
         public MainGame() {
 
@@ -64,7 +65,7 @@ namespace LifeSupport {
 
 
             testRoom = new Room(player, 400, 400) ;
-            player = new Player(testRoom) ;
+            player = new Player(testRoom) ;        
             if (Settings.Instance.ShowFps)
                 frames = new FrameCounter(this) ;
 
@@ -89,10 +90,11 @@ namespace LifeSupport {
             if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame))
                 Exit();
 
-            mouse.Update(gameTime);
             player.UpdatePosition(gameTime) ;
             testRoom.UpdateObjects(gameTime) ;
 
+            Cursor.Instance.Update(gameTime);
+            
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -118,10 +120,12 @@ namespace LifeSupport {
             //render the player and the objects in the room
             testRoom.RenderObjects(spriteBatch) ;
             player.Draw(spriteBatch) ;
+            
             spriteBatch.End() ;
 
             //draw HUD elements
             hud.Begin() ;
+            Cursor.Instance.Draw(hud);
             //render the FPS counter if it is enabled
             if (Settings.Instance.ShowFps)
                 frames.Draw(hud, gameTime) ;
