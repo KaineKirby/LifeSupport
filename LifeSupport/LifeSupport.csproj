@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="GameObjects\Door.cs" />
     <Compile Include="Config\Cursor.cs" />
+    <Compile Include="GameObjects\Enemy.cs" />
     <Compile Include="GameObjects\Projectile.cs" />
     <Compile Include="Utilities\FrameCounter.cs" />
     <Compile Include="GameObjects\Actor.cs" />

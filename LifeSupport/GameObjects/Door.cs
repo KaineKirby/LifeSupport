@@ -32,6 +32,10 @@ namespace LifeSupport.GameObjects {
             closeTexture = Assets.Instance.closeDoor ;
         }
 
+        public override void Draw(SpriteBatch spriteBatch) {
+             spriteBatch.Draw(sprite, Rect, new Rectangle(0, 0, 32, 64), Color.White, Rotation, new Vector2(0, 0), SpriteEffects.None, 0);
+        }
+
         //open the door if it is not already open
         public void OpenDoor() {
             this.sprite = openTexture ;

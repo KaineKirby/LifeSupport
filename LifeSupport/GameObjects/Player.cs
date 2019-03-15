@@ -25,13 +25,6 @@ namespace LifeSupport.GameObjects {
 
         private static readonly float startPlayerSpeed = 500f ;
 
-        public float Damage ;
-        public float Range ;
-        public float ShotSpeed ;
-
-        //where the projectiles come out
-        private Point GunBarrelPosition ;
-
         //will probably be constant
         public Player(Room startingRoom) : base(new Rectangle(100, 100, 32, 32), 0, Assets.Instance.player, startingRoom, startPlayerSpeed)
         {
@@ -41,6 +34,7 @@ namespace LifeSupport.GameObjects {
             this.Range = 1000f ;
             this.ShotSpeed = 1000f ;
             this.GunBarrelPosition = new Point(960, 540) ;
+            this.RateOfFire = .2f ;
 
         }
 
@@ -55,7 +49,7 @@ namespace LifeSupport.GameObjects {
         //use the controller class to update the positions
         public new void UpdatePosition(GameTime gameTime) {
 
-            if (Cursor.Instance.IsLeftMouseDown())
+            if (Cursor.Instance.IsLeftMouseDown() && TimeBeforeShooting == 0f)
                 Shoot() ;
 
             //on the various vectors
@@ -91,14 +85,19 @@ namespace LifeSupport.GameObjects {
                 UpdateDirection(new Vector2(1, 0)) ;
                 base.UpdatePosition(gameTime) ;
             }
+            //if not make the player not move by giving a zero vector
+            else {
+                UpdateDirection(new Vector2(0, 0)) ;
+                base.UpdatePosition(gameTime) ;
+            }
 
         }
 
         //shoots a projectile in the current room
-        private void Shoot() {
-
-            CurrentRoom.AddObject(new Projectile(new Point(Rect.X+16, Rect.Y+16), Cursor.Instance.GetDirection(GunBarrelPosition), Damage, ShotSpeed, Range, CurrentRoom)) ;
-
+        protected override void Shoot() {
+            CurrentRoom.AddObject(new Projectile(new Point(Rect.X+16, Rect.Y+16), Cursor.Instance.GetDirection(GunBarrelPosition), Damage, ShotSpeed, Range, true, CurrentRoom)) ;
+            //call the base shoot to restrict firing
+            base.Shoot() ;
         }
     }
 }

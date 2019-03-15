@@ -19,9 +19,10 @@ namespace LifeSupport.GameObjects
         public float Range;
         public float XPos, YPos;
         private float distanceTraveled;
+        private bool isPlayer ;
 
 
-        public Projectile(Point source, Vector2 direction, float damage, float velocity, float range, Room room) : base(new Rectangle(source.X, source.Y, 8, 8), 0, Assets.Instance.projectile)
+        public Projectile(Point source, Vector2 direction, float damage, float velocity, float range, bool isPlayer, Room room) : base(new Rectangle(source.X, source.Y, 8, 8), 0, Assets.Instance.projectile)
         {
             this.Source = source;
             this.Direction = direction;
@@ -50,6 +51,28 @@ namespace LifeSupport.GameObjects
                 CurrentRoom.DestroyObject(this);
             }
 
+            //check to see if the projectile hit a game object or actor
+            for (int i = 0 ; i < CurrentRoom.Objects.Count ; i++) {
+                if (CurrentRoom.Objects[i].Rect.Intersects(this.Rect)) {
+                    //we need to ignore both other projectiles, and the player/enemy depending on what team the projectile is on
+                    //either hit the player or the enemy
+                    if (isPlayer) {
+                        if (CurrentRoom.Objects[i] is Enemy)
+                            ((Actor)CurrentRoom.Objects[i]).Hit(this) ;
+
+                        if (!(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Player))
+                            CurrentRoom.DestroyObject(this) ;
+                    }
+                    else {
+                        if (CurrentRoom.Objects[i] is Player)
+                            ((Actor)CurrentRoom.Objects[i]).Hit(this) ;
+
+                        if (!(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Enemy))
+                            CurrentRoom.DestroyObject(this) ;
+                    }
+
+                }
+            }
 
         }
 
