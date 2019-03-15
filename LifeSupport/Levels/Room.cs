@@ -89,6 +89,10 @@ namespace LifeSupport.Levels {
             Objects.Remove(obj);
         }
 
+        public void AddObject(GameObject obj) {
+            Objects.Add(obj) ;
+        }
+
         //fills the room with game objects from our prefab set
         //TODO for now this just makes a box
         private void GenerateRoom() {
@@ -116,7 +120,6 @@ namespace LifeSupport.Levels {
             Objects.Add(new Door(StartX + Width, StartY + (Height / 2) - 32));
             Objects.Add(new Barrier(new Rectangle(StartX + Width, StartY + (Height / 2) + 32, Barrier.wallThickness, Height / 2 - 32)));
 
-            Objects.Add(new Projectile(new Point(0, 0), new Vector2(1, 0), 0, 30f, 100f, this));
         }
 
     }

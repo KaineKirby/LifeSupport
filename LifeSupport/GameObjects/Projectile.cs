@@ -32,6 +32,7 @@ namespace LifeSupport.GameObjects
             this.XPos = Source.X;
             this.YPos = Source.Y;
             this.CurrentRoom = room;
+            this.HasCollision = false ;
         }
 
         public override void UpdatePosition(GameTime gameTime)

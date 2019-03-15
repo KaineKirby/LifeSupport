@@ -66,11 +66,23 @@ namespace LifeSupport.Config
         {
             mouseState = Mouse.GetState();
             MousePosition = new Vector2(mouseState.X - mouseImageCenterX, mouseState.Y - mouseImageCenterY);
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(mouseImage, MousePosition,new Rectangle(0,0,32,32), Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+        }
+
+        public bool IsLeftMouseDown() {
+            return mouseState.LeftButton == ButtonState.Pressed ;
+        }
+
+        //the source should be in screen coordinates not world
+        public Vector2 GetDirection(Point source) {
+            Vector2 norm = new Vector2(MousePosition.X-source.X, MousePosition.Y-source.Y) ;
+            norm.Normalize() ;
+            return norm ;
         }
     }
 }
