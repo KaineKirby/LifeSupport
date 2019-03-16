@@ -53,7 +53,7 @@ namespace LifeSupport.GameObjects {
         //render the sprite with its current position (independent of update)
 	    //subclasses will likely have to call base() ;
         public virtual void Draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(sprite, Rect, new Rectangle(0,0,32,32), Color.White, Rotation, new Vector2(Rect.Width/2, Rect.Height/2), SpriteEffects.None, 0);
+            spriteBatch.Draw(sprite, Rect, new Rectangle(0,0,32,32), Color.White, Rotation, new Vector2(0,0), SpriteEffects.None, 0);
         }
 
         //update the position of the object (this may be empty if the object is static, this is okay)

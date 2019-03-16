@@ -25,13 +25,6 @@ namespace LifeSupport.GameObjects {
 
         private static readonly float startPlayerSpeed = 500f ;
 
-        //this is for animating the legs
-        private Texture2D playerLegs ;
-        private int animFrame ;
-        private float timer ; //every timer seconds, we change frames in the animation
-        private int legRotation ;
-        private float time ;
-
         //will probably be constant
         public Player(Room startingRoom) : base(new Rectangle(100, 100, 32, 32), 0, Assets.Instance.player, startingRoom, startPlayerSpeed)
         {
@@ -41,13 +34,7 @@ namespace LifeSupport.GameObjects {
             this.Range = 1000f ;
             this.ShotSpeed = 1000f ;
             this.GunBarrelPosition = new Point(960, 540) ;
-            this.RateOfFire = .8f ;
-
-            this.playerLegs = Assets.Instance.playerLegs ;
-            this.timer = .2f ;
-            this.time = 0f ;
-            this.legRotation = 0 ;
-            this.animFrame = 1 ;
+            this.RateOfFire = .2f ;
 
         }
 
@@ -59,27 +46,8 @@ namespace LifeSupport.GameObjects {
             this.GunBarrelPosition = new Point(960, 540) ;
         }
 
-        public override void Draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(playerLegs, new Rectangle(Rect.X, Rect.Y, 32, 32), new Rectangle(Rect.Width*animFrame,0,32,32), Color.White, legRotation, new Vector2(16, 16), SpriteEffects.None, 0) ;
-            Console.WriteLine(legRotation) ;
-            base.Draw(spriteBatch) ;
-        }
-
         //use the controller class to update the positions
-        public new void UpdatePosition(GameTime gameTime) { 
-
-            //increment the timer every update if the movement vector isn't 0
-            if (!MoveDirection.Equals(Vector2.Zero)) {
-                this.time += (float)gameTime.ElapsedGameTime.TotalSeconds ;
-                if (time >= timer) {
-                    time = 0 ;
-                    animFrame = (animFrame+1) % (playerLegs.Width/Rect.Width) + 1 ;
-                }
-                this.legRotation = (int)(Math.Atan(MoveDirection.Y/MoveDirection.X)*180/Math.PI) ;
-            }
-
-            //update the player's rotationdepending on where the cursor is
-            //can't figure this out right now
+        public new void UpdatePosition(GameTime gameTime) {
 
             if (Cursor.Instance.IsLeftMouseDown() && TimeBeforeShooting == 0f)
                 Shoot() ;
@@ -127,7 +95,7 @@ namespace LifeSupport.GameObjects {
 
         //shoots a projectile in the current room
         protected override void Shoot() {
-            CurrentRoom.AddObject(new Projectile(new Point(Rect.X+8, Rect.Y+8), Cursor.Instance.GetDirection(GunBarrelPosition), Damage, ShotSpeed, Range, true, CurrentRoom)) ;
+            CurrentRoom.AddObject(new Projectile(new Point(Rect.X+16, Rect.Y+16), Cursor.Instance.GetDirection(GunBarrelPosition), Damage, ShotSpeed, Range, true, CurrentRoom)) ;
             //call the base shoot to restrict firing
             base.Shoot() ;
         }

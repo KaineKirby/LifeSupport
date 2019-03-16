@@ -22,7 +22,7 @@ namespace LifeSupport.GameObjects
         private bool isPlayer ;
 
 
-        public Projectile(Point source, Vector2 direction, float damage, float velocity, float range, bool isPlayer, Room room) : base(new Rectangle(source.X, source.Y, 16, 16), 0, Assets.Instance.projectile)
+        public Projectile(Point source, Vector2 direction, float damage, float velocity, float range, bool isPlayer, Room room) : base(new Rectangle(source.X, source.Y, 8, 8), 0, Assets.Instance.projectile)
         {
             this.Source = source;
             this.Direction = direction;

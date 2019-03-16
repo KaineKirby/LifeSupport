@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using LifeSupport.Config;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace LifeSupport.GameObjects {
 
@@ -27,10 +26,6 @@ namespace LifeSupport.GameObjects {
 
         public Barrier(Rectangle rect) : base(rect, rotation, Assets.Instance.barrier) {
             //do nothing
-        }
-
-        public override void Draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(sprite, Rect, new Rectangle(0,0,32,32), Color.White, Rotation, new Vector2(0, 0), SpriteEffects.None, 0);
         }
 
         public override void UpdatePosition(GameTime gameTime) {
