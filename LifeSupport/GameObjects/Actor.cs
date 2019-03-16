@@ -28,7 +28,7 @@ namespace LifeSupport.GameObjects {
         //move speed of the actor
         public float MoveSpeed ;
         //the direction the actor is moving in at a particular moment (Vector2)
-        private Vector2 MoveDirection ; //enemies may need to see the player direction and this has to change
+        protected Vector2 MoveDirection ; //enemies may need to see the player direction and this has to change
         protected Room CurrentRoom ;
 
         //the stats of the actor
@@ -55,7 +55,7 @@ namespace LifeSupport.GameObjects {
         }
         
 
-        public Actor(Rectangle rect, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(rect, rotation, sprite) {
+        public Actor(Rectangle rect, int rotation, Texture2D sprite, Room room, float moveSpeed) : base(rect, rotation, sprite) {
             //set the passed movespeed
             this.MoveSpeed = moveSpeed ;
             this.CurrentRoom = room ;

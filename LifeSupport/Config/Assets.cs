@@ -25,6 +25,7 @@ namespace LifeSupport.Config {
 
         public Texture2D background ;
         public Texture2D player ;
+        public Texture2D playerLegs ;
         public Texture2D barrier ;
         public Texture2D floorTile ;
         public Texture2D openDoor ;
@@ -40,6 +41,7 @@ namespace LifeSupport.Config {
         public void LoadContent(Game game) {
             background = game.Content.Load<Texture2D>("img/background") ;
             player = game.Content.Load<Texture2D>("img/player/player") ;
+            playerLegs = game.Content.Load<Texture2D>("img/player/player_legs") ;
             barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;
             floorTile = game.Content.Load<Texture2D>("img/objects/floor_tile") ;
             openDoor = game.Content.Load<Texture2D>("img/objects/open_door") ;
