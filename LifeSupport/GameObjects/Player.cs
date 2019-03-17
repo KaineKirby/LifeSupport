@@ -25,9 +25,16 @@ namespace LifeSupport.GameObjects {
 
         private static readonly float startPlayerSpeed = 500f ;
 
+        //animation stuff
+        private Texture2D playerLegs ;
+        private int animFrame ; //the current frame of animation
+        private float timer ; //the time between animation frames
+        private float time ; //the current time since last animation frame
+        private int legRotation ;
+        private Vector2 legOrigin ;
+
         //will probably be constant
-        public Player(Room startingRoom) : base(new Rectangle(100, 100, 32, 32), 0, Assets.Instance.player, startingRoom, startPlayerSpeed)
-        {
+        public Player(Room startingRoom) : base(new Vector2(500, 500), 32, 32, 0, Assets.Instance.player, startingRoom, startPlayerSpeed) {
 
             this.controller = Controller.Instance;
             this.Damage = 1.0f ;
@@ -36,14 +43,19 @@ namespace LifeSupport.GameObjects {
             this.GunBarrelPosition = new Point(960, 540) ;
             this.RateOfFire = .2f ;
 
+            //animation
+            this.animFrame = 0 ;
+            this.timer = .05f ;
+            this.time = 0;
+            this.playerLegs = Assets.Instance.playerLegs ;
+            this.legOrigin = new Vector2(Width/2, Height/2) ;
+            this.legRotation = 0 ;
+
         }
 
-        //constructor
-        public Player(Game game, Room startingRoom) : base(new Rectangle(100, 100, 32, 32), 0, Assets.Instance.player, startingRoom, 500f)
-        {
-
-            this.controller = Controller.Instance;
-            this.GunBarrelPosition = new Point(960, 540) ;
+        public override void Draw(SpriteBatch spriteBatch) {
+            spriteBatch.Draw(playerLegs, Position, new Rectangle(animFrame*Width, 0, Width, Height), Color.White, legRotation, legOrigin, 1f, SpriteEffects.None, 0);
+            base.Draw(spriteBatch) ;
         }
 
         //use the controller class to update the positions
@@ -91,11 +103,26 @@ namespace LifeSupport.GameObjects {
                 base.UpdatePosition(gameTime) ;
             }
 
+            //for animation
+            if (!MoveDirection.Equals(Vector2.Zero)) {
+                this.time += (float)gameTime.ElapsedGameTime.TotalSeconds ;
+                this.legRotation = (int)(Math.Atan(MoveDirection.Y/MoveDirection.X)*180/Math.PI) ;
+            }
+            else {
+                animFrame = 8 ;
+            }
+                
+            
+            if (time >= timer) {
+                time = 0 ;
+                animFrame = (animFrame+1)%(playerLegs.Width/(Width)) ;
+            }
+
         }
 
         //shoots a projectile in the current room
         protected override void Shoot() {
-            CurrentRoom.AddObject(new Projectile(new Point(Rect.X+16, Rect.Y+16), Cursor.Instance.GetDirection(GunBarrelPosition), Damage, ShotSpeed, Range, true, CurrentRoom)) ;
+            CurrentRoom.AddObject(new Projectile(Position, Cursor.Instance.GetDirection(GunBarrelPosition), Damage, ShotSpeed, Range, true, CurrentRoom)) ;
             //call the base shoot to restrict firing
             base.Shoot() ;
         }

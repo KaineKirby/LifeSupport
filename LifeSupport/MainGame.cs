@@ -116,7 +116,7 @@ namespace LifeSupport {
             bg.End() ;
 
             //draw the game objects
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Rect.X+960, -player.Rect.Y+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Position.X+960, -player.Position.Y+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
             //render the player and the objects in the room
             testRoom.RenderObjects(spriteBatch) ;
             player.Draw(spriteBatch) ;

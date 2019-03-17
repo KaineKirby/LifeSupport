@@ -100,25 +100,23 @@ namespace LifeSupport.Levels {
             //build the walls for the room
 
             //top no door
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY, Width, Barrier.wallThickness))) ;
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY, Width, Barrier.WallThickness))) ;
             //bottom no door
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY+Height, Width, Barrier.wallThickness))) ;
-
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY+Height-Barrier.WallThickness, Width, Barrier.WallThickness))) ;
             //left no door
-            //Objects.Add(new Barrier(new Rectangle(StartX, StartY+Barrier.wallThickness, Barrier.wallThickness, Height))) ;
+            //Objects.Add(new Barrier(new Rectangle(StartX, StartY+Barrier.WallThickness, Barrier.WallThickness, Height-2*Barrier.WallThickness))) ;
+            //right no door
+            //Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.WallThickness, StartY+Barrier.WallThickness, Barrier.WallThickness, Height-2*Barrier.WallThickness))) ;
 
             //left with door
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY+Barrier.wallThickness, Barrier.wallThickness, (Height/2)-32-Barrier.wallThickness))) ;
-            Objects.Add(new Door(StartX, StartY+(Height/2)-32)) ;
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY+(Height/2)+Barrier.wallThickness, Barrier.wallThickness, (Height/2) - 32))) ;
-
-            //right no door
-            //Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.wallThickness, StartY+Barrier.wallThickness, Barrier.wallThickness, Height))) ;
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY+Barrier.WallThickness, Barrier.WallThickness, (Height/2)-2*Barrier.WallThickness))) ;
+            Objects.Add(new Door(new Vector2(StartX, StartY+(Height/2)-Barrier.WallThickness))) ;
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY+(Height/2)+Barrier.WallThickness, Barrier.WallThickness, (Height/2) - Barrier.WallThickness*2))) ;
 
             //right with door
-            Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.wallThickness, StartY+Barrier.wallThickness, Barrier.wallThickness, (Height/2)-32-Barrier.wallThickness))) ;
-            Objects.Add(new Door(StartX+Width-Barrier.wallThickness, StartY+(Height/2)-32)) ;
-            Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.wallThickness, StartY+(Height/2)+Barrier.wallThickness, Barrier.wallThickness, (Height/2) - 32))) ;
+            Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.WallThickness, StartY+Barrier.WallThickness, Barrier.WallThickness, (Height/2)-2*Barrier.WallThickness))) ;
+            Objects.Add(new Door(new Vector2(StartX+Width-Barrier.WallThickness, StartY+(Height/2)-Barrier.WallThickness))) ;
+            Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.WallThickness, StartY+(Height/2)+Barrier.WallThickness, Barrier.WallThickness, (Height/2) - Barrier.WallThickness*2))) ;
 
         }
 

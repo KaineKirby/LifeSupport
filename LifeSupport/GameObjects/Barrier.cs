@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LifeSupport.Config;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LifeSupport.GameObjects {
 
@@ -21,11 +22,13 @@ namespace LifeSupport.GameObjects {
     class Barrier : GameObject {
 
         private static readonly int rotation = 0 ;
+        public static readonly int WallThickness = 32 ;
 
-        public static readonly int wallThickness = 32 ;
+        private Rectangle rect ;
 
-        public Barrier(Rectangle rect) : base(rect, rotation, Assets.Instance.barrier) {
-            //do nothing
+        public Barrier(Rectangle rect) : base(Vector2.Zero, rect.Width, rect.Height, rotation, Assets.Instance.barrier) {
+            this.rect = rect ;
+            this.Position = rect.Center.ToVector2() ;
         }
 
         public override void UpdatePosition(GameTime gameTime) {

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using LifeSupport.Config;
 using LifeSupport.Levels;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LifeSupport.GameObjects
 {
     class Projectile : GameObject
     {
-        public Point Source;
+        public Vector2 Source;
         public Vector2 Direction;
         public Room CurrentRoom;
         public float Damage;
@@ -22,8 +23,7 @@ namespace LifeSupport.GameObjects
         private bool isPlayer ;
 
 
-        public Projectile(Point source, Vector2 direction, float damage, float velocity, float range, bool isPlayer, Room room) : base(new Rectangle(source.X, source.Y, 8, 8), 0, Assets.Instance.projectile)
-        {
+        public Projectile(Vector2 source, Vector2 direction, float damage, float velocity, float range, bool isPlayer, Room room) : base(source, 8, 8, 0, Assets.Instance.projectile) {
             this.Source = source;
             this.Direction = direction;
             this.Damage = damage;
@@ -36,13 +36,8 @@ namespace LifeSupport.GameObjects
             this.HasCollision = false ;
         }
 
-        public override void UpdatePosition(GameTime gameTime)
-        {
-            XPos += (Direction * Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds).X;
-            YPos += (Direction * Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds).Y;
-
-            this.Rect.X = (int)XPos;
-            this.Rect.Y = (int)YPos;
+        public override void UpdatePosition(GameTime gameTime) {
+            Position += (Direction * Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
             distanceTraveled += (Direction * Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds).Length();
 
@@ -53,7 +48,7 @@ namespace LifeSupport.GameObjects
 
             //check to see if the projectile hit a game object or actor
             for (int i = 0 ; i < CurrentRoom.Objects.Count ; i++) {
-                if (CurrentRoom.Objects[i].Rect.Intersects(this.Rect)) {
+                if (CurrentRoom.Objects[i].IsInside(this)) {
                     //we need to ignore both other projectiles, and the player/enemy depending on what team the projectile is on
                     //either hit the player or the enemy
                     if (isPlayer) {

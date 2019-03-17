@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace LifeSupport.GameObjects {
     abstract class Enemy : Actor {
 
-        public Enemy(Rectangle rect, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(rect, rotation, sprite, room, moveSpeed) {
+        public Enemy(Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(position, width, height, rotation, sprite, room, moveSpeed) {
 
         }
 

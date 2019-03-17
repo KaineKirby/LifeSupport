@@ -17,23 +17,13 @@ namespace LifeSupport.GameObjects {
         private Texture2D closeTexture ;
 
         //when a rotation is not passed we assume 0 
-        public Door(int xPos, int yPos) : base(new Rectangle(xPos, yPos, 32, 64), 0, Assets.Instance.closeDoor) {
+        public Door(Vector2 position) : base(position, 32, 64, 0, Assets.Instance.closeDoor) {
             IsOpen = false ;
+
+            this.Position = position + new Vector2(Width/2, Height/2) ;
 
             openTexture = Assets.Instance.openDoor ;
             closeTexture = Assets.Instance.closeDoor ;
-        }
-
-        //otherwise we use the passed rotation
-        public Door(int xPos, int yPos, int rotation) : base(new Rectangle(xPos, yPos, 32, 64), rotation, Assets.Instance.closeDoor) {
-            IsOpen = false ;
-
-            openTexture = Assets.Instance.openDoor ;
-            closeTexture = Assets.Instance.closeDoor ;
-        }
-
-        public override void Draw(SpriteBatch spriteBatch) {
-             spriteBatch.Draw(sprite, Rect, new Rectangle(0, 0, 32, 64), Color.White, Rotation, new Vector2(0, 0), SpriteEffects.None, 0);
         }
 
         //open the door if it is not already open
