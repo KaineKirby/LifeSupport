@@ -19,16 +19,20 @@ namespace LifeSupport {
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        SpriteBatch hud ;
+        SpriteBatch bg ;
         FrameCounter frames ;
 
         Player player ;
         Room testRoom ;
+        
+        
 
         public MainGame() {
 
             graphics = new GraphicsDeviceManager(this) ;
-            graphics.PreferredBackBufferHeight = Settings.Instance.Height; 
-            graphics.PreferredBackBufferWidth = Settings.Instance.Width;  
+            graphics.PreferredBackBufferHeight = Settings.Instance.Height;
+            graphics.PreferredBackBufferWidth = Settings.Instance.Width;
             graphics.IsFullScreen = Settings.Instance.Fullscreen;
             graphics.SynchronizeWithVerticalRetrace = false ;
             this.IsFixedTimeStep = false ;
@@ -54,13 +58,17 @@ namespace LifeSupport {
         /// </summary>
         protected override void LoadContent() {
             // Create a new SpriteBatch, which can be used to draw textures.
+            Assets.Instance.LoadContent(this);
             spriteBatch = new SpriteBatch(GraphicsDevice) ;
+            hud = new SpriteBatch(GraphicsDevice) ;
+            bg = new SpriteBatch(GraphicsDevice) ;
 
-            testRoom = new Room(player, this) ;
-            player = new Player(this, testRoom) ;
+
+            testRoom = new Room(player, 400, 400) ;
+            player = new Player(testRoom) ;        
             if (Settings.Instance.ShowFps)
                 frames = new FrameCounter(this) ;
-            
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -85,6 +93,8 @@ namespace LifeSupport {
             player.UpdatePosition(gameTime) ;
             testRoom.UpdateObjects(gameTime) ;
 
+            Cursor.Instance.Update(gameTime);
+            
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -97,14 +107,29 @@ namespace LifeSupport {
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin() ;
+            //two separate sprite batches for HUD/UI/background elements and then game content itself
+            //the coordinate systems should be different for these two
+
+            //draw the background
+            bg.Begin() ;
+            bg.Draw(Assets.Instance.background, new Rectangle(0, 0, 1920, 1080), Color.White) ;
+            bg.End() ;
+
+            //draw the game objects
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Position.X+960, -player.Position.Y+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
             //render the player and the objects in the room
-            player.Render(spriteBatch) ;
             testRoom.RenderObjects(spriteBatch) ;
+            player.Draw(spriteBatch) ;
+            
+            spriteBatch.End() ;
+
+            //draw HUD elements
+            hud.Begin() ;
+            Cursor.Instance.Draw(hud);
             //render the FPS counter if it is enabled
             if (Settings.Instance.ShowFps)
-                frames.Draw(spriteBatch, gameTime) ;
-            spriteBatch.End() ;
+                frames.Draw(hud, gameTime) ;
+            hud.End() ;
 
             base.Draw(gameTime);
         }
