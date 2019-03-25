@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\1998d\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\1998d\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_LifeSupport.715051658.00" t="ExcludeRecursive" />
+    <e p="C:\Users\1998d\Documents\Game Repos\LifeSupport\LifeSupport" t="IncludeRecursive">
+      <e p="app.manifest" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Config" t="Include">
+        <e p="Assets.cs" t="Include" />
+        <e p="Controller.cs" t="Include" />
+        <e p="Cursor.cs" t="Include" />
+        <e p="Settings.cs" t="Include" />
+      </e>
+      <e p="Content" t="Include">
+        <e p="Content.mgcb" t="Include" />
+      </e>
+      <e p="GameObjects" t="Include">
+        <e p="Actor.cs" t="Include" />
+        <e p="Barrier.cs" t="Include" />
+        <e p="Door.cs" t="Include" />
+        <e p="Enemy.cs" t="Include" />
+        <e p="GameObject.cs" t="Include" />
+        <e p="Player.cs" t="Include" />
+        <e p="Projectile.cs" t="Include" />
+      </e>
+      <e p="Icon.ico" t="Include" />
+      <e p="Levels" t="Include">
+        <e p="Room.cs" t="Include" />
+      </e>
+      <e p="LifeSupport.csproj" t="IncludeRecursive" />
+      <e p="MainGame.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="packages.config" t="Include" />
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="AssemblyInfo.cs" t="Include" />
+        <e p="player.png" t="Include" />
+      </e>
+      <e p="Random" t="Include">
+        <e p="RandomGenerator.cs" t="Include" />
+      </e>
+      <e p="Utilities" t="Include">
+        <e p="FrameCounter.cs" t="Include" />
+        <e p="JSONParser.cs" t="Include" />
+      </e>
+    </e>
+  </component>
+</project>

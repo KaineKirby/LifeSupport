@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LifeSupport"
+    "\\LifeSupport",
+    "\\LifeSupport\\GameObjects",
+    "\\LifeSupport\\Levels",
+    "\\LifeSupport\\UI",
+    "\\LifeSupport\\Utilities"
   ],
+  "SelectedNode": "\\LifeSupport.sln",
   "PreviewInSolutionExplorer": false
 }

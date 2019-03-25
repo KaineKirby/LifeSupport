@@ -63,6 +63,8 @@ namespace LifeSupport {
             hud = new SpriteBatch(GraphicsDevice) ;
             bg = new SpriteBatch(GraphicsDevice) ;
 
+            MainMenu mainMenu = new MainMenu(GraphicsDevice);
+
 
             testRoom = new Room(player, 400, 400) ;
             player = new Player(testRoom) ;        
@@ -89,7 +91,6 @@ namespace LifeSupport {
         protected override void Update(GameTime gameTime) {
             if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame))
                 Exit();
-
             player.UpdatePosition(gameTime) ;
             testRoom.UpdateObjects(gameTime) ;
 
@@ -113,6 +114,8 @@ namespace LifeSupport {
             //draw the background
             bg.Begin() ;
             bg.Draw(Assets.Instance.background, new Rectangle(0, 0, 1920, 1080), Color.White) ;
+            MainMenu mainMenu = new MainMenu(500,500,GraphicsDevice);
+            mainMenu.Draw(bg);
             bg.End() ;
 
             //draw the game objects
@@ -129,7 +132,7 @@ namespace LifeSupport {
             //render the FPS counter if it is enabled
             if (Settings.Instance.ShowFps)
                 frames.Draw(hud, gameTime) ;
-            hud.End() ;
+            hud.End();
 
             base.Draw(gameTime);
         }
