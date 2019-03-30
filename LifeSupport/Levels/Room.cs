@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LifeSupport.Config;
 using LifeSupport.GameObjects ;
+using LifeSupport.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -117,6 +118,18 @@ namespace LifeSupport.Levels {
             Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.WallThickness, StartY+Barrier.WallThickness, Barrier.WallThickness, (Height/2)-2*Barrier.WallThickness))) ;
             Objects.Add(new Door(new Vector2(StartX+Width-Barrier.WallThickness, StartY+(Height/2)-Barrier.WallThickness))) ;
             Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.WallThickness, StartY+(Height/2)+Barrier.WallThickness, Barrier.WallThickness, (Height/2) - Barrier.WallThickness*2))) ;
+
+
+            /* JSON Barriers 
+              barrierData.StartX = 0,
+              barrierData.StartY = 0,
+              barrierData.BarrierWidth = 32
+              barrierData.BarreirHeight = 32*/
+            dynamic barrierData = JSONParser.ReadJsonFile("Content/JSONPrefab/barriers.json");
+
+            Objects.Add(new Barrier(new Rectangle((int)barrierData.StartX + 1000, (int)barrierData.StartY + 1000, (int)barrierData.BarrierWidth + 300, (int)barrierData.BarrierHeight)));
+
+
 
         }
 
