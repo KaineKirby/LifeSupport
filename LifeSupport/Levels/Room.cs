@@ -6,9 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using LifeSupport.Config;
 using LifeSupport.GameObjects ;
+using LifeSupport.Random;
 using LifeSupport.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json.Linq;
 
 namespace LifeSupport.Levels {
 
@@ -50,8 +52,8 @@ namespace LifeSupport.Levels {
         public int ROOMHEIGHT = 1016;
 
 
-      public int SQUAREWIDTH = 232;
-        public int SQUAREHEIGHT = 127;  
+        public const int GridSquareWidth = 30;
+        public const int GridSquareHeight = 30;  
 
 
         public Room(Player player, int startX, int startY) {
@@ -112,8 +114,38 @@ namespace LifeSupport.Levels {
         //TODO for now this just makes a box
         private void GenerateRoom() {
 
-            //top no door
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY, Width, Barrier.WallThickness))) ;
+
+            Point normalBarrierSize = new Point(GridSquareWidth, GridSquareHeight);
+
+            // Instantiate a 2D array of points with 64 rows and 36 Columns
+            Point[,] grid = new Point[64, 36];
+
+            // Set each point in the 2D array to a (x,y) coordinate within the room(each tile on the grid is 30x30)
+            generateGrid(grid);
+
+            // Read in a json file with a barrier object
+            dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/roomObjects.json");
+
+            // Set the size of the barrier using the values set in the json file
+            Point jsonBarrierSize = new Point((int)jsonData.XSize, (int)jsonData.YSize);
+
+            // Create a barrier 
+            if (jsonData.Type == "Barrier"){
+                Objects.Add(new Barrier(new Rectangle(grid[StartX + (int)jsonData.BeginX, StartY + (int)jsonData.BeginY], jsonBarrierSize)));
+            }
+
+                /*
+                if (jsonData.Type == "Barrier"){
+                    for(int count = 0; count < jsonData.X.Count || count < jsonData.Y.Count; count++)
+                    {   
+                        Objects.Add(new Barrier(new Rectangle(grid[StartX + (int)jsonData.X[count], StartY + (int)jsonData.Y[count]], normalBarrierSize)));
+                    }
+                }
+                */
+
+
+                //top no door
+                Objects.Add(new Barrier(new Rectangle(StartX, StartY, Width, Barrier.WallThickness))) ;
             //bottom no door
             Objects.Add(new Barrier(new Rectangle(StartX, StartY+Height-Barrier.WallThickness, Width, Barrier.WallThickness))) ;
             //left no door
@@ -131,151 +163,20 @@ namespace LifeSupport.Levels {
             Objects.Add(new Door(new Vector2(StartX+Width-Barrier.WallThickness, StartY+(Height/2)-Barrier.WallThickness))) ;
             Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.WallThickness, StartY+(Height/2)+Barrier.WallThickness, Barrier.WallThickness, (Height/2) - Barrier.WallThickness*2))) ;
 
-            Point[,] grid = new Point[8, 8];
-            Point normalBarrierSize = new Point(32,32);
-            Point doubleBarrierSize = new Point(64, 64);
-            generateGrid(grid);
-
-            Objects.Add(new Barrier(new Rectangle(grid[0, 0], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[0, 1], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[0, 2], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[0, 3], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[0, 4], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[0, 5], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[0, 6], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[0, 7], normalBarrierSize)));
-
-            Objects.Add(new Barrier(new Rectangle(grid[1, 0], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[1, 1], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[1, 2], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[1, 3], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[1, 4], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[1, 5], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[1, 6], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[1, 7], normalBarrierSize)));
-
-            Objects.Add(new Barrier(new Rectangle(grid[2, 0], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[2, 1], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[2, 2], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[2, 3], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[2, 4], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[2, 5], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[2, 6], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[2, 7], normalBarrierSize)));
-
-            Objects.Add(new Barrier(new Rectangle(grid[3, 0], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[3, 1], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[3, 2], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[3, 3], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[3, 4], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[3, 5], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[3, 6], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[3, 7], normalBarrierSize)));
-
-            Objects.Add(new Barrier(new Rectangle(grid[4, 0], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[4, 1], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[4, 2], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[4, 3], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[4, 4], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[4, 5], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[4, 6], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[4, 7], normalBarrierSize)));
-
-            Objects.Add(new Barrier(new Rectangle(grid[5, 0], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[5, 1], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[5, 2], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[5, 3], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[5, 4], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[5, 5], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[5, 6], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[5, 7], normalBarrierSize)));
-
-            Objects.Add(new Barrier(new Rectangle(grid[6, 0], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[6, 1], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[6, 2], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[6, 3], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[6, 4], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[6, 5], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[6, 6], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[6, 7], normalBarrierSize)));
-
-            Objects.Add(new Barrier(new Rectangle(grid[7, 0], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[7, 1], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[7, 2], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[7, 3], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[7, 4], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[7, 5], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[7, 6], normalBarrierSize)));
-            Objects.Add(new Barrier(new Rectangle(grid[7, 7], normalBarrierSize)));
-
-            dynamic barrierData = JSONParser.ReadJsonFile("Content/JSONPrefab/barriers.json");
-
-         //   make barrier width / height 36x36
         }
 
-        /* Only works for the default room so far, quick implementation for testing  */
+        /* Split the room up into grid squares */
         public void generateGrid(Point[,] gridMap)
         {
-            for(int row = 0; row < gridMap.GetLength(0); row++)
-            {
-                for(int col = 0; col < gridMap.GetLength(1); col++)
-                {
-                    // Top left corner
-                    if (row == 0 && col == 0) {
-                        gridMap[row, col] = new Point(Barrier.WallThickness,Barrier.WallThickness) ;
-                    }
-                    // Left side
-                    else if(row != 0 && col == 0)
-                    {
-                        gridMap[row, col] = new Point(Barrier.WallThickness, Barrier.WallThickness + (SQUAREHEIGHT * row));
-                    }
-                    // Top Side
-                    else if(row == 0 && col != 0)
-                    {
-                        gridMap[row, col] = new Point(Barrier.WallThickness + (SQUAREWIDTH * col), Barrier.WallThickness);
-                    }
-                    else 
-                    {
-                        gridMap[row, col] = new Point(Barrier.WallThickness + (SQUAREWIDTH * col),  Barrier.WallThickness + (SQUAREHEIGHT * row));
-                    }
-                    
-                }
-            }
-        }
-
-
-        /*
-        public void generateGrid(Rectangle[,] gridMap)
-        {
-            int rowSpot = 200;
-            int colSpot = 200;
-
-            //Get the x and y grid rectangles
             for (int row = 0; row < gridMap.GetLength(0); row++)
             {
                 for (int col = 0; col < gridMap.GetLength(1); col++)
                 {
-                    gridMap[row, col] = new Rectangle(rowSpot, colSpot, 120, 120);
-                    colSpot += 120;
+                    gridMap[row, col] = new Point(GridSquareWidth * row, GridSquareHeight * col);
                 }
-                rowSpot+= 120;
             }
         }
-        */
 
-
-        /*
-        {
-        "Type":"Barrier",
-        "X":4,
-        "Y":5,
-        }
-        */
-        /*
-        if (json.Type.Equals("Barrier")) {
-    Objects.add(new Barrier(new Rectangle(startX+json.X* gridWidth, startY+json.Y* gridHeight, gridWidth, gridHeight)));
-}
-*/
-}
+    }
 
 }

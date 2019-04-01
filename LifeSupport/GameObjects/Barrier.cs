@@ -22,7 +22,7 @@ namespace LifeSupport.GameObjects {
     class Barrier : GameObject {
 
         private static readonly int rotation = 0 ;
-        public static readonly int WallThickness = 32 ;
+        public static readonly int WallThickness = 30 ;
 
         private Rectangle rect ;
 

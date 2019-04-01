@@ -17,7 +17,7 @@ namespace LifeSupport.GameObjects {
         private Texture2D closeTexture ;
 
         //when a rotation is not passed we assume 0 
-        public Door(Vector2 position) : base(position, 32, 64, 0, Assets.Instance.closeDoor) {
+        public Door(Vector2 position) : base(position, 30, 60, 0, Assets.Instance.closeDoor) {
             IsOpen = false ;
 
             this.Position = position + new Vector2(Width/2, Height/2) ;
