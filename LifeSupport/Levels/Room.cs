@@ -46,12 +46,6 @@ namespace LifeSupport.Levels {
         public int StartX ;
         public int StartY ;
 
-        /*Room Width and Height without walls 
-          8x8, or 236 width with 131 height*/
-        public int ROOMWIDTH = 1856;
-        public int ROOMHEIGHT = 1016;
-
-
         public const int GridSquareWidth = 30;
         public const int GridSquareHeight = 30;  
 
