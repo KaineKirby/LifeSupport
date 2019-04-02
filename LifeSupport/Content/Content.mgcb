@@ -140,6 +140,9 @@
 /processorParam:TextureFormat=Color
 /build:img/player/player_legs.png
 
+#begin RoomPrefabs/barriers.json
+/copy:RoomPrefabs/barriers.json;RoomPrefabs/roomObjects.json
+
 #begin Settings/settings.json
 /copy:Settings/settings.json
 
