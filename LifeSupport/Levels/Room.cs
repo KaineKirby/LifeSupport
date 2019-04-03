@@ -31,6 +31,7 @@ namespace LifeSupport.Levels {
         //the player (to know whether player is in room or not)
         private Player player ;
 
+
         //whether the room has been defeated or not
         private bool isBeaten ;
 
@@ -76,6 +77,7 @@ namespace LifeSupport.Levels {
                 for (int i = 0; i < Objects.Count; i++) {
                     Objects[i].UpdatePosition(gameTime) ;
                 }
+                
             }
 
         }
@@ -156,6 +158,11 @@ namespace LifeSupport.Levels {
             Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.WallThickness, StartY+Barrier.WallThickness, Barrier.WallThickness, (Height/2)-2*Barrier.WallThickness))) ;
             Objects.Add(new Door(new Vector2(StartX+Width-Barrier.WallThickness, StartY+(Height/2)-Barrier.WallThickness))) ;
             Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.WallThickness, StartY+(Height/2)+Barrier.WallThickness, Barrier.WallThickness, (Height/2) - Barrier.WallThickness*2))) ;
+
+
+            Objects.Add(new AlienDog(player, new Vector2(600, 600), this));
+
+
 
         }
 

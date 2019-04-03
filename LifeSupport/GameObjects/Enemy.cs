@@ -10,7 +10,49 @@ using System.Threading.Tasks;
 namespace LifeSupport.GameObjects {
     abstract class Enemy : Actor {
 
-        public Enemy(Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(position, width, height, rotation, sprite, room, moveSpeed) {
+        private Player player;
+        private int health;
+
+
+        public Enemy(Player p, Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(position, width, height, rotation, sprite, room, moveSpeed) {
+            this.player = p;
+        }
+
+        public override void UpdatePosition(GameTime gameTime)
+        {
+            if (player.Position.Y > this.Position.Y) // If the player is below the enemy, the enenmy will move down
+            {
+                UpdateDirection(new Vector2(0, 1));
+                base.UpdatePosition(gameTime);
+            }
+            if(player.Position.Y < this.Position.Y) // If the player is above the enemy, the enenmy will move up
+            {
+                UpdateDirection(new Vector2(0, -1));
+                base.UpdatePosition(gameTime);
+            }
+
+             if (player.Position.X > this.Position.X) // If the player is to the right, the enemy will move right
+            {
+                UpdateDirection(new Vector2(1, 0));
+                base.UpdatePosition(gameTime);
+            }
+             if (player.Position.X < this.Position.X) // If the player is to the left, the enemy will move left
+            {
+                UpdateDirection(new Vector2(-1, 0));
+                base.UpdatePosition(gameTime);
+            }
+        }
+
+
+        public Player setFollowPlayer(Player p)
+        {
+            this.player = p;
+            return player;
+        }
+
+
+        public void OnHit(int damgage)
+        {
 
         }
 

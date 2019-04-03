@@ -61,6 +61,7 @@ namespace LifeSupport.GameObjects {
                 this.MoveDirection.Normalize() ;
         }
 
+
         public override void UpdatePosition(GameTime gameTime) {
 
             //update the time allowed before firing

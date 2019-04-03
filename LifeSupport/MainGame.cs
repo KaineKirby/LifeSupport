@@ -25,8 +25,7 @@ namespace LifeSupport {
 
         Player player ;
         Room testRoom ;
-        
-        
+
 
         public MainGame() {
 
@@ -64,8 +63,12 @@ namespace LifeSupport {
             bg = new SpriteBatch(GraphicsDevice) ;
 
 
-            testRoom = new Room(player, 0, 0) ;
-            player = new Player(testRoom) ;        
+            testRoom = new Room(player, 0, 0);
+            player = new Player(testRoom);
+           
+         
+
+
             if (Settings.Instance.ShowFps)
                 frames = new FrameCounter(this) ;
 

@@ -32,6 +32,10 @@ namespace LifeSupport.Config {
         public Texture2D closeDoor ;
         public Texture2D cursor;
         public Texture2D projectile;
+
+        // Alien Dog
+        public Texture2D alienDog;
+        
         
 
         private Assets() {
@@ -48,6 +52,9 @@ namespace LifeSupport.Config {
             closeDoor = game.Content.Load<Texture2D>("img/objects/closed_door") ;
             cursor = game.Content.Load<Texture2D>("img/cursor");
             projectile = game.Content.Load<Texture2D>("img/objects/projectile");
+
+            //Alien Dog
+            alienDog = game.Content.Load<Texture2D>("img/enemies/circle");
         }
 
     }

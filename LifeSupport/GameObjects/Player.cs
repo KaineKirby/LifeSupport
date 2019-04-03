@@ -19,7 +19,6 @@ namespace LifeSupport.GameObjects {
 
     class Player : Actor
     {
-
         //the controller instance since the player will be manipulated with controls
         private readonly Controller controller;
 
