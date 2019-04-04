@@ -167,8 +167,38 @@ namespace LifeSupport.Levels {
             
             for(int i = 0; i < jsonData.Barrier.Count; i++)
             {
-                 Point jsonBarrierSize = new Point((int)jsonData.Barrier[i].BarrierWidth, (int)jsonData.Barrier[i].BarrierHeight);
-                 Objects.Add(new Barrier(new Rectangle(gridPoints[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column], jsonBarrierSize)));
+                if ((jsonData.Barrier[i].BarrierWidth > 30 && jsonData.Barrier[i].BarrierHeight > 30) ||
+                    jsonData.Barrier[i].BarrierWidth < 30 || jsonData.Barrier[i].BarrierHeight < 30 ||
+                    (int)jsonData.Barrier[i].BarrierWidth % 30 != 0 || (int)jsonData.Barrier[i].BarrierHeight % 30 != 0 ||
+                    jsonData.Barrier[i].BarrierWidth > Width - 120 || jsonData.Barrier[i].BarrierHeight > Height - 120 ||
+                    jsonData.Barrier[i].Row >= gridPoints.GetLength(0) || jsonData.Barrier[i].Column >= gridPoints.GetLength(1) ||
+                    jsonData.Barrier[i].Row < 0 || jsonData.Barrier[i].Column < 0)  {
+
+                    continue;
+                }
+                else  {
+                    Point jsonBarrierSize = new Point((int)jsonData.Barrier[i].BarrierWidth, (int)jsonData.Barrier[i].BarrierHeight);
+                    Objects.Add(new Barrier(new Rectangle(gridPoints[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column], jsonBarrierSize)));
+                    occupiedTilesGrid[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column] = 1;
+                    if (jsonBarrierSize.X > 30)
+                    {
+                        jsonBarrierSize.X -= 30;
+                        while (jsonBarrierSize.X > 0)
+                        {
+                            occupiedTilesGrid[jsonData.Barrier[i].Row + 1, jsonData.Barrier[i].Column] = 1;
+                            jsonBarrierSize.X -= 30;
+                        }
+                    }
+                    else if (jsonBarrierSize.Y > 30)
+                    {
+                        jsonBarrierSize.Y -= 30;
+                        while (jsonBarrierSize.Y > 0)
+                        {
+                            occupiedTilesGrid[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column + 1] = 1;
+                            jsonBarrierSize.Y -= 30;
+                        }
+                    }
+                }
             }
 
             for(int i = 0; i < jsonData.AlienDog.Count;i++)
@@ -178,10 +208,12 @@ namespace LifeSupport.Levels {
 
         }
 
+
+
+
         private void checkTiles()
         {
-
-
+            
         }
 
 
