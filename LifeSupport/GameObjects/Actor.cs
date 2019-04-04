@@ -78,9 +78,12 @@ namespace LifeSupport.GameObjects {
             //TODO collision detection is not perfect, it works but there is a scenario i want to make work
             //when the player is going diagonal towards a collidable surface they should be able to apply the force from their diagonal vector in the perpendicular direction of the collision
             foreach (GameObject obj in CurrentRoom.Objects) {
-                if (obj.HasCollision && obj.IsInside(newPosition.X-(Width/2), newPosition.Y-(Height/2), newPosition.X+(Width/2), newPosition.Y+(Height/2)) &&
-                    obj != this) {
+                if (obj.HasCollision && obj.IsInside(newPosition.X-(Width/2), newPosition.Y-(Height/2), newPosition.X+(Width/2), newPosition.Y+(Height/2)) && obj != this) {
                     hasCollided = true ;
+                    if(obj is Enemy)
+                    {
+                        this.Position = newPosition;
+                    }
                 }
             }
             if (!hasCollided) {

@@ -64,7 +64,7 @@ namespace LifeSupport {
 
 
             player = new Player(testRoom);
-            testRoom = new Room(player, 0, 0);
+            testRoom = new Room(player,0,0 );
             player.CurrentRoom = testRoom ;
 
             if (Settings.Instance.ShowFps)

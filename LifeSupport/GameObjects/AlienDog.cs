@@ -17,7 +17,7 @@ namespace LifeSupport.GameObjects
 
         // Rectangle alienBox = new Rectangle(600, 600, 16, 16);
 
-        public AlienDog(Player p, Vector2 position, Room room) : base(p, position, 32, 32, 0, Assets.Instance.alienDog, room, 300f)
+        public AlienDog(Player p, Vector2 position, Room room) : base(p, position, 32, 32, 0, Assets.Instance.alienDog, room, 50f)
         {
           
         }

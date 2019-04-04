@@ -11,15 +11,17 @@ namespace LifeSupport.GameObjects {
     abstract class Enemy : Actor {
 
         private Player player;
+        private Room currentRoom;
         private int health;
 
         public Enemy(Player p, Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(position, width, height, rotation, sprite, room, moveSpeed) {
             this.player = p;
+            this.currentRoom = room;
         }
 
         public override void UpdatePosition(GameTime gameTime)
         {
-            Console.WriteLine(player.Position.Y + " " + this.Position.Y) ;
+        //    Console.WriteLine(player.Position.Y + " " + this.Position.Y) ;
             if (player.Position.Y > this.Position.Y) // If the player is below the enemy, the enenmy will move down
             {
                 UpdateDirection(new Vector2(0, 1));
@@ -41,7 +43,7 @@ namespace LifeSupport.GameObjects {
                 UpdateDirection(new Vector2(-1, 0));
                 base.UpdatePosition(gameTime);
             }
-
+            
         }
 
 
