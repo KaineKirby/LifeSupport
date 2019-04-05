@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using LifeSupport.States;
 
 namespace LifeSupport {
     /// <summary>
@@ -19,13 +20,17 @@ namespace LifeSupport {
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        SpriteBatch hud ;
-        SpriteBatch bg ;
-        FrameCounter frames ;
+        SpriteBatch bg;
+        SpriteBatch hud;
 
-        Player player ;
-        Room testRoom ;
-
+        private State currState;
+        private State nextState;
+         
+        public void ChangeState(State state) {
+            nextState = state;
+            nextState.Load();
+        }
+        
 
         public MainGame() {
 
@@ -48,6 +53,8 @@ namespace LifeSupport {
         protected override void Initialize() {
             // TODO: Add your initialization logic here
 
+            
+            IsMouseVisible = true;
             base.Initialize();
         }
 
@@ -56,21 +63,12 @@ namespace LifeSupport {
         /// all of your content.
         /// </summary>
         protected override void LoadContent() {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            Assets.Instance.LoadContent(this);
-            spriteBatch = new SpriteBatch(GraphicsDevice) ;
-            hud = new SpriteBatch(GraphicsDevice) ;
-            bg = new SpriteBatch(GraphicsDevice) ;
-
-
-            player = new Player(testRoom);
-            testRoom = new Room(player,0,0 );
-            player.CurrentRoom = testRoom ;
-
-            if (Settings.Instance.ShowFps)
-                frames = new FrameCounter(this) ;
-
-
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            bg = new SpriteBatch(GraphicsDevice);
+            hud = new SpriteBatch(GraphicsDevice);
+            currState = new MenuState(this, graphics.GraphicsDevice, Content);
+            currState.Load();
+         
             // TODO: use this.Content to load your game content here
         }
 
@@ -88,14 +86,14 @@ namespace LifeSupport {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime) {
-            if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame))
-                Exit();
 
-            player.UpdatePosition(gameTime) ;
-            testRoom.UpdateObjects(gameTime) ;
-
-            Cursor.Instance.Update(gameTime);
-            
+            if(nextState != null) {
+               currState = nextState;
+               nextState = null;
+            }
+             currState.Update(gameTime);
+             currState.PostUpdate(gameTime);
+         
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -108,30 +106,8 @@ namespace LifeSupport {
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
 
-            //two separate sprite batches for HUD/UI/background elements and then game content itself
-            //the coordinate systems should be different for these two
-
-            //draw the background
-            bg.Begin() ;
-            bg.Draw(Assets.Instance.background, new Rectangle(0, 0, 1920, 1080), Color.White) ;
-            bg.End() ;
-
-            //draw the game objects
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Position.X+960, -player.Position.Y+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
-            //render the player and the objects in the room
-            testRoom.RenderObjects(spriteBatch) ;
-            player.Draw(spriteBatch) ;
-            
-            spriteBatch.End() ;
-
-            //draw HUD elements
-            hud.Begin() ;
-            Cursor.Instance.Draw(hud);
-            //render the FPS counter if it is enabled
-            if (Settings.Instance.ShowFps)
-                frames.Draw(hud, gameTime) ;
-            hud.End() ;
-
+            currState.Draw(gameTime, spriteBatch, bg, hud);
+       
             base.Draw(gameTime);
         }
     }

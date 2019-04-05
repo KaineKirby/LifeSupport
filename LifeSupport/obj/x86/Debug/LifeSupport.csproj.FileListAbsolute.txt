@@ -63,7 +63,6 @@ C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Deb
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\SharpDX.XInput.xml
-C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csprojAssemblyReference.cache
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csproj.CoreCompileInputs.cache
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csproj.CopyComplete
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.exe
@@ -75,3 +74,12 @@ C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Conte
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\player\player_legs.xnb
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\roomObjects.json
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\enemies\circle.xnb
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\player\player_legs.xnb
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\enemies\circle.xnb
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\roomObjects.json
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\LifeSupport.exe.config
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csprojAssemblyReference.cache
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\Main_Menu.xnb
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\blk_button.xnb
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\fonts\default_ui_18.xnb
+C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\blk_button_large.xnb

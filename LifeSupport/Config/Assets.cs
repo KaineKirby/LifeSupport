@@ -24,6 +24,7 @@ namespace LifeSupport.Config {
         }
 
         public Texture2D background ;
+        public Texture2D mainMenuBackground;
         public Texture2D player ;
         public Texture2D playerLegs ;
         public Texture2D barrier ;
@@ -32,6 +33,10 @@ namespace LifeSupport.Config {
         public Texture2D closeDoor ;
         public Texture2D cursor;
         public Texture2D projectile;
+        public Texture2D btnTexture;
+        public Texture2D btnTextureLarge;
+        public SpriteFont btnText;
+        public SpriteFont defText;
 
         // Alien Dog
         public Texture2D alienDog;
@@ -44,6 +49,7 @@ namespace LifeSupport.Config {
 
         public void LoadContent(Game game) {
             background = game.Content.Load<Texture2D>("img/background") ;
+            mainMenuBackground = game.Content.Load<Texture2D>("img/menus/main_menu");
             player = game.Content.Load<Texture2D>("img/player/player") ;
             playerLegs = game.Content.Load<Texture2D>("img/player/player_legs") ;
             barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;
@@ -52,7 +58,9 @@ namespace LifeSupport.Config {
             closeDoor = game.Content.Load<Texture2D>("img/objects/closed_door") ;
             cursor = game.Content.Load<Texture2D>("img/cursor");
             projectile = game.Content.Load<Texture2D>("img/objects/projectile");
-
+            btnTexture = game.Content.Load<Texture2D>("img/controls/blk_button");
+            btnTextureLarge = game.Content.Load<Texture2D>("img/controls/blk_button_large");
+            btnText = game.Content.Load<SpriteFont>("fonts/default_ui_18");
             //Alien Dog
             alienDog = game.Content.Load<Texture2D>("img/enemies/circle");
         }
