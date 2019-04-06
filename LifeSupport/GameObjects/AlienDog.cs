@@ -14,20 +14,20 @@ namespace LifeSupport.GameObjects
   public  class AlienDog : Enemy
     {
 
-        List<Point> path = new List<Point>();
+   //     List<Point> path = new List<Point>();
         Point dogPoint = new Point();
         float totalTime;
 
 
-        public AlienDog(Player p, Vector2 position, Room room) : base(p, position, 32, 32, 0, Assets.Instance.alienDog, room, 10f)
+        public AlienDog(Player p, Vector2 position, Room room) : base(p, position, 32, 32, 0, Assets.Instance.alienDog, room, 30f)
         {
           
         }
 
-
+        /*
         public override void UpdatePosition(GameTime gameTime)
         {
-
+            
             Point startPoint = ToPoint(this.Position);
             Point calculatedStartPoint = new Point();
             calculatedStartPoint.Y = (startPoint.X / 30);
@@ -44,30 +44,35 @@ namespace LifeSupport.GameObjects
 
             for(int i = 0; i < path.Count; i++)
             {
+
                 Console.WriteLine(path[i] + " ");
                 if (path[i].Y > currentEnemyPosition.Y)
                 {
                     UpdateDirection(new Vector2(0, 1));
+                    currentEnemyPosition.Y = currentEnemyPosition.Y + 1;
                     base.UpdatePosition(gameTime);
                 }
-                if (path[i].Y < currentEnemyPosition.Y) // If the player is above the enemy, the enenmy will move up
+                else if (path[i].Y < currentEnemyPosition.Y) // If the player is above the enemy, the enenmy will move up
                 {
                     UpdateDirection(new Vector2(0, -1));
+                    currentEnemyPosition.Y = currentEnemyPosition.Y - 1;
                     base.UpdatePosition(gameTime);
                 }
 
-                if (path[i].X > currentEnemyPosition.X) // If the player is to the right, the enemy will move right
+               else  if (path[i].X > currentEnemyPosition.X) // If the player is to the right, the enemy will move right
                 {
                     UpdateDirection(new Vector2(1, 0));
+                    currentEnemyPosition.Y = currentEnemyPosition.X + 1;
                     base.UpdatePosition(gameTime);
                 }
-                if (path[i].X < currentEnemyPosition.X) // If the player is to the left, the enemy will move left
+                else if (path[i].X < currentEnemyPosition.X) // If the player is to the left, the enemy will move left
                 {
                     UpdateDirection(new Vector2(-1, 0));
+                    currentEnemyPosition.Y = currentEnemyPosition.X - 1;
                     base.UpdatePosition(gameTime);
                 }
             }
-
+            
         }
             //   List<Point> pathTraveled = new List<Point>();
             //    pathTraveled.Add(calculatedStartPoint);
@@ -102,7 +107,7 @@ namespace LifeSupport.GameObjects
 
         
 
-
+            /*
         public Vector2 ToVector2(Point point)
         {
                 return new Vector2(point.X, point.Y);
@@ -267,7 +272,7 @@ namespace LifeSupport.GameObjects
             List<Point> completePath = BuildOptimalPath(optimalPath, optimalPath[current]);
             completePath.Add(current);
             return completePath;
-        }
+        }*/
 
     }
 }

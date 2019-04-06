@@ -123,8 +123,8 @@ namespace LifeSupport {
             //render the player and the objects in the room
             testRoom.RenderObjects(spriteBatch) ;
             player.Draw(spriteBatch) ;
-            alienDog.drawPath(spriteBatch, gameTime);
-
+ //           alienDog.drawPath(spriteBatch, gameTime);
+//
             spriteBatch.End() ;
 
             //draw HUD elements
