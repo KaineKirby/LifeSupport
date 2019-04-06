@@ -25,7 +25,7 @@ namespace LifeSupport {
 
         Player player ;
         Room testRoom ;
-
+        AlienDog alienDog;
 
         public MainGame() {
 
@@ -65,6 +65,8 @@ namespace LifeSupport {
 
             player = new Player(testRoom);
             testRoom = new Room(player,0,0 );
+            alienDog = new AlienDog(player, new Vector2(300, 300), testRoom);
+  
             player.CurrentRoom = testRoom ;
 
             if (Settings.Instance.ShowFps)
@@ -93,7 +95,7 @@ namespace LifeSupport {
 
             player.UpdatePosition(gameTime) ;
             testRoom.UpdateObjects(gameTime) ;
-
+ 
             Cursor.Instance.Update(gameTime);
             
             // TODO: Add your update logic here
@@ -121,7 +123,8 @@ namespace LifeSupport {
             //render the player and the objects in the room
             testRoom.RenderObjects(spriteBatch) ;
             player.Draw(spriteBatch) ;
-            
+            alienDog.drawPath(spriteBatch, gameTime);
+
             spriteBatch.End() ;
 
             //draw HUD elements

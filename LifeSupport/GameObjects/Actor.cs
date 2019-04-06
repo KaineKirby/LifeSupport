@@ -23,7 +23,7 @@ using LifeSupport.Levels;
 
 namespace LifeSupport.GameObjects {
 
-    abstract class Actor : GameObject {
+   public abstract class Actor : GameObject {
 
         //move speed of the actor
         public float MoveSpeed ;

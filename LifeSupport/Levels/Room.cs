@@ -11,6 +11,7 @@ using LifeSupport.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Newtonsoft.Json.Linq;
+using RoyT.AStar;
 
 namespace LifeSupport.Levels {
 
@@ -23,7 +24,7 @@ namespace LifeSupport.Levels {
      * And then stuff for spawning enemies later but we're nowhere near that
      */
 
-    class Room {
+    public class Room {
 
         //an array of game objects
         public List<GameObject> Objects ;
@@ -73,7 +74,7 @@ namespace LifeSupport.Levels {
 
             this.Objects = new List<GameObject>() ;
 
-            // Instantiate a 2D array of points with 64 rows and 36 Columns
+            // Instantiate a 2D array of points with 36 rows and 64 Columns
             this.gridPoints = new Point[36, 64];
 
             // Instantiate a 2D array of bools for the grid to check to see if each tile is occupied by an object
@@ -164,8 +165,8 @@ namespace LifeSupport.Levels {
 
             // Read in a json file with a barrier object
             dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/RoomObjects.json");
-            
-            for(int i = 0; i < jsonData.Barrier.Count; i++)
+            int count = 1;
+            for (int i = 0; i < jsonData.Barrier.Count; i++)
             {
                 if ((jsonData.Barrier[i].BarrierWidth > 30 && jsonData.Barrier[i].BarrierHeight > 30) ||
                     jsonData.Barrier[i].BarrierWidth < 30 || jsonData.Barrier[i].BarrierHeight < 30 ||
@@ -179,24 +180,29 @@ namespace LifeSupport.Levels {
                 else  {
                     Point jsonBarrierSize = new Point((int)jsonData.Barrier[i].BarrierWidth, (int)jsonData.Barrier[i].BarrierHeight);
                     Objects.Add(new Barrier(new Rectangle(gridPoints[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column], jsonBarrierSize)));
+
                     occupiedTilesGrid[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column] = 1;
                     if (jsonBarrierSize.X > 30)
                     {
                         jsonBarrierSize.X -= 30;
                         while (jsonBarrierSize.X > 0)
                         {
-                            occupiedTilesGrid[jsonData.Barrier[i].Row + 1, jsonData.Barrier[i].Column] = 1;
+                            occupiedTilesGrid[jsonData.Barrier[i].Row , jsonData.Barrier[i].Column + count] = 1;
                             jsonBarrierSize.X -= 30;
+                            count++;
                         }
+                        count = 1;
                     }
                     else if (jsonBarrierSize.Y > 30)
                     {
                         jsonBarrierSize.Y -= 30;
                         while (jsonBarrierSize.Y > 0)
                         {
-                            occupiedTilesGrid[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column + 1] = 1;
+                            occupiedTilesGrid[jsonData.Barrier[i].Row + count, jsonData.Barrier[i].Column] = 1;
                             jsonBarrierSize.Y -= 30;
+                            count++;
                         }
+                        count = 1;
                     }
                 }
             }

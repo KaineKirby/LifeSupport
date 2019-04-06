@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace LifeSupport.GameObjects {
 
-    class Player : Actor
+   public class Player : Actor
     {
         //the controller instance since the player will be manipulated with controls
         private readonly Controller controller;
@@ -33,7 +33,7 @@ namespace LifeSupport.GameObjects {
         private Vector2 legOrigin ;
 
         //will probably be constant
-        public Player(Room startingRoom) : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, startingRoom, startPlayerSpeed) {
+        public Player(Room startingRoom) : base(new Vector2(600, 600), 32, 32, 0, Assets.Instance.player, startingRoom, startPlayerSpeed) {
 
             this.controller = Controller.Instance;
             this.Damage = 1.0f ;
@@ -51,6 +51,7 @@ namespace LifeSupport.GameObjects {
             this.legRotation = 0 ;
 
         }
+
 
         public override void Draw(SpriteBatch spriteBatch) {
             spriteBatch.Draw(playerLegs, Position, new Rectangle(animFrame*Width, 0, Width, Height), Color.White, legRotation, legOrigin, 1f, SpriteEffects.None, 0);

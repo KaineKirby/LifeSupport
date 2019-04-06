@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LifeSupport.GameObjects
 {
-    class Projectile : GameObject
+    public class Projectile : GameObject
     {
         public Vector2 Source;
         public Vector2 Direction;

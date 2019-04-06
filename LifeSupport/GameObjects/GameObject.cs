@@ -25,7 +25,7 @@ using System.Collections;
 
 namespace LifeSupport.GameObjects {
 
-    abstract class GameObject {
+   public abstract class GameObject {
 
         //position on screen
         public Vector2 Position ;
