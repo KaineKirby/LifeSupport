@@ -33,7 +33,7 @@ namespace LifeSupport.GameObjects {
         private Vector2 legOrigin ;
 
         //will probably be constant
-        public Player(Room startingRoom) : base(new Vector2(1860, 1020), 32, 32, 0, Assets.Instance.player, startingRoom, startPlayerSpeed) {
+        public Player(Room startingRoom) : base(new Vector2(600,600 ), 32, 32, 0, Assets.Instance.player, startingRoom, startPlayerSpeed) {
 
             this.controller = Controller.Instance;
             this.Damage = 1.0f ;

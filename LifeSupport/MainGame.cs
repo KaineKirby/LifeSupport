@@ -121,9 +121,9 @@ namespace LifeSupport {
             //draw the game objects
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Position.X+960, -player.Position.Y+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
             //render the player and the objects in the room
-            testRoom.RenderObjects(spriteBatch) ;
+            testRoom.RenderObjects(spriteBatch, gameTime) ;
             player.Draw(spriteBatch) ;
- //           alienDog.drawPath(spriteBatch, gameTime);
+            alienDog.drawPath(spriteBatch, gameTime);
 //
             spriteBatch.End() ;
 

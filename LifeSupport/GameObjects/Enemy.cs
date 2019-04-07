@@ -4,20 +4,22 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LifeSupport.GameObjects {
- public abstract class Enemy : Actor {
+namespace LifeSupport.GameObjects
+{
+    public abstract class Enemy : Actor {
 
         protected Player player;
         protected Room currentRoom;
         private int health;
         List<Point> path = new List<Point>();
-        float totalTime;
-        public Point firstP = new Point(4, 4);
-        public Point secondP = new Point(30, 56);
+        List<Point> nextPoint = new List<Point>();
+        List<Vector2> positions = new List<Vector2>();
 
+        float totalTime;
+
+        float timer = 1;         //Initialize a 10 second timer
+        const float TIMER = 1;
 
         public Enemy(Player p, Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(position, width, height, rotation, sprite, room, moveSpeed) {
             this.player = p;
@@ -30,11 +32,7 @@ namespace LifeSupport.GameObjects {
 
         public override void UpdatePosition(GameTime gameTime)
         {
-
-
-            totalTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-           if (totalTime > totalTime/2)
-            {
+ 
                 Point startPoint = ToPoint(this.Position);
                 Point calculatedStartPoint = new Point();
                 calculatedStartPoint.X = (startPoint.Y / 30);
@@ -49,55 +47,34 @@ namespace LifeSupport.GameObjects {
                 calculatedEndPoint.Y = (endPoint.X / 30);
                 Console.WriteLine(calculatedEndPoint);
 
+
                 path = AStarSearch(calculatedStartPoint, calculatedEndPoint);
+           //     positions.Clear();
+          //      nextPoint.Clear();
                 for (int i = 0; i < path.Count; i++)
                 {
-                    // holdGrid = currentRoom.gridPoints[path[i].X, path[i].Y];
-                    if (i > 0)
-                    {
-                       // Console.WriteLine(ca);
-                        Point previousPoint = new Point();
-                        previousPoint = path[i - 1];
-                        previousPoint.X = previousPoint.X * 30;
-                        previousPoint.Y = previousPoint.Y * 30;
+                if (i > 0)
+                {
 
-                        Point nextPoint = new Point();
-                        nextPoint = path[i];
-                        nextPoint.X = nextPoint.X * 30;
-                        nextPoint.Y = nextPoint.Y * 30;
-
-                        if (nextPoint.Y > previousPoint.Y)
-                        {
-                            UpdateDirection(new Vector2(1, 0));
-                            base.UpdatePosition(gameTime);
-                        }
-                        if (nextPoint.Y < previousPoint.Y) // If the player is above the enemy, the enenmy will move up
-                        {
-                            UpdateDirection(new Vector2(-1, 0));
-                            base.UpdatePosition(gameTime);
-                        }
-
-                        if (nextPoint.X > previousPoint.X) // If the player is to the right, the enemy will move right
-                        {
-                            UpdateDirection(new Vector2(0, 1));
-                            base.UpdatePosition(gameTime);
-                        }
-                        if (nextPoint.X < previousPoint.X) // If the player is to the left, the enemy will move left
-                        {
-                            UpdateDirection(new Vector2(0, -1));
-                            base.UpdatePosition(gameTime);
-                        }
-                    }
-                    else { continue; }
+                    Point holdPoint = new Point();
+                    holdPoint = path[i];
+                    holdPoint.X = path[i].Y * 30;
+                    holdPoint.Y = path[i].X * 30;
+                    nextPoint.Add(holdPoint);
+                    Point vectDistance = holdPoint - ToPoint(this.Position);
+                    Vector2 vectDirection = ToVector2(vectDistance);
+                    vectDirection.Normalize();
+                    this.MoveDirection = vectDirection;
+                    // Vector2 newPosition = this.Position + (vectDirection * MoveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                    base.UpdatePosition(gameTime);
                 }
-                
+                else { continue; }
+                }   
             }
-            totalTime = 0;
-        }
 
 
 
-        public Vector2 ToVector2(Point point)
+            public Vector2 ToVector2(Point point)
         {
             return new Vector2(point.X, point.Y);
         }
@@ -189,7 +166,7 @@ namespace LifeSupport.GameObjects {
             if (currentRoom.occupiedTilesGrid[tile.X + 1, tile.Y] == 0)
             {
                 tiles.Add(new Point(tile.X + 1, tile.Y));
-            }
+            } 
 
             // Right
             if (currentRoom.occupiedTilesGrid[tile.X, tile.Y + 1] == 0)
@@ -202,7 +179,8 @@ namespace LifeSupport.GameObjects {
             {
                 tiles.Add(new Point(tile.X - 1, tile.Y));
             }
-
+            
+               
             // Down-Left
             if (currentRoom.occupiedTilesGrid[tile.X + 1, tile.Y - 1] == 0)
             {
@@ -226,7 +204,7 @@ namespace LifeSupport.GameObjects {
             {
                 tiles.Add(new Point(tile.X - 1, tile.Y + 1));
             }
-
+            
             return tiles;
         }
 

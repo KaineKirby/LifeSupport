@@ -69,13 +69,14 @@ namespace LifeSupport.Levels {
             this.StartY = startY ;
 
             //width and height of room in pixels
-            this.Width = 1920 ;
-            this.Height = 1080 ;
+            this.Width = 1950 ;
+            this.Height = 1100 ;
 
             this.Objects = new List<GameObject>() ;
 
             // Instantiate a 2D array of points with 36 rows and 64 Columns
-            this.gridPoints = new Point[36, 64];
+            this.gridPoints = new Point[37, 65];
+            this.gridPoints = new Point[37, 65];
 
             // Instantiate a 2D array of bools for the grid to check to see if each tile is occupied by an object
             this.occupiedTilesGrid= new int[gridPoints.GetLength(0), gridPoints.GetLength(1)];
@@ -98,7 +99,7 @@ namespace LifeSupport.Levels {
 
         }
 
-        public void RenderObjects(SpriteBatch spriteBatch) {
+        public void RenderObjects(SpriteBatch spriteBatch, GameTime gameTime) {
             //render the tile floor
             spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(StartX, StartY), new Rectangle(0, 0, Width, Height), Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 1) ;
 
@@ -182,6 +183,7 @@ namespace LifeSupport.Levels {
                     Objects.Add(new Barrier(new Rectangle(gridPoints[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column], jsonBarrierSize)));
 
                     occupiedTilesGrid[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column] = 1;
+
                     if (jsonBarrierSize.X > 30)
                     {
                         jsonBarrierSize.X -= 30;
