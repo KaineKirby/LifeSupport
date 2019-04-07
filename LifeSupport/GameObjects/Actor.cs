@@ -80,10 +80,10 @@ namespace LifeSupport.GameObjects {
             foreach (GameObject obj in CurrentRoom.Objects) {
                 if (obj.HasCollision && obj.IsInside(newPosition.X-(Width/2), newPosition.Y-(Height/2), newPosition.X+(Width/2), newPosition.Y+(Height/2)) && obj != this) {
                     hasCollided = true ;
-                    if(obj is Enemy)
-                    {
-                        this.Position = newPosition;
-                    }
+              //      if(obj is Enemy)
+            //        {
+            //            this.Position = newPosition;
+            //        }
                 }
             }
             if (!hasCollided) {

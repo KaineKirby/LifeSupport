@@ -5,11 +5,33 @@
 		{"Row": 25, "Column":30 , "BarrierWidth": 300, "BarrierHeight": 30},
 		{"Row": 15, "Column":15 , "BarrierWidth": 30, "BarrierHeight": 30},
 		{"Row": 30, "Column":60 , "BarrierWidth": 30, "BarrierHeight": 30},
-		{"Row": 7, "Column":5 , "BarrierWidth": 180, "BarrierHeight": 30}
+		{"Row": 7, "Column":5 , "BarrierWidth": 180, "BarrierHeight": 30},
+
+		{"Row": 5, "Column":55 , "BarrierWidth": 30, "BarrierHeight": 30},
+		{"Row": 34, "Column":3 , "BarrierWidth": 30, "BarrierHeight": 30},
+		{"Row": 8, "Column":41 , "BarrierWidth": 30, "BarrierHeight": 180},
+		{"Row": 11, "Column":48 , "BarrierWidth": 90, "BarrierHeight": 30},
+		{"Row": 19, "Column":21 , "BarrierWidth": 600, "BarrierHeight": 30},
+
+		{"Row": 2, "Column":6 , "BarrierWidth": 30, "BarrierHeight": 30},
+		{"Row": 18, "Column":60 , "BarrierWidth": 30, "BarrierHeight": 480},
+		{"Row": 15, "Column":15 , "BarrierWidth": 30, "BarrierHeight": 30},
+		{"Row": 17, "Column":4 , "BarrierWidth": 30, "BarrierHeight": 30},
+		{"Row": 9, "Column":9 , "BarrierWidth": 270, "BarrierHeight": 30},
+
+		{"Row": 33, "Column":35 , "BarrierWidth": 30, "BarrierHeight": 30},
+		{"Row": 14, "Column":39 , "BarrierWidth": 30, "BarrierHeight": 30},
+		{"Row": 2, "Column":55 , "BarrierWidth": 30, "BarrierHeight": 30},
+		{"Row": 28, "Column":50 , "BarrierWidth": 30, "BarrierHeight": 30},
+		{"Row": 27, "Column":46 , "BarrierWidth": 30, "BarrierHeight": 30}
 	  ],
 
 "AlienDog":[
-		{"Row": 10, "Column": 10}
+		{"Row": 10, "Column": 10, "Speed":85},
+		{"Row": 4, "Column": 4, "Speed":30},
+		{"Row": 22, "Column": 22, "Speed":5},
+		{"Row": 32, "Column": 44, "Speed":120},
+		{"Row": 9, "Column": 27, "Speed":10}
 	   ]
 
 }

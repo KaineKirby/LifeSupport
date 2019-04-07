@@ -21,7 +21,7 @@ namespace LifeSupport.GameObjects
         List<Vector2> positions = new List<Vector2>();
 
 
-        public AlienDog(Player p, Vector2 position, Room room) : base(p, position, 32, 32, 0, Assets.Instance.alienDog, room, 100f)
+        public AlienDog(Player p, Vector2 position, Room room, float speed) : base(p, position, 30, 30, 0, Assets.Instance.alienDog, room, speed)
         {
           
         }

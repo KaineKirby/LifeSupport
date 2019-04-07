@@ -65,7 +65,7 @@ namespace LifeSupport {
 
             player = new Player(testRoom);
             testRoom = new Room(player,0,0 );
-            alienDog = new AlienDog(player, new Vector2(300, 300), testRoom);
+      //      alienDog = new AlienDog(player, new Vector2(300, 300), testRoom);
   
             player.CurrentRoom = testRoom ;
 
@@ -121,9 +121,9 @@ namespace LifeSupport {
             //draw the game objects
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Position.X+960, -player.Position.Y+540, 0)) ; // a transformation matrix is applied to keep the player centered on screen
             //render the player and the objects in the room
-            testRoom.RenderObjects(spriteBatch, gameTime) ;
+            testRoom.RenderObjects(spriteBatch) ;
             player.Draw(spriteBatch) ;
-            alienDog.drawPath(spriteBatch, gameTime);
+  //          alienDog.drawPath(spriteBatch, gameTime);
 //
             spriteBatch.End() ;
 

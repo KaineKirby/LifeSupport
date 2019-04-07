@@ -99,7 +99,7 @@ namespace LifeSupport.Levels {
 
         }
 
-        public void RenderObjects(SpriteBatch spriteBatch, GameTime gameTime) {
+        public void RenderObjects(SpriteBatch spriteBatch) {
             //render the tile floor
             spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(StartX, StartY), new Rectangle(0, 0, Width, Height), Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 1) ;
 
@@ -211,7 +211,7 @@ namespace LifeSupport.Levels {
 
             for(int i = 0; i < jsonData.AlienDog.Count;i++)
             {
-                Objects.Add(new AlienDog(player, new Vector2(StartX + (TileWidth * (int)jsonData.AlienDog[i].Column), StartY + (TileHeight * (int)jsonData.AlienDog[i].Row)), this));
+                Objects.Add(new AlienDog(player, new Vector2(StartX + (TileWidth * (int)jsonData.AlienDog[i].Column), StartY + (TileHeight * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed ));
             }
 
         }
