@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using RoyT.AStar;
 
 namespace LifeSupport.GameObjects
 {
@@ -11,15 +12,19 @@ namespace LifeSupport.GameObjects
 
         protected Player player;
         protected Room currentRoom;
+
+
         private int health;
-        List<Point> path = new List<Point>();
-        List<Point> nextPoint = new List<Point>();
-        List<Vector2> positions = new List<Vector2>();
 
-        float totalTime;
+        // Begin chasing player if they are close
+        private bool playerFound;
 
-        float timer = 1;         //Initialize a 10 second timer
-        const float TIMER = 1;
+        // This is the length of each tile
+        public const int SquareTileLength = 30;
+
+        // This stores the path from the enemy to the player
+        IList<Position> path;
+
 
         public Enemy(Player p, Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(position, width, height, rotation, sprite, room, moveSpeed) {
             this.player = p;
@@ -27,202 +32,147 @@ namespace LifeSupport.GameObjects
         }
 
 
-
-
-
         public override void UpdatePosition(GameTime gameTime)
         {
- 
-                Point startPoint = ToPoint(this.Position);
-                Point calculatedStartPoint = new Point();
-                calculatedStartPoint.X = (startPoint.Y / 30);
-                calculatedStartPoint.Y = (startPoint.X / 30);
 
-                Point endPoint = ToPoint(this.player.Position);
-                Point calculatedEndPoint = new Point();
+            Position currentEnemyPostion = ToPositionFromVector2(this.Position);
+            Position begin = new Position(currentEnemyPostion.Y / SquareTileLength, currentEnemyPostion.X / SquareTileLength);
 
-                // X is the row, Y is the column
-                // X has a max of 35, Y has a max of 63
-                calculatedEndPoint.X = (endPoint.Y / 30);
-                calculatedEndPoint.Y = (endPoint.X / 30);
-                Console.WriteLine(calculatedEndPoint);
+            Position currentPlayerPostion = ToPositionFromVector2(this.player.Position);
+            Position end = new Position(currentPlayerPostion.Y / SquareTileLength, currentPlayerPostion.X / SquareTileLength);
 
+            // If the enemy x coord is within 20 tiles of the player x coord (going from left to right)
+            // and the enemy x coord is within 15 tiles of the player y coord (going from top to bottom)
+            // begin chasing player
+            if ( (Math.Abs(end.Y - begin.Y) <= 20 && Math.Abs(end.X - begin.X) <= 15))
+            {
+                playerFound = true;
+            }
+            if(playerFound)
+            {
 
-                path = AStarSearch(calculatedStartPoint, calculatedEndPoint);
-           //     positions.Clear();
-          //      nextPoint.Clear();
+                path = currentRoom.gridTiles.GetPath(begin, end);
+
                 for (int i = 0; i < path.Count; i++)
                 {
-                if (i > 0)
-                {
+                    Position updatedEnemyPosition = new Position();
+                    updatedEnemyPosition = path[i];
 
-                    Point holdPoint = new Point();
-                    holdPoint = path[i];
-                    holdPoint.X = path[i].Y * 30;
-                    holdPoint.Y = path[i].X * 30;
-                    nextPoint.Add(holdPoint);
-                    Point vectDistance = holdPoint - ToPoint(this.Position);
-                    Vector2 vectDirection = ToVector2(vectDistance);
-                    vectDirection.Normalize();
-                    this.MoveDirection = vectDirection;
-                    // Vector2 newPosition = this.Position + (vectDirection * MoveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
-                    base.UpdatePosition(gameTime);
+                    Position actualEnemyPosition = new Position(updatedEnemyPosition.Y * SquareTileLength, updatedEnemyPosition.X * SquareTileLength);
+                    Position enemyDistanceFromLastPosition = actualEnemyPosition - ToPositionFromVector2(this.Position);
+                    Vector2 enemyDirection = ToVector2FromPosition(enemyDistanceFromLastPosition);
+
+                    UpdateDirection(enemyDirection);
+
+                    if (!this.hasCollided)
+                    {
+                        base.UpdatePosition(gameTime);
+                    }
+
+                    // Call this if the enemy collides with a wall
+                    // This helps the enemy navigate around corners and doors a bit smoother
+                    else
+                    {
+
+                        // Moving Right-Up (needs to go up)
+                        if (this.hasCollided == true && this.MoveDirection.X > 0 && this.MoveDirection.Y < 0)
+                        {
+                            UpdateDirection(new Vector2(0, -1));
+                            base.UpdatePosition(gameTime);
+
+
+                            // Moving Right-Up (needs to go right)
+                            if (this.hasCollided == true)
+                            {
+                                UpdateDirection(new Vector2(1, 0));
+                                base.UpdatePosition(gameTime);
+                            }
+                        }
+
+                        // Moving Left-Up (needs to go up)
+                        if (this.hasCollided == true && this.MoveDirection.X < 0 && this.MoveDirection.Y < 0)
+                        {
+                            UpdateDirection(new Vector2(0, -1));
+                            base.UpdatePosition(gameTime);
+
+                            // Moving Left-Up (needs to go left)
+                            if (this.hasCollided == true)
+                            {
+                                UpdateDirection(new Vector2(-1, 0));
+                                base.UpdatePosition(gameTime);
+                            }
+                        }
+
+
+
+                        // Moving Right-Down (needs to go down)
+                        if (this.hasCollided == true && this.MoveDirection.X > 0 && this.MoveDirection.Y > 0)
+                        {
+                            UpdateDirection(new Vector2(0, 1));
+                            base.UpdatePosition(gameTime);
+
+                            //  Moving Right-Down (needs to go right)
+                            if (this.hasCollided == true)
+                            {
+                                UpdateDirection(new Vector2(1, 0));
+                                base.UpdatePosition(gameTime);
+                            }
+                        }
+
+                        // Moving Left-Down (needs to go down)
+                        if (this.hasCollided == true && this.MoveDirection.X < 0 && this.MoveDirection.Y > 0)
+                        {
+                            UpdateDirection(new Vector2(0, 1));
+                            base.UpdatePosition(gameTime);
+
+                            // Moving Left-Down (needs to go left)
+                            if (this.hasCollided == true)
+                            {
+                                UpdateDirection(new Vector2(-1, 0));
+                                base.UpdatePosition(gameTime);
+                            }
+                        }
+                    }
+
                 }
-                else { continue; }
-                }   
             }
+            else { };
+        }
 
 
 
-            public Vector2 ToVector2(Point point)
+        public Vector2 ToVector2FromPoint(Point point)
         {
             return new Vector2(point.X, point.Y);
         }
 
-        public Point ToPoint(Vector2 vector)
+        public Vector2 ToVector2FromPosition(Position position)
+        {
+            return new Vector2(position.X, position.Y);
+        }
+
+        public Position ToPositionFromVector2(Vector2 vector)
+        {
+            return new Position((int)vector.X, (int)vector.Y);
+        }
+
+        public Point ToPointFromPosition(Position position)
+        {
+            return new Point(position.X, position.Y);
+        }
+            
+
+        public Point ToPointFromVector2(Vector2 vector)
         {
             return new Point((int)vector.X, (int)vector.Y);
         }
 
 
 
-
-        public List<Point> AStarSearch(Point start, Point end)
+        public void OnHit(int damage)
         {
 
-            List<Point> checkedTiles = new List<Point>();
-            List<Point> newTiles = new List<Point>();
-            newTiles.Add(start);
-
-            Dictionary<Point, Point> optimalPath = new Dictionary<Point, Point>();
-            Dictionary<Point, int> currentDistanceFromStart = new Dictionary<Point, int>();
-            Dictionary<Point, float> predictedDistanceToEnd = new Dictionary<Point, float>();
-
-            currentDistanceFromStart.Add(start, 0);
-            predictedDistanceToEnd.Add(start, +Heuristic(start, end));
-
-            while (newTiles.Count > 0)
-            {
-
-                Point current = (from i in newTiles orderby predictedDistanceToEnd[i] ascending select i).First();
-
-                if (current.X == end.X && current.Y == end.Y)
-                {
-                    return BuildOptimalPath(optimalPath, end);
-                }
-
-                newTiles.Remove(current);
-                checkedTiles.Add(current);
-
-                foreach (Point neighbor in GetNeighborTiles(current))
-                {
-                    int tempCurrentDistance = currentDistanceFromStart[current] + 1;
-
-                    if (checkedTiles.Contains(neighbor) && tempCurrentDistance >= currentDistanceFromStart[neighbor])
-                    {
-                        continue;
-                    }
-
-                    if (optimalPath.Keys.Contains(neighbor))
-                    {
-                        optimalPath[neighbor] = current;
-                    }
-                    else
-                    {
-                        optimalPath.Add(neighbor, current);
-                    }
-
-                    currentDistanceFromStart[neighbor] = tempCurrentDistance;
-                    predictedDistanceToEnd[neighbor] = currentDistanceFromStart[neighbor] + Math.Abs(neighbor.X - end.X) + Math.Abs(neighbor.Y - end.Y);
-
-                    if (!newTiles.Contains(neighbor))
-                    {
-                        newTiles.Add(neighbor);
-                    }
-                }
-            }
-
-            throw new Exception(string.Format("unable to find a path between {0},{1} and {2},{3}", start.X, start.Y, end.X, end.Y));
         }
-
-
-        public float Heuristic(Point a, Point b)
-        {
-            return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
-        }
-
-
-        private List<Point> GetNeighborTiles(Point tile)
-        {
-            List<Point> tiles = new List<Point>();
-
-            // Left
-            if (currentRoom.occupiedTilesGrid[tile.X, tile.Y - 1] == 0)
-            {
-                tiles.Add(new Point(tile.X, tile.Y - 1));
-            }
-
-            // Down
-            if (currentRoom.occupiedTilesGrid[tile.X + 1, tile.Y] == 0)
-            {
-                tiles.Add(new Point(tile.X + 1, tile.Y));
-            } 
-
-            // Right
-            if (currentRoom.occupiedTilesGrid[tile.X, tile.Y + 1] == 0)
-            {
-                tiles.Add(new Point(tile.X, tile.Y + 1));
-            }
-
-            // Up
-            if (currentRoom.occupiedTilesGrid[tile.X - 1, tile.Y] == 0)
-            {
-                tiles.Add(new Point(tile.X - 1, tile.Y));
-            }
-            
-               
-            // Down-Left
-            if (currentRoom.occupiedTilesGrid[tile.X + 1, tile.Y - 1] == 0)
-            {
-                tiles.Add(new Point(tile.X + 1, tile.Y - 1));
-            }
-
-            // Up-Left
-            if (currentRoom.occupiedTilesGrid[tile.X - 1, tile.Y - 1] == 0)
-            {
-                tiles.Add(new Point(tile.X - 1, tile.Y - 1));
-            }
-
-            // down-Right
-            if (currentRoom.occupiedTilesGrid[tile.X + 1, tile.Y + 1] == 0)
-            {
-                tiles.Add(new Point(tile.X + 1, tile.Y + 1));
-            }
-
-            //Up-Right
-            if (currentRoom.occupiedTilesGrid[tile.X - 1, tile.Y + 1] == 0)
-            {
-                tiles.Add(new Point(tile.X - 1, tile.Y + 1));
-            }
-            
-            return tiles;
-        }
-
-
-
-        private List<Point> BuildOptimalPath(Dictionary<Point, Point> optimalPath, Point current)
-        {
-            if (!optimalPath.Keys.Contains(current))
-            {
-                return new List<Point> { current };
-            }
-
-            List<Point> completePath = BuildOptimalPath(optimalPath, optimalPath[current]);
-            completePath.Add(current);
-            return completePath;
-        }
-
-
 
 
 
@@ -254,19 +204,6 @@ namespace LifeSupport.GameObjects
             
         }*/
 
-
-
-        public Player setFollowPlayer(Player p)
-        {
-            this.player = p;
-            return player;
-        }
-
-
-        public void OnHit(int damgage)
-        {
-
-        }
 
     }
 }

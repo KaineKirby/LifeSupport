@@ -37,7 +37,7 @@ namespace LifeSupport.GameObjects {
         public float Range ;
         public float ShotSpeed ;
         public float RateOfFire ;
-
+        public bool hasCollided = false;
         //the time since the last shot was fired and whether or not they can shoot
         protected float TimeBeforeShooting ;
         
@@ -73,7 +73,7 @@ namespace LifeSupport.GameObjects {
             //move the actor
             Vector2 newPosition = this.Position + (MoveDirection * MoveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds) ;
 
-            bool hasCollided = false ;
+            hasCollided = false ;
 
             //TODO collision detection is not perfect, it works but there is a scenario i want to make work
             //when the player is going diagonal towards a collidable surface they should be able to apply the force from their diagonal vector in the perpendicular direction of the collision

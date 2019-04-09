@@ -26,15 +26,27 @@ namespace LifeSupport.Levels {
 
     public class Room {
 
+
         //an array of game objects
         public List<GameObject> Objects ;
 
-        // Every room contains a grid
-        // This grid is a 2D array that stores the top left x and y coordinates of every tile on the grid
+
+
+        /* 
+         * Every room contains a grid
+         * This grid is a 2D array that stores the top left x and y coordinates of every tile on the grid
+         * The purpose of this grid is to place objects into the room with json files
+         */
         public Point[,] gridPoints;
 
-        // Assign a 0 (false) or 1 (true) to each point on the grid. 0 for not occupied, 1 for occupied.
-        public int[,] occupiedTilesGrid;
+
+
+        /* This grid is created using the RoyT.AStar Library
+         * This grid is used to implement pathfinding for enemies.
+         */
+        public Grid gridTiles;
+
+
 
         //the player (to know whether player is in room or not)
         private Player player ;
@@ -55,8 +67,11 @@ namespace LifeSupport.Levels {
         public int StartX ;
         public int StartY ;
 
-        public const int TileWidth = 30;
-        public const int TileHeight = 30;  
+
+        // Every tile on the grid is 30x30. There are a total of 36 rows and 64 columns
+        // This means the room is 1920x1080
+        public const int SquareTileLength = 30;
+ 
 
 
         public Room(Player player, int startX, int startY) {
@@ -69,20 +84,19 @@ namespace LifeSupport.Levels {
             this.StartY = startY ;
 
             //width and height of room in pixels
-            this.Width = 1950 ;
-            this.Height = 1100 ;
+            this.Width = 1920 ;
+            this.Height = 1080 ;
 
             this.Objects = new List<GameObject>() ;
 
-            // Instantiate a 2D array of points with 36 rows and 64 Columns
-            this.gridPoints = new Point[37, 65];
-            this.gridPoints = new Point[37, 65];
-
-            // Instantiate a 2D array of bools for the grid to check to see if each tile is occupied by an object
-            this.occupiedTilesGrid= new int[gridPoints.GetLength(0), gridPoints.GetLength(1)];
+            // Grid points is a 2D array to placed objects into the room
+            this.gridPoints = new Point[36, 64];
 
             // Set each point in the 2D array to a (x,y) coordinate within the room(each tile on the grid is 30x30)
-            generateGrids(gridPoints, occupiedTilesGrid);
+            generatePointGrid(gridPoints);
+
+            // Grid is used for pathfinding
+            this.gridTiles = new Grid(36, 64);
 
             FillRoom();
         }
@@ -122,19 +136,21 @@ namespace LifeSupport.Levels {
 
 
         /* Fill the 2D grid arrays with default values.
-         * gridPoints is filled with points, and 
-         * occupiedTilesGrid is filled with 0's (not obstructued) */
-        public void generateGrids(Point[,] gridMap, int[,] gridOccupationMap)
+         * gridPoints is filled with points. The primary purpose
+         * of gridPoints is to place objects in specific rows and columns
+         within the room*/
+        public void generatePointGrid(Point[,] gridMap)
         {
             for (int row = 0; row < gridMap.GetLength(0); row++)
             {
                 for (int col = 0; col < gridMap.GetLength(1); col++)
                 {
-                    gridMap[row, col] = new Point(StartX + (TileWidth * col), StartY + (TileHeight * row));
-                    gridOccupationMap[row, col] = 0;
+                    gridMap[row, col] = new Point(StartX + (SquareTileLength * col), StartY + (SquareTileLength * row));
+             
                 }
             }
         }
+
 
 
         private void CreateOuterWalls() {
@@ -165,7 +181,7 @@ namespace LifeSupport.Levels {
             CreateOuterWalls();
 
             // Read in a json file with a barrier object
-            dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/RoomObjects.json");
+            dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/Room1.json");
             int count = 1;
             for (int i = 0; i < jsonData.Barrier.Count; i++)
             {
@@ -182,14 +198,14 @@ namespace LifeSupport.Levels {
                     Point jsonBarrierSize = new Point((int)jsonData.Barrier[i].BarrierWidth, (int)jsonData.Barrier[i].BarrierHeight);
                     Objects.Add(new Barrier(new Rectangle(gridPoints[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column], jsonBarrierSize)));
 
-                    occupiedTilesGrid[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column] = 1;
+                    gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row, (int)jsonData.Barrier[i].Column));
 
                     if (jsonBarrierSize.X > 30)
                     {
                         jsonBarrierSize.X -= 30;
                         while (jsonBarrierSize.X > 0)
                         {
-                            occupiedTilesGrid[jsonData.Barrier[i].Row , jsonData.Barrier[i].Column + count] = 1;
+                            gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row, (int)jsonData.Barrier[i].Column + count));
                             jsonBarrierSize.X -= 30;
                             count++;
                         }
@@ -200,7 +216,7 @@ namespace LifeSupport.Levels {
                         jsonBarrierSize.Y -= 30;
                         while (jsonBarrierSize.Y > 0)
                         {
-                            occupiedTilesGrid[jsonData.Barrier[i].Row + count, jsonData.Barrier[i].Column] = 1;
+                            gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row + count, (int)jsonData.Barrier[i].Column)); 
                             jsonBarrierSize.Y -= 30;
                             count++;
                         }
@@ -211,18 +227,12 @@ namespace LifeSupport.Levels {
 
             for(int i = 0; i < jsonData.AlienDog.Count;i++)
             {
-                Objects.Add(new AlienDog(player, new Vector2(StartX + (TileWidth * (int)jsonData.AlienDog[i].Column), StartY + (TileHeight * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed ));
+                Objects.Add(new AlienDog(player, new Vector2(StartX + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed ));
             }
 
         }
 
 
-
-
-        private void checkTiles()
-        {
-            
-        }
 
 
     }

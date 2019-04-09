@@ -25,7 +25,6 @@ namespace LifeSupport {
 
         Player player ;
         Room testRoom ;
-        AlienDog alienDog;
 
         public MainGame() {
 
@@ -35,6 +34,9 @@ namespace LifeSupport {
             graphics.IsFullScreen = Settings.Instance.Fullscreen;
             graphics.SynchronizeWithVerticalRetrace = false ;
             this.IsFixedTimeStep = false ;
+
+            this.IsFixedTimeStep = true;//false;
+            this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 62d); //60);
 
             Content.RootDirectory = "Content";
         }
@@ -65,7 +67,6 @@ namespace LifeSupport {
 
             player = new Player(testRoom);
             testRoom = new Room(player,0,0 );
-      //      alienDog = new AlienDog(player, new Vector2(300, 300), testRoom);
   
             player.CurrentRoom = testRoom ;
 
@@ -123,8 +124,6 @@ namespace LifeSupport {
             //render the player and the objects in the room
             testRoom.RenderObjects(spriteBatch) ;
             player.Draw(spriteBatch) ;
-  //          alienDog.drawPath(spriteBatch, gameTime);
-//
             spriteBatch.End() ;
 
             //draw HUD elements
