@@ -59,12 +59,15 @@ namespace LifeSupport.States
 
             player.UpdatePosition(gameTime);
             testRoom.UpdateObjects(gameTime);
+            player.CurrentRoom = testRoom ;
 
             Cursor.Instance.Update(gameTime);
         }
 
         public override void Load()
         {
+
+            game.IsMouseVisible = false ;
             // Create a new SpriteBatch, which can be used to draw textures.
             Assets.Instance.LoadContent(game);
     

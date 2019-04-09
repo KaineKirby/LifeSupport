@@ -65,6 +65,8 @@ namespace LifeSupport.States
         public override void Load()
         {
             Assets.Instance.LoadContent(game);
+
+            game.IsMouseVisible = true;
             
 
             var btnTexture = Assets.Instance.btnTextureLarge;
