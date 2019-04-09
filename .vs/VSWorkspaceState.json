@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LifeSupport"
+    "\\LifeSupport",
+    "\\LifeSupport\\GameObjects",
+    "\\LifeSupport\\Menus"
   ],
+  "SelectedNode": "\\LifeSupport\\MainGame.cs",
   "PreviewInSolutionExplorer": false
 }

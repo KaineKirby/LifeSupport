@@ -63,7 +63,6 @@ C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Deb
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\SharpDX.XInput.xml
-C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csprojAssemblyReference.cache
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csproj.CoreCompileInputs.cache
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csproj.CopyComplete
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.exe

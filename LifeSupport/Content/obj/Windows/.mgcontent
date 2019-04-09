@@ -4,13 +4,22 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/background.png</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/cursor.png</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/enemies/circle.png</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/closed_door.png</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/floor_tile.png</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/open_door.png</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/projectile.png</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/player/player.png</File>
+    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/player/player_legs.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
