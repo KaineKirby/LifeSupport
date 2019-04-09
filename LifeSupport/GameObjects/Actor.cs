@@ -8,6 +8,7 @@ using LifeSupport.Config ;
 using Microsoft.Xna.Framework;
 using System.Collections;
 using LifeSupport.Levels;
+using RoyT.AStar;
 
 /*
 * Actor Class (Abstract)
@@ -37,7 +38,6 @@ namespace LifeSupport.GameObjects {
         public float Range ;
         public float ShotSpeed ;
         public float RateOfFire ;
-        public bool hasCollided = false;
         //the time since the last shot was fired and whether or not they can shoot
         protected float TimeBeforeShooting ;
         
@@ -73,22 +73,37 @@ namespace LifeSupport.GameObjects {
             //move the actor
             Vector2 newPosition = this.Position + (MoveDirection * MoveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds) ;
 
-            hasCollided = false ;
+            //bool hasCollided = false ;
 
-            //TODO collision detection is not perfect, it works but there is a scenario i want to make work
-            //when the player is going diagonal towards a collidable surface they should be able to apply the force from their diagonal vector in the perpendicular direction of the collision
+            //foreach (GameObject obj in CurrentRoom.Objects) {
+            //    if (obj.HasCollision && obj.IsInside(newPosition.X-(Width/2), newPosition.Y-(Height/2), newPosition.X+(Width/2), newPosition.Y+(Height/2)) && obj != this) {
+            //        hasCollided = true ;
+            //    }
+            //}
+            //if (!hasCollided) {
+            //    this.Position = newPosition ;
+            //}
+
+            bool canMoveX = true ;
+            bool canMoveY = true ;
+
             foreach (GameObject obj in CurrentRoom.Objects) {
-                if (obj.HasCollision && obj.IsInside(newPosition.X-(Width/2), newPosition.Y-(Height/2), newPosition.X+(Width/2), newPosition.Y+(Height/2)) && obj != this) {
-                    hasCollided = true ;
-              //      if(obj is Enemy)
-            //        {
-            //            this.Position = newPosition;
-            //        }
+
+                //see if we can update JUST the X direction
+                if (obj.HasCollision && obj != this && obj.IsInside(newPosition.X-(Width/2), Position.Y-(Height/2), newPosition.X+(Width/2), Position.Y+(Height/2))) {
+                    canMoveX = false ;
                 }
+                //see if we can move JUST in the Y direction
+                if (obj.HasCollision && obj != this && obj.IsInside(Position.X-(Width/2), newPosition.Y-(Height/2), Position.X+(Width/2), newPosition.Y+(Height/2))) {
+                    canMoveY = false ;
+                }
+
             }
-            if (!hasCollided) {
-                this.Position = newPosition ;
-            }
+
+            if (canMoveX)
+                this.Position.X = newPosition.X ;
+            if (canMoveY)
+                this.Position.Y = newPosition.Y ;
 
         }
 
@@ -101,6 +116,11 @@ namespace LifeSupport.GameObjects {
         protected virtual void Shoot() {
             //set the time before shooting to rate of fire before counting down
             this.TimeBeforeShooting = RateOfFire ;
+        }
+
+        public Position GetGridPosition() {
+            return new Position((int)((this.Position.Y-CurrentRoom.StartY)/Barrier.WallThickness), (int)((this.Position.X-CurrentRoom.StartX)/Barrier.WallThickness)) ;
+
         }
 
     }

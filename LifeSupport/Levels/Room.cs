@@ -121,6 +121,9 @@ namespace LifeSupport.Levels {
                 for (int i = 0; i < Objects.Count; i++)
                 {
                     Objects[i].Draw(spriteBatch) ;
+                    if (Objects[i] is Enemy) {
+                        ((Enemy)Objects[i]).DrawPath(spriteBatch) ;
+                    }
                 }
             }
         }
@@ -227,7 +230,7 @@ namespace LifeSupport.Levels {
 
             for(int i = 0; i < jsonData.AlienDog.Count;i++)
             {
-                Objects.Add(new AlienDog(player, new Vector2(StartX + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed ));
+                Objects.Add(new AlienDog(player, new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed));
             }
 
         }

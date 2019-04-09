@@ -1,28 +1,27 @@
 {
-"Barrier":[		
-		{"Row": 11, "Column": 24, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 25, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 26, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 27, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 28, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 29, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 30, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 31, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 32, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 33, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 34, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 35, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 36, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 37, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 38, "BarrierWidth": 30, "BarrierHeight": 450},
-		{"Row": 11, "Column": 39, "BarrierWidth": 30, "BarrierHeight": 450},
+  "Barrier": [
+    {
+      "Row": 11,
+      "Column": 6,
+      "BarrierWidth": 1200,
+      "BarrierHeight": 30
+    },
+    {
+      "Row": 12,
+      "Column": 6,
+      "BarrierWidth": 30,
+      "BarrierHeight": 360
+    }
 
 
-],
+  ],
 
-"AlienDog":[
-		
-		{"Row": 34, "Column": 60, "Speed": 50}
-	   ]
+  "AlienDog": [
+    {
+      "Row": 25,
+      "Column": 15,
+      "Speed": 300
+    }
+  ]
 
 }

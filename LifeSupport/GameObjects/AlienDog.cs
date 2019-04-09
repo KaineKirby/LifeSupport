@@ -16,13 +16,9 @@ namespace LifeSupport.GameObjects
 
         private int health;
 
-        public AlienDog(Player p, Vector2 position, Room room, float speed) : base(p, position, 30, 30, 0, Assets.Instance.alienDog, room, speed)
-        {
+        public AlienDog(Player p, Vector2 position, Room room, float speed) : base(p, position, 30, 30, 0, Assets.Instance.alienDog, room, speed) {
           
         }
-
-        
-
 
     }
 }

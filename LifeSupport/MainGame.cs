@@ -35,8 +35,7 @@ namespace LifeSupport {
             graphics.SynchronizeWithVerticalRetrace = false ;
             this.IsFixedTimeStep = false ;
 
-            this.IsFixedTimeStep = true;//false;
-            this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 62d); //60);
+            this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 62d);
 
             Content.RootDirectory = "Content";
         }
@@ -66,7 +65,7 @@ namespace LifeSupport {
 
 
             player = new Player(testRoom);
-            testRoom = new Room(player,0,0 );
+            testRoom = new Room(player, 0, 0);
   
             player.CurrentRoom = testRoom ;
 
