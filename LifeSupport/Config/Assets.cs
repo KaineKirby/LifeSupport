@@ -30,7 +30,9 @@ namespace LifeSupport.Config {
         public Texture2D barrier ;
         public Texture2D floorTile ;
         public Texture2D openDoor ;
+        public Texture2D openDoorH ;
         public Texture2D closeDoor ;
+        public Texture2D closeDoorH ;
         public Texture2D cursor;
         public Texture2D projectile;
         public Texture2D btnTexture;
@@ -55,13 +57,14 @@ namespace LifeSupport.Config {
             barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;
             floorTile = game.Content.Load<Texture2D>("img/objects/floor_tile") ;
             openDoor = game.Content.Load<Texture2D>("img/objects/open_door") ;
+            openDoorH = game.Content.Load<Texture2D>("img/objects/open_door_h") ;
             closeDoor = game.Content.Load<Texture2D>("img/objects/closed_door") ;
+            closeDoorH = game.Content.Load<Texture2D>("img/objects/closed_door_H") ;
             cursor = game.Content.Load<Texture2D>("img/cursor");
             projectile = game.Content.Load<Texture2D>("img/objects/projectile");
             btnTexture = game.Content.Load<Texture2D>("img/controls/blk_button");
             btnTextureLarge = game.Content.Load<Texture2D>("img/controls/blk_button_large");
             btnText = game.Content.Load<SpriteFont>("fonts/default_ui_18");
-            //Alien Dog
             alienDog = game.Content.Load<Texture2D>("img/enemies/circle");
         }
 

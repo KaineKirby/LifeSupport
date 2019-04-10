@@ -32,8 +32,16 @@ namespace LifeSupport.GameObjects
                 return ;
             
             for (int i = 0 ; i < path.Count ; i++) {
-                spriteBatch.Draw(sprite, new Vector2(path[i].Y*30, path[i].X*30), new Rectangle(0, 0, 32, 32), Color.Black, Rotation, Vector2.Zero, 1f, SpriteEffects.None, 0);
+                spriteBatch.Draw(sprite, new Vector2(CurrentRoom.StartX+path[i].Y*30, CurrentRoom.StartY+path[i].X*30), new Rectangle(0, 0, 32, 32), Color.Black, Rotation, Vector2.Zero, 1f, SpriteEffects.None, 0);
             }
+        }
+
+        //a gradual change in direction can prevent enemies from getting stuck around corners
+        protected override void UpdateDirection(Vector2 vector) {
+            this.MoveDirection = (299*this.MoveDirection + vector)/300 ;
+            //only normalize vector if it isnt the zero vector
+            if (!vector.Equals(Vector2.Zero))
+                this.MoveDirection.Normalize() ;
         }
 
         public override void UpdatePosition(GameTime gameTime) {

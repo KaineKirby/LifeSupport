@@ -135,6 +135,18 @@
 /processorParam:TextureFormat=Color
 /build:img/objects/closed_door.png
 
+#begin img/objects/closed_door_h.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/objects/closed_door_h.png
+
 #begin img/objects/floor_tile.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -158,6 +170,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:img/objects/open_door.png
+
+#begin img/objects/open_door_h.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/objects/open_door_h.png
 
 #begin img/objects/projectile.png
 /importer:TextureImporter
@@ -195,11 +219,17 @@
 /processorParam:TextureFormat=Color
 /build:img/player/player_legs.png
 
+#begin RoomPrefabs/Room0.json
+/copy:RoomPrefabs/Room0.json
+
 #begin RoomPrefabs/Room1.json
 /copy:RoomPrefabs/Room1.json
 
 #begin RoomPrefabs/Room2.json
 /copy:RoomPrefabs/Room2.json
+
+#begin RoomPrefabs/RoomObjects.json
+/copy:RoomPrefabs/RoomObjects.json
 
 #begin Settings/settings.json
 /copy:Settings/settings.json

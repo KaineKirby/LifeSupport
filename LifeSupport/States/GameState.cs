@@ -17,8 +17,10 @@ namespace LifeSupport.States
 
         private FrameCounter frames;
 
-        private Player player;
-        private Room testRoom;
+
+        private Player player ;
+        private Level level ;
+
 
         public GameState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content) {
 
@@ -35,8 +37,7 @@ namespace LifeSupport.States
             //draw the game objects
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Position.X + 960, -player.Position.Y + 540, 0)); // a transformation matrix is applied to keep the player centered on screen
             //render the player and the objects in the room
-            testRoom.RenderObjects(spriteBatch);
-            player.Draw(spriteBatch);
+            level.DrawRooms(spriteBatch) ;
 
             spriteBatch.End();
 
@@ -57,9 +58,7 @@ namespace LifeSupport.States
             if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame))
                 game.Exit();
 
-            player.UpdatePosition(gameTime);
-            testRoom.UpdateObjects(gameTime);
-            player.CurrentRoom = testRoom ;
+            level.UpdateRooms(gameTime) ;
 
             Cursor.Instance.Update(gameTime);
         }
@@ -71,9 +70,8 @@ namespace LifeSupport.States
             // Create a new SpriteBatch, which can be used to draw textures.
             Assets.Instance.LoadContent(game);
     
-            player = new Player(testRoom);
-            testRoom = new Room(player, 0, 0);
-            player.CurrentRoom = testRoom;
+            level = new Level() ;
+            player = level.player ;
 
             if (Settings.Instance.ShowFps)
                 frames = new FrameCounter(game);

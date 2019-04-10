@@ -44,10 +44,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GameObjects\Door.cs" />
+    <Compile Include="GameObjects\DoorH.cs" />
+    <Compile Include="Levels\Level.cs" />
     <Compile Include="States\Component.cs" />
     <Compile Include="States\Controls\Button.cs" />
     <Compile Include="GameObjects\AlienDog.cs" />
-    <Compile Include="GameObjects\Door.cs" />
+    <Compile Include="GameObjects\DoorV.cs" />
     <Compile Include="Config\Cursor.cs" />
     <Compile Include="GameObjects\Enemy.cs" />
     <Compile Include="GameObjects\Projectile.cs" />

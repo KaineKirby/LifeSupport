@@ -54,7 +54,7 @@ namespace LifeSupport.GameObjects {
         }
 
         //updates the direction of the actor
-        protected void UpdateDirection(Vector2 vector) {
+        protected virtual void UpdateDirection(Vector2 vector) {
             this.MoveDirection = vector ;
             //only normalize vector if it isnt the zero vector
             if (!vector.Equals(Vector2.Zero))
@@ -73,28 +73,17 @@ namespace LifeSupport.GameObjects {
             //move the actor
             Vector2 newPosition = this.Position + (MoveDirection * MoveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds) ;
 
-            //bool hasCollided = false ;
-
-            //foreach (GameObject obj in CurrentRoom.Objects) {
-            //    if (obj.HasCollision && obj.IsInside(newPosition.X-(Width/2), newPosition.Y-(Height/2), newPosition.X+(Width/2), newPosition.Y+(Height/2)) && obj != this) {
-            //        hasCollided = true ;
-            //    }
-            //}
-            //if (!hasCollided) {
-            //    this.Position = newPosition ;
-            //}
-
             bool canMoveX = true ;
             bool canMoveY = true ;
 
             foreach (GameObject obj in CurrentRoom.Objects) {
 
                 //see if we can update JUST the X direction
-                if (obj.HasCollision && obj != this && obj.IsInside(newPosition.X-(Width/2), Position.Y-(Height/2), newPosition.X+(Width/2), Position.Y+(Height/2))) {
+                if (!(obj is Enemy) && obj.HasCollision && obj != this && obj.IsInside(newPosition.X-(Width/2), Position.Y-(Height/2), newPosition.X+(Width/2), Position.Y+(Height/2))) {
                     canMoveX = false ;
                 }
                 //see if we can move JUST in the Y direction
-                if (obj.HasCollision && obj != this && obj.IsInside(Position.X-(Width/2), newPosition.Y-(Height/2), Position.X+(Width/2), newPosition.Y+(Height/2))) {
+                if (!(obj is Enemy) && obj.HasCollision && obj != this && obj.IsInside(Position.X-(Width/2), newPosition.Y-(Height/2), Position.X+(Width/2), newPosition.Y+(Height/2))) {
                     canMoveY = false ;
                 }
 
@@ -118,6 +107,7 @@ namespace LifeSupport.GameObjects {
             this.TimeBeforeShooting = RateOfFire ;
         }
 
+        //get the position of this actor on the room grid
         public Position GetGridPosition() {
             return new Position((int)((this.Position.Y-CurrentRoom.StartY)/Barrier.WallThickness), (int)((this.Position.X-CurrentRoom.StartX)/Barrier.WallThickness)) ;
 

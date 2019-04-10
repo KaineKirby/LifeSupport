@@ -15,15 +15,6 @@ using RoyT.AStar;
 
 namespace LifeSupport.Levels {
 
-    /*
-     * This class needs a lot of work currently
-     * It needs to have a defined size so it can tell if the player is in it
-     * It also needs to build the Barriers in the GenerateRoom method better (and dynamically with the size)
-     * It also needs to check to see if the player is in the room or not
-     *
-     * And then stuff for spawning enemies later but we're nowhere near that
-     */
-
     public class Room {
 
 
@@ -46,8 +37,6 @@ namespace LifeSupport.Levels {
          */
         public Grid gridTiles;
 
-
-
         //the player (to know whether player is in room or not)
         private Player player ;
 
@@ -55,37 +44,34 @@ namespace LifeSupport.Levels {
         //whether the room has been defeated or not
         private bool isBeaten ;
 
-        //whether the room has the player in it or not
-        private bool isActive ;
-
         //the width and height of the room in pixels
-        public int Width ;
-        public int Height ;
+        public static int Width = 1920 ;
+        public static int Height = 1080 ;
 
         //the starting point for room construction (top left)
         /*StartX and StartY both are currently set at 0 */
         public int StartX ;
         public int StartY ;
 
-
         // Every tile on the grid is 30x30. There are a total of 36 rows and 64 columns
         // This means the room is 1920x1080
-        public const int SquareTileLength = 30;
- 
+        public const int SquareTileLength = 30 ;
 
+        //booleans corresponding to whether or not there is a door on that side of the wall
+        private int roomId ;
+        public enum DoorSpot {Top, Bottom, Left, Right} ;
+        //the coordinate of the room on the level grid
+        public Point coordinate ;
 
-        public Room(Player player, int startX, int startY) {
+        public Room(Player player, int startX, int startY, int roomId, Point coordinate) {
 
             this.player = player ;
             this.isBeaten = false ;
-            this.isActive = true ;
+            this.roomId = roomId ;
+            this.coordinate = coordinate ; 
             
             this.StartX = startX ;
             this.StartY = startY ;
-
-            //width and height of room in pixels
-            this.Width = 1920 ;
-            this.Height = 1080 ;
 
             this.Objects = new List<GameObject>() ;
 
@@ -103,13 +89,10 @@ namespace LifeSupport.Levels {
 
         //update all the objects in the room
         public void UpdateObjects(GameTime gameTime) {
-
-            if (isActive) {
-                for (int i = 0; i < Objects.Count; i++) {
-                    Objects[i].UpdatePosition(gameTime) ;
-                }
-                
+            for (int i = 0; i < Objects.Count; i++) {
+                Objects[i].UpdatePosition(gameTime) ;
             }
+                
 
         }
 
@@ -117,14 +100,10 @@ namespace LifeSupport.Levels {
             //render the tile floor
             spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(StartX, StartY), new Rectangle(0, 0, Width, Height), Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 1) ;
 
-            if (isActive) {
-                for (int i = 0; i < Objects.Count; i++)
-                {
-                    Objects[i].Draw(spriteBatch) ;
-                    if (Objects[i] is Enemy) {
-                        ((Enemy)Objects[i]).DrawPath(spriteBatch) ;
-                    }
-                }
+            for (int i = 0; i < Objects.Count; i++)
+            {
+                Objects[i].Draw(spriteBatch) ;
+
             }
         }
 
@@ -154,27 +133,60 @@ namespace LifeSupport.Levels {
             }
         }
 
+        //adds a door to the given side
+        public void AddDoor(DoorSpot side) {
+                        
+            switch (side) {
+                case DoorSpot.Top:
+                    //top
+                    Objects.RemoveAt(1) ;
+                    Objects.Insert(1, new DoorH(new Vector2(StartX + (Width/2) - Barrier.WallThickness, StartY))) ;
+                    break ;
+                case DoorSpot.Bottom:
+                    //bottom
+                    Objects.RemoveAt(4) ;
+                    Objects.Insert(4, new DoorH(new Vector2(StartX + (Width/2) - Barrier.WallThickness, StartY + Height - Barrier.WallThickness))) ;
+                    break ;
+                case DoorSpot.Left:
+                    //left
+                    Objects.RemoveAt(7) ;
+                    Objects.Insert(7, new DoorV(new Vector2(StartX, StartY + (Height / 2) - Barrier.WallThickness))) ;
+                    break ;
+                case DoorSpot.Right:
+                    //right
+                    Objects.RemoveAt(10) ;
+                    Objects.Insert(10, new DoorV(new Vector2(StartX + Width - Barrier.WallThickness, StartY + (Height / 2) - Barrier.WallThickness))) ;
+                    break ;
+                //this shouldn't happen
+                default:
+                    return ;
+            }
 
+        }
 
         private void CreateOuterWalls() {
 
-            //top no door
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY, Width, Barrier.WallThickness)));
-            //bottom no door
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY + Height - Barrier.WallThickness, Width, Barrier.WallThickness)));
-            //left no door
-            //Objects.Add(new Barrier(new Rectangle(StartX, StartY+Barrier.WallThickness, Barrier.WallThickness, Height-2*Barrier.WallThickness))) ;
-            //right no door
-            //Objects.Add(new Barrier(new Rectangle(StartX+Width-Barrier.WallThickness, StartY+Barrier.WallThickness, Barrier.WallThickness, Height-2*Barrier.WallThickness))) ;
+            //redoing this system slightly due to consistency
+            //the index of the walls within the game object list will always be the same regardless of whether or not a door is present w/ this system
 
-            //left with door
+            //top
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY, (Width/2) - Barrier.WallThickness, Barrier.WallThickness)));
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY, Barrier.WallThickness*2, Barrier.WallThickness))) ;
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) + Barrier.WallThickness, StartY, (Width/2) - Barrier.WallThickness, Barrier.WallThickness)));
+
+            //bottom
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY + Height - Barrier.WallThickness, (Width/2) - Barrier.WallThickness, Barrier.WallThickness)));
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY + Height - Barrier.WallThickness, Barrier.WallThickness*2, Barrier.WallThickness))) ;
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) + Barrier.WallThickness, StartY + Height - Barrier.WallThickness, (Width/2) - Barrier.WallThickness, Barrier.WallThickness)));
+
+            //left
             Objects.Add(new Barrier(new Rectangle(StartX, StartY + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - 2 * Barrier.WallThickness)));
-            Objects.Add(new Door(new Vector2(StartX, StartY + (Height / 2) - Barrier.WallThickness)));
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2))) ;
             Objects.Add(new Barrier(new Rectangle(StartX, StartY + (Height / 2) + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - Barrier.WallThickness * 2)));
 
-            //right with door
+            //right
             Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - 2 * Barrier.WallThickness)));
-            Objects.Add(new Door(new Vector2(StartX + Width - Barrier.WallThickness, StartY + (Height / 2) - Barrier.WallThickness)));
+            Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2))) ;
             Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + (Height / 2) + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - Barrier.WallThickness * 2)));
         }
 
@@ -184,7 +196,7 @@ namespace LifeSupport.Levels {
             CreateOuterWalls();
 
             // Read in a json file with a barrier object
-            dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/Room1.json");
+            dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/Room" + roomId + ".json");
             int count = 1;
             for (int i = 0; i < jsonData.Barrier.Count; i++)
             {

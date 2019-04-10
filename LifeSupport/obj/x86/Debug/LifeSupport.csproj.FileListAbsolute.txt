@@ -85,3 +85,6 @@ C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\RoyT.
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\RoyT.AStar.xml
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\LifeSupport.exe.config
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\objects\closed_door_h.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\objects\open_door_h.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Room0.json
