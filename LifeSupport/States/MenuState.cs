@@ -41,11 +41,11 @@ namespace LifeSupport.States
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud) {
             //Drawing each of the menu buttons
-            bg.Begin();
+            bg.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width/1920));
             bg.Draw(Assets.Instance.mainMenuBackground, new Rectangle(0, 0, 1920, 1080), Color.White);
             bg.End();
-            spriteBatch.Begin();
-            
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width/1920));
             foreach (var component in components) {
                 component.Draw(gameTime, spriteBatch);
             }

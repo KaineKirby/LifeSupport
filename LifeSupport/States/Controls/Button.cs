@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LifeSupport.Config;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -63,8 +64,9 @@ namespace LifeSupport.Controls
         public override void Update(GameTime gameTime) {
             prevMouse = currMouse;
             currMouse = Mouse.GetState();
+            float scalar = (1920/(float)Settings.Instance.Width) ;
 
-            var MouseRect = new Rectangle(currMouse.X, currMouse.Y, 1, 1);
+            var MouseRect = new Rectangle((int)(scalar*currMouse.X), (int)(scalar*currMouse.Y), 1, 1);
 
             hover = false;
 

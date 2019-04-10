@@ -21,6 +21,8 @@ namespace LifeSupport.States
         private Player player ;
         private Level level ;
 
+        private float scale ;
+
 
         public GameState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content) {
 
@@ -30,12 +32,12 @@ namespace LifeSupport.States
             //the coordinate systems should be different for these two
 
             //draw the background
-            bg.Begin();
+            bg.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width/1920));
             bg.Draw(Assets.Instance.background, new Rectangle(0, 0, 1920, 1080), Color.White);
             bg.End();
 
             //draw the game objects
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Position.X + 960, -player.Position.Y + 540, 0)); // a transformation matrix is applied to keep the player centered on screen
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Position.X, -player.Position.Y, 0)*Matrix.CreateScale(scale)*Matrix.CreateTranslation(Settings.Instance.Width*.5f, Settings.Instance.Height*.5f, 0)); // a transformation matrix is applied to keep the player centered on screen
             //render the player and the objects in the room
             level.DrawRooms(spriteBatch) ;
 
@@ -75,6 +77,8 @@ namespace LifeSupport.States
 
             if (Settings.Instance.ShowFps)
                 frames = new FrameCounter(game);
+
+            scale = (float)Settings.Instance.Width/1920 ;
         }
        
     }

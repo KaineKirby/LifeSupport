@@ -80,7 +80,9 @@ namespace LifeSupport.Config
 
         //the source should be in screen coordinates not world
         public Vector2 GetDirection(Point source) {
-            Vector2 norm = new Vector2(MousePosition.X-source.X, MousePosition.Y-source.Y) ;
+            //find the scalar for the resolution
+            float scalar = 1920/(float)Settings.Instance.Width ;
+            Vector2 norm = new Vector2((MousePosition.X*scalar)-source.X, (MousePosition.Y*scalar)-source.Y) ;
             norm.Normalize() ;
             return norm ;
         }

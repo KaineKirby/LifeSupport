@@ -97,7 +97,7 @@ namespace LifeSupport.Levels {
 
         public void RenderObjects(SpriteBatch spriteBatch) {
             //render the tile floor
-            spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(StartX, StartY), new Rectangle(0, 0, Width, Height), Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 1) ;
+            spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(StartX, StartY), new Rectangle(0, 0, Width, Height), Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, .1f) ;
 
             for (int i = 0; i < Objects.Count; i++)
             {
