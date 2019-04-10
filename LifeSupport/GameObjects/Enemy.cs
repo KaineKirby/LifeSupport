@@ -36,12 +36,10 @@ namespace LifeSupport.GameObjects
             }
         }
 
-        //a gradual change in direction can prevent enemies from getting stuck around corners
-        protected override void UpdateDirection(Vector2 vector) {
-            this.MoveDirection = (299*this.MoveDirection + vector)/300 ;
-            //only normalize vector if it isnt the zero vector
-            if (!vector.Equals(Vector2.Zero))
-                this.MoveDirection.Normalize() ;
+        private void InfluenceDirection(Vector2 direction, GameTime gameTime) {
+            this.MoveDirection = ((MoveDirection * (.2f) / (float)gameTime.ElapsedGameTime.TotalSeconds) + direction)/30 ;
+            if (!MoveDirection.Equals(Vector2.Zero))
+                MoveDirection.Normalize() ;
         }
 
         public override void UpdatePosition(GameTime gameTime) {
@@ -56,6 +54,7 @@ namespace LifeSupport.GameObjects
             
             //the calculated path is too short (next to player)
             if (path.Count < 2) {
+                this.MoveDirection = Vector2.Zero ;
                 return ;
             }
 
@@ -63,38 +62,38 @@ namespace LifeSupport.GameObjects
 
             //need to move up and to the left
             if (path[0].X > path[1].X && path[0].Y > path[1].Y) {
-                UpdateDirection(new Vector2(-1, -1)) ;
+                InfluenceDirection(new Vector2(-1, -1), gameTime) ;
             }
             //up and to the right
             else if (path[0].X > path[1].X && path[0].Y < path[1].Y) {
-                UpdateDirection(new Vector2(1, -1)) ;
+                InfluenceDirection(new Vector2(1, -1), gameTime) ;
 
             }
             //down and to the right
             else if (path[0].X < path[1].X && path[0].Y < path[1].Y) {
-                UpdateDirection(new Vector2(1, 1)) ;
+                InfluenceDirection(new Vector2(1, 1), gameTime) ;
 
             }
             //down and to the left
             else if (path[0].X < path[1].X && path[0].Y > path[1].Y) {
-                UpdateDirection(new Vector2(-1, 1)) ;
+                InfluenceDirection(new Vector2(-1, 1), gameTime) ;
 
             }
             //need to move up
             else if (path[0].X > path[1].X) {
-                UpdateDirection(new Vector2(0, -1)) ;
+                InfluenceDirection(new Vector2(0, -1), gameTime) ;
             }
             //move down
             else if (path[0].X < path[1].X) {
-                UpdateDirection(new Vector2(0, 1)) ;
+                InfluenceDirection(new Vector2(0, 1), gameTime) ;
             }
             //move left
             else if (path[0].Y > path[1].Y) {
-                UpdateDirection(new Vector2(-1, 0)) ;
+                InfluenceDirection(new Vector2(-1, 0), gameTime) ;
             }
             //move right
             else if (path[0].Y < path[1].Y) {
-                UpdateDirection(new Vector2(1, 0)) ;
+                InfluenceDirection(new Vector2(1, 0), gameTime) ;
             }
 
             base.UpdatePosition(gameTime) ;

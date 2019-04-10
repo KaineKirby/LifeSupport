@@ -20,7 +20,7 @@
 
   "AlienDog":[
 		
-		  {"Row": 18, "Column": 32, "Speed": 30}
+		  {"Row": 18, "Column": 32, "Speed": 300}
   ]
 
 }

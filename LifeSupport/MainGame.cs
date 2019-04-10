@@ -39,7 +39,7 @@ namespace LifeSupport {
             graphics.PreferredBackBufferWidth = Settings.Instance.Width;
             graphics.IsFullScreen = Settings.Instance.Fullscreen;
             graphics.SynchronizeWithVerticalRetrace = false ;
-            this.IsFixedTimeStep = false ;
+            this.IsFixedTimeStep = true ;
 
             this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 62d);
 
