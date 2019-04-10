@@ -1,9 +1,9 @@
 {
-"Width": 1280,
-"Height": 720,
-"Fullscreen": false,
-"ShowFps": true,
-"Fps": 300,
-"SfxVolume": 100.0,
-"MusVolume":100.0
+  "Width": 640,
+  "Height": 480,
+  "Fullscreen": false,
+  "ShowFps": true,
+  "Fps": 300,
+  "SfxVolume": 100.0,
+  "MusVolume": 100.0
 }
