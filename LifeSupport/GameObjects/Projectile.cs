@@ -34,6 +34,7 @@ namespace LifeSupport.GameObjects
             this.YPos = Source.Y;
             this.CurrentRoom = room;
             this.HasCollision = false ;
+            this.isPlayer = isPlayer ;
         }
 
         public override void UpdatePosition(GameTime gameTime) {
@@ -52,17 +53,17 @@ namespace LifeSupport.GameObjects
                     //we need to ignore both other projectiles, and the player/enemy depending on what team the projectile is on
                     //either hit the player or the enemy
                     if (isPlayer) {
-                        if (CurrentRoom.Objects[i] is Enemy)
-                            ((Actor)CurrentRoom.Objects[i]).Hit(this) ;
-
-                        if (!(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Player))
+                        if (i < CurrentRoom.Objects.Count && CurrentRoom.Objects[i] is Enemy) 
+                            ((Actor)CurrentRoom.Objects[i]).OnHit(this) ;
+             
+                        if (i < CurrentRoom.Objects.Count && !(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Player))
                             CurrentRoom.DestroyObject(this) ;
                     }
                     else {
-                        if (CurrentRoom.Objects[i] is Player)
-                            ((Actor)CurrentRoom.Objects[i]).Hit(this) ;
+                        if (i < CurrentRoom.Objects.Count && CurrentRoom.Objects[i] is Player)
+                            ((Actor)CurrentRoom.Objects[i]).OnHit(this) ;
 
-                        if (!(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Enemy))
+                        if (i < CurrentRoom.Objects.Count && !(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Enemy))
                             CurrentRoom.DestroyObject(this) ;
                     }
 

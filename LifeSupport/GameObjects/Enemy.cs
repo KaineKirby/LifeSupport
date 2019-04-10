@@ -20,7 +20,8 @@ namespace LifeSupport.GameObjects
         IList<Position> path;
 
 
-        public Enemy(Player p, Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(position, width, height, rotation, sprite, room, moveSpeed) {
+        public Enemy(Player p, Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, 
+            float moveSpeed, float health, float damage, float range, float shotSpeed, float rateOfFire) : base(position, width, height, rotation, sprite, room, moveSpeed, health, damage, range, shotSpeed, rateOfFire) {
             this.player = p;
             this.currentRoom = room ;
 
@@ -98,10 +99,6 @@ namespace LifeSupport.GameObjects
 
             base.UpdatePosition(gameTime) ;
 
-
-        }
-
-        public void OnHit(int damage) {
 
         }
 

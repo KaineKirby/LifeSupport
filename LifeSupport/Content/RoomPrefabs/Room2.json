@@ -20,7 +20,9 @@
     {
       "Row": 25,
       "Column": 15,
-      "Speed": 300
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
     }
   ]
 }

@@ -32,15 +32,14 @@ namespace LifeSupport.GameObjects {
         private int legRotation ;
         private Vector2 legOrigin ;
 
+        private static float InvincibleMaxTime = 1.5f ;
+        private float InvincibleTime ;
+
         //will probably be constant
-        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed) {
+        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
 
             this.controller = Controller.Instance;
-            this.Damage = 1.0f ;
-            this.Range = 1000f ;
-            this.ShotSpeed = 1000f ;
             this.GunBarrelPosition = new Point(960, 540) ;
-            this.RateOfFire = .2f ;
 
             //animation
             this.animFrame = 0 ;
@@ -49,6 +48,8 @@ namespace LifeSupport.GameObjects {
             this.playerLegs = Assets.Instance.playerLegs ;
             this.legOrigin = new Vector2(Width/2, Height/2) ;
             this.legRotation = 0 ;
+
+            this.InvincibleTime = 0f ;
 
         }
 
@@ -59,7 +60,7 @@ namespace LifeSupport.GameObjects {
         }
 
         //use the controller class to update the positions
-        public new void UpdatePosition(GameTime gameTime) {
+        public override void UpdatePosition(GameTime gameTime) {
 
             if (Cursor.Instance.IsLeftMouseDown() && TimeBeforeShooting == 0f)
                 Shoot() ;
@@ -111,6 +112,10 @@ namespace LifeSupport.GameObjects {
             else {
                 animFrame = 8 ;
             }
+
+            //for I frames
+            if (InvincibleTime > 0f)
+                InvincibleTime -= (float)gameTime.ElapsedGameTime.TotalSeconds ;
                 
             
             if (time >= timer) {
@@ -125,6 +130,19 @@ namespace LifeSupport.GameObjects {
             CurrentRoom.AddObject(new Projectile(Position, Cursor.Instance.GetDirection(GunBarrelPosition), Damage, ShotSpeed, Range, true, CurrentRoom)) ;
             //call the base shoot to restrict firing
             base.Shoot() ;
+        }
+
+        public override void OnHit(Projectile proj) {
+            //if the player is able to get hit again
+            if (InvincibleTime <= 0f) {
+                InvincibleTime = InvincibleMaxTime ;
+                Console.WriteLine(this + " hit for " + proj.Damage + " damage") ;
+                this.Health -= proj.Damage ;
+                //kill it if its health is below 0
+                if (this.Health <= 0) {
+                    //display a game over somehow
+                }
+            }
         }
     }
 }

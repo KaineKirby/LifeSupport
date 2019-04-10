@@ -13,9 +13,7 @@ using System.Linq;
 using LifeSupport.States;
 
 namespace LifeSupport {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
+
     public class MainGame : Game {
 
         GraphicsDeviceManager graphics;
@@ -49,10 +47,7 @@ namespace LifeSupport {
             base.Initialize();
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
+
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             bg = new SpriteBatch(GraphicsDevice);
@@ -60,22 +55,15 @@ namespace LifeSupport {
             currState = new MenuState(this, graphics.GraphicsDevice, Content);
             currState.Load();
 
-            // TODO: use this.Content to load your game content here
+
         }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
+
         protected override void UnloadContent() {
-            // TODO: Unload any non ContentManager content here
+
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+
         protected override void Update(GameTime gameTime) {
 
             if(nextState != null) {
@@ -85,15 +73,10 @@ namespace LifeSupport {
              currState.Update(gameTime);
              currState.PostUpdate(gameTime);
 
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
 

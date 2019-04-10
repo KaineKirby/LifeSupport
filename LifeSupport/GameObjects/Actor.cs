@@ -44,10 +44,16 @@ namespace LifeSupport.GameObjects {
         //where the projectiles come out
         protected Point GunBarrelPosition ;
         
-        public Actor(Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, float moveSpeed) : base(position, width, height, rotation, sprite) {
+        public Actor(Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, 
+            float moveSpeed, float health, float damage, float range, float shotSpeed, float rateOfFire) : base(position, width, height, rotation, sprite) {
             //set the passed movespeed
             this.MoveSpeed = moveSpeed ;
             this.CurrentRoom = room ;
+            this.Health = health ;
+            this.Damage = damage ;
+            this.Range = range ;
+            this.ShotSpeed = shotSpeed ;
+            this.RateOfFire = rateOfFire ;
 
             this.TimeBeforeShooting = 0f ;
            
@@ -97,8 +103,13 @@ namespace LifeSupport.GameObjects {
         }
 
         //called when the actor is hit by the passed projectile
-        public virtual void Hit(Projectile proj) {
+        public virtual void OnHit(Projectile proj) {
+            Console.WriteLine(this + " hit for " + proj.Damage + " damage") ;
             this.Health -= proj.Damage ;
+            //kill it if its health is below 0
+            if (this.Health <= 0) {
+                CurrentRoom.DestroyObject(this) ;
+            }
             
         }
 

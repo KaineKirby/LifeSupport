@@ -92,7 +92,6 @@ namespace LifeSupport.Levels {
             for (int i = 0; i < Objects.Count; i++) {
                 Objects[i].UpdatePosition(gameTime) ;
             }
-                
 
         }
 
@@ -110,6 +109,9 @@ namespace LifeSupport.Levels {
         public void DestroyObject(GameObject obj)
         {
             Objects.Remove(obj);
+            //if all the enemies are gone we can open all the doors in the room
+            if (!HasEnemies())
+                OpenAllDoors() ;
         }
 
         public void AddObject(GameObject obj) {
@@ -164,6 +166,50 @@ namespace LifeSupport.Levels {
 
         }
 
+        //a check to see whether or not the room still has enemies
+        //we open the doors when there are no more enemies remaining
+        private bool HasEnemies() {
+            foreach (GameObject obj in Objects) {
+                if (obj is Enemy)
+                    return true ;
+            }
+            return false ;
+        }
+
+        //called when the player enters the room
+        //close the doors if enemies exist in the room
+        public void OnPlayerEntered() {
+            if (HasEnemies() && PlayerInside())
+                CloseAllDoors() ;
+        }
+
+        //check whether or not the player lies within the boundaries of the room
+        //so the doors can be closed
+        public bool PlayerInside() {
+            int padding = 16 ;
+            if (player.Position.X > StartX+Barrier.WallThickness+padding && player.Position.X < StartX + Width - Barrier.WallThickness-padding &&
+                player.Position.Y > StartY+Barrier.WallThickness+padding && player.Position.Y < StartY + Height - Barrier.WallThickness-padding)
+                return true ;
+
+            return false ;
+        }
+
+        //close all the doors in the room
+        public void CloseAllDoors() {
+            foreach (GameObject obj in Objects) {
+                if (obj is Door)
+                    ((Door)obj).CloseDoor() ;
+            }
+        }
+
+        //open all the doors in the room
+        public void OpenAllDoors() {
+            foreach (GameObject obj in Objects) {
+                if (obj is Door)
+                    ((Door)obj).OpenDoor() ;
+            }
+        }
+
         private void CreateOuterWalls() {
 
             //redoing this system slightly due to consistency
@@ -194,6 +240,15 @@ namespace LifeSupport.Levels {
         private void FillRoom()
         {
             CreateOuterWalls();
+
+            //block off the outer edges
+            for (int row = 0 ; row < Height/30 ; row++) {
+                for (int col = 0 ; col < Width/30 ; col++) {
+                    if (row == 0 || col == 0 || row == (Height/30) - 1 || col == (Width/30) - 1)
+                        gridTiles.BlockCell(new Position(row, col)) ;
+                }
+            }
+
 
             // Read in a json file with a barrier object
             dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/Room" + roomId + ".json");
@@ -242,7 +297,7 @@ namespace LifeSupport.Levels {
 
             for(int i = 0; i < jsonData.AlienDog.Count;i++)
             {
-                Objects.Add(new AlienDog(player, new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed));
+                Objects.Add(new AlienDog(player, new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed, (float)jsonData.AlienDog[i].Health, (float)jsonData.AlienDog[i].Damage));
             }
 
         }

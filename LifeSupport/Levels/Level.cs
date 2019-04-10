@@ -113,6 +113,9 @@ namespace LifeSupport.Levels {
                 if (GetRoomAtCoordinate(right) != null) {
                     GetRoomAtCoordinate(coord).AddDoor(DoorSpot.Right) ;
                 }
+
+                //open all the doors by default
+                GetRoomAtCoordinate(coord).OpenAllDoors() ;
             }
 
         }
@@ -144,6 +147,8 @@ namespace LifeSupport.Levels {
                 player.CurrentRoom = canidate ;
                 activeRoom = canidate ;
             }
+            if (activeRoom.PlayerInside())
+                activeRoom.OnPlayerEntered() ;
 
             //update the active room and the player
             activeRoom.UpdateObjects(gameTime) ;

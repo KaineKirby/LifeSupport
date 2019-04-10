@@ -14,13 +14,15 @@
 		  {"Row": 24, "Column": 34, "BarrierWidth": 540, "BarrierHeight": 30},
 		  {"Row": 24, "Column": 55, "BarrierWidth": 240, "BarrierHeight": 30},
 
-		  {"Row": 25, "Column": 20, "BarrierWidth": 30, "BarrierHeight": 330},
-		  {"Row": 25, "Column": 43, "BarrierWidth": 30, "BarrierHeight": 330}
+		  {"Row": 25, "Column": 20, "BarrierWidth": 30, "BarrierHeight": 300},
+		  {"Row": 25, "Column": 43, "BarrierWidth": 30, "BarrierHeight": 300}
   ],
 
   "AlienDog":[
-		
-		  {"Row": 18, "Column": 32, "Speed": 300}
+		  {"Row": 1, "Column": 1, "Speed": 300, "Health":  3, "Damage": 1},
+		  {"Row": 34, "Column": 1, "Speed": 300, "Health":  3, "Damage": 1},
+      {"Row": 34, "Column": 62, "Speed": 300, "Health":  3, "Damage": 1},
+      {"Row": 1, "Column": 62, "Speed": 300, "Health":  3, "Damage": 1}
   ]
 
 }
