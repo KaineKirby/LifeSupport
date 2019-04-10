@@ -109,6 +109,7 @@ namespace LifeSupport.GameObjects {
             //kill it if its health is below 0
             if (this.Health <= 0) {
                 CurrentRoom.DestroyObject(this) ;
+                CurrentRoom.DestroyObject(proj) ;
             }
             
         }
