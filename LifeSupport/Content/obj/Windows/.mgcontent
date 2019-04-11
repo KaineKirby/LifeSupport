@@ -4,25 +4,25 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/crosshair.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui_18.spritefont</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/background.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/blk_button.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/blk_button_large.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/cursor.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/circle.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/Main_Menu.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/closed_door.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/closed_door_h.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/floor_tile.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/open_door.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/open_door_h.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/projectile.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player_legs.png</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/square.jpg</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/crosshair.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/fonts/default_ui_18.spritefont</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/background.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/controls/blk_button.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/controls/blk_button_large.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/cursor.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/enemies/circle.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/menus/Main_Menu.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/objects/closed_door.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/objects/closed_door_h.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/objects/floor_tile.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/objects/open_door.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/objects/open_door_h.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/objects/projectile.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/player/player.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/player/player_legs.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/square.jpg</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

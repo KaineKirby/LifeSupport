@@ -228,9 +228,6 @@
 #begin RoomPrefabs/Room2.json
 /copy:RoomPrefabs/Room2.json
 
-#begin RoomPrefabs/RoomObjects.json
-/copy:RoomPrefabs/RoomObjects.json
-
 #begin Settings/settings.json
 /copy:Settings/settings.json
 
