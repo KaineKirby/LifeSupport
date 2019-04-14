@@ -140,3 +140,7 @@ C:\Users\anton\Desktop\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csproj.
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csproj.CopyComplete
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.exe
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.pdb
+C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\optionsMenu.xnb
+C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\videoMenu.xnb
+C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\arrowLeft.xnb
+C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\arrowRight.xnb

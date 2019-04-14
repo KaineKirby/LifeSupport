@@ -49,13 +49,13 @@ namespace LifeSupport.Levels {
 
             //number of rooms in pool
             string[] files = Directory.GetFiles("Content/RoomPrefabs/") ;
-            int pool = files.Length-2 ;
+            int pool = files.Length-1 ;
 
             foreach (string file in files) {
                 Console.WriteLine("File: " + file) ;
             }
 
-            Console.WriteLine("Choosing from a room pool of " + pool + files[3]) ;
+            Console.WriteLine("Choosing from a room pool of " + pool + files[2]) ;
             
             //till we have reach the number of rooms we have generated for this level
             for (int i = 0 ; i < numRooms ;) {

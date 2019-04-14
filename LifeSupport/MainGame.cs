@@ -16,10 +16,12 @@ namespace LifeSupport {
 
     public class MainGame : Game {
 
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        SpriteBatch bg;
-        SpriteBatch hud;
+        public bool changedDisplay;
+        public GraphicsDeviceManager graphics;
+        public SpriteBatch spriteBatch;
+        public SpriteBatch bg;
+        public SpriteBatch hud;
+
 
         private State currState;
         private State nextState;
@@ -28,6 +30,7 @@ namespace LifeSupport {
             nextState = state;
             nextState.Load();
         }
+
 
 
         public MainGame() {

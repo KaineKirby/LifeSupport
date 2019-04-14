@@ -43,6 +43,13 @@ namespace LifeSupport.Controls
             ThisColor = Color.White;
         }
 
+        public Button(Texture2D BtnTexture)
+        {
+            texture = BtnTexture;
+            ThisColor = Color.White;
+        }
+
+
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             

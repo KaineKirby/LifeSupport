@@ -26,7 +26,8 @@ namespace LifeSupport.States
         }
 
         private void OptionsBtn_Click(object sender, EventArgs e) {
-            Console.WriteLine("Options Menu");
+            Console.WriteLine("Settings Menu");
+            game.ChangeState(new OptionsState(game, graphDevice, content));
         }
 
         private void ContinueGameBtn_Click(object sender, EventArgs e) {
@@ -91,7 +92,7 @@ namespace LifeSupport.States
             var optionsBtn = new Button(btnTexture, btnText)
             {
                 CurrPosition = new Vector2(200, 700),
-                BtnText = "Options",
+                BtnText = "Settings",
             };
 
             optionsBtn.Click += OptionsBtn_Click;

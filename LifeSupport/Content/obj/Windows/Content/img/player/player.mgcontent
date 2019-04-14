@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/player/player.png</SourceFile>
-  <SourceTime>2019-04-11T14:12:55.9996609-05:00</SourceTime>
+  <SourceTime>2019-04-13T12:41:31.3403861-05:00</SourceTime>
   <DestFile>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/bin/Windows/Content/img/player/player.xnb</DestFile>
-  <DestTime>2019-04-11T14:19:57.7841861-05:00</DestTime>
+  <DestTime>2019-04-13T12:43:03.3758727-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
