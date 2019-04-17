@@ -27,6 +27,7 @@ namespace LifeSupport.Config {
         public Texture2D mainMenuBackground;
         public Texture2D optionsBackground;
         public Texture2D videoSettingsBackground;
+        public Texture2D audioSettingsBackground;
         public Texture2D player ;
         public Texture2D playerLegs ;
         public Texture2D barrier ;
@@ -59,6 +60,7 @@ namespace LifeSupport.Config {
             mainMenuBackground = game.Content.Load<Texture2D>("img/menus/main_menu");
             optionsBackground = game.Content.Load<Texture2D>("img/menus/optionsMenu");
             videoSettingsBackground = game.Content.Load<Texture2D>("img/menus/videoMenu");
+            audioSettingsBackground = game.Content.Load<Texture2D>("img/menus/audioMenu");
             player = game.Content.Load<Texture2D>("img/player/player") ;
             playerLegs = game.Content.Load<Texture2D>("img/player/player_legs") ;
             barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;

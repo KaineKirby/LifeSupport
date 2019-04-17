@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LifeSupport.States;
 using LifeSupport.Utilities;
 
 /*
@@ -63,25 +64,46 @@ namespace LifeSupport.Config {
         private Settings() {
 
             //use JSONParser to read the settings file
-            dynamic data = JSONParser.ReadJsonFile("Content/Settings/settings.json") ;
-                                               
+            dynamic videoData = JSONParser.ReadJsonFile("Content/Settings/Video_Settings.json") ;
+            dynamic volumeData = JSONParser.ReadJsonFile("Content/Settings/Volume_Settings.json");
+            dynamic FPSData = JSONParser.ReadJsonFile("Content/Settings/FPS_Settings.json");
+
             //just set all the fields
-            this.Width = data.Width ;
-            this.Height = data.Height ;
-            this.Fullscreen = data.Fullscreen ;
-            this.ShowFps = data.ShowFps ;
-            this.Fps = data.Fps ;
-            this.SfxVolume = data.SfxVolume ;
-            this.MusVolume = data.MusVolume ;
+            this.Width = videoData.Width;
+            this.Height = videoData.Height ;
+            this.Fullscreen = videoData.Fullscreen ;
+            this.ShowFps = FPSData.ShowFps ;
+            this.Fps = FPSData.Fps ;
+            this.SfxVolume = volumeData.SfxVolume;
+            this.MusVolume = volumeData.MusVolume ;
 
             Instance = this ;
 
 
             //get the controller instance since we may need to see it
             Controller = Controller.Instance;
+
             
     
         }
+
+        public void reloadVideoSettings()
+        {
+                dynamic videoData = JSONParser.ReadJsonFile("Content/Settings/Video_Settings.json");
+                this.Width = videoData.Width;
+                this.Height = videoData.Height;
+                this.Fullscreen = videoData.Fullscreen;
+            
+        }
+
+        public void reloadAudioSettings()
+        {
+            dynamic audioData = JSONParser.ReadJsonFile("Content/Settings/Volume_Settings.json");
+            this.SfxVolume = audioData.SfxVolume;
+            this.MusVolume = audioData.MusVolume;
+        }
+
+
 
     }
 }

@@ -29,7 +29,7 @@ namespace LifeSupport.States
 
     private void AudioButton_Click(object sender, EventArgs e)
     {
-       
+            game.ChangeState(new AudioSettingsState(game, graphDevice, content));
     }
 
     private void ControlsButton_Click(object sender, EventArgs e)

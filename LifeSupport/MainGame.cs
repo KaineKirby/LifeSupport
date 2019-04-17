@@ -12,9 +12,11 @@ using System.IO;
 using System.Linq;
 using LifeSupport.States;
 
-namespace LifeSupport {
+namespace LifeSupport
+{
 
-    public class MainGame : Game {
+    public class MainGame : Game
+    {
 
         public bool changedDisplay;
         public GraphicsDeviceManager graphics;
@@ -26,32 +28,38 @@ namespace LifeSupport {
         private State currState;
         private State nextState;
 
-        public void ChangeState(State state) {
+        public void ChangeState(State state)
+        {
             nextState = state;
             nextState.Load();
         }
 
 
 
-        public MainGame() {
+        public MainGame()
+        {
 
-            graphics = new GraphicsDeviceManager(this) ;
+            graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = Settings.Instance.Height;
             graphics.PreferredBackBufferWidth = Settings.Instance.Width;
+            //       graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //      graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.IsFullScreen = Settings.Instance.Fullscreen;
-            graphics.SynchronizeWithVerticalRetrace = false ;
-            this.IsFixedTimeStep = false ;
+            graphics.SynchronizeWithVerticalRetrace = false;
+            this.IsFixedTimeStep = false;
 
             Content.RootDirectory = "Content";
         }
 
 
-        protected override void Initialize() {
+        protected override void Initialize()
+        {
             base.Initialize();
         }
 
 
-        protected override void LoadContent() {
+        protected override void LoadContent()
+        {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             bg = new SpriteBatch(GraphicsDevice);
             hud = new SpriteBatch(GraphicsDevice);
@@ -62,25 +70,40 @@ namespace LifeSupport {
         }
 
 
-        protected override void UnloadContent() {
+        protected override void UnloadContent()
+        {
 
         }
 
 
-        protected override void Update(GameTime gameTime) {
-
-            if(nextState != null) {
-               currState = nextState;
-               nextState = null;
+        protected override void Update(GameTime gameTime)
+        {
+            if (nextState != null)
+            {
+                currState = nextState;
+                nextState = null;
             }
-             currState.Update(gameTime);
-             currState.PostUpdate(gameTime);
+            currState.Update(gameTime);
+            currState.PostUpdate(gameTime);
+            if (VideoSettingsState.isVideoChanged == true)
+            {
+                graphics.PreferredBackBufferHeight = Settings.Instance.Height;
+                graphics.PreferredBackBufferWidth = Settings.Instance.Width;
+                graphics.IsFullScreen = Settings.Instance.Fullscreen;
+                graphics.ApplyChanges();
+                VideoSettingsState.isVideoChanged = false;
+            }
+            else if(AudioSettingsState.isVolumeChanged == true)
+            {
+                AudioSettingsState.isVolumeChanged = false;
+            }
 
 
             base.Update(gameTime);
         }
 
-        protected override void Draw(GameTime gameTime) {
+        protected override void Draw(GameTime gameTime)
+        {
             GraphicsDevice.Clear(Color.Black);
 
             currState.Draw(gameTime, spriteBatch, bg, hud);

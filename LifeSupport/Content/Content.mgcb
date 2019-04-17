@@ -123,6 +123,11 @@
 /processorParam:TextureFormat=Color
 /build:img/enemies/circle.png
 
+#begin img/menus/audioMenu.png
+/importer:
+/processor:
+/build:img/menus/audioMenu.png
+
 #begin img/menus/Main_Menu.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -276,8 +281,20 @@
 #begin RoomPrefabs/Room2.json
 /copy:RoomPrefabs/Room2.json
 
+#begin Settings/Control_Settings.json
+/copy:Settings/Control_Settings.json
+
+#begin Settings/FPS_Settings.json
+/copy:Settings/FPS_Settings.json
+
 #begin Settings/settings.json
 /copy:Settings/settings.json
+
+#begin Settings/Video_Settings.json
+/copy:Settings/Video_Settings.json
+
+#begin Settings/Volume_Settings.json
+/copy:Settings/Volume_Settings.json
 
 #begin square.jpg
 /importer:TextureImporter

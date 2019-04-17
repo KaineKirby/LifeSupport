@@ -26,13 +26,16 @@ namespace LifeSupport.Controls
         public bool IsClicked { get; set; }
         public Color ThisColor { get; set; }
         public Vector2 CurrPosition { get; set; }
-
-        public Rectangle Rect {
+     
+        public Rectangle Rect {     
             get {
                 return new Rectangle((int)CurrPosition.X, (int)CurrPosition.Y, texture.Width, texture.Height);
             }
+            set {; }
+            
         }
-
+        
+    
         public string BtnText { get; set; }
         #endregion
 

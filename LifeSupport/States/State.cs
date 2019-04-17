@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace LifeSupport.States
 {
-    public abstract class State {
+    public abstract class State
+    {
         #region Fields
         protected ContentManager content;
         protected MainGame game;
@@ -20,12 +21,14 @@ namespace LifeSupport.States
         public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud);
         public abstract void PostUpdate(GameTime gameTime);
         public abstract void Load();
-        public State(MainGame state_game, GraphicsDevice state_graphDevice, ContentManager state_content) {
+        public State(MainGame state_game, GraphicsDevice state_graphDevice, ContentManager state_content)
+        {
             game = state_game;
             graphDevice = state_graphDevice;
             content = state_content;
         }
         public abstract void Update(GameTime gameTime);
+
         #endregion
     }
 }
