@@ -19,7 +19,7 @@ namespace LifeSupport.States
         // Check to see if audio levels were changed
         public static bool isVolumeChanged= false;
 
-        #region fields
+
         private List<Component> components;
         private SpriteFont textFont;
         private Vector2 SfxTextPosition;
@@ -27,28 +27,28 @@ namespace LifeSupport.States
         private Vector2 MusicTextPosition;
         private Vector2 MusicValuePosition;
 
-        private double[] sfxVolumeLevels = new double[101];
+        private double[] sfxVolumeLevels = new double[11];
         private int sfxIndex;
         private string sfxText = Settings.Instance.SfxVolume.ToString();
 
-        private double[] musicVolumeLevels = new double[101];
+        private double[] musicVolumeLevels = new double[11];
         private int musicIndex;
         private string musicText = Settings.Instance.MusVolume.ToString();
-        #endregion
 
-        #region properties
+
+
         public double SfxVolume { get; set; }
         public double MusVolume { get; set; }
-        #endregion
 
-        #region constructor
+
+
         public AudioSettingsState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
 
         }
-        #endregion
 
-        #region methods
+
+
 
 
         public override void Load()
@@ -58,16 +58,16 @@ namespace LifeSupport.States
 
             for(int i = 0; i < sfxVolumeLevels.Length; i++)
             {
-                sfxVolumeLevels[i] = i;
+                sfxVolumeLevels[i] = i * 10;
             }
             for (int i = 0; i < musicVolumeLevels.Length; i++)
             {
-                musicVolumeLevels[i] = i;
+                musicVolumeLevels[i] = i * 10;
             }
-            sfxIndex = (int)Settings.Instance.SfxVolume;
-            sfxText = sfxIndex.ToString();
-            musicIndex = (int)Settings.Instance.MusVolume;
-            musicText = musicIndex.ToString();
+            sfxIndex = (int)Settings.Instance.SfxVolume / 10;
+            sfxText = (sfxIndex * 10).ToString();
+            musicIndex = (int)Settings.Instance.MusVolume / 10;
+            musicText = (musicIndex * 10).ToString();
 
 
             Assets.Instance.LoadContent(game);
@@ -120,7 +120,7 @@ namespace LifeSupport.States
             var applyVolumeChangesButton = new Button(btnTexture, btnText)
             {
                 CurrPosition = new Vector2(700, 950),
-                BtnText = "Apply Changes",
+                BtnText = "Save Changes",
             };
             applyVolumeChangesButton.Click += ApplyVolumeChangesButton_Click;
 
@@ -155,8 +155,8 @@ namespace LifeSupport.States
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920, (float)Settings.Instance.Height / 1080, 1.0f));
             spriteBatch.DrawString(textFont, "SFX Volume:", SfxTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
             spriteBatch.DrawString(textFont, "Music Volume:", MusicTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
-            spriteBatch.DrawString(textFont, sfxText, SfxValuePosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
-            spriteBatch.DrawString(textFont, musicText, MusicValuePosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
+            spriteBatch.DrawString(textFont, sfxText + "%", SfxValuePosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
+            spriteBatch.DrawString(textFont, musicText +"%", MusicValuePosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
             spriteBatch.End();
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
@@ -224,7 +224,7 @@ namespace LifeSupport.States
 
         private void SFX_RightArrow_Click(object sender, EventArgs e)
         {
-            if (sfxIndex == 100)
+            if (sfxIndex == 10)
             {
                 return;
             }
@@ -254,7 +254,7 @@ namespace LifeSupport.States
 
         private void Music_RightArrow_Click(object sender, EventArgs e)
         {
-            if (musicIndex == 100)
+            if (musicIndex == 10)
             {
                 return;
             }
@@ -275,6 +275,5 @@ namespace LifeSupport.States
 
 
 
-        #endregion
     }
 }

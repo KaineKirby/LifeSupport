@@ -19,7 +19,7 @@ namespace LifeSupport.States
         // Check to see if the video resolution is changed
         public static bool isVideoChanged = false;
 
-        #region fields
+
         private List<Component> components;
         private SpriteFont textFont;
         private Vector2 resolutionTextPosition;
@@ -31,22 +31,20 @@ namespace LifeSupport.States
         private int dimensionsIndex;
         private string[] fullScreenOption = new string[] { "Disabled", "Enabled" };
         private int fullScreenIndex;
-        #endregion
 
-        #region properties
+
+
         public int Width { get; set; }
         public int Height { get; set; }
         public bool Fullscreen { get; set; }
-        #endregion
 
-        #region constructor
+
         public VideoSettingsState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
 
         }
-        #endregion
 
-        #region methods
+
 
 
         public override void Load()
@@ -113,7 +111,7 @@ namespace LifeSupport.States
             var applyChangesButton = new Button(btnTexture, btnText)
             {
                 CurrPosition = new Vector2(700, 950),
-                BtnText = "Apply Changes",
+                BtnText = "Save Changes",
             };
             applyChangesButton.Click += ApplyChangesButton_Click;
 
@@ -381,6 +379,6 @@ namespace LifeSupport.States
             return 0;
         }
 
-        #endregion
+
     }
 }

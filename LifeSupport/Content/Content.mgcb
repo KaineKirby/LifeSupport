@@ -39,6 +39,13 @@
 /processorParam:TextureFormat=Compressed
 /build:fonts/default_ui_18.spritefont
 
+#begin fonts/small_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/small_font.spritefont
+
 #begin img/background.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -99,6 +106,18 @@
 /processorParam:TextureFormat=Color
 /build:img/controls/blk_button_large.png
 
+#begin img/controls/smallBlackButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/controls/smallBlackButton.png
+
 #begin img/cursor.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -124,9 +143,28 @@
 /build:img/enemies/circle.png
 
 #begin img/menus/audioMenu.png
-/importer:
-/processor:
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
 /build:img/menus/audioMenu.png
+
+#begin img/menus/controlsMenu.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/menus/controlsMenu.png
 
 #begin img/menus/Main_Menu.png
 /importer:TextureImporter

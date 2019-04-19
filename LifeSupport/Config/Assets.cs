@@ -28,6 +28,7 @@ namespace LifeSupport.Config {
         public Texture2D optionsBackground;
         public Texture2D videoSettingsBackground;
         public Texture2D audioSettingsBackground;
+        public Texture2D controlSettingsBackground;
         public Texture2D player ;
         public Texture2D playerLegs ;
         public Texture2D barrier ;
@@ -40,10 +41,11 @@ namespace LifeSupport.Config {
         public Texture2D projectile;
         public Texture2D btnTexture;
         public Texture2D btnTextureLarge;
+        public Texture2D btnTextureSmall;
         public Texture2D leftArrowButton;
         public Texture2D rightArrowButton;
         public SpriteFont btnText;
-        public SpriteFont defText;
+        public SpriteFont smallText;
      
 
         // Alien Dog
@@ -61,6 +63,7 @@ namespace LifeSupport.Config {
             optionsBackground = game.Content.Load<Texture2D>("img/menus/optionsMenu");
             videoSettingsBackground = game.Content.Load<Texture2D>("img/menus/videoMenu");
             audioSettingsBackground = game.Content.Load<Texture2D>("img/menus/audioMenu");
+            controlSettingsBackground = game.Content.Load<Texture2D>("img/menus/controlsMenu");
             player = game.Content.Load<Texture2D>("img/player/player") ;
             playerLegs = game.Content.Load<Texture2D>("img/player/player_legs") ;
             barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;
@@ -73,7 +76,9 @@ namespace LifeSupport.Config {
             projectile = game.Content.Load<Texture2D>("img/objects/projectile");
             btnTexture = game.Content.Load<Texture2D>("img/controls/blk_button");
             btnTextureLarge = game.Content.Load<Texture2D>("img/controls/blk_button_large");
+            btnTextureSmall = game.Content.Load<Texture2D>("img/controls/smallBlackButton");
             btnText = game.Content.Load<SpriteFont>("fonts/default_ui_18");
+            smallText = game.Content.Load<SpriteFont>("fonts/small_Font");
             alienDog = game.Content.Load<Texture2D>("img/enemies/circle");
             leftArrowButton = game.Content.Load<Texture2D>("img/controls/arrowLeft");
             rightArrowButton = game.Content.Load<Texture2D>("img/controls/arrowRight");

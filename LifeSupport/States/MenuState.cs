@@ -30,9 +30,6 @@ namespace LifeSupport.States
             game.ChangeState(new OptionsState(game, graphDevice, content));
         }
 
-        private void ContinueGameBtn_Click(object sender, EventArgs e) {
-            Console.WriteLine("Continue Game");
-        }
 
         private void NewGameButton_Click(object sender, EventArgs e) {
             //Load gameplay state here
@@ -81,17 +78,11 @@ namespace LifeSupport.States
 
             newGameBtn.Click += NewGameButton_Click;
 
-            var continueGameBtn = new Button(btnTexture, btnText)
-            {
-                CurrPosition = new Vector2(200, 550),
-                BtnText = "Continue",
-            };
 
-            continueGameBtn.Click += ContinueGameBtn_Click;
 
             var optionsBtn = new Button(btnTexture, btnText)
             {
-                CurrPosition = new Vector2(200, 700),
+                CurrPosition = new Vector2(200, 550),
                 BtnText = "Settings",
             };
 
@@ -99,7 +90,7 @@ namespace LifeSupport.States
 
             var exitBtn = new Button(btnTexture, btnText)
             {
-                CurrPosition = new Vector2(200, 850),
+                CurrPosition = new Vector2(200, 700),
                 BtnText = "Exit",
             };
 
@@ -107,7 +98,6 @@ namespace LifeSupport.States
 
             components = new List<Component>() {
                 newGameBtn,
-                continueGameBtn,
                 optionsBtn,
                 exitBtn,
             };

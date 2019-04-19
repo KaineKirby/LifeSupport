@@ -255,7 +255,7 @@ namespace LifeSupport.Levels {
             int count = 1;
             for (int i = 0; i < jsonData.Barrier.Count; i++)
             {
-                if ((jsonData.Barrier[i].BarrierWidth > 30 && jsonData.Barrier[i].BarrierHeight > 30) ||
+                if (/*(jsonData.Barrier[i].BarrierWidth > 30 && jsonData.Barrier[i].BarrierHeight > 30) ||*/
                     jsonData.Barrier[i].BarrierWidth < 30 || jsonData.Barrier[i].BarrierHeight < 30 ||
                     (int)jsonData.Barrier[i].BarrierWidth % 30 != 0 || (int)jsonData.Barrier[i].BarrierHeight % 30 != 0 ||
                     jsonData.Barrier[i].BarrierWidth > Width - 120 || jsonData.Barrier[i].BarrierHeight > Height - 120 ||
@@ -281,7 +281,7 @@ namespace LifeSupport.Levels {
                         }
                         count = 1;
                     }
-                    else if (jsonBarrierSize.Y > 30)
+                    if (jsonBarrierSize.Y > 30)
                     {
                         jsonBarrierSize.Y -= 30;
                         while (jsonBarrierSize.Y > 0)

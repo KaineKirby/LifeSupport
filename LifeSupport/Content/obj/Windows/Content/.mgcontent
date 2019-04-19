@@ -7,14 +7,17 @@
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/crosshair.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/fonts/default_ui_18.spritefont</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/fonts/small_font.spritefont</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/background.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/controls/arrowLeft.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/controls/arrowRight.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/controls/blk_button.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/controls/blk_button_large.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/controls/smallBlackButton.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/cursor.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/enemies/circle.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/menus/audioMenu.png</File>
+    <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/menus/controlsMenu.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/menus/Main_Menu.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/menus/optionsMenu.png</File>
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/img/menus/videoMenu.png</File>
@@ -30,6 +33,9 @@
     <File>C:/Users/anton/Desktop/LifeSupport/LifeSupport/Content/square.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

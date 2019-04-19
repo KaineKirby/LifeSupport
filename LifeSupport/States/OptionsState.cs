@@ -34,7 +34,7 @@ namespace LifeSupport.States
 
     private void ControlsButton_Click(object sender, EventArgs e)
     {
-        
+            game.ChangeState(new ControlSettingsState(game, graphDevice, content));
     }
 
     private void MainMenuButton_Click(object sender, EventArgs e)

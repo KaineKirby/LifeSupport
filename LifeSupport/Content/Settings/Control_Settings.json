@@ -1,0 +1,8 @@
+{
+	"MoveUp": "W",
+	"MoveDown": "S",
+	"MoveLeft": "A",
+	"MoveRight": "D",
+	"OpenInventory": "I",
+	"PauseGame": "Escape",
+}

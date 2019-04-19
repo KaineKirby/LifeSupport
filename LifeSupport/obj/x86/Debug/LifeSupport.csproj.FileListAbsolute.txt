@@ -212,3 +212,6 @@ C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\Set
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\Settings\Video_Settings.json
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\Settings\Volume_Settings.json
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\audioMenu.xnb
+C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\controlsMenu.xnb
+C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\smallBlackButton.xnb
+C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\fonts\small_font.xnb

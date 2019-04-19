@@ -49,6 +49,7 @@
     <Compile Include="Levels\Level.cs" />
     <Compile Include="States\AudioSettingsState.cs" />
     <Compile Include="States\Component.cs" />
+    <Compile Include="States\ControlSettingsState.cs" />
     <Compile Include="States\Controls\Button.cs" />
     <Compile Include="GameObjects\AlienDog.cs" />
     <Compile Include="GameObjects\DoorV.cs" />

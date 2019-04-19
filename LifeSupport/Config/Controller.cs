@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using LifeSupport.Utilities;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace LifeSupport.Config {
         //all of our key controls
         //system
         public Keys PauseGame ;
+        public Keys OpenInventory;
 
         //movement
         public Keys MoveUp ;
@@ -42,14 +44,31 @@ namespace LifeSupport.Config {
 
         private Controller() {
 
-            Instance = this ;
-            
+            dynamic controllerData = JSONParser.ReadJsonFile("Content/Settings/Control_Settings.json");
+
             //this is temporary for now, explicitly set the keys rather then getting them from user configuration
-            this.PauseGame = Keys.Escape ;
-            this.MoveUp = Keys.W ;
-            this.MoveDown = Keys.S ;
-            this.MoveLeft = Keys.A ;
-            this.MoveRight = Keys.D ;
+            this.MoveUp = (Keys) controllerData.MoveUp ;
+            this.MoveDown = (Keys)controllerData.MoveDown;
+            this.MoveLeft = (Keys)controllerData.MoveLeft;
+            this.MoveRight = (Keys)controllerData.MoveRight;
+            this.OpenInventory = (Keys)controllerData.OpenInventory;
+            this.PauseGame= (Keys)controllerData.PauseGame;
+
+
+            Instance = this;
+
+        }
+
+
+        public void reloadControls()
+        {
+            dynamic controlData = JSONParser.ReadJsonFile("Content/Settings/Control_Settings.json");
+            this.MoveUp = (Keys)controlData.MoveUp;
+            this.MoveDown = (Keys)controlData.MoveDown;
+            this.MoveLeft = (Keys)controlData.MoveLeft;
+            this.MoveRight = (Keys)controlData.MoveRight;
+            this.OpenInventory = (Keys)controlData.OpenInventory;
+            this.PauseGame = (Keys)controlData.PauseGame;
 
         }
 

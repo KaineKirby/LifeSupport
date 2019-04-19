@@ -26,7 +26,9 @@ namespace LifeSupport.Controls
         public bool IsClicked { get; set; }
         public Color ThisColor { get; set; }
         public Vector2 CurrPosition { get; set; }
-     
+        public Texture2D picture { get; set; }
+        public String BtnText { get; set; }
+
         public Rectangle Rect {     
             get {
                 return new Rectangle((int)CurrPosition.X, (int)CurrPosition.Y, texture.Width, texture.Height);
@@ -35,8 +37,6 @@ namespace LifeSupport.Controls
             
         }
         
-    
-        public string BtnText { get; set; }
         #endregion
 
         #region Methods
@@ -44,6 +44,7 @@ namespace LifeSupport.Controls
             texture = BtnTexture;
             font = BtnFont;
             ThisColor = Color.White;
+            picture = BtnTexture;
         }
 
         public Button(Texture2D BtnTexture)
@@ -66,7 +67,6 @@ namespace LifeSupport.Controls
             if(!string.IsNullOrEmpty(BtnText)) {
                 var x = (Rect.X + (Rect.Width / 2)) - (font.MeasureString(BtnText).X / 2);
                 var y = (Rect.Y + (Rect.Height / 2)) - (font.MeasureString(BtnText).Y / 2);
-
                 spriteBatch.DrawString(font, BtnText, new Vector2(x, y), ThisColor);
             }       
         }
