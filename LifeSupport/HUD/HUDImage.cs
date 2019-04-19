@@ -13,12 +13,11 @@ namespace LifeSupport.HUD {
         private Texture2D image ;
         private Vector2 position ;
 
-        private Rectangle rect ;
+        public Rectangle rect ;
 
         public HUDImage(Texture2D image, Vector2 position) {
             this.image = image ;
             this.position = position ;
-
             this.rect = new Rectangle(0, 0, image.Width, image.Height) ;
         }
 

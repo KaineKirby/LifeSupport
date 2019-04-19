@@ -21,8 +21,6 @@ namespace LifeSupport.Levels {
         //an array of game objects
         public List<GameObject> Objects ;
 
-
-
         /* 
          * Every room contains a grid
          * This grid is a 2D array that stores the top left x and y coordinates of every tile on the grid

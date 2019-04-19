@@ -22,7 +22,7 @@ namespace LifeSupport.Levels {
         public List<Room> Rooms ;
         public Player player ;
 
-        private Room activeRoom ;
+        public Room activeRoom ;
 
         public Level() {
 

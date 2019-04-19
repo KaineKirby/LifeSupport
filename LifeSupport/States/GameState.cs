@@ -25,6 +25,7 @@ namespace LifeSupport.States
         private float scale ;
 
         private PlayerStatsHUD pHud ;
+        private MiniMap mMap ;
         //private PlayerWeaponHUD wHud ;
 
 
@@ -55,6 +56,7 @@ namespace LifeSupport.States
                 frames.Draw(hud, gameTime);
 
             pHud.Draw(hud) ;
+            mMap.Draw(hud) ;
             //wHud.Draw(hud) ;
 
             hud.End();
@@ -73,6 +75,7 @@ namespace LifeSupport.States
             Cursor.Instance.Update(gameTime);
 
             pHud.Update() ;
+            mMap.Update() ;
             //wHud.Update() ;
         }
 
@@ -92,6 +95,7 @@ namespace LifeSupport.States
             scale = (float)Settings.Instance.Width/1920 ;
 
             pHud = new PlayerStatsHUD(new Vector2(0, 900), player) ;
+            mMap = new MiniMap(new Vector2(1650, 100), new Rectangle(0, 0, 50, 50), level) ;
             //wHud = new PlayerWeaponHUD(new Vector2(1650, 800), player) ;
         }
        
