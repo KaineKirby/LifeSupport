@@ -38,7 +38,7 @@ namespace LifeSupport.Levels {
         public Grid gridTiles;
 
         //the player (to know whether player is in room or not)
-        private Player player ;
+        public Player player ;
 
 
         //whether the room has been defeated or not
@@ -299,7 +299,10 @@ namespace LifeSupport.Levels {
             {
                 Objects.Add(new AlienDog(player, new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed, (float)jsonData.AlienDog[i].Health, (float)jsonData.AlienDog[i].Damage));
             }
-
+            for (int i = 0; i < jsonData.AlienTurret.Count; i++)
+            {
+                Objects.Add(new AlienTurret(player, new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienTurret[i].Row)), this, (float)jsonData.AlienTurret[i].Speed, (float)jsonData.AlienTurret[i].Health, (float)jsonData.AlienTurret[i].Damage, (float)jsonData.AlienTurret[i].Range, (float)jsonData.AlienTurret[i].ShotSpeed, (float)jsonData.AlienTurret[i].RateOfFire));
+            }
         }
 
 

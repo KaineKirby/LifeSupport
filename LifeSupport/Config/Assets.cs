@@ -49,10 +49,11 @@ namespace LifeSupport.Config {
         public SpriteFont mediumText ;
      
 
-        // Alien Dog
+        // Enemies...
         public Texture2D alienDog;
-        
-        
+        public Texture2D alienTurret;
+
+
 
         private Assets() {
             instance = this ;
@@ -83,6 +84,7 @@ namespace LifeSupport.Config {
             mediumText = game.Content.Load<SpriteFont>("fonts/medium_font");
 
             alienDog = game.Content.Load<Texture2D>("img/enemies/circle");
+            alienTurret = game.Content.Load<Texture2D>("img/enemies/circle");
             leftArrowButton = game.Content.Load<Texture2D>("img/controls/arrowLeft");
             rightArrowButton = game.Content.Load<Texture2D>("img/controls/arrowRight");
         }

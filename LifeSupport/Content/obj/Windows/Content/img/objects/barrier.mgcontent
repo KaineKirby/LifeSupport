@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/barrier.png</SourceFile>
-  <SourceTime>2019-04-19T09:36:15.2277172-05:00</SourceTime>
-  <DestFile>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/bin/Windows/Content/img/objects/barrier.xnb</DestFile>
-  <DestTime>2019-04-19T09:36:47.4281933-05:00</DestTime>
+  <SourceFile>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/barrier.png</SourceFile>
+  <SourceTime>2019-04-19T15:23:48.1706118-05:00</SourceTime>
+  <DestFile>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/bin/Windows/Content/img/objects/barrier.xnb</DestFile>
+  <DestTime>2019-04-19T15:25:03.6334873-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

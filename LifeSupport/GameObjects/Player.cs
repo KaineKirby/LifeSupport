@@ -36,7 +36,7 @@ namespace LifeSupport.GameObjects {
         private float InvincibleTime ;
 
         //will probably be constant
-        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
+        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, .01f) {
 
             this.controller = Controller.Instance;
             this.GunBarrelPosition = new Point(960, 540) ;
@@ -62,8 +62,8 @@ namespace LifeSupport.GameObjects {
         //use the controller class to update the positions
         public override void UpdatePosition(GameTime gameTime) {
 
-            if (Cursor.Instance.IsLeftMouseDown() && TimeBeforeShooting == 0f)
-                Shoot() ;
+            if (Cursor.Instance.IsLeftMouseDown())
+                Shoot(Cursor.Instance.GetDirection(GunBarrelPosition)) ;
 
             //on the various vectors
             if (controller.IsMovingUp() && controller.IsMovingRight()) {
@@ -125,12 +125,7 @@ namespace LifeSupport.GameObjects {
 
         }
 
-        //shoots a projectile in the current room
-        protected override void Shoot() {
-            CurrentRoom.AddObject(new Projectile(Position, Cursor.Instance.GetDirection(GunBarrelPosition), Damage, ShotSpeed, Range, true, CurrentRoom)) ;
-            //call the base shoot to restrict firing
-            base.Shoot() ;
-        }
+        
 
         public override void OnHit(Projectile proj) {
             //if the player is able to get hit again

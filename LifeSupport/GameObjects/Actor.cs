@@ -114,9 +114,18 @@ namespace LifeSupport.GameObjects {
             
         }
 
-        protected virtual void Shoot() {
+        protected virtual void Shoot(Vector2 direction) {
+            bool isPlayer = false;
+            if (this is Player)
+            {
+                isPlayer = true;
+            }
             //set the time before shooting to rate of fire before counting down
-            this.TimeBeforeShooting = RateOfFire ;
+            if(TimeBeforeShooting == 0f)
+            {
+                CurrentRoom.AddObject(new Projectile(Position, direction, Damage, ShotSpeed, Range, isPlayer, CurrentRoom));
+                this.TimeBeforeShooting = RateOfFire;
+            }
         }
 
         //get the position of this actor on the room grid

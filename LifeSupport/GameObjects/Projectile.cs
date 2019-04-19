@@ -60,14 +60,18 @@ namespace LifeSupport.GameObjects
                             CurrentRoom.DestroyObject(this) ;
                     }
                     else {
-                        if (i < CurrentRoom.Objects.Count && CurrentRoom.Objects[i] is Player)
-                            ((Actor)CurrentRoom.Objects[i]).OnHit(this) ;
 
                         if (i < CurrentRoom.Objects.Count && !(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Enemy))
                             CurrentRoom.DestroyObject(this) ;
                     }
 
                 }
+            }
+
+            if (CurrentRoom.player.IsInside(this) && !isPlayer)
+            {
+                CurrentRoom.player.OnHit(this);
+                CurrentRoom.DestroyObject(this);
             }
 
         }
