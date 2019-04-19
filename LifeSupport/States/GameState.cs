@@ -24,7 +24,8 @@ namespace LifeSupport.States
 
         private float scale ;
 
-        private PlayerHUD pHud ;
+        private PlayerStatsHUD pHud ;
+        //private PlayerWeaponHUD wHud ;
 
 
         public GameState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content) {
@@ -54,6 +55,7 @@ namespace LifeSupport.States
                 frames.Draw(hud, gameTime);
 
             pHud.Draw(hud) ;
+            //wHud.Draw(hud) ;
 
             hud.End();
         }
@@ -71,6 +73,7 @@ namespace LifeSupport.States
             Cursor.Instance.Update(gameTime);
 
             pHud.Update() ;
+            //wHud.Update() ;
         }
 
         public override void Load()
@@ -88,7 +91,8 @@ namespace LifeSupport.States
 
             scale = (float)Settings.Instance.Width/1920 ;
 
-            pHud = new PlayerHUD(new Vector2(0,0), player) ;
+            pHud = new PlayerStatsHUD(new Vector2(0, 900), player) ;
+            //wHud = new PlayerWeaponHUD(new Vector2(1650, 800), player) ;
         }
        
     }

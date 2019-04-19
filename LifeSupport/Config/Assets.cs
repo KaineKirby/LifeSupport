@@ -47,6 +47,8 @@ namespace LifeSupport.Config {
         public SpriteFont btnText;
         public SpriteFont smallText;
         public SpriteFont mediumText ;
+        public Texture2D healthIcon ;
+        public Texture2D speedIcon ;
      
 
         // Alien Dog
@@ -85,6 +87,11 @@ namespace LifeSupport.Config {
             alienDog = game.Content.Load<Texture2D>("img/enemies/circle");
             leftArrowButton = game.Content.Load<Texture2D>("img/controls/arrowLeft");
             rightArrowButton = game.Content.Load<Texture2D>("img/controls/arrowRight");
+
+            //HUD
+            healthIcon = game.Content.Load<Texture2D>("img/hud/health") ;
+            speedIcon = game.Content.Load<Texture2D>("img/hud/speed") ;
+
         }
 
     }

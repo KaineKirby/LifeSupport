@@ -42,7 +42,7 @@ namespace LifeSupport.Levels {
 
 
         //whether the room has been defeated or not
-        private bool isBeaten ;
+        public bool IsBeaten ;
 
         //the width and height of the room in pixels
         public static int Width = 1920 ;
@@ -66,7 +66,7 @@ namespace LifeSupport.Levels {
         public Room(Player player, int startX, int startY, int roomId, Point coordinate) {
 
             this.player = player ;
-            this.isBeaten = false ;
+            this.IsBeaten = false ;
             this.roomId = roomId ;
             this.coordinate = coordinate ; 
             
@@ -110,8 +110,10 @@ namespace LifeSupport.Levels {
         {
             Objects.Remove(obj);
             //if all the enemies are gone we can open all the doors in the room
-            if (!HasEnemies())
+            if (!HasEnemies()) {
                 OpenAllDoors() ;
+                IsBeaten = true ;
+            }
         }
 
         public void AddObject(GameObject obj) {

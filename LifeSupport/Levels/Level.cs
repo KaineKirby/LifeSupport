@@ -19,7 +19,7 @@ namespace LifeSupport.Levels {
         private static int maxRooms = 20 ;
         
         //all the rooms in the level and the player
-        private List<Room> Rooms ;
+        public List<Room> Rooms ;
         public Player player ;
 
         private Room activeRoom ;
@@ -39,7 +39,7 @@ namespace LifeSupport.Levels {
             
             //start with beginning room
             player = new Player() ;
-            Room start = new Room(player, 0, 0, 0, new Point(0,0)) ; //id of 0 is empty room
+            Room start = new Room(player, 0, 0, 0, new Point(0, 0)) ; //id of 0 is empty room
             activeRoom = start ;
             player.CurrentRoom = start ;
             player.Position = new Vector2(start.StartX + Room.Width/2, start.StartY + Room.Height/2) ;
