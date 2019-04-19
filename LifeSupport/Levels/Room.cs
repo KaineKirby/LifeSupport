@@ -28,8 +28,6 @@ namespace LifeSupport.Levels {
          */
         public Point[,] gridPoints;
 
-
-
         /* This grid is created using the RoyT.AStar Library
          * This grid is used to implement pathfinding for enemies.
          */

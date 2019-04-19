@@ -365,14 +365,20 @@
 /processorParam:TextureFormat=Color
 /build:img/player/player_legs.png
 
-#begin RoomPrefabs/Room0.json
-/copy:RoomPrefabs/Room0.json
+#begin RoomPrefabs/Level1/Room0.json
+/copy:RoomPrefabs/Level1/Room0.json
 
-#begin RoomPrefabs/Room1.json
-/copy:RoomPrefabs/Room1.json
+#begin RoomPrefabs/Level1/Room1.json
+/copy:RoomPrefabs/Level1/Room1.json
 
-#begin RoomPrefabs/Room2.json
-/copy:RoomPrefabs/Room2.json
+#begin RoomPrefabs/Level1/Room2.json
+/copy:RoomPrefabs/Level1/Room2.json
+
+#begin RoomPrefabs/Level2/Room0.json
+/copy:RoomPrefabs/Level2/Room0.json
+
+#begin RoomPrefabs/Level2/Room1.json
+/copy:RoomPrefabs/Level2/Room1.json
 
 #begin Settings/Control_Settings.json
 /copy:Settings/Control_Settings.json

@@ -11,6 +11,7 @@ using LifeSupport.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace LifeSupport.States
 {
@@ -69,6 +70,9 @@ namespace LifeSupport.States
         public override void Update(GameTime gameTime) {
             if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame))
                 game.Exit();
+            else if (Controller.Instance.IsKeyDown(Keys.Z)) {
+                level.NextLevel() ;
+            }
 
             level.UpdateRooms(gameTime) ;
 
