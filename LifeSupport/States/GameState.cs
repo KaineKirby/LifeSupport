@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LifeSupport.Config;
 using LifeSupport.GameObjects;
+using LifeSupport.HUD;
 using LifeSupport.Levels;
 using LifeSupport.Utilities;
 using Microsoft.Xna.Framework;
@@ -22,6 +23,8 @@ namespace LifeSupport.States
         private Level level ;
 
         private float scale ;
+
+        private PlayerHUD pHud ;
 
 
         public GameState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content) {
@@ -49,6 +52,9 @@ namespace LifeSupport.States
             //render the FPS counter if it is enabled
             if (Settings.Instance.ShowFps)
                 frames.Draw(hud, gameTime);
+
+            pHud.Draw(hud) ;
+
             hud.End();
         }
 
@@ -63,6 +69,8 @@ namespace LifeSupport.States
             level.UpdateRooms(gameTime) ;
 
             Cursor.Instance.Update(gameTime);
+
+            pHud.Update() ;
         }
 
         public override void Load()
@@ -79,6 +87,8 @@ namespace LifeSupport.States
                 frames = new FrameCounter(game);
 
             scale = (float)Settings.Instance.Width/1920 ;
+
+            pHud = new PlayerHUD(new Vector2(0,0), player) ;
         }
        
     }

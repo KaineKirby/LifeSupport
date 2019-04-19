@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="GameObjects\Door.cs" />
     <Compile Include="GameObjects\DoorH.cs" />
+    <Compile Include="HUD\PlayerHUD.cs" />
+    <Compile Include="HUD\HUDElement.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="States\AudioSettingsState.cs" />
     <Compile Include="States\Component.cs" />

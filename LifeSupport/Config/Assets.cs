@@ -46,6 +46,7 @@ namespace LifeSupport.Config {
         public Texture2D rightArrowButton;
         public SpriteFont btnText;
         public SpriteFont smallText;
+        public SpriteFont mediumText ;
      
 
         // Alien Dog
@@ -79,6 +80,8 @@ namespace LifeSupport.Config {
             btnTextureSmall = game.Content.Load<Texture2D>("img/controls/smallBlackButton");
             btnText = game.Content.Load<SpriteFont>("fonts/default_ui_18");
             smallText = game.Content.Load<SpriteFont>("fonts/small_Font");
+            mediumText = game.Content.Load<SpriteFont>("fonts/medium_font");
+
             alienDog = game.Content.Load<Texture2D>("img/enemies/circle");
             leftArrowButton = game.Content.Load<Texture2D>("img/controls/arrowLeft");
             rightArrowButton = game.Content.Load<Texture2D>("img/controls/arrowRight");
