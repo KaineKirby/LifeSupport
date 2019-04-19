@@ -17,29 +17,36 @@ namespace LifeSupport.Levels {
         //constants for the min/max number of rooms
         private static int minRooms = 10 ;
         private static int maxRooms = 20 ;
+        private int CurrentLevel ;
         
         //all the rooms in the level and the player
-        private List<Room> Rooms ;
+        public List<Room> Rooms ;
         public Player player ;
 
-        private Room activeRoom ;
+        public Room activeRoom ;
 
         public Level() {
 
-            this.Rooms = new List<Room>() ;
+            CurrentLevel = 0 ;
 
-            GenerateLevel() ;
+            player = new Player() ;
+
+            NextLevel() ;
 
         }
         
         //generate a level and place the player in the starting room
-        private void GenerateLevel() {
+        public void NextLevel() {
+
+            this.Rooms = new List<Room>() ;
+
+            //current level increment
+            CurrentLevel++ ;
 
             //first we place all of the rooms down with no doors
             
             //start with beginning room
-            player = new Player() ;
-            Room start = new Room(player, 0, 0, 0, new Point(0,0)) ; //id of 0 is empty room
+            Room start = new Room(player, 0, 0, 0, new Point(0, 0)) ; //id of 0 is empty room
             activeRoom = start ;
             player.CurrentRoom = start ;
             player.Position = new Vector2(start.StartX + Room.Width/2, start.StartY + Room.Height/2) ;
@@ -48,14 +55,14 @@ namespace LifeSupport.Levels {
             int numRooms = RandomGenerator.Instance.GetRandomIntRange(minRooms, maxRooms) ;
 
             //number of rooms in pool
-            string[] files = Directory.GetFiles("Content/RoomPrefabs/") ;
+            string[] files = Directory.GetFiles("Content/RoomPrefabs/Level"+CurrentLevel) ;
             int pool = files.Length-1 ;
 
             foreach (string file in files) {
                 Console.WriteLine("File: " + file) ;
             }
 
-            Console.WriteLine("Choosing from a room pool of " + pool + files[2]) ;
+            Console.WriteLine("Choosing from a room pool of " + pool) ;
             
             //till we have reach the number of rooms we have generated for this level
             for (int i = 0 ; i < numRooms ;) {

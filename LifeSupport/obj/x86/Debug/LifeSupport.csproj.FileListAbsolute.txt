@@ -291,3 +291,12 @@ C:\Users\kaine\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSu
 C:\Users\kaine\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csproj.CopyComplete
 C:\Users\kaine\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.exe
 C:\Users\kaine\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.pdb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\hud\health.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\hud\speed.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\hud\active_room.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\hud\beaten_room.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Level1\Room0.json
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Level1\Room1.json
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Level1\Room2.json
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Level2\Room0.json
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Level2\Room1.json

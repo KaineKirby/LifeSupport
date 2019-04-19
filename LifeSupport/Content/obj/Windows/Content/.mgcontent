@@ -4,36 +4,44 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/crosshair.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/fonts/default_ui_18.spritefont</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/fonts/medium_font.spritefont</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/fonts/small_font.spritefont</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/background.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/controls/arrowLeft.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/controls/arrowRight.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/controls/blk_button.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/controls/blk_button_large.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/controls/smallBlackButton.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/cursor.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/enemies/circle.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/menus/audioMenu.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/menus/controlsMenu.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/menus/Main_Menu.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/menus/optionsMenu.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/menus/videoMenu.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/closed_door.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/closed_door_h.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/floor_tile.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/open_door.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/open_door_h.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/objects/projectile.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/player/player.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/player/player_legs.png</File>
-    <File>C:/Users/kaine/VisualStudioProjects/LifeSupport/LifeSupport/Content/square.jpg</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/crosshair.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui_18.spritefont</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/medium_font.spritefont</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/small_font.spritefont</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/background.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/arrowLeft.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/arrowRight.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/blk_button.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/blk_button_large.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/smallBlackButton.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/cursor.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/circle.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/active_room.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/beaten_room.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/health.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/speed.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/audioMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/controlsMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/Main_Menu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/optionsMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/videoMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/closed_door.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/closed_door_h.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/floor_tile.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/open_door.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/open_door_h.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/projectile.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player_legs.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/square.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

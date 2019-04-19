@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LifeSupport.HUD {
-    class HUDElement {
+    class HUDString {
 
         private Vector2 position ;
         private string text ;
         private Color color ;
 
         
-        public HUDElement(string text, Color color, Vector2 position) {
+        public HUDString(string text, Color color, Vector2 position) {
             this.text = text ;
             this.color = color ;
             this.position = position ;

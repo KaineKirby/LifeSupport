@@ -47,8 +47,11 @@
     <Compile Include="GameObjects\AlienTurret.cs" />
     <Compile Include="GameObjects\Door.cs" />
     <Compile Include="GameObjects\DoorH.cs" />
-    <Compile Include="HUD\PlayerHUD.cs" />
-    <Compile Include="HUD\HUDElement.cs" />
+    <Compile Include="HUD\HUDImage.cs" />
+    <Compile Include="HUD\MiniMap.cs" />
+    <Compile Include="HUD\PlayerStatsHUD.cs" />
+    <Compile Include="HUD\HUDString.cs" />
+    <Compile Include="HUD\PlayerWeaponHUD.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="States\AudioSettingsState.cs" />
     <Compile Include="States\Component.cs" />

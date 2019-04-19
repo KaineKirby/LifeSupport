@@ -47,6 +47,10 @@ namespace LifeSupport.Config {
         public SpriteFont btnText;
         public SpriteFont smallText;
         public SpriteFont mediumText ;
+        public Texture2D healthIcon ;
+        public Texture2D speedIcon ;
+        public Texture2D activeRoom ;
+        public Texture2D beatenRoom ;
      
 
         // Enemies...
@@ -87,6 +91,13 @@ namespace LifeSupport.Config {
             alienTurret = game.Content.Load<Texture2D>("img/enemies/circle");
             leftArrowButton = game.Content.Load<Texture2D>("img/controls/arrowLeft");
             rightArrowButton = game.Content.Load<Texture2D>("img/controls/arrowRight");
+
+            //HUD
+            healthIcon = game.Content.Load<Texture2D>("img/hud/health") ;
+            speedIcon = game.Content.Load<Texture2D>("img/hud/speed") ;
+            activeRoom = game.Content.Load<Texture2D>("img/hud/active_room") ;
+            beatenRoom = game.Content.Load<Texture2D>("img/hud/beaten_room") ;
+
         }
 
     }

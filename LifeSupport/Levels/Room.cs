@@ -21,16 +21,12 @@ namespace LifeSupport.Levels {
         //an array of game objects
         public List<GameObject> Objects ;
 
-
-
         /* 
          * Every room contains a grid
          * This grid is a 2D array that stores the top left x and y coordinates of every tile on the grid
          * The purpose of this grid is to place objects into the room with json files
          */
         public Point[,] gridPoints;
-
-
 
         /* This grid is created using the RoyT.AStar Library
          * This grid is used to implement pathfinding for enemies.
@@ -42,7 +38,7 @@ namespace LifeSupport.Levels {
 
 
         //whether the room has been defeated or not
-        private bool isBeaten ;
+        public bool IsBeaten ;
 
         //the width and height of the room in pixels
         public static int Width = 1920 ;
@@ -66,7 +62,7 @@ namespace LifeSupport.Levels {
         public Room(Player player, int startX, int startY, int roomId, Point coordinate) {
 
             this.player = player ;
-            this.isBeaten = false ;
+            this.IsBeaten = false ;
             this.roomId = roomId ;
             this.coordinate = coordinate ; 
             
@@ -110,8 +106,10 @@ namespace LifeSupport.Levels {
         {
             Objects.Remove(obj);
             //if all the enemies are gone we can open all the doors in the room
-            if (!HasEnemies())
+            if (!HasEnemies()) {
                 OpenAllDoors() ;
+                IsBeaten = true ;
+            }
         }
 
         public void AddObject(GameObject obj) {

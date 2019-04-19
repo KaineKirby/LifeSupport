@@ -1,0 +1,28 @@
+{
+  "Barrier": [
+    {
+      "Row": 11,
+      "Column": 6,
+      "BarrierWidth": 1200,
+      "BarrierHeight": 30
+    },
+    {
+      "Row": 12,
+      "Column": 6,
+      "BarrierWidth": 30,
+      "BarrierHeight": 360
+    }
+
+
+  ],
+
+  "AlienDog": [
+    {
+      "Row": 25,
+      "Column": 15,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    }
+  ]
+}
