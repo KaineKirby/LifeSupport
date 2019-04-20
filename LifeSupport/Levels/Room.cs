@@ -254,7 +254,7 @@ namespace LifeSupport.Levels {
             // Read in a json file with a barrier object
             dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/Level" + difficulty + "/Room" + roomId + ".json");
             int count = 1;
-            for (int i = 0; i < jsonData.Barrier.Count; i++)
+            for (int i = 0; jsonData.Barrier != null && i < jsonData.Barrier.Count; i++)
             {
                 if (/*(jsonData.Barrier[i].BarrierWidth > 30 && jsonData.Barrier[i].BarrierHeight > 30) ||*/
                     jsonData.Barrier[i].BarrierWidth < 30 || jsonData.Barrier[i].BarrierHeight < 30 ||
@@ -296,14 +296,15 @@ namespace LifeSupport.Levels {
                 }
             }
 
-            for(int i = 0; i < jsonData.AlienDog.Count;i++)
+            for(int i = 0; jsonData.AlienDog != null && i < jsonData.AlienDog.Count;i++)
             {
                 Objects.Add(new AlienDog(player, new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed, (float)jsonData.AlienDog[i].Health, (float)jsonData.AlienDog[i].Damage));
             }
-            for (int i = 0; i < jsonData.AlienTurret.Count; i++)
+            for (int i = 0; jsonData.AlienTurret != null && i < jsonData.AlienTurret.Count; i++)
             {
                 Objects.Add(new AlienTurret(player, new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienTurret[i].Row)), this, (float)jsonData.AlienTurret[i].Speed, (float)jsonData.AlienTurret[i].Health, (float)jsonData.AlienTurret[i].Damage, (float)jsonData.AlienTurret[i].Range, (float)jsonData.AlienTurret[i].ShotSpeed, (float)jsonData.AlienTurret[i].RateOfFire));
             }
+
         }
 
 

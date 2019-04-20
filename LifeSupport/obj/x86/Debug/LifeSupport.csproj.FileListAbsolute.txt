@@ -297,3 +297,7 @@ C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Conte
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Level1\Room2.json
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Level2\Room0.json
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Level2\Room1.json
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\pauseMenu.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Room0.json
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Room1.json
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Room2.json
