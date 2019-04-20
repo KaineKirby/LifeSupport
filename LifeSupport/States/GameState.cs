@@ -69,8 +69,11 @@ namespace LifeSupport.States
 
         public override void Update(GameTime gameTime) {
             if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame))
-                game.Exit();
-            else if (Controller.Instance.IsKeyDown(Keys.Z)) {
+            {
+                game.ChangeState(new PauseState(game, graphDevice, content));
+
+            }
+            if (Controller.Instance.IsKeyDown(Keys.Z)) {
                 level.NextLevel() ;
             }
 

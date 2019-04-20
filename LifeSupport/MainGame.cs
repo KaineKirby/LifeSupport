@@ -24,14 +24,20 @@ namespace LifeSupport
         public SpriteBatch bg;
         public SpriteBatch hud;
 
-
+        private State prevState;
         private State currState;
         private State nextState;
 
         public void ChangeState(State state)
         {
+            prevState = currState;
             nextState = state;
             nextState.Load();
+        }
+
+        public void returnToGame(State state)
+        {
+            nextState = prevState;
         }
 
 

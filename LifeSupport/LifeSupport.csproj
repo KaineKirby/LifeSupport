@@ -65,6 +65,7 @@
     <Compile Include="States\GameState.cs" />
     <Compile Include="States\MenuState.cs" />
     <Compile Include="States\OptionsState.cs" />
+    <Compile Include="States\PauseState.cs" />
     <Compile Include="States\State.cs" />
     <Compile Include="States\VideoSettingsState.cs" />
     <Compile Include="Utilities\FrameCounter.cs" />
