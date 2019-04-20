@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</SourceFile>
-  <SourceTime>2019-04-19T09:36:15.1964755-05:00</SourceTime>
+  <SourceTime>2019-04-19T19:09:28.4499016-05:00</SourceTime>
   <DestFile>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/bin/Windows/Content/fonts/default_ui.xnb</DestFile>
-  <DestTime>2019-04-19T23:39:59.9554096-05:00</DestTime>
+  <DestTime>2019-04-20T12:15:07.6453619-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

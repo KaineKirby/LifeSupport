@@ -53,24 +53,29 @@ namespace LifeSupport.Levels {
         // This means the room is 1920x1080
         public const int SquareTileLength = 30 ;
 
-        //booleans corresponding to whether or not there is a door on that side of the wall
-        private int roomId ;
-        private int difficulty ;
+        //the prefab file path
+        private string filepath ;
         public enum DoorSpot {Top, Bottom, Left, Right} ;
         //the coordinate of the room on the level grid
         public Point coordinate ;
 
-        public Room(Player player, int startX, int startY, int roomId, int difficulty, Point coordinate) {
+        //the current level
+        private Level level ;
+
+        //whether or not the room will drop a keycard
+        public bool DropsCard ;
+
+        public Room(Player player, Level level, int startX, int startY, string filepath, Point coordinate, bool dropsCard = false) {
 
             this.player = player ;
             this.IsBeaten = false ;
-            this.roomId = roomId ;
             this.coordinate = coordinate ; 
+            this.filepath = filepath ;
+            this.level = level ;
             
             this.StartX = startX ;
             this.StartY = startY ;
 
-            this.difficulty = difficulty ;
 
             this.Objects = new List<GameObject>() ;
 
@@ -82,6 +87,8 @@ namespace LifeSupport.Levels {
 
             // Grid is used for pathfinding
             this.gridTiles = new Grid(36, 64);
+
+            this.DropsCard = dropsCard ;
 
             FillRoom();
         }
@@ -110,13 +117,39 @@ namespace LifeSupport.Levels {
             Objects.Remove(obj);
             //if all the enemies are gone we can open all the doors in the room
             if (!HasEnemies()) {
-                OpenAllDoors() ;
-                IsBeaten = true ;
+                OnRoomComplete() ;
             }
         }
 
         public void AddObject(GameObject obj) {
             Objects.Add(obj) ;
+        }
+
+        //called when the room is beaten
+        private void OnRoomComplete() {
+            //roll for a chance to drop an item
+
+            int roll = RandomGenerator.Instance.GetRandomIntRange(0, 7) ;
+
+            //25 percent chance to drop some money
+            if (roll == 0 && !IsBeaten) {
+                Console.WriteLine("Dropped money") ;
+                int amount = RandomGenerator.Instance.GetRandomIntRange((level.CurLevel-1)*10 + 1, (level.CurLevel-1)*10 + 10) ;
+                AddObject(new Money(new Vector2(StartX + 960, StartY + 540), player, this, amount)) ;
+            }
+            else if (roll == 1 && !IsBeaten) {
+                Console.WriteLine("Dropped health") ;
+                AddObject(new Health(new Vector2(StartX + 960, StartY + 540), player, this)) ;
+            }
+
+            //drop the keycard if the room is designated to do so
+            if (!IsBeaten && DropsCard) {
+                Console.WriteLine("Dropped keycard") ;
+                AddObject(new Keycard(new Vector2(StartX + 960, StartY + 600), player, this, level)) ;
+            }
+
+            OpenAllDoors() ;
+            IsBeaten = true ;
         }
 
 
@@ -252,63 +285,66 @@ namespace LifeSupport.Levels {
 
 
             // Read in a json file with a barrier object
-            dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/Level" + difficulty + "/Room" + roomId + ".json");
+            dynamic jsonData = JSONParser.ReadJsonFile(filepath);
+
             int count = 1;
-            for (int i = 0; jsonData.Barrier != null && i < jsonData.Barrier.Count; i++)
-            {
-                if (/*(jsonData.Barrier[i].BarrierWidth > 30 && jsonData.Barrier[i].BarrierHeight > 30) ||*/
-                    jsonData.Barrier[i].BarrierWidth < 30 || jsonData.Barrier[i].BarrierHeight < 30 ||
-                    (int)jsonData.Barrier[i].BarrierWidth % 30 != 0 || (int)jsonData.Barrier[i].BarrierHeight % 30 != 0 ||
-                    jsonData.Barrier[i].BarrierWidth > Width - 120 || jsonData.Barrier[i].BarrierHeight > Height - 120 ||
-                    jsonData.Barrier[i].Row >= gridPoints.GetLength(0) || jsonData.Barrier[i].Column >= gridPoints.GetLength(1) ||
-                    jsonData.Barrier[i].Row < 0 || jsonData.Barrier[i].Column < 0)  {
+            for (int i = 0; jsonData.Barrier != null && i < jsonData.Barrier.Count; i++) {
 
-                    continue;
-                }
-                else  {
-                    Point jsonBarrierSize = new Point((int)jsonData.Barrier[i].BarrierWidth, (int)jsonData.Barrier[i].BarrierHeight);
-                    Objects.Add(new Barrier(new Rectangle(gridPoints[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column], jsonBarrierSize)));
+                Point jsonBarrierSize = new Point((int)(jsonData.Barrier[i].BarrierWidth*30), ((int)jsonData.Barrier[i].BarrierHeight*30));
+                Objects.Add(new Barrier(new Rectangle(gridPoints[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column], jsonBarrierSize)));
 
-                    gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row, (int)jsonData.Barrier[i].Column));
+                gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row, (int)jsonData.Barrier[i].Column));
 
-                    if (jsonBarrierSize.X > 30)
+                if (jsonBarrierSize.X > 30)
+                {
+                    jsonBarrierSize.X -= 30;
+                    while (jsonBarrierSize.X > 0)
                     {
+                        gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row, (int)jsonData.Barrier[i].Column + count));
                         jsonBarrierSize.X -= 30;
-                        while (jsonBarrierSize.X > 0)
-                        {
-                            gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row, (int)jsonData.Barrier[i].Column + count));
-                            jsonBarrierSize.X -= 30;
-                            count++;
-                        }
-                        count = 1;
+                        count++;
                     }
-                    if (jsonBarrierSize.Y > 30)
-                    {
-                        jsonBarrierSize.Y -= 30;
-                        while (jsonBarrierSize.Y > 0)
-                        {
-                            gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row + count, (int)jsonData.Barrier[i].Column)); 
-                            jsonBarrierSize.Y -= 30;
-                            count++;
-                        }
-                        count = 1;
-                    }
+                    count = 1;
                 }
+                if (jsonBarrierSize.Y > 30)
+                {
+                    jsonBarrierSize.Y -= 30;
+                    while (jsonBarrierSize.Y > 0)
+                    {
+                        gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row + count, (int)jsonData.Barrier[i].Column)); 
+                        jsonBarrierSize.Y -= 30;
+                        count++;
+                    }
+                    count = 1;
+                }
+
             }
 
-            for(int i = 0; jsonData.AlienDog != null && i < jsonData.AlienDog.Count;i++)
-            {
-                Objects.Add(new AlienDog(player, new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), this, (float)jsonData.AlienDog[i].Speed, (float)jsonData.AlienDog[i].Health, (float)jsonData.AlienDog[i].Damage));
+            for(int i = 0; jsonData.AlienDog != null && i < jsonData.AlienDog.Count;i++) {
+                Objects.Add(new AlienDog(player, 
+                    new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), 
+                    StartY + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), 
+                    this, (float)jsonData.AlienDog[i].Speed, 
+                    (float)jsonData.AlienDog[i].Health, 
+                    (float)jsonData.AlienDog[i].Damage));
             }
-            for (int i = 0; jsonData.AlienTurret != null && i < jsonData.AlienTurret.Count; i++)
-            {
-                Objects.Add(new AlienTurret(player, new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienTurret[i].Row)), this, (float)jsonData.AlienTurret[i].Speed, (float)jsonData.AlienTurret[i].Health, (float)jsonData.AlienTurret[i].Damage, (float)jsonData.AlienTurret[i].Range, (float)jsonData.AlienTurret[i].ShotSpeed, (float)jsonData.AlienTurret[i].RateOfFire));
+            for (int i = 0; jsonData.AlienTurret != null && i < jsonData.AlienTurret.Count; i++) {
+                Objects.Add(new AlienTurret(player, 
+                    new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienTurret[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienTurret[i].Row)), 
+                    this, 
+                    (float)jsonData.AlienTurret[i].Speed, 
+                    (float)jsonData.AlienTurret[i].Health, 
+                    (float)jsonData.AlienTurret[i].Damage, 
+                    (float)jsonData.AlienTurret[i].Range, 
+                    (float)jsonData.AlienTurret[i].ShotSpeed, 
+                    (float)jsonData.AlienTurret[i].RateOfFire));
+            }
+            for (int i = 0 ; jsonData.OxygenTank != null && i < jsonData.OxygenTank.Count ; i++) {
+                Objects.Add(new OxygenTank(new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.OxygenTank[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.OxygenTank[i].Row)),
+                    level, this, player)) ;
             }
 
         }
-
-
-
 
     }
 

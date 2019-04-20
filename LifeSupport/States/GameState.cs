@@ -68,13 +68,9 @@ namespace LifeSupport.States
         }
 
         public override void Update(GameTime gameTime) {
-            if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame))
-            {
+            if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame)) {
                 game.ChangeState(new PauseState(game, graphDevice, content));
 
-            }
-            if (Controller.Instance.IsKeyDown(Keys.Z)) {
-                level.NextLevel() ;
             }
 
             level.UpdateRooms(gameTime) ;
@@ -101,7 +97,7 @@ namespace LifeSupport.States
 
             scale = (float)Settings.Instance.Width/1920 ;
 
-            pHud = new PlayerStatsHUD(new Vector2(0, 900), player) ;
+            pHud = new PlayerStatsHUD(new Vector2(0, 850), player) ;
             mMap = new MiniMap(new Vector2(1650, 100), new Rectangle(0, 0, 50, 50), level) ;
             //wHud = new PlayerWeaponHUD(new Vector2(1650, 800), player) ;
         }

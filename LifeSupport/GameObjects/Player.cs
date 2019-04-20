@@ -17,8 +17,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace LifeSupport.GameObjects {
 
-   public class Player : Actor
-    {
+   public class Player : Actor {
         //the controller instance since the player will be manipulated with controls
         private readonly Controller controller;
 
@@ -35,6 +34,11 @@ namespace LifeSupport.GameObjects {
         private static float InvincibleMaxTime = 1.5f ;
         private float InvincibleTime ;
 
+        //the money the player has
+        public int Money ;
+
+        public bool HasCard ;
+
         //will probably be constant
         public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, .01f) {
 
@@ -50,6 +54,9 @@ namespace LifeSupport.GameObjects {
             this.legRotation = 0 ;
 
             this.InvincibleTime = 0f ;
+
+            this.Money = 0 ;
+            this.HasCard = false ;
 
         }
 

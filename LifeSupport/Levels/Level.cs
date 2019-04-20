@@ -12,15 +12,25 @@ using static LifeSupport.Levels.Room;
 
 namespace LifeSupport.Levels {
 
-    class Level {
+    public class Level {
 
         //constants for the min/max number of rooms
         private static int minRooms = 10 ;
         private static int maxRooms = 20 ;
         private int CurrentLevel ;
+
+        public int CurLevel {
+            get {
+                return CurrentLevel ;
+            }
+            private set {
+                CurrentLevel = value ;
+            }
+        }
         
         //all the rooms in the level and the player
         public List<Room> Rooms ;
+        public Room ChallengeRoom ;
         public Player player ;
 
         public Room activeRoom ;
@@ -46,9 +56,10 @@ namespace LifeSupport.Levels {
             //first we place all of the rooms down with no doors
             
             //start with beginning room
-            Room start = new Room(player, 0, 0, 0, CurrentLevel, new Point(0, 0)) ; //id of 0 is empty room
+            Room start = new Room(player, this, 0, 0, "Content/RoomPrefabs/Level"+CurrentLevel+"/Room0.json", new Point(0, 0)) ; //id of 0 is empty room
             activeRoom = start ;
             player.CurrentRoom = start ;
+            player.HasCard = false ;
             player.Position = new Vector2(start.StartX + Room.Width/2, start.StartY + Room.Height/2) ;
             Rooms.Add(start) ; //add start to the list
 
@@ -64,7 +75,7 @@ namespace LifeSupport.Levels {
 
             Console.WriteLine("Choosing from a room pool of " + pool) ;
             
-            //till we have reach the number of rooms we have generated for this level
+            //till we have reach the number of rooms we have generated for this level and add the "boss" room at the last step
             for (int i = 0 ; i < numRooms ;) {
                 //select a random room from the room list
                 Room curRoom = Rooms[RandomGenerator.Instance.GetRandomIntRange(0, Rooms.Count-1)] ;
@@ -92,9 +103,20 @@ namespace LifeSupport.Levels {
                 }
 
                 //if that coordinate is not chosen then we can place a room there
-                if (GetRoomAtCoordinate(curCoord) == null) {
-                    Rooms.Add(new Room(player, curCoord.X*Room.Width, curCoord.Y*Room.Height, chosenId, CurrentLevel, curCoord)) ;
+                if (GetRoomAtCoordinate(curCoord) == null && i < numRooms-1) {
                     Console.WriteLine("Using room prefab from " + files[chosenId]) ;
+                    Rooms.Add(new Room(player, this, curCoord.X*Room.Width, curCoord.Y*Room.Height, "Content/RoomPrefabs/Level"+CurrentLevel+"/Room"+chosenId+".json", curCoord)) ;
+                    i++ ;
+                }
+                else if (GetRoomAtCoordinate(curCoord) == null && i == numRooms-1) {
+
+                    //number of rooms in challenge pool
+                    string[] challengeFiles = Directory.GetFiles("Content/RoomPrefabs/Level"+CurrentLevel+"/Challenge") ;
+                    int cPool = challengeFiles.Length-1 ;
+                    chosenId = RandomGenerator.Instance.GetRandomIntRange(0, cPool) ;
+                    Console.WriteLine("Using room prefab from " + challengeFiles[chosenId]) ;
+                    Rooms.Add(new Room(player, this, curCoord.X*Room.Width, curCoord.Y*Room.Height, "Content/RoomPrefabs/Level"+CurrentLevel+"/Challenge/Room"+chosenId+".json", curCoord)) ;
+                    ChallengeRoom = Rooms[Rooms.Count-1] ;
                     i++ ;
                 }
 
@@ -124,6 +146,13 @@ namespace LifeSupport.Levels {
                 //open all the doors by default
                 GetRoomAtCoordinate(coord).OpenAllDoors() ;
             }
+
+            //but close the doors on the challenge room
+            ChallengeRoom.CloseAllDoors() ;
+
+            //find a room to drop the keycard in
+            int keycardRoom = RandomGenerator.Instance.GetRandomIntRange(1, numRooms-1) ;
+            Rooms[keycardRoom].DropsCard = true ;
 
         }
 

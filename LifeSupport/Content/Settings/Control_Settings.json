@@ -4,5 +4,6 @@
 	"MoveLeft": "A",
 	"MoveRight": "D",
 	"OpenInventory": "I",
-	"PauseGame": "Escape",
+  "PauseGame": "Escape",
+  "Use": "E"
 }

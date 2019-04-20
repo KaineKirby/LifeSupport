@@ -84,6 +84,22 @@ namespace LifeSupport.GameObjects {
 
         }
 
+        public GameObject(Vector2 position, int width, int height, int rotation, Texture2D sprite, bool collision) {
+
+            //position and rotation
+            this.Position = position ;
+            this.Rotation = rotation ;
+
+            this.Width = width ;
+            this.Height = height ;
+
+            this.sprite = sprite ;
+            this.origin = new Vector2(width/2, height/2) ;
+            this.spriteRectangle = new Rectangle(0, 0, width, height) ;
+            this.HasCollision = collision ;
+
+        }
+
         //render the sprite with its current position (independent of update)
 	    //subclasses will likely have to call base() ;
         public virtual void Draw(SpriteBatch spriteBatch) {

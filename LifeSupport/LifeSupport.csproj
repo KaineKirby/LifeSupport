@@ -47,6 +47,11 @@
     <Compile Include="GameObjects\AlienTurret.cs" />
     <Compile Include="GameObjects\Door.cs" />
     <Compile Include="GameObjects\DoorH.cs" />
+    <Compile Include="GameObjects\Drop.cs" />
+    <Compile Include="GameObjects\Health.cs" />
+    <Compile Include="GameObjects\Keycard.cs" />
+    <Compile Include="GameObjects\Money.cs" />
+    <Compile Include="GameObjects\OxygenTank.cs" />
     <Compile Include="HUD\HUDImage.cs" />
     <Compile Include="HUD\MiniMap.cs" />
     <Compile Include="HUD\PlayerStatsHUD.cs" />

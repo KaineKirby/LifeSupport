@@ -35,6 +35,7 @@ namespace LifeSupport.Config {
         //system
         public Keys PauseGame ;
         public Keys OpenInventory;
+        public Keys Use;
 
         //movement
         public Keys MoveUp ;
@@ -53,6 +54,7 @@ namespace LifeSupport.Config {
             this.MoveRight = (Keys)controllerData.MoveRight;
             this.OpenInventory = (Keys)controllerData.OpenInventory;
             this.PauseGame= (Keys)controllerData.PauseGame;
+            this.Use = (Keys)controllerData.Use;
 
 
             Instance = this;
@@ -69,6 +71,7 @@ namespace LifeSupport.Config {
             this.MoveRight = (Keys)controlData.MoveRight;
             this.OpenInventory = (Keys)controlData.OpenInventory;
             this.PauseGame = (Keys)controlData.PauseGame;
+            this.Use = (Keys)controlData.Use;
 
         }
 

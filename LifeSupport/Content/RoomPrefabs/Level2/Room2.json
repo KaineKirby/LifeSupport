@@ -3,14 +3,14 @@
     {
       "Row": 11,
       "Column": 6,
-      "BarrierWidth": 1200,
-      "BarrierHeight": 30
+      "BarrierWidth": 40,
+      "BarrierHeight": 1
     },
     {
       "Row": 12,
       "Column": 6,
-      "BarrierWidth": 30,
-      "BarrierHeight": 360
+      "BarrierWidth": 1,
+      "BarrierHeight": 12
     }
 
 

@@ -137,6 +137,30 @@
 /processorParam:TextureFormat=Color
 /build:img/cursor.png
 
+#begin img/drops/keycard.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/drops/keycard.png
+
+#begin img/drops/money.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/drops/money.png
+
 #begin img/enemies/circle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -184,6 +208,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:img/hud/health.png
+
+#begin img/hud/money_icon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/hud/money_icon.png
 
 #begin img/hud/speed.png
 /importer:TextureImporter
@@ -341,6 +377,18 @@
 /processorParam:TextureFormat=Color
 /build:img/objects/open_door_h.png
 
+#begin img/objects/oxygen_tank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/objects/oxygen_tank.png
+
 #begin img/objects/projectile.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -377,6 +425,9 @@
 /processorParam:TextureFormat=Color
 /build:img/player/player_legs.png
 
+#begin RoomPrefabs/Level1/Challenge/Room0.json
+/copy:RoomPrefabs/Level1/Challenge/Room0.json
+
 #begin RoomPrefabs/Level1/Room0.json
 /copy:RoomPrefabs/Level1/Room0.json
 
@@ -386,11 +437,26 @@
 #begin RoomPrefabs/Level1/Room2.json
 /copy:RoomPrefabs/Level1/Room2.json
 
+#begin RoomPrefabs/Level2/Challenge/Room0.json
+/copy:RoomPrefabs/Level2/Challenge/Room0.json
+
 #begin RoomPrefabs/Level2/Room0.json
 /copy:RoomPrefabs/Level2/Room0.json
 
 #begin RoomPrefabs/Level2/Room1.json
 /copy:RoomPrefabs/Level2/Room1.json
+
+#begin RoomPrefabs/Level3/Challenge/Room0.json
+/copy:RoomPrefabs/Level3/Challenge/Room0.json
+
+#begin RoomPrefabs/Level3/Room0.json
+/copy:RoomPrefabs/Level3/Room0.json
+
+#begin RoomPrefabs/Level3/Room1.json
+/copy:RoomPrefabs/Level3/Room1.json
+
+#begin RoomPrefabs/Level3/Room2.json
+/copy:RoomPrefabs/Level3/Room2.json
 
 #begin Settings/Control_Settings.json
 /copy:Settings/Control_Settings.json

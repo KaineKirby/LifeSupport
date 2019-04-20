@@ -16,9 +16,12 @@ namespace LifeSupport.HUD {
         private Player player ;
 
         private List<HUDImage> health ;
-        //private HUDString health ;
         private HUDString playerSpeed ;
         private HUDImage speedIcon ;
+        private HUDImage moneyIcon ;
+        private HUDString money ;
+
+        private HUDImage key ;
 
         public PlayerStatsHUD(Vector2 position, Player player) {
             Vector2 scalar = new Vector2((float)Settings.Instance.Width/1920, (float)Settings.Instance.Height/1080) ;
@@ -26,18 +29,22 @@ namespace LifeSupport.HUD {
             this.position = position ;
             this.player = player ;
 
-            //this.health = new HUDString("Health: " + player.Health, Color.White, (this.position + new Vector2(50, 50))*scalar) ;
             this.health = new List<HUDImage>() ;
             for (int i = 0 ; i < 12 ; i++) {
                 this.health.Add(new HUDImage(Assets.Instance.healthIcon, (this.position + new Vector2(50, 50))*scalar + new Vector2((i*32), 0))) ;
             }
             this.speedIcon = new HUDImage(Assets.Instance.speedIcon, (this.position + new Vector2(50, 100))*scalar) ;
             this.playerSpeed = new HUDString(player.MoveSpeed.ToString(), Color.White, (this.position + new Vector2(82, 100))*scalar) ;
+
+            this.money = new HUDString(player.Money.ToString(), Color.White, (this.position + new Vector2(82, 150))*scalar) ;
+            this.moneyIcon = new HUDImage(Assets.Instance.moneyIcon, (this.position + new Vector2(50, 150))*scalar) ;
+
+            key = new HUDImage(Assets.Instance.keycard, (this.position + new Vector2(125, 150))*scalar) ;
         }
 
         public void Update() {
-            //this.health.Update("Health: " + player.Health) ;
             this.playerSpeed.Update(player.MoveSpeed.ToString()) ;
+            this.money.Update(player.Money.ToString()) ;
 
         }
 
@@ -47,6 +54,10 @@ namespace LifeSupport.HUD {
             }
             this.speedIcon.Draw(spriteBatch) ;
             this.playerSpeed.Draw(spriteBatch) ;
+            this.moneyIcon.Draw(spriteBatch) ;
+            this.money.Draw(spriteBatch) ;
+            if (player.HasCard)
+                this.key.Draw(spriteBatch) ;
         }
 
 
