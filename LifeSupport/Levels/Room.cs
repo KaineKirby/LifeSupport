@@ -55,11 +55,12 @@ namespace LifeSupport.Levels {
 
         //booleans corresponding to whether or not there is a door on that side of the wall
         private int roomId ;
+        private int difficulty ;
         public enum DoorSpot {Top, Bottom, Left, Right} ;
         //the coordinate of the room on the level grid
         public Point coordinate ;
 
-        public Room(Player player, int startX, int startY, int roomId, Point coordinate) {
+        public Room(Player player, int startX, int startY, int roomId, int difficulty, Point coordinate) {
 
             this.player = player ;
             this.IsBeaten = false ;
@@ -68,6 +69,8 @@ namespace LifeSupport.Levels {
             
             this.StartX = startX ;
             this.StartY = startY ;
+
+            this.difficulty = difficulty ;
 
             this.Objects = new List<GameObject>() ;
 
@@ -249,7 +252,7 @@ namespace LifeSupport.Levels {
 
 
             // Read in a json file with a barrier object
-            dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/Room" + roomId + ".json");
+            dynamic jsonData = JSONParser.ReadJsonFile("Content/RoomPrefabs/Level" + difficulty + "/Room" + roomId + ".json");
             int count = 1;
             for (int i = 0; i < jsonData.Barrier.Count; i++)
             {

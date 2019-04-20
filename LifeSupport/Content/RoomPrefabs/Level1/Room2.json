@@ -24,5 +24,18 @@
       "Health": 3,
       "Damage": 1
     }
+  ],
+
+  "AlienTurret": [
+    {
+      "Row": 25,
+      "Column": 15,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+	  "Range": 1000,
+	  "ShotSpeed": 1000,
+	  "RateOfFire": 1
+    }
   ]
 }

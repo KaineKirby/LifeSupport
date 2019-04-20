@@ -46,7 +46,7 @@ namespace LifeSupport.Levels {
             //first we place all of the rooms down with no doors
             
             //start with beginning room
-            Room start = new Room(player, 0, 0, 0, new Point(0, 0)) ; //id of 0 is empty room
+            Room start = new Room(player, 0, 0, 0, CurrentLevel, new Point(0, 0)) ; //id of 0 is empty room
             activeRoom = start ;
             player.CurrentRoom = start ;
             player.Position = new Vector2(start.StartX + Room.Width/2, start.StartY + Room.Height/2) ;
@@ -93,7 +93,7 @@ namespace LifeSupport.Levels {
 
                 //if that coordinate is not chosen then we can place a room there
                 if (GetRoomAtCoordinate(curCoord) == null) {
-                    Rooms.Add(new Room(player, curCoord.X*Room.Width, curCoord.Y*Room.Height, chosenId, curCoord)) ;
+                    Rooms.Add(new Room(player, curCoord.X*Room.Width, curCoord.Y*Room.Height, chosenId, CurrentLevel, curCoord)) ;
                     Console.WriteLine("Using room prefab from " + files[chosenId]) ;
                     i++ ;
                 }
