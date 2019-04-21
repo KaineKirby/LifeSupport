@@ -18,7 +18,7 @@ namespace LifeSupport.States
         #endregion
 
         #region Methods
-        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud);
+        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud, SpriteBatch fg);
         public abstract void PostUpdate(GameTime gameTime);
         public abstract void Load();
         public State(MainGame state_game, GraphicsDevice state_graphDevice, ContentManager state_content)

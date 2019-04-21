@@ -248,7 +248,7 @@ namespace LifeSupport.States
           
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud, SpriteBatch fg)
         {
             bg.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
             bg.Draw(Assets.Instance.controlSettingsBackground, new Rectangle(0, 0, 1920, 1080), Color.White);

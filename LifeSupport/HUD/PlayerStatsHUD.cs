@@ -27,25 +27,24 @@ namespace LifeSupport.HUD {
         private HUDImage key ;
 
         public PlayerStatsHUD(Vector2 position, Player player) {
-            Vector2 scalar = new Vector2((float)Settings.Instance.Width/1920, (float)Settings.Instance.Height/1080) ;
 
             this.position = position ;
             this.player = player ;
 
             this.health = new List<HUDImage>() ;
             for (int i = 0 ; i < 12 ; i++) {
-                this.health.Add(new HUDImage(Assets.Instance.healthIcon, (this.position + new Vector2(50, 50))*scalar + new Vector2((i*32), 0))) ;
+                this.health.Add(new HUDImage(Assets.Instance.healthIcon, (this.position + new Vector2(50, 50)) + new Vector2((i*32), 0))) ;
             }
-            this.speedIcon = new HUDImage(Assets.Instance.speedIcon, (this.position + new Vector2(50, 100))*scalar) ;
-            this.playerSpeed = new HUDString(player.MoveSpeed.ToString(), Color.White, (this.position + new Vector2(82, 100))*scalar) ;
+            this.speedIcon = new HUDImage(Assets.Instance.speedIcon, (this.position + new Vector2(50, 100))) ;
+            this.playerSpeed = new HUDString(player.MoveSpeed.ToString(), Color.White, (this.position + new Vector2(82, 100))) ;
 
-            this.money = new HUDString(player.Money.ToString(), Color.White, (this.position + new Vector2(82, 150))*scalar) ;
-            this.moneyIcon = new HUDImage(Assets.Instance.moneyIcon, (this.position + new Vector2(50, 150))*scalar) ;
+            this.money = new HUDString(player.Money.ToString(), Color.White, (this.position + new Vector2(82, 150))) ;
+            this.moneyIcon = new HUDImage(Assets.Instance.moneyIcon, (this.position + new Vector2(50, 150))) ;
 
-            this.oxygen = new HUDImage(Assets.Instance.oxygenTank, (this.position + new Vector2(50, 0))*scalar) ;
-            this.oxyText = new HUDString(((int)(player.OxygenTime)).ToString(), Color.White, (this.position + new Vector2(82, 0))*scalar) ;
+            this.oxygen = new HUDImage(Assets.Instance.oxygenTank, (this.position + new Vector2(50, 0))) ;
+            this.oxyText = new HUDString(((int)(player.OxygenTime)).ToString(), Color.White, (this.position + new Vector2(82, 0))) ;
 
-            this.key = new HUDImage(Assets.Instance.keycard, (this.position + new Vector2(125, 150))*scalar) ;
+            this.key = new HUDImage(Assets.Instance.keycard, (this.position + new Vector2(125, 150))) ;
         }
 
         public void Update() {

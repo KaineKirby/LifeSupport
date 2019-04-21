@@ -64,6 +64,8 @@ namespace LifeSupport.Config
         /* Continually update the mouse. This function will updates the mouse crosshair location */
         public void Update(GameTime gameTime)
         {
+            
+            //find the scalar for the resolution
             mouseState = Mouse.GetState();
             MousePosition = new Vector2(mouseState.X - mouseImageCenterX, mouseState.Y - mouseImageCenterY);
             
@@ -80,10 +82,8 @@ namespace LifeSupport.Config
 
         //the source should be in screen coordinates not world
         public Vector2 GetDirection(Point source) {
-            //find the scalar for the resolution
-            float scalarX = 1920/(float)Settings.Instance.Width ;
-            float scalarY = 1080/(float)Settings.Instance.Height ;
-            Vector2 norm = new Vector2((MousePosition.X*scalarX)-source.X, (MousePosition.Y*scalarY)-source.Y) ;
+            Vector2 scalar = new Vector2(1920/(float)Settings.Instance.Width, 1080/(float)Settings.Instance.Height) ;
+            Vector2 norm = new Vector2((MousePosition.X*scalar.X)-source.X, (MousePosition.Y*scalar.Y)-source.Y) ;
             norm.Normalize() ;
             return norm ;
         }

@@ -33,7 +33,7 @@ namespace LifeSupport.States
         public GameState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content) {
 
         }
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud) {
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud, SpriteBatch fg) {
             //two separate sprite batches for HUD/UI/background elements and then game content itself
             //the coordinate systems should be different for these two
 
@@ -50,8 +50,7 @@ namespace LifeSupport.States
             spriteBatch.End();
 
             //draw HUD elements
-            hud.Begin();
-            Cursor.Instance.Draw(hud);
+            hud.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width/1920));
             //render the FPS counter if it is enabled
             if (Settings.Instance.ShowFps)
                 frames.Draw(hud, gameTime);
@@ -61,6 +60,10 @@ namespace LifeSupport.States
             //wHud.Draw(hud) ;
 
             hud.End();
+
+            fg.Begin() ;
+            Cursor.Instance.Draw(fg);
+            fg.End() ;
         }
 
         public override void PostUpdate(GameTime gameTime) {

@@ -23,6 +23,7 @@ namespace LifeSupport
         public SpriteBatch spriteBatch;
         public SpriteBatch bg;
         public SpriteBatch hud;
+        public SpriteBatch fg ;
 
         private State prevState;
         private State currState;
@@ -71,6 +72,7 @@ namespace LifeSupport
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             bg = new SpriteBatch(GraphicsDevice);
+            fg = new SpriteBatch(GraphicsDevice) ;
             hud = new SpriteBatch(GraphicsDevice);
             currState = new MenuState(this, graphics.GraphicsDevice, Content);
             currState.Load();
@@ -115,7 +117,7 @@ namespace LifeSupport
         {
             GraphicsDevice.Clear(Color.Black);
 
-            currState.Draw(gameTime, spriteBatch, bg, hud);
+            currState.Draw(gameTime, spriteBatch, bg, hud, fg);
 
             base.Draw(gameTime);
         }
