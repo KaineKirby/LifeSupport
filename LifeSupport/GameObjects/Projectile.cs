@@ -7,6 +7,7 @@ using LifeSupport.Config;
 using LifeSupport.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Penumbra;
 
 namespace LifeSupport.GameObjects
 {
@@ -22,9 +23,9 @@ namespace LifeSupport.GameObjects
         private float distanceTraveled;
         private bool isPlayer ;
         private Color color ;
+        private PointLight light ;
 
-
-        public Projectile(Vector2 source, Vector2 direction, float damage, float velocity, float range, bool isPlayer, Room room) : base(source, 8, 8, 0, Assets.Instance.projectile) {
+        public Projectile(Vector2 source, Vector2 direction, float damage, float velocity, float range, bool isPlayer, Room room, PenumbraComponent penumbra) : base(source, penumbra, 8, 8, 0, Assets.Instance.projectile) {
             this.Source = source;
             this.Direction = direction;
             this.Damage = damage;
@@ -40,6 +41,13 @@ namespace LifeSupport.GameObjects
                 this.color = Color.GreenYellow ;
             else
                 this.color = Color.Red ;
+            this.light = new PointLight {
+                Position = this.Position,
+                Scale = new Vector2(20f),
+                Color = this.color
+            } ;
+
+            penumbra.Lights.Add(light) ;
         }
 
         public override void UpdatePosition(GameTime gameTime) {
@@ -47,9 +55,9 @@ namespace LifeSupport.GameObjects
 
             distanceTraveled += (Direction * Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds).Length();
 
-            if(distanceTraveled >= Range)
-            {
+            if(distanceTraveled >= Range) {
                 CurrentRoom.DestroyObject(this);
+                penumbra.Lights.Remove(light) ;
             }
 
             //check to see if the projectile hit a game object or actor
@@ -58,25 +66,34 @@ namespace LifeSupport.GameObjects
                     //we need to ignore both other projectiles, and the player/enemy depending on what team the projectile is on
                     //either hit the player or the enemy
                     if (isPlayer) {
-                        if (i < CurrentRoom.Objects.Count && CurrentRoom.Objects[i] is Enemy) 
+                        if (i < CurrentRoom.Objects.Count && CurrentRoom.Objects[i] is Enemy) {
                             ((Actor)CurrentRoom.Objects[i]).OnHit(this) ;
+                            penumbra.Lights.Remove(light) ;
+                        }
              
-                        if (i < CurrentRoom.Objects.Count && !(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Player))
+                        if (i < CurrentRoom.Objects.Count && !(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Player)) {
                             CurrentRoom.DestroyObject(this) ;
+                            penumbra.Lights.Remove(light) ;
+                        }
                     }
                     else {
 
-                        if (i < CurrentRoom.Objects.Count && !(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Enemy))
+                        if (i < CurrentRoom.Objects.Count && !(CurrentRoom.Objects[i] is Projectile) && !(CurrentRoom.Objects[i] is Enemy)) {
                             CurrentRoom.DestroyObject(this) ;
+                            penumbra.Lights.Remove(light) ;
+                        }
                     }
 
                 }
+
+                this.light.Position = this.Position ;
             }
 
             if (CurrentRoom.player.IsInside(this) && !isPlayer)
             {
                 CurrentRoom.player.OnHit(this);
-                CurrentRoom.DestroyObject(this);
+                CurrentRoom.DestroyObject(this) ;
+                penumbra.Lights.Remove(light) ;
             }
 
         }

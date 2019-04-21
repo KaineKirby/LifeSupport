@@ -2,6 +2,7 @@
 using LifeSupport.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Penumbra;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,9 @@ namespace LifeSupport.GameObjects
         private float legRotation ;
         private Vector2 legOrigin ;
 
-        public AlienInfantry(Player p, Vector2 position, Room room,
+        public AlienInfantry(Player p, Vector2 position, PenumbraComponent penumbra, Room room,
             float speed, float health, float damage, float range, float shotSpeed, float rateOfFire) : 
-            base(p, position, 30, 30, 0, Assets.Instance.alienInfantry, room, speed, health, damage, range, shotSpeed, rateOfFire) {
+            base(p, position, penumbra, 30, 30, 0, Assets.Instance.alienInfantry, room, speed, health, damage, range, shotSpeed, rateOfFire) {
 
             this.player = p;
 
@@ -58,7 +59,7 @@ namespace LifeSupport.GameObjects
 
             //the OnHit requires a projectile so generate a dummy one
             if (this.IsInside(player))
-                player.OnHit(new Projectile(Vector2.Zero, Vector2.Zero, Damage, 0, 0, false, CurrentRoom));
+                player.OnHit(new Projectile(Vector2.Zero, Vector2.Zero, Damage, 0, 0, false, CurrentRoom, penumbra));
 
             //for animation
             this.time += (float)gameTime.ElapsedGameTime.TotalSeconds ;

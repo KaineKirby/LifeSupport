@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RoyT.AStar;
+using Penumbra;
 
 namespace LifeSupport.GameObjects
 {
@@ -20,8 +21,8 @@ namespace LifeSupport.GameObjects
         private float timer ; //the time between animation frames
         private float time ; //the current time since last animation frame
 
-        public AlienDog(Player p, Vector2 position, Room room, 
-            float speed, float health, float damage) : base(p, position, 30, 30, 0, Assets.Instance.alienDog, room, speed, health, damage, 0, 0, 0) {
+        public AlienDog(Player p, Vector2 position, PenumbraComponent penumbra, Room room, 
+            float speed, float health, float damage) : base(p, position, penumbra, 30, 30, 0, Assets.Instance.alienDog, room, speed, health, damage, 0, 0, 0) {
             this.player = p;
 
             this.animFrame = 0 ;
@@ -34,7 +35,7 @@ namespace LifeSupport.GameObjects
 
             //the OnHit requires a projectile so generate a dummy one
             if (this.IsInside(player))
-                player.OnHit(new Projectile(Vector2.Zero, Vector2.Zero, Damage, 0, 0, false, CurrentRoom));
+                player.OnHit(new Projectile(Vector2.Zero, Vector2.Zero, Damage, 0, 0, false, CurrentRoom, penumbra));
 
             this.time += (float)gameTime.ElapsedGameTime.TotalSeconds ;
 

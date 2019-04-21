@@ -2,6 +2,7 @@
 using LifeSupport.Random;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Penumbra;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,11 +36,16 @@ namespace LifeSupport.Levels {
 
         public Room activeRoom ;
 
-        public Level() {
+        public PenumbraComponent penumbra ;
+
+        public Level(PenumbraComponent penumbra) {
 
             CurrentLevel = 0 ;
 
-            player = new Player() ;
+            player = new Player(penumbra) ;
+            this.Rooms = new List<Room>() ;
+
+            this.penumbra = penumbra ;
 
             NextLevel() ;
 
@@ -47,6 +53,11 @@ namespace LifeSupport.Levels {
         
         //generate a level and place the player in the starting room
         public void NextLevel() {
+
+            //clear all of the lights from the room
+            foreach (Room room in Rooms) {
+                room.RemoveLights() ;
+            }
 
             this.Rooms = new List<Room>() ;
 
@@ -56,7 +67,7 @@ namespace LifeSupport.Levels {
             //first we place all of the rooms down with no doors
             
             //start with beginning room
-            Room start = new Room(player, this, 0, 0, "Content/RoomPrefabs/Level"+CurrentLevel+"/Room0.json", new Point(0, 0)) ; //id of 0 is empty room
+            Room start = new Room(player, this, penumbra, 0, 0, "Content/RoomPrefabs/Level"+CurrentLevel+"/Room0.json", new Point(0, 0)) ; //id of 0 is empty room
             activeRoom = start ;
             start.IsBeaten = true ;
             player.CurrentRoom = start ;
@@ -106,7 +117,7 @@ namespace LifeSupport.Levels {
                 //if that coordinate is not chosen then we can place a room there
                 if (GetRoomAtCoordinate(curCoord) == null && i < numRooms-1) {
                     Console.WriteLine("Using room prefab from " + files[chosenId]) ;
-                    Rooms.Add(new Room(player, this, curCoord.X*Room.Width, curCoord.Y*Room.Height, "Content/RoomPrefabs/Level"+CurrentLevel+"/Room"+chosenId+".json", curCoord)) ;
+                    Rooms.Add(new Room(player, this, penumbra, curCoord.X*Room.Width, curCoord.Y*Room.Height, "Content/RoomPrefabs/Level"+CurrentLevel+"/Room"+chosenId+".json", curCoord)) ;
                     i++ ;
                 }
                 else if (GetRoomAtCoordinate(curCoord) == null && i == numRooms-1) {
@@ -116,7 +127,7 @@ namespace LifeSupport.Levels {
                     int cPool = challengeFiles.Length-1 ;
                     chosenId = RandomGenerator.Instance.GetRandomIntRange(0, cPool) ;
                     Console.WriteLine("Using room prefab from " + challengeFiles[chosenId]) ;
-                    Rooms.Add(new Room(player, this, curCoord.X*Room.Width, curCoord.Y*Room.Height, "Content/RoomPrefabs/Level"+CurrentLevel+"/Challenge/Room"+chosenId+".json", curCoord)) ;
+                    Rooms.Add(new Room(player, this, penumbra, curCoord.X*Room.Width, curCoord.Y*Room.Height, "Content/RoomPrefabs/Level"+CurrentLevel+"/Challenge/Room"+chosenId+".json", curCoord)) ;
                     ChallengeRoom = Rooms[Rooms.Count-1] ;
                     i++ ;
                 }

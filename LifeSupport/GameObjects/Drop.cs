@@ -13,7 +13,7 @@ namespace LifeSupport.GameObjects {
         protected Player player ;
         protected Room room ;
 
-        public Drop(Vector2 position, int width, int height, Texture2D sprite, Player player, Room room) : base(position, width, height, 0, sprite, false) {
+        public Drop(Vector2 position, int width, int height, Texture2D sprite, Player player, Room room) : base(position, null, width, height, 0, sprite, false) {
 
             this.player = player ;
             this.room = room ;

@@ -44,6 +44,10 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/projectile.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player_legs.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/lighting/PenumbraHull.fx</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/lighting/PenumbraLight.fx</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/lighting/PenumbraShadow.fx</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/lighting/PenumbraTexture.fx</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/alien_shot.wav</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/door_open.wav</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/health_pickup.ogg</File>
@@ -87,6 +91,10 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>img/menus/main_menu.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

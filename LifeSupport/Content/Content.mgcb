@@ -473,6 +473,33 @@
 /processorParam:TextureFormat=Color
 /build:img/player/player_legs.png
 
+#begin lighting/Macros.fxh
+/copy:lighting/Macros.fxh
+
+#begin lighting/PenumbraHull.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:lighting/PenumbraHull.fx
+
+#begin lighting/PenumbraLight.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:lighting/PenumbraLight.fx
+
+#begin lighting/PenumbraShadow.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:lighting/PenumbraShadow.fx
+
+#begin lighting/PenumbraTexture.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:lighting/PenumbraTexture.fx
+
 #begin RoomPrefabs/Level1/Challenge/Room0.json
 /copy:RoomPrefabs/Level1/Challenge/Room0.json
 

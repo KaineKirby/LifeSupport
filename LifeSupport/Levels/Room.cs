@@ -11,6 +11,7 @@ using LifeSupport.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Newtonsoft.Json.Linq;
+using Penumbra;
 using RoyT.AStar;
 
 namespace LifeSupport.Levels {
@@ -65,7 +66,18 @@ namespace LifeSupport.Levels {
         //whether or not the room will drop a keycard
         public bool DropsCard ;
 
-        public Room(Player player, Level level, int startX, int startY, string filepath, Point coordinate, bool dropsCard = false) {
+        //penumbra component
+        PenumbraComponent penumbra ;
+
+        //the slight light in the room
+        private PointLight light1 ;
+        private PointLight light2 ;
+        private PointLight light3 ;
+        private PointLight light4 ;
+        private PointLight light5 ;
+       
+
+        public Room(Player player, Level level, PenumbraComponent penumbra, int startX, int startY, string filepath, Point coordinate, bool dropsCard = false) {
 
             this.player = player ;
             this.IsBeaten = false ;
@@ -90,6 +102,42 @@ namespace LifeSupport.Levels {
 
             this.DropsCard = dropsCard ;
 
+            this.penumbra = penumbra ;
+
+
+            this.light1 = new PointLight {
+                Position = new Vector2(StartX + Width/4, StartY + Height/4),
+                Intensity = 1f,
+                Scale = new Vector2(1000f),
+            } ;
+            this.light2 = new PointLight {
+                Position = new Vector2(StartX + Width/4, StartY + 3*Height/4),
+                Intensity = 1f,
+                Scale = new Vector2(1000f),
+            } ;
+            this.light3 = new PointLight {
+                Position = new Vector2(StartX + 3*Width/4, StartY + 3*Height/4),
+                Intensity = 1f,
+                Scale = new Vector2(1000f)
+            } ;
+            this.light4 = new PointLight {
+                Position = new Vector2(StartX + 3*Width/4, StartY + Height/4),
+                Intensity = 1f,
+                Scale = new Vector2(1000f)
+            } ;
+            this.light5 = new PointLight {
+                Position = new Vector2(StartX + Width/2, StartY + Height/2),
+                Intensity = 1f,
+                Scale = new Vector2(500f),
+                Color = Color.Red
+            } ;
+            
+            penumbra.Lights.Add(light1) ;
+            penumbra.Lights.Add(light2) ;
+            penumbra.Lights.Add(light3) ;
+            penumbra.Lights.Add(light4) ;
+            penumbra.Lights.Add(light5) ;
+
             FillRoom();
         }
 
@@ -102,17 +150,16 @@ namespace LifeSupport.Levels {
         }
 
         public void RenderObjects(SpriteBatch spriteBatch) {
+
             //render the tile floor
             spriteBatch.Draw(Assets.Instance.floorTile, new Vector2(StartX, StartY), new Rectangle(0, 0, Width, Height), Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, .1f) ;
 
-            for (int i = 0; i < Objects.Count; i++)
-            {
+            for (int i = 0; i < Objects.Count; i++) {
                 Objects[i].Draw(spriteBatch) ;
             }
         }
 
-        public void DestroyObject(GameObject obj)
-        {
+        public void DestroyObject(GameObject obj) {
             Objects.Remove(obj);
             //if all the enemies are gone we can open all the doors in the room
             if (!HasEnemies() && !IsBeaten) {
@@ -122,6 +169,14 @@ namespace LifeSupport.Levels {
 
         public void AddObject(GameObject obj) {
             Objects.Add(obj) ;
+        }
+
+        public void RemoveLights() {
+            penumbra.Lights.Remove(light1) ;
+            penumbra.Lights.Remove(light2) ;
+            penumbra.Lights.Remove(light3) ;
+            penumbra.Lights.Remove(light4) ;
+            penumbra.Lights.Remove(light5) ;
         }
 
         //called when the room is beaten
@@ -148,6 +203,8 @@ namespace LifeSupport.Levels {
             }
             
             Assets.Instance.doorOpen.Play((float)Settings.Instance.SfxVolume/100, 0f, 0f) ;
+
+            this.light5.Color = Color.Green ;
 
             OpenAllDoors() ;
             IsBeaten = true ;
@@ -177,12 +234,12 @@ namespace LifeSupport.Levels {
                 case DoorSpot.Top:
                     //top
                     Objects.RemoveAt(1) ;
-                    Objects.Insert(1, new DoorH(new Vector2(StartX + (Width/2) - Barrier.WallThickness, StartY))) ;
+                    Objects.Insert(1, new DoorH(new Vector2(StartX + (Width/2) - Barrier.WallThickness, StartY), penumbra)) ;
                     break ;
                 case DoorSpot.Bottom:
                     //bottom
                     Objects.RemoveAt(4) ;
-                    Objects.Insert(4, new DoorH(new Vector2(StartX + (Width/2) - Barrier.WallThickness, StartY + Height - Barrier.WallThickness))) ;
+                    Objects.Insert(4, new DoorH(new Vector2(StartX + (Width/2) - Barrier.WallThickness, StartY + Height - Barrier.WallThickness), penumbra)) ;
                     break ;
                 case DoorSpot.Left:
                     //left
@@ -251,24 +308,24 @@ namespace LifeSupport.Levels {
             //the index of the walls within the game object list will always be the same regardless of whether or not a door is present w/ this system
 
             //top
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY, (Width/2) - Barrier.WallThickness, Barrier.WallThickness)));
-            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY, Barrier.WallThickness*2, Barrier.WallThickness))) ;
-            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) + Barrier.WallThickness, StartY, (Width/2) - Barrier.WallThickness, Barrier.WallThickness)));
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY, (Width/2) - Barrier.WallThickness, Barrier.WallThickness), penumbra));
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY, Barrier.WallThickness*2, Barrier.WallThickness), penumbra)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) + Barrier.WallThickness, StartY, (Width/2) - Barrier.WallThickness, Barrier.WallThickness), penumbra));
 
             //bottom
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY + Height - Barrier.WallThickness, (Width/2) - Barrier.WallThickness, Barrier.WallThickness)));
-            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY + Height - Barrier.WallThickness, Barrier.WallThickness*2, Barrier.WallThickness))) ;
-            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) + Barrier.WallThickness, StartY + Height - Barrier.WallThickness, (Width/2) - Barrier.WallThickness, Barrier.WallThickness)));
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY + Height - Barrier.WallThickness, (Width/2) - Barrier.WallThickness, Barrier.WallThickness), penumbra));
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY + Height - Barrier.WallThickness, Barrier.WallThickness*2, Barrier.WallThickness), penumbra)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) + Barrier.WallThickness, StartY + Height - Barrier.WallThickness, (Width/2) - Barrier.WallThickness, Barrier.WallThickness), penumbra));
 
             //left
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - 2 * Barrier.WallThickness)));
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2))) ;
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY + (Height / 2) + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - Barrier.WallThickness * 2)));
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - 2 * Barrier.WallThickness), penumbra));
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2), penumbra)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY + (Height / 2) + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - Barrier.WallThickness * 2), penumbra));
 
             //right
-            Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - 2 * Barrier.WallThickness)));
-            Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2))) ;
-            Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + (Height / 2) + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - Barrier.WallThickness * 2)));
+            Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - 2 * Barrier.WallThickness), penumbra));
+            Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2), penumbra)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + (Height / 2) + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - Barrier.WallThickness * 2), penumbra));
         }
 
 
@@ -292,7 +349,7 @@ namespace LifeSupport.Levels {
             for (int i = 0; jsonData.Barrier != null && i < jsonData.Barrier.Count; i++) {
 
                 Point jsonBarrierSize = new Point((int)(jsonData.Barrier[i].BarrierWidth*30), ((int)jsonData.Barrier[i].BarrierHeight*30));
-                Objects.Add(new Barrier(new Rectangle(gridPoints[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column], jsonBarrierSize)));
+                Objects.Add(new Barrier(new Rectangle(gridPoints[jsonData.Barrier[i].Row, jsonData.Barrier[i].Column], jsonBarrierSize), penumbra));
 
                 gridTiles.BlockCell(new Position((int)jsonData.Barrier[i].Row, (int)jsonData.Barrier[i].Column));
 
@@ -325,6 +382,7 @@ namespace LifeSupport.Levels {
                 Objects.Add(new AlienDog(player, 
                     new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Column), 
                     StartY + (15) + (SquareTileLength * (int)jsonData.AlienDog[i].Row)), 
+                    penumbra,
                     this, (float)jsonData.AlienDog[i].Speed, 
                     (float)jsonData.AlienDog[i].Health, 
                     (float)jsonData.AlienDog[i].Damage));
@@ -332,6 +390,7 @@ namespace LifeSupport.Levels {
             for (int i = 0; jsonData.AlienTurret != null && i < jsonData.AlienTurret.Count; i++) {
                 Objects.Add(new AlienTurret(player, 
                     new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienTurret[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienTurret[i].Row)), 
+                    penumbra,
                     this, 
                     (float)jsonData.AlienTurret[i].Speed, 
                     (float)jsonData.AlienTurret[i].Health, 
@@ -344,6 +403,7 @@ namespace LifeSupport.Levels {
             {
                 Objects.Add(new AlienInfantry(player,
                     new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienInfantry[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienInfantry[i].Row)),
+                    penumbra,
                     this,
                     (float)jsonData.AlienInfantry[i].Speed,
                     (float)jsonData.AlienInfantry[i].Health,

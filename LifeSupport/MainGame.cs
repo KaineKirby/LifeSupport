@@ -12,12 +12,12 @@ using System.IO;
 using System.Linq;
 using LifeSupport.States;
 using Microsoft.Xna.Framework.Media;
+using Penumbra;
 
 namespace LifeSupport
 {
 
-    public class MainGame : Game
-    {
+    public class MainGame : Game {
 
         public bool changedDisplay;
         public GraphicsDeviceManager graphics;
@@ -30,6 +30,8 @@ namespace LifeSupport
         private State currState;
         private State nextState;
 
+        public PenumbraComponent penumbra ;
+
         public void ChangeState(State state) {
 
             if (currState is GameState) {
@@ -38,11 +40,12 @@ namespace LifeSupport
             nextState = state ;
             nextState.Load() ;
 
-            //music management
+            //music and light management
             if (nextState is GameState && currState is MenuState) {
                 MediaPlayer.Stop() ;
                 MediaPlayer.Play(((GameState)nextState).GetSong()) ;
                 MediaPlayer.Volume = (float)Settings.Instance.MusVolume/100 ;
+                //penumbra.Lights.Remove(menuLight) ;
             }
             else if (nextState is MenuState && currState is PauseState) {
                 MediaPlayer.Stop() ;
@@ -52,15 +55,11 @@ namespace LifeSupport
 
         }
 
-        public void returnToGame(State state)
-        {
+        public void returnToGame(State state) {
             nextState = prevState;
         }
 
-
-
-        public MainGame()
-        {
+        public MainGame() {
 
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = Settings.Instance.Height;
@@ -69,18 +68,19 @@ namespace LifeSupport
             graphics.SynchronizeWithVerticalRetrace = false;
             this.IsFixedTimeStep = false;
 
+            this.penumbra = new PenumbraComponent(this) ;
+            Components.Add(penumbra) ;
+
             Content.RootDirectory = "Content";
         }
 
 
-        protected override void Initialize()
-        {
+        protected override void Initialize() {
             base.Initialize();
         }
 
 
-        protected override void LoadContent()
-        {
+        protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             bg = new SpriteBatch(GraphicsDevice);
             fg = new SpriteBatch(GraphicsDevice) ;
@@ -90,36 +90,33 @@ namespace LifeSupport
 
             MediaPlayer.Play(Assets.Instance.menuMusic) ;
             MediaPlayer.Volume = (float)Settings.Instance.MusVolume/100 ;
+            MediaPlayer.IsRepeating = true ;
 
-
-        }
-
-
-        protected override void UnloadContent()
-        {
+            penumbra.AmbientColor = Color.Black ;
 
         }
 
 
-        protected override void Update(GameTime gameTime)
-        {
-            if (nextState != null)
-            {
+        protected override void UnloadContent() {
+
+        }
+
+
+        protected override void Update(GameTime gameTime) {
+            if (nextState != null) {
                 currState = nextState;
                 nextState = null;
             }
             currState.Update(gameTime);
             currState.PostUpdate(gameTime);
-            if (VideoSettingsState.isVideoChanged == true)
-            {
+            if (VideoSettingsState.isVideoChanged == true) {
                 graphics.PreferredBackBufferHeight = Settings.Instance.Height;
                 graphics.PreferredBackBufferWidth = Settings.Instance.Width;
                 graphics.IsFullScreen = Settings.Instance.Fullscreen;
                 graphics.ApplyChanges();
                 VideoSettingsState.isVideoChanged = false;
             }
-            else if(AudioSettingsState.isVolumeChanged == true)
-            {
+            else if(AudioSettingsState.isVolumeChanged == true) {
                 AudioSettingsState.isVolumeChanged = false;
             }
 
@@ -127,13 +124,11 @@ namespace LifeSupport
             base.Update(gameTime);
         }
 
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.Black);
+        protected override void Draw(GameTime gameTime) {
 
+            GraphicsDevice.Clear(Color.Black);
             currState.Draw(gameTime, spriteBatch, bg, hud, fg);
 
-            base.Draw(gameTime);
         }
     }
 }

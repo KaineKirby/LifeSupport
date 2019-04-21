@@ -10,6 +10,7 @@ using System.Collections;
 using LifeSupport.Levels;
 using RoyT.AStar;
 using Microsoft.Xna.Framework.Audio;
+using Penumbra;
 
 /*
 * Actor Class (Abstract)
@@ -44,9 +45,12 @@ namespace LifeSupport.GameObjects {
         
         //where the projectiles come out
         protected Point GunBarrelPosition ;
+
+        //the passive light source that the actor has
+        private PointLight light ;
         
-        public Actor(Vector2 position, int width, int height, int rotation, Texture2D sprite,  Room room, 
-            float moveSpeed, float health, float damage, float range, float shotSpeed, float rateOfFire) : base(position, width, height, rotation, sprite) {
+        public Actor(Vector2 position, PenumbraComponent penumbra, int width, int height, int rotation, Texture2D sprite,  Room room, 
+            float moveSpeed, float health, float damage, float range, float shotSpeed, float rateOfFire) : base(position, penumbra, width, height, rotation, sprite) {
             //set the passed movespeed
             this.MoveSpeed = moveSpeed ;
             this.CurrentRoom = room ;
@@ -57,6 +61,15 @@ namespace LifeSupport.GameObjects {
             this.RateOfFire = rateOfFire ;
 
             this.TimeBeforeShooting = 0f ;
+
+            this.light = new PointLight {
+                Position = this.Position,
+                Intensity = 1f,
+                Scale = new Vector2(100f),
+                ShadowType = ShadowType.Occluded
+            } ;
+
+            penumbra.Lights.Add(light) ;
            
         }
 
@@ -101,6 +114,9 @@ namespace LifeSupport.GameObjects {
             if (canMoveY)
                 this.Position.Y = newPosition.Y ;
 
+            //update the light's position
+            this.light.Position = this.Position ;
+
         }
 
         //called when the actor is hit by the passed projectile
@@ -111,6 +127,8 @@ namespace LifeSupport.GameObjects {
             if (this.Health <= 0) {
                 CurrentRoom.DestroyObject(this) ;
                 CurrentRoom.DestroyObject(proj) ;
+                penumbra.Lights.Remove(light) ;
+
             }
             
         }
@@ -124,7 +142,7 @@ namespace LifeSupport.GameObjects {
             //set the time before shooting to rate of fire before counting down
             if(TimeBeforeShooting == 0f)
             {
-                CurrentRoom.AddObject(new Projectile(Position, direction, Damage, ShotSpeed, Range, isPlayer, CurrentRoom));
+                CurrentRoom.AddObject(new Projectile(Position, direction, Damage, ShotSpeed, Range, isPlayer, CurrentRoom, penumbra));
                 this.TimeBeforeShooting = RateOfFire;
                 sound.Play((float)(Settings.Instance.SfxVolume/100), 0f, 0f) ;
             }

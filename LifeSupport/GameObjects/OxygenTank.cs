@@ -19,7 +19,7 @@ namespace LifeSupport.GameObjects {
         private int UseRadius = 30 ;
 
 
-        public OxygenTank(Vector2 position, Level level, Room room, Player player) : base(position, 30, 30, 0, Assets.Instance.oxygenTank) {
+        public OxygenTank(Vector2 position, Level level, Room room, Player player) : base(position, null, 30, 30, 0, Assets.Instance.oxygenTank) {
 
             this.level = level ;
             this.player = player ;

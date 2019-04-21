@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using LifeSupport.Config;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Penumbra;
 
 namespace LifeSupport.GameObjects {
 
@@ -26,9 +27,15 @@ namespace LifeSupport.GameObjects {
 
         private Rectangle rect ;
 
-        public Barrier(Rectangle rect) : base(Vector2.Zero, rect.Width, rect.Height, rotation, Assets.Instance.barrier) {
+        public Barrier(Rectangle rect, PenumbraComponent penumbra) : base(Vector2.Zero, penumbra, rect.Width, rect.Height, rotation, Assets.Instance.barrier) {
             this.rect = rect ;
             this.Position = rect.Center.ToVector2() ;
+
+            Hull hull = new Hull(new Vector2(0, 0), new Vector2(Width, 0), new Vector2(Width, Height), new Vector2(0, Height)) {
+                Position = new Vector2(Left, Top)
+            } ;
+
+            penumbra.Hulls.Add(hull) ;
         }
 
         public override void UpdatePosition(GameTime gameTime) {

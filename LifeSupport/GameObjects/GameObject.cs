@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using System.IO;
 using Microsoft.Xna.Framework.Content;
 using System.Collections;
+using Penumbra;
 
 
 /*
@@ -68,7 +69,9 @@ namespace LifeSupport.GameObjects {
         //whether or not the object has collision
         public bool HasCollision ;
 
-        public GameObject(Vector2 position, int width, int height, int rotation, Texture2D sprite) {
+        protected PenumbraComponent penumbra ;
+
+        public GameObject(Vector2 position, PenumbraComponent penumbra, int width, int height, int rotation, Texture2D sprite) {
 
             //position and rotation
             this.Position = position ;
@@ -77,6 +80,8 @@ namespace LifeSupport.GameObjects {
             this.Width = width ;
             this.Height = height ;
 
+            this.penumbra = penumbra ;
+
             this.sprite = sprite ;
             this.origin = new Vector2(width/2, height/2) ;
             this.spriteRectangle = new Rectangle(0, 0, width, height) ;
@@ -84,7 +89,7 @@ namespace LifeSupport.GameObjects {
 
         }
 
-        public GameObject(Vector2 position, int width, int height, int rotation, Texture2D sprite, bool collision) {
+        public GameObject(Vector2 position, PenumbraComponent penumbra, int width, int height, int rotation, Texture2D sprite, bool collision) {
 
             //position and rotation
             this.Position = position ;

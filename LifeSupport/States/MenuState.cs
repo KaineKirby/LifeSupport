@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
+using Penumbra;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace LifeSupport.States
@@ -39,6 +40,9 @@ namespace LifeSupport.States
 
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud, SpriteBatch fg) {
+
+            //game.penumbra.BeginDraw() ;
+
             //Drawing each of the menu buttons
             bg.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width/1920));
             bg.Draw(Assets.Instance.mainMenuBackground, new Rectangle(0, 0, 1920, 1080), Color.White);
@@ -49,6 +53,7 @@ namespace LifeSupport.States
                 component.Draw(gameTime, spriteBatch);
             }
             spriteBatch.End();
+
         }
 
         public override void PostUpdate(GameTime gameTime) {

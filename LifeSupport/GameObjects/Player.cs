@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Penumbra;
 
 /*
 * Player Class (Singleton)
@@ -49,9 +50,13 @@ namespace LifeSupport.GameObjects {
         //the time the player has left before they die (run out of O2)
         public float OxygenTime ;
 
+        //the player's flashlight
+        private Spotlight light ;
+        private bool lightOn ;
+
 
         //will probably be constant
-        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
+        public Player(PenumbraComponent penumdra) : base(new Vector2(100, 100), penumdra, 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
 
             this.controller = Controller.Instance;
             this.GunBarrelPosition = new Point(960, 540) ;
@@ -73,12 +78,25 @@ namespace LifeSupport.GameObjects {
             this.Augments =  new List<Augmentation>() ;
             this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
 
-            AddAugment(new Augmentation(0f, 0f, 0f, .8f, 0f)) ;
+            this.lightOn = false ;
+            this.light = new Spotlight {
+                Position = this.Position,
+                Intensity = 2f,
+                Rotation = this.Rotation,
+                Scale = new Vector2(2000f),
+                ShadowType = ShadowType.Occluded
+            };
+
+            AddAugment(new Augmentation(0f, 0f, 0f, .96f, 0f)) ;
 
         }
 
 
         public override void Draw(SpriteBatch spriteBatch) {
+            if (!lightOn) {
+                penumbra.Lights.Add(light) ;
+                lightOn = true ;
+            }
             spriteBatch.Draw(playerLegs, Position, new Rectangle(animFrame*Width, 0, Width, Height), Color.White, legRotation, legOrigin, 1f, SpriteEffects.None, 0);
             base.Draw(spriteBatch) ;
         }
@@ -157,6 +175,9 @@ namespace LifeSupport.GameObjects {
             this.OxygenTime -= (float)gameTime.ElapsedGameTime.TotalSeconds ;
             if (this.OxygenTime <= 0)
                 OnDeath() ;
+
+            light.Rotation = this.Rotation ;
+            light.Position = this.Position ;
 
         }
 
