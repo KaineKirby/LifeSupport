@@ -355,3 +355,13 @@ C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Deb
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\RoyT.AStar.xml
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\obj\x86\Debug\LifeSupport.csprojAssemblyReference.cache
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\effects\alien_shot.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\effects\player_shot.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\music\level_2_music.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\music\level_3_music.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\music\level_2_music.wma
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\music\level_3_music.wma
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\music\level_1_music.wma
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\music\level_1_music.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\music\menu_music.wma
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\music\menu_music.xnb

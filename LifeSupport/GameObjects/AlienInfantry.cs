@@ -26,13 +26,19 @@ namespace LifeSupport.GameObjects
             {
                 Vector2 dir = player.Position - this.Position;
                 dir.Normalize();
-                Shoot(dir);
+                Shoot(dir, Assets.Instance.alienShot);
             }
 
 
             //the OnHit requires a projectile so generate a dummy one
             if (this.IsInside(player))
                 player.OnHit(new Projectile(Vector2.Zero, Vector2.Zero, Damage, 0, 0, false, CurrentRoom));
+        }
+
+        protected override void InfluenceDirection(Vector2 direction, GameTime gameTime) {
+            this.MoveDirection = ((MoveDirection * (.6f) / (float)gameTime.ElapsedGameTime.TotalSeconds) + direction)/30 ;
+            if (!MoveDirection.Equals(Vector2.Zero))
+                MoveDirection.Normalize() ;
         }
     }
 }

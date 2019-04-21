@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +66,17 @@ namespace LifeSupport.Config {
         public Texture2D money ;
         public Texture2D keycard ;
 
+        //sound effects
+        public SoundEffect playerShot ;
+        public SoundEffect alienShot ;
+
+        //music
+        public Song menuMusic ;
+        public Song level1 ;
+        public Song level2 ;
+        public Song level3 ;
+
+
         private Assets() {
             instance = this ;
         }
@@ -113,6 +126,17 @@ namespace LifeSupport.Config {
             money = game.Content.Load<Texture2D>("img/drops/money") ;
             keycard = game.Content.Load<Texture2D>("img/drops/keycard") ;
 
+            //sounds
+
+            //gun shots
+            playerShot = game.Content.Load<SoundEffect>("sound/effects/player_shot") ;
+            alienShot = game.Content.Load<SoundEffect>("sound/effects/alien_shot") ;
+
+            //music
+            menuMusic = game.Content.Load<Song>("sound/music/menu_music") ;
+            level1 = game.Content.Load<Song>("sound/music/level_1_music") ;
+            level2 = game.Content.Load<Song>("sound/music/level_2_music") ;
+            level3 = game.Content.Load<Song>("sound/music/level_3_music") ;
 
         }
 

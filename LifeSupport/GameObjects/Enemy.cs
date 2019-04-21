@@ -37,7 +37,7 @@ namespace LifeSupport.GameObjects
             }
         }
 
-        private void InfluenceDirection(Vector2 direction, GameTime gameTime) {
+        protected virtual void InfluenceDirection(Vector2 direction, GameTime gameTime) {
             this.MoveDirection = ((MoveDirection * (.2f) / (float)gameTime.ElapsedGameTime.TotalSeconds) + direction)/30 ;
             if (!MoveDirection.Equals(Vector2.Zero))
                 MoveDirection.Normalize() ;

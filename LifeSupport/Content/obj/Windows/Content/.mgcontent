@@ -40,6 +40,12 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/projectile.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player_legs.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/alien_shot.wav</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/player_shot.wav</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/level_1_music.ogg</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/level_2_music.ogg</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/level_3_music.ogg</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/menu_music.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/square.jpg</File>
   </SourceFiles>
   <DestFiles>
@@ -66,6 +72,12 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>img/menus/main_menu.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

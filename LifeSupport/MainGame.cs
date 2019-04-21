@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using LifeSupport.States;
+using Microsoft.Xna.Framework.Media;
 
 namespace LifeSupport
 {
@@ -29,19 +30,31 @@ namespace LifeSupport
         private State currState;
         private State nextState;
 
-        public void ChangeState(State state)
-        {
-            if (currState is GameState)
-            {
+        public void ChangeState(State state) {
+
+            if (currState is GameState) {
                 prevState = currState;
             }
-            nextState = state;
-            nextState.Load();
+            nextState = state ;
+            nextState.Load() ;
+
+            //music management
+            if (nextState is GameState && currState is MenuState) {
+                MediaPlayer.Stop() ;
+                MediaPlayer.Play(((GameState)nextState).GetSong()) ;
+                MediaPlayer.Volume = (float)Settings.Instance.MusVolume/100 ;
+            }
+            else if (nextState is MenuState && currState is PauseState) {
+                MediaPlayer.Stop() ;
+                MediaPlayer.Play(Assets.Instance.menuMusic) ;
+                MediaPlayer.Volume = (float)Settings.Instance.MusVolume/100 ;
+            }
+
         }
 
         public void returnToGame(State state)
         {
-                nextState = prevState;
+            nextState = prevState;
         }
 
 
@@ -52,8 +65,6 @@ namespace LifeSupport
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = Settings.Instance.Height;
             graphics.PreferredBackBufferWidth = Settings.Instance.Width;
-            //       graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            //      graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.IsFullScreen = Settings.Instance.Fullscreen;
             graphics.SynchronizeWithVerticalRetrace = false;
             this.IsFixedTimeStep = false;
@@ -76,6 +87,9 @@ namespace LifeSupport
             hud = new SpriteBatch(GraphicsDevice);
             currState = new MenuState(this, graphics.GraphicsDevice, Content);
             currState.Load();
+
+            MediaPlayer.Play(Assets.Instance.menuMusic) ;
+            MediaPlayer.Volume = (float)Settings.Instance.MusVolume/100 ;
 
 
         }

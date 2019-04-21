@@ -473,6 +473,42 @@
 #begin Settings/Volume_Settings.json
 /copy:Settings/Volume_Settings.json
 
+#begin sound/effects/alien_shot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/alien_shot.wav
+
+#begin sound/effects/player_shot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/player_shot.wav
+
+#begin sound/music/level_1_music.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/music/level_1_music.ogg
+
+#begin sound/music/level_2_music.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/music/level_2_music.ogg
+
+#begin sound/music/level_3_music.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/music/level_3_music.ogg
+
+#begin sound/music/menu_music.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/music/menu_music.ogg
+
 #begin square.jpg
 /importer:TextureImporter
 /processor:TextureProcessor

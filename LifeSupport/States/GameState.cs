@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace LifeSupport.States
 {
@@ -27,7 +28,8 @@ namespace LifeSupport.States
 
         private PlayerStatsHUD pHud ;
         private MiniMap mMap ;
-        //private PlayerWeaponHUD wHud ;
+
+        private int difficulty ;
 
 
         public GameState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content) {
@@ -77,7 +79,15 @@ namespace LifeSupport.States
             }
 
             level.UpdateRooms(gameTime) ;
-
+            
+            //change the song if the level changed
+            if (difficulty != level.CurLevel) {
+                MediaPlayer.Stop() ;
+                MediaPlayer.Play(GetSong()) ;
+                MediaPlayer.Volume = (float)Settings.Instance.MusVolume/100 ;
+                difficulty = level.CurLevel ;
+            }
+            
             Cursor.Instance.Update(gameTime);
 
             pHud.Update() ;
@@ -102,7 +112,22 @@ namespace LifeSupport.States
 
             pHud = new PlayerStatsHUD(new Vector2(0, 850), player) ;
             mMap = new MiniMap(new Vector2(1650, 100), new Rectangle(0, 0, 50, 50), level) ;
+            difficulty = 1 ;
             //wHud = new PlayerWeaponHUD(new Vector2(1650, 800), player) ;
+        }
+
+        public Song GetSong() {
+            switch (level.CurLevel) {
+                case 1:
+                    return Assets.Instance.level1 ;
+                case 2:
+                    return Assets.Instance.level2 ; 
+                case 3:
+                    return Assets.Instance.level3 ;
+            }
+
+            return null ;
+
         }
        
     }

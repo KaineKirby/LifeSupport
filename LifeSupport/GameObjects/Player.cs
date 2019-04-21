@@ -8,6 +8,7 @@ using LifeSupport.Augments;
 using LifeSupport.Config ;
 using LifeSupport.Levels;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -50,7 +51,7 @@ namespace LifeSupport.GameObjects {
 
 
         //will probably be constant
-        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, .01f) {
+        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
 
             this.controller = Controller.Instance;
             this.GunBarrelPosition = new Point(960, 540) ;
@@ -72,6 +73,8 @@ namespace LifeSupport.GameObjects {
             this.Augments =  new List<Augmentation>() ;
             this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
 
+            AddAugment(new Augmentation(0f, 0f, 0f, .99f, 0f)) ;
+
         }
 
 
@@ -84,7 +87,7 @@ namespace LifeSupport.GameObjects {
         public override void UpdatePosition(GameTime gameTime) {
 
             if (Cursor.Instance.IsLeftMouseDown())
-                Shoot(Cursor.Instance.GetDirection(GunBarrelPosition)) ;
+                Shoot(Cursor.Instance.GetDirection(GunBarrelPosition), Assets.Instance.playerShot) ;
 
             //on the various vectors
             if (controller.IsMovingUp() && controller.IsMovingRight()) {
@@ -150,8 +153,6 @@ namespace LifeSupport.GameObjects {
                 OnDeath() ;
 
         }
-
-        
 
         public override void OnHit(Projectile proj) {
             //if the player is able to get hit again

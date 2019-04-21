@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LifeSupport.States;
 using LifeSupport.Utilities;
+using Microsoft.Xna.Framework.Media;
 
 /*
  * Settings Class (Singleton)
@@ -76,6 +77,8 @@ namespace LifeSupport.Config {
             this.Fps = FPSData.Fps ;
             this.SfxVolume = volumeData.SfxVolume;
             this.MusVolume = volumeData.MusVolume ;
+            MediaPlayer.Volume = (float)MusVolume/100 ;
+
 
             Instance = this ;
 
@@ -101,6 +104,7 @@ namespace LifeSupport.Config {
             dynamic audioData = JSONParser.ReadJsonFile("Content/Settings/Volume_Settings.json");
             this.SfxVolume = audioData.SfxVolume;
             this.MusVolume = audioData.MusVolume;
+            MediaPlayer.Volume = (float)MusVolume/100 ;
         }
 
 

@@ -27,7 +27,7 @@ namespace LifeSupport.GameObjects
             {
                 Vector2 dir = player.Position - this.Position;
                 dir.Normalize();
-                Shoot(dir);
+                Shoot(dir, Assets.Instance.alienShot) ;
             }
             
             

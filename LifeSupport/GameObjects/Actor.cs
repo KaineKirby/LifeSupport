@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using System.Collections;
 using LifeSupport.Levels;
 using RoyT.AStar;
+using Microsoft.Xna.Framework.Audio;
 
 /*
 * Actor Class (Abstract)
@@ -114,7 +115,7 @@ namespace LifeSupport.GameObjects {
             
         }
 
-        protected virtual void Shoot(Vector2 direction) {
+        protected virtual void Shoot(Vector2 direction, SoundEffect sound) {
             bool isPlayer = false;
             if (this is Player)
             {
@@ -125,6 +126,7 @@ namespace LifeSupport.GameObjects {
             {
                 CurrentRoom.AddObject(new Projectile(Position, direction, Damage, ShotSpeed, Range, isPlayer, CurrentRoom));
                 this.TimeBeforeShooting = RateOfFire;
+                sound.Play((float)(Settings.Instance.SfxVolume/100), 0f, 0f) ;
             }
         }
 
