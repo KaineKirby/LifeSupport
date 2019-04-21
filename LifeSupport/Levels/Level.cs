@@ -54,6 +54,8 @@ namespace LifeSupport.Levels {
         //generate a level and place the player in the starting room
         public void NextLevel() {
 
+            player.OxygenTime = 300f;
+
             //clear all of the lights from the room
             foreach (Room room in Rooms) {
                 room.RemoveLights() ;

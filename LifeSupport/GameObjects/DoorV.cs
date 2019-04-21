@@ -40,13 +40,7 @@ namespace LifeSupport.GameObjects {
         }
 
         public override void UpdatePosition(GameTime gameTime) {
-            //NOTE temporarily the doors can be opened/closed with L for testing
-            if (Controller.Instance.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.L)) {
-                if (IsOpen)
-                    CloseDoor() ;
-                else
-                    OpenDoor() ;
-            }
+
         }
 
 
