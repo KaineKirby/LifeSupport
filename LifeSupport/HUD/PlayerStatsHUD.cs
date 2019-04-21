@@ -21,6 +21,9 @@ namespace LifeSupport.HUD {
         private HUDImage moneyIcon ;
         private HUDString money ;
 
+        private HUDImage oxygen ;
+        private HUDString oxyText ;
+
         private HUDImage key ;
 
         public PlayerStatsHUD(Vector2 position, Player player) {
@@ -39,16 +42,23 @@ namespace LifeSupport.HUD {
             this.money = new HUDString(player.Money.ToString(), Color.White, (this.position + new Vector2(82, 150))*scalar) ;
             this.moneyIcon = new HUDImage(Assets.Instance.moneyIcon, (this.position + new Vector2(50, 150))*scalar) ;
 
-            key = new HUDImage(Assets.Instance.keycard, (this.position + new Vector2(125, 150))*scalar) ;
+            this.oxygen = new HUDImage(Assets.Instance.oxygenTank, (this.position + new Vector2(50, 0))*scalar) ;
+            this.oxyText = new HUDString(((int)(player.OxygenTime)).ToString(), Color.White, (this.position + new Vector2(82, 0))*scalar) ;
+
+            this.key = new HUDImage(Assets.Instance.keycard, (this.position + new Vector2(125, 150))*scalar) ;
         }
 
         public void Update() {
             this.playerSpeed.Update(player.MoveSpeed.ToString()) ;
             this.money.Update(player.Money.ToString()) ;
+            this.oxyText.Update(((int)(player.OxygenTime)).ToString()) ;
 
         }
 
         public void Draw(SpriteBatch spriteBatch) {
+
+            this.oxygen.Draw(spriteBatch) ;
+            this.oxyText.Draw(spriteBatch) ;
             for (int i = 0 ; i < player.Health ; i++) {
                 health[i].Draw(spriteBatch) ;
             }

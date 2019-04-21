@@ -22,7 +22,9 @@ namespace LifeSupport.GameObjects
 
         public override void UpdatePosition(GameTime gameTime)
         {
-            Shoot(new Vector2(-1, 0));
+            Vector2 dir = player.Position - this.Position ;
+            dir.Normalize() ;
+            Shoot(dir) ;
             base.UpdatePosition(gameTime);
             //the OnHit requires a projectile so generate a dummy one
             if (this.IsInside(player))

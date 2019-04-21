@@ -45,6 +45,9 @@ namespace LifeSupport.GameObjects {
         //this is the augmentation that will hold all of the statistics currently held
         private Augmentation MasterAugment ;
 
+        //the time the player has left before they die (run out of O2)
+        public float OxygenTime ;
+
 
         //will probably be constant
         public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
@@ -64,6 +67,7 @@ namespace LifeSupport.GameObjects {
 
             this.Money = 0 ;
             this.HasCard = false ;
+            this.OxygenTime = 300f ;
 
             this.Augments =  new List<Augmentation>() ;
             this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
@@ -140,6 +144,11 @@ namespace LifeSupport.GameObjects {
                 animFrame = (animFrame+1)%(playerLegs.Width/(Width)) ;
             }
 
+            //for updating the oxygen timer
+            this.OxygenTime -= (float)gameTime.ElapsedGameTime.TotalSeconds ;
+            if (this.OxygenTime <= 0)
+                OnDeath() ;
+
         }
 
         
@@ -153,8 +162,14 @@ namespace LifeSupport.GameObjects {
                 //kill it if its health is below 0
                 if (this.Health <= 0) {
                     //display a game over somehow
+                    OnDeath() ;
                 }
             }
+        }
+
+        //when the player dies
+        public void OnDeath() {
+            Console.WriteLine("Player Died") ;
         }
 
         //remove an augment from the augmentations list and apply changes
