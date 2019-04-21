@@ -21,6 +21,7 @@ namespace LifeSupport.GameObjects
         public float XPos, YPos;
         private float distanceTraveled;
         private bool isPlayer ;
+        private Color color ;
 
 
         public Projectile(Vector2 source, Vector2 direction, float damage, float velocity, float range, bool isPlayer, Room room) : base(source, 8, 8, 0, Assets.Instance.projectile) {
@@ -35,6 +36,10 @@ namespace LifeSupport.GameObjects
             this.CurrentRoom = room;
             this.HasCollision = false ;
             this.isPlayer = isPlayer ;
+            if (isPlayer)
+                this.color = Color.GreenYellow ;
+            else
+                this.color = Color.Red ;
         }
 
         public override void UpdatePosition(GameTime gameTime) {
@@ -74,6 +79,10 @@ namespace LifeSupport.GameObjects
                 CurrentRoom.DestroyObject(this);
             }
 
+        }
+
+        public override void Draw(SpriteBatch spriteBatch) {
+            spriteBatch.Draw(sprite, Position, spriteRectangle, color, Rotation, origin, 1f, SpriteEffects.None, 0);
         }
 
     }

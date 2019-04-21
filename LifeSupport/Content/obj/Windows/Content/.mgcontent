@@ -18,6 +18,10 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/cursor.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/drops/keycard.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/drops/money.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/alien_dog.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/alien_infantry.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/alien_infantry_legs.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/alien_turret.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/circle.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/active_room.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/beaten_room.png</File>
@@ -56,6 +60,10 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/square.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

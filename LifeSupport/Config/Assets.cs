@@ -61,6 +61,7 @@ namespace LifeSupport.Config {
         public Texture2D alienDog;
         public Texture2D alienTurret;
         public Texture2D alienInfantry;
+        public Texture2D alienInfantryLegs;
 
         public Texture2D oxygenTank ;
         public Texture2D money ;
@@ -114,9 +115,11 @@ namespace LifeSupport.Config {
             smallText = game.Content.Load<SpriteFont>("fonts/small_Font");
             mediumText = game.Content.Load<SpriteFont>("fonts/medium_font");
 
-            alienDog = game.Content.Load<Texture2D>("img/enemies/circle");
-            alienTurret = game.Content.Load<Texture2D>("img/enemies/circle");
-            alienInfantry = game.Content.Load<Texture2D>("img/enemies/circle");
+            alienDog = game.Content.Load<Texture2D>("img/enemies/alien_dog");
+            alienTurret = game.Content.Load<Texture2D>("img/enemies/alien_turret");
+            alienInfantry = game.Content.Load<Texture2D>("img/enemies/alien_infantry");
+            alienInfantryLegs = game.Content.Load<Texture2D>("img/enemies/alien_infantry_legs");
+
             leftArrowButton = game.Content.Load<Texture2D>("img/controls/arrowLeft");
             rightArrowButton = game.Content.Load<Texture2D>("img/controls/arrowRight");
 
@@ -140,7 +143,7 @@ namespace LifeSupport.Config {
             menuClick = game.Content.Load<SoundEffect>("sound/effects/menu_click") ;
             healthPickup = game.Content.Load<SoundEffect>("sound/effects/health_pickup") ;
             moneyPickup = game.Content.Load<SoundEffect>("sound/effects/money_pickup") ;
-            keycardPickup = moneyPickup = game.Content.Load<SoundEffect>("sound/effects/keycard_pickup") ;
+            keycardPickup = game.Content.Load<SoundEffect>("sound/effects/keycard_pickup") ;
             doorOpen = game.Content.Load<SoundEffect>("sound/effects/door_open") ;
             enemyHit = game.Content.Load<SoundEffect>("sound/effects/enemy_hit") ;
             playerHit = game.Content.Load<SoundEffect>("sound/effects/player_hit") ;

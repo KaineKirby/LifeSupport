@@ -30,7 +30,7 @@ namespace LifeSupport.GameObjects {
         private int animFrame ; //the current frame of animation
         private float timer ; //the time between animation frames
         private float time ; //the current time since last animation frame
-        private int legRotation ;
+        private float legRotation ;
         private Vector2 legOrigin ;
 
         private static float InvincibleMaxTime = 1.5f ;
@@ -131,7 +131,7 @@ namespace LifeSupport.GameObjects {
             //for animation
             if (!MoveDirection.Equals(Vector2.Zero)) {
                 this.time += (float)gameTime.ElapsedGameTime.TotalSeconds ;
-                this.legRotation = (int)(Math.Atan(MoveDirection.Y/MoveDirection.X)*180/Math.PI) ;
+                this.legRotation = (float)(Math.Atan(MoveDirection.Y/MoveDirection.X)) ;
             }
             else {
                 animFrame = 8 ;
@@ -141,11 +141,17 @@ namespace LifeSupport.GameObjects {
             if (InvincibleTime > 0f)
                 InvincibleTime -= (float)gameTime.ElapsedGameTime.TotalSeconds ;
                 
-            
+            //timer between frames
             if (time >= timer) {
                 time = 0 ;
                 animFrame = (animFrame+1)%(playerLegs.Width/(Width)) ;
             }
+
+            //rotating the player relative to the mouse
+            Vector2 mouseDir = Cursor.Instance.GetDirection(new Point(960, 540)) ;
+            this.Rotation = (float)(Math.Atan(mouseDir.Y/mouseDir.X)) ;
+            if (mouseDir.X < 0f)
+                this.Rotation -= (float)Math.PI ;
 
             //for updating the oxygen timer
             this.OxygenTime -= (float)gameTime.ElapsedGameTime.TotalSeconds ;

@@ -56,11 +56,11 @@ namespace LifeSupport.GameObjects {
         }
 
         //related to drawing
-        private Vector2 origin ;
-        private Rectangle spriteRectangle ;
+        protected Vector2 origin ;
+        protected Rectangle spriteRectangle ;
         
         //rotation on screen 
-        public int Rotation ;
+        public float Rotation ;
 
         //image for the game object
         protected Texture2D sprite ;
