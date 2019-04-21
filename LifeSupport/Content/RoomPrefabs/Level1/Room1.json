@@ -30,6 +30,13 @@
 		  {"Row": 34, "Column": 1, "Speed": 0, "Health":  5, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1},
 		  {"Row": 30, "Column": 53, "Speed": 0, "Health":  5, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1},
 		  {"Row": 1, "Column": 62, "Speed": 0, "Health":  5, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1}
+  ],
+
+  "AlienInfantry":[
+		  {"Row": 5, "Column": 11, "Speed": 150, "Health":  3, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1},
+		  {"Row": 34, "Column": 1, "Speed": 150, "Health":  3, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1},
+		  {"Row": 30, "Column": 53, "Speed": 150, "Health":  3, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1},
+		  {"Row": 1, "Column": 62, "Speed": 150, "Health":  3, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1}
   ]
 
 }

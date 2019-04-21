@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Augments\Augmentation.cs" />
+    <Compile Include="GameObjects\AlienInfantry.cs" />
     <Compile Include="GameObjects\AlienTurret.cs" />
     <Compile Include="GameObjects\Door.cs" />
     <Compile Include="GameObjects\DoorH.cs" />

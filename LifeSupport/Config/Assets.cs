@@ -58,6 +58,7 @@ namespace LifeSupport.Config {
         //Enemies
         public Texture2D alienDog;
         public Texture2D alienTurret;
+        public Texture2D alienInfantry;
 
         public Texture2D oxygenTank ;
         public Texture2D money ;
@@ -94,6 +95,7 @@ namespace LifeSupport.Config {
 
             alienDog = game.Content.Load<Texture2D>("img/enemies/circle");
             alienTurret = game.Content.Load<Texture2D>("img/enemies/circle");
+            alienInfantry = game.Content.Load<Texture2D>("img/enemies/circle");
             leftArrowButton = game.Content.Load<Texture2D>("img/controls/arrowLeft");
             rightArrowButton = game.Content.Load<Texture2D>("img/controls/arrowRight");
 

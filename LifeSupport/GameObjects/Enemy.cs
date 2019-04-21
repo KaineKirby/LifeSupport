@@ -52,7 +52,8 @@ namespace LifeSupport.GameObjects
             Position player = this.player.GetGridPosition() ;
 
             path = CurrentRoom.gridTiles.GetPath(enemy, player) ;
-            
+
+         
             //the calculated path is too short (next to player)
             if (path.Count < 2) {
                 this.MoveDirection = Vector2.Zero ;
@@ -99,6 +100,22 @@ namespace LifeSupport.GameObjects
 
             base.UpdatePosition(gameTime) ;
 
+
+        }
+
+        public bool HasLineOfSight() {
+            if (path == null)
+                return false;
+            Position enemy = this.GetGridPosition();
+            Position player = this.player.GetGridPosition();
+            Grid emptyGrid = new Grid(36, 64);
+            IList<Position> straightPath = emptyGrid.GetPath(enemy, player);
+            for(int i = 0; i < straightPath.Count && i < path.Count; i++)
+            {
+                if (straightPath[i] != path[i])
+                    return false;
+            }
+            return true;
 
         }
 

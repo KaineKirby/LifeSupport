@@ -108,7 +108,6 @@ namespace LifeSupport.Levels {
             for (int i = 0; i < Objects.Count; i++)
             {
                 Objects[i].Draw(spriteBatch) ;
-
             }
         }
 
@@ -338,6 +337,18 @@ namespace LifeSupport.Levels {
                     (float)jsonData.AlienTurret[i].Range, 
                     (float)jsonData.AlienTurret[i].ShotSpeed, 
                     (float)jsonData.AlienTurret[i].RateOfFire));
+            }
+            for (int i = 0; jsonData.AlienInfantry != null && i < jsonData.AlienInfantry.Count; i++)
+            {
+                Objects.Add(new AlienInfantry(player,
+                    new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienInfantry[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienInfantry[i].Row)),
+                    this,
+                    (float)jsonData.AlienInfantry[i].Speed,
+                    (float)jsonData.AlienInfantry[i].Health,
+                    (float)jsonData.AlienInfantry[i].Damage,
+                    (float)jsonData.AlienInfantry[i].Range,
+                    (float)jsonData.AlienInfantry[i].ShotSpeed,
+                    (float)jsonData.AlienInfantry[i].RateOfFire));
             }
             for (int i = 0 ; jsonData.OxygenTank != null && i < jsonData.OxygenTank.Count ; i++) {
                 Objects.Add(new OxygenTank(new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.OxygenTank[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.OxygenTank[i].Row)),
