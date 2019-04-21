@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LifeSupport.Augments;
 using LifeSupport.Config ;
 using LifeSupport.Levels;
 using Microsoft.Xna.Framework;
@@ -36,11 +37,17 @@ namespace LifeSupport.GameObjects {
 
         //the money the player has
         public int Money ;
-
+        //whether or not the player has the card to unlock the challenge room
         public bool HasCard ;
 
+        //An array of augmentations that the player current holds
+        public List<Augmentation> Augments ;
+        //this is the augmentation that will hold all of the statistics currently held
+        private Augmentation MasterAugment ;
+
+
         //will probably be constant
-        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, .01f) {
+        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
 
             this.controller = Controller.Instance;
             this.GunBarrelPosition = new Point(960, 540) ;
@@ -57,6 +64,9 @@ namespace LifeSupport.GameObjects {
 
             this.Money = 0 ;
             this.HasCard = false ;
+
+            this.Augments =  new List<Augmentation>() ;
+            this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
 
         }
 
@@ -144,6 +154,49 @@ namespace LifeSupport.GameObjects {
                 if (this.Health <= 0) {
                     //display a game over somehow
                 }
+            }
+        }
+
+        //remove an augment from the augmentations list and apply changes
+        public void RemoveAugment(Augmentation augment) {
+            this.Augments.Remove(augment) ;
+            ResetStats() ;
+            UpdateMasterAugment() ;
+            UpdateStats() ;
+        }
+
+        //add an augment to the augmentations list and apply changes
+        public void AddAugment(Augmentation augment) {
+            this.Augments.Add(augment) ;
+            ResetStats() ;
+            UpdateMasterAugment() ;
+            UpdateStats() ;
+        }
+
+        //reset the stats of the player to their base so we can apply augments
+        private void ResetStats() {
+            this.Damage = 1f ;
+            this.Range = 1000f ;
+            this.ShotSpeed = 1000f ;
+            this.RateOfFire = 1f ;
+            this.MoveSpeed = 500f ;
+        }
+
+        private void UpdateMasterAugment() {
+            Augmentation a = new Augmentation(0, 0, 0, 0, 0) ;
+            foreach (Augmentation b in Augments) {
+                a += b ;
+            }
+        }
+
+        //update the stats based on the master augment
+        private void UpdateStats() {
+            foreach (Augmentation a in Augments) {
+                this.Damage += a.Damage ;
+                this.Range += this.Range*a.Range ;
+                this.ShotSpeed += this.ShotSpeed*a.ShotSpeed ;
+                this.RateOfFire -= a.RateOfFire ;
+                this.MoveSpeed += this.MoveSpeed*a.MoveSpeed ;
             }
         }
     }
