@@ -50,7 +50,7 @@ namespace LifeSupport.GameObjects {
 
 
         //will probably be constant
-        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
+        public Player() : base(new Vector2(100, 100), 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, .01f) {
 
             this.controller = Controller.Instance;
             this.GunBarrelPosition = new Point(960, 540) ;

@@ -12,10 +12,14 @@ using System.Threading.Tasks;
 namespace LifeSupport.States
 {
    public  class OptionsState : State
-   { 
-        private MainGame game;
+   {
+
+    public static bool openedFromPause = false;
+    private MainGame game;
     private SpriteBatch bg;
     private List<Component> components;
+
+
     public OptionsState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
     {
         this.game = game;
@@ -40,6 +44,11 @@ namespace LifeSupport.States
     private void MainMenuButton_Click(object sender, EventArgs e)
     {
          game.ChangeState(new MenuState(game, graphDevice, content));
+    }
+
+    private void PauseButton_Click(object sender, EventArgs e)
+    {
+         game.ChangeState(new PauseState(game, graphDevice, content));
     }
 
 
@@ -114,12 +123,32 @@ namespace LifeSupport.States
 
         menuButton.Click += MainMenuButton_Click;
 
-        components = new List<Component>() {
+            var pauseButton = new Button(btnTexture, btnText)
+            {
+                CurrPosition = new Vector2(200, 850),
+                BtnText = "Return To Pause Screen",
+            };
+
+            pauseButton.Click += PauseButton_Click;
+
+            if (openedFromPause == false)
+            {
+                components = new List<Component>() {
                 videoButton,
                 audioButton,
                 controlsButton,
                 menuButton,
             };
+            }
+            else
+            {
+                components = new List<Component>() {
+                videoButton,
+                audioButton,
+                controlsButton,
+                pauseButton,
+            };
+            }
     }
 }
 }

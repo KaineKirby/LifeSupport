@@ -30,14 +30,17 @@ namespace LifeSupport
 
         public void ChangeState(State state)
         {
-            prevState = currState;
+            if (currState is GameState)
+            {
+                prevState = currState;
+            }
             nextState = state;
             nextState.Load();
         }
 
         public void returnToGame(State state)
         {
-            nextState = prevState;
+                nextState = prevState;
         }
 
 

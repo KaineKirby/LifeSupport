@@ -52,22 +52,29 @@ namespace LifeSupport.States
 
             var resumeButton = new Button(btnTexture, btnText)
             {
-                CurrPosition = new Vector2(750, 500),
+                CurrPosition = new Vector2(750, 400),
                 BtnText = "Resume Game",
             };
             resumeButton.Click += Resume_Button_Click;
 
+            var optionButton = new Button(btnTexture, btnText)
+            {
+                CurrPosition = new Vector2(750, 550),
+                BtnText = "Change Game Settings"
+            };
+            optionButton.Click += Settings_Button_Click;
+
             var menuButton = new Button(btnTexture, btnText)
             {
-                CurrPosition = new Vector2(750, 650),
-                BtnText = "Return To Menu",
+                CurrPosition = new Vector2(750, 700),
+                BtnText = "Start A New Game",
             };
             menuButton.Click += Menu_Button_Click;
 
 
             var quitButton = new Button(btnTexture, btnText)
             {
-                CurrPosition = new Vector2(750, 800),
+                CurrPosition = new Vector2(750, 850),
                 BtnText = "Quit Game",
             };
             quitButton.Click += Quit_Button_Click;
@@ -75,6 +82,7 @@ namespace LifeSupport.States
             components = new List<Component>()
             {
                 resumeButton,
+                optionButton,
                 menuButton,
                 quitButton,
             };
@@ -98,11 +106,19 @@ namespace LifeSupport.States
 
         private void Resume_Button_Click(object sender, EventArgs e)
         {
+            game.IsMouseVisible = false;
             game.returnToGame(new GameState(game, graphDevice, content));
+        }
+
+        private void Settings_Button_Click(object sender, EventArgs e)
+        {
+            OptionsState.openedFromPause = true;
+            game.ChangeState(new OptionsState(game, graphDevice, content));    
         }
 
         private void Menu_Button_Click(object sender, EventArgs e)
         {
+            OptionsState.openedFromPause = false;
             game.ChangeState(new MenuState(game, graphDevice, content));
         }
 

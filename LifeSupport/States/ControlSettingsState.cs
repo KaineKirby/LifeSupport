@@ -21,7 +21,7 @@ namespace LifeSupport.States
    
         private List<Button> buttons;
         private List<Component> components;
-        private List<Keys> defaultControls = new List<Keys> { Keys.W, Keys.S, Keys.A, Keys.D, Keys.I, Keys.Escape };
+        private List<Keys> defaultControls = new List<Keys> { Keys.W, Keys.S, Keys.A, Keys.D, Keys.I, Keys.Escape, Keys.E };
         private List<Keys> storeKeys = new List<Keys>();
 
         private SpriteFont textFont;
@@ -31,6 +31,7 @@ namespace LifeSupport.States
         private Vector2 MoveRightTexturePosition;
         private Vector2 OpenInventoryTextPosition;
         private Vector2 OpenPauseMenuTextPosition;
+        private Vector2 InteractWithObjectTextPosition;
 
         private string oldKeyAsString = "";
         private Keys oldKeyAsKey;
@@ -43,6 +44,7 @@ namespace LifeSupport.States
         public Keys MoveRight { get; set; }
         public Keys OpenInventory { get; set; }
         public Keys PauseGame { get; set; }
+        public Keys Use { get; set; }
 
 
         public ControlSettingsState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
@@ -66,6 +68,8 @@ namespace LifeSupport.States
             storeKeys.Add(OpenInventory);
             PauseGame = Controller.Instance.PauseGame;
             storeKeys.Add(PauseGame);
+            Use = Controller.Instance.Use;
+            storeKeys.Add(Use);
 
             Assets.Instance.LoadContent(game);
             game.IsMouseVisible = true;
@@ -122,6 +126,13 @@ namespace LifeSupport.States
             };
             openPauseMenuButton.Click += Pause_Menu_Click;
 
+            var interactButton = new Button(btnTexture, btnText)
+            {
+                CurrPosition = new Vector2(1420, 420),
+                BtnText = Use.ToString(),
+            };
+            interactButton.Click += Interact_With_Object_Click;
+
 
 
             var settingsButton = new Button(btnTexture, btnText)
@@ -154,6 +165,7 @@ namespace LifeSupport.States
                 moveRightButton,
                 openInventoryButton,
                 openPauseMenuButton,
+                interactButton,
             };
 
             components = new List<Component>()
@@ -181,6 +193,9 @@ namespace LifeSupport.States
 
 
             OpenPauseMenuTextPosition = new Vector2(1130, 340);
+
+
+            InteractWithObjectTextPosition = new Vector2(1130, 450);
 
     }
 
@@ -247,6 +262,7 @@ namespace LifeSupport.States
             spriteBatch.DrawString(textFont, "Move Right:", MoveRightTexturePosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
             spriteBatch.DrawString(textFont, "Open Inventory:", OpenInventoryTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
             spriteBatch.DrawString(textFont, "Pause Game:", OpenPauseMenuTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
+            spriteBatch.DrawString(textFont, "Interact With Object:", InteractWithObjectTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
             spriteBatch.End();
             
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
@@ -274,6 +290,7 @@ namespace LifeSupport.States
             MoveRight = storeKeys[3];
             OpenInventory = storeKeys[4];
             PauseGame = storeKeys[5];
+            Use = storeKeys[6];
 
             File.WriteAllText("Content/Settings/Control_Settings.json", JsonConvert.SerializeObject(this));
             Controller.Instance.reloadControls();
@@ -396,7 +413,23 @@ namespace LifeSupport.States
             }
         }
 
-        
+        private void Interact_With_Object_Click(object sender, EventArgs e)
+        {
+            clickedButtonIndex = 6;
+            oldKeyAsString = buttons[clickedButtonIndex].BtnText;
+            oldKeyAsKey = storeKeys[clickedButtonIndex];
+            buttons[clickedButtonIndex].ThisColor = Color.Black;
+
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                if (buttons[i].ThisColor == Color.Black && i != clickedButtonIndex)
+                {
+                    buttons[i].ThisColor = Color.White;
+                }
+            }
+        }
+
+
         private void DefaultButton_Click(object sender, EventArgs e)
         {
             for(int i = 0; i < defaultControls.Count; i++)
