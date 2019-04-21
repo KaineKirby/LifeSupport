@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RoyT.AStar;
+using LifeSupport.Config;
 
 namespace LifeSupport.GameObjects
 {
@@ -117,6 +118,11 @@ namespace LifeSupport.GameObjects
             }
             return true;
 
+        }
+
+        public override void OnHit(Projectile proj) {
+            base.OnHit(proj) ;
+            Assets.Instance.enemyHit.Play((float)Settings.Instance.SfxVolume/100, 0f, 0f) ;
         }
 
     }

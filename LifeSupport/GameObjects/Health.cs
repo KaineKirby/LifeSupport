@@ -16,6 +16,7 @@ namespace LifeSupport.GameObjects {
 
         public override void OnPickup() {
             player.Health += 1f ;
+            Assets.Instance.healthPickup.Play((float)Settings.Instance.SfxVolume/100, 0f, 0f) ;
             base.OnPickup() ;
         }
     }

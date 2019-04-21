@@ -115,7 +115,7 @@ namespace LifeSupport.Levels {
         {
             Objects.Remove(obj);
             //if all the enemies are gone we can open all the doors in the room
-            if (!HasEnemies()) {
+            if (!HasEnemies() && !IsBeaten) {
                 OnRoomComplete() ;
             }
         }
@@ -131,21 +131,23 @@ namespace LifeSupport.Levels {
             int roll = RandomGenerator.Instance.GetRandomIntRange(0, 7) ;
 
             //25 percent chance to drop some money
-            if (roll == 0 && !IsBeaten) {
+            if (roll == 0) {
                 Console.WriteLine("Dropped money") ;
                 int amount = RandomGenerator.Instance.GetRandomIntRange((level.CurLevel-1)*10 + 1, (level.CurLevel-1)*10 + 10) ;
                 AddObject(new Money(new Vector2(StartX + 960, StartY + 540), player, this, amount)) ;
             }
-            else if (roll == 1 && !IsBeaten) {
+            else if (roll == 1) {
                 Console.WriteLine("Dropped health") ;
                 AddObject(new Health(new Vector2(StartX + 960, StartY + 540), player, this)) ;
             }
 
             //drop the keycard if the room is designated to do so
-            if (!IsBeaten && DropsCard) {
+            if (DropsCard) {
                 Console.WriteLine("Dropped keycard") ;
                 AddObject(new Keycard(new Vector2(StartX + 960, StartY + 600), player, this, level)) ;
             }
+            
+            Assets.Instance.doorOpen.Play((float)Settings.Instance.SfxVolume/100, 0f, 0f) ;
 
             OpenAllDoors() ;
             IsBeaten = true ;

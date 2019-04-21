@@ -45,12 +45,18 @@ namespace LifeSupport.Controls
             font = BtnFont;
             ThisColor = Color.White;
             picture = BtnTexture;
+            Click += PlaySound ;
         }
 
         public Button(Texture2D BtnTexture)
         {
             texture = BtnTexture;
             ThisColor = Color.White;
+        }
+
+        //method to play sound will be on all buttons
+        private void PlaySound(object sender, EventArgs e) {
+            Assets.Instance.menuClick.Play((float)Settings.Instance.SfxVolume/100, 0f, 0f) ;
         }
 
 

@@ -479,6 +479,48 @@
 /processorParam:Quality=Best
 /build:sound/effects/alien_shot.wav
 
+#begin sound/effects/door_open.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/door_open.wav
+
+#begin sound/effects/health_pickup.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/health_pickup.ogg
+
+#begin sound/effects/hit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/hit.wav;sound/effects/enemy_hit.wav
+
+#begin sound/effects/keycard_pickup.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/keycard_pickup.ogg
+
+#begin sound/effects/menu_click.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/menu_click.ogg
+
+#begin sound/effects/money_pickup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/money_pickup.wav
+
+#begin sound/effects/player_hit.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/player_hit.ogg
+
 #begin sound/effects/player_shot.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

@@ -69,6 +69,14 @@ namespace LifeSupport.Config {
         //sound effects
         public SoundEffect playerShot ;
         public SoundEffect alienShot ;
+        public SoundEffect menuClick ;
+        public SoundEffect healthPickup ;
+        public SoundEffect moneyPickup ;
+        public SoundEffect keycardPickup ;
+        public SoundEffect doorOpen ;
+        public SoundEffect enemyHit ;
+        public SoundEffect playerHit ;
+
 
         //music
         public Song menuMusic ;
@@ -127,6 +135,15 @@ namespace LifeSupport.Config {
             keycard = game.Content.Load<Texture2D>("img/drops/keycard") ;
 
             //sounds
+
+            //misc
+            menuClick = game.Content.Load<SoundEffect>("sound/effects/menu_click") ;
+            healthPickup = game.Content.Load<SoundEffect>("sound/effects/health_pickup") ;
+            moneyPickup = game.Content.Load<SoundEffect>("sound/effects/money_pickup") ;
+            keycardPickup = moneyPickup = game.Content.Load<SoundEffect>("sound/effects/keycard_pickup") ;
+            doorOpen = game.Content.Load<SoundEffect>("sound/effects/door_open") ;
+            enemyHit = game.Content.Load<SoundEffect>("sound/effects/enemy_hit") ;
+            playerHit = game.Content.Load<SoundEffect>("sound/effects/player_hit") ;
 
             //gun shots
             playerShot = game.Content.Load<SoundEffect>("sound/effects/player_shot") ;

@@ -58,6 +58,7 @@ namespace LifeSupport.Levels {
             //start with beginning room
             Room start = new Room(player, this, 0, 0, "Content/RoomPrefabs/Level"+CurrentLevel+"/Room0.json", new Point(0, 0)) ; //id of 0 is empty room
             activeRoom = start ;
+            start.IsBeaten = true ;
             player.CurrentRoom = start ;
             player.HasCard = false ;
             player.Position = new Vector2(start.StartX + Room.Width/2, start.StartY + Room.Height/2) ;

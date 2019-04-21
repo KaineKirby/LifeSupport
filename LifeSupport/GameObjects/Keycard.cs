@@ -24,6 +24,7 @@ namespace LifeSupport.GameObjects {
             //open all the doors when we pickup the keycard
             level.ChallengeRoom.OpenAllDoors() ;
             player.HasCard = true ;
+            Assets.Instance.keycardPickup.Play((float)Settings.Instance.SfxVolume/100, 0f, 0f) ;
             //call base to delete the keycard from the room
             base.OnPickup() ;
         }

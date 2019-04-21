@@ -41,6 +41,13 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/player/player_legs.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/alien_shot.wav</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/door_open.wav</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/health_pickup.ogg</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/hit.wav</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/keycard_pickup.ogg</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/menu_click.ogg</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/money_pickup.wav</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/player_hit.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/player_shot.wav</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/level_1_music.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/level_2_music.ogg</File>
@@ -82,6 +89,13 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>sound/effects/enemy_hit.wav</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

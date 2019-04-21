@@ -73,7 +73,7 @@ namespace LifeSupport.GameObjects {
             this.Augments =  new List<Augmentation>() ;
             this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
 
-            AddAugment(new Augmentation(0f, 0f, 0f, .99f, 0f)) ;
+            AddAugment(new Augmentation(0f, 0f, 0f, .8f, 0f)) ;
 
         }
 
@@ -160,6 +160,7 @@ namespace LifeSupport.GameObjects {
                 InvincibleTime = InvincibleMaxTime ;
                 Console.WriteLine(this + " hit for " + proj.Damage + " damage") ;
                 this.Health -= proj.Damage ;
+                Assets.Instance.playerHit.Play((float)Settings.Instance.SfxVolume/100, 0f, 0f) ;
                 //kill it if its health is below 0
                 if (this.Health <= 0) {
                     //display a game over somehow

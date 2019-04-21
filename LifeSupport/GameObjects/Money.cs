@@ -18,9 +18,8 @@ namespace LifeSupport.GameObjects {
 
         public override void OnPickup() {
             player.Money += amount ;
-            
+            Assets.Instance.moneyPickup.Play((float)Settings.Instance.SfxVolume/100, 0f, 0f) ;
             Console.WriteLine("Player picked up money: " + player.Money) ;
-
             base.OnPickup() ;
         }
     }
