@@ -16,7 +16,6 @@ namespace LifeSupport.GameObjects {
         private Texture2D openTexture ;
         private Texture2D closeTexture ;
 
-
         //when a rotation is not passed we assume 0 
         public DoorH(Vector2 position, PenumbraComponent penumbra) : base(position, penumbra, 60, 30, 0, Assets.Instance.closeDoorH) {
             IsOpen = false ;
@@ -26,6 +25,7 @@ namespace LifeSupport.GameObjects {
             openTexture = Assets.Instance.openDoorH ;
             closeTexture = Assets.Instance.closeDoorH ;
 
+
         }
 
         //open the door if it is not already open
@@ -33,6 +33,7 @@ namespace LifeSupport.GameObjects {
             this.sprite = openTexture ;
             IsOpen = true ;
             this.HasCollision = false ; 
+
         }
 
         public void CloseDoor() {
@@ -40,6 +41,8 @@ namespace LifeSupport.GameObjects {
             IsOpen = false ;
             this.HasCollision = true ;
         }
+
+
 
         public override void UpdatePosition(GameTime gameTime) {
 

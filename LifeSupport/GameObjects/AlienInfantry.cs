@@ -69,7 +69,6 @@ namespace LifeSupport.GameObjects
             if (time >= timer) {
                 time = 0 ;
                 animFrame = (animFrame+1)%(alienLegs.Width/(32)) ;
-                Console.WriteLine(animFrame) ;
             }
         }
 

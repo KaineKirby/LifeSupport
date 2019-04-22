@@ -27,7 +27,7 @@ namespace LifeSupport.GameObjects {
 
         private Rectangle rect ;
 
-        public Barrier(Rectangle rect, PenumbraComponent penumbra) : base(Vector2.Zero, penumbra, rect.Width, rect.Height, rotation, Assets.Instance.barrier) {
+        public Barrier(Rectangle rect, PenumbraComponent penumbra, bool hasHull = true) : base(Vector2.Zero, penumbra, rect.Width, rect.Height, rotation, Assets.Instance.barrier) {
             this.rect = rect ;
             this.Position = rect.Center.ToVector2() ;
 
@@ -35,8 +35,10 @@ namespace LifeSupport.GameObjects {
                 Position = new Vector2(Left, Top)
             } ;
 
-            penumbra.Hulls.Add(hull) ;
+            if (hasHull)
+                penumbra.Hulls.Add(hull) ;
         }
+
 
         public override void UpdatePosition(GameTime gameTime) {
             //also do nothing because it does not move

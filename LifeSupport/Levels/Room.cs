@@ -309,22 +309,22 @@ namespace LifeSupport.Levels {
 
             //top
             Objects.Add(new Barrier(new Rectangle(StartX, StartY, (Width/2) - Barrier.WallThickness, Barrier.WallThickness), penumbra));
-            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY, Barrier.WallThickness*2, Barrier.WallThickness), penumbra)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY, Barrier.WallThickness*2, Barrier.WallThickness), penumbra, false)) ;
             Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) + Barrier.WallThickness, StartY, (Width/2) - Barrier.WallThickness, Barrier.WallThickness), penumbra));
 
             //bottom
             Objects.Add(new Barrier(new Rectangle(StartX, StartY + Height - Barrier.WallThickness, (Width/2) - Barrier.WallThickness, Barrier.WallThickness), penumbra));
-            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY + Height - Barrier.WallThickness, Barrier.WallThickness*2, Barrier.WallThickness), penumbra)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) - Barrier.WallThickness, StartY + Height - Barrier.WallThickness, Barrier.WallThickness*2, Barrier.WallThickness), penumbra, false)) ;
             Objects.Add(new Barrier(new Rectangle(StartX + (Width/2) + Barrier.WallThickness, StartY + Height - Barrier.WallThickness, (Width/2) - Barrier.WallThickness, Barrier.WallThickness), penumbra));
 
             //left
             Objects.Add(new Barrier(new Rectangle(StartX, StartY + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - 2 * Barrier.WallThickness), penumbra));
-            Objects.Add(new Barrier(new Rectangle(StartX, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2), penumbra)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2), penumbra, false)) ;
             Objects.Add(new Barrier(new Rectangle(StartX, StartY + (Height / 2) + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - Barrier.WallThickness * 2), penumbra));
 
             //right
             Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - 2 * Barrier.WallThickness), penumbra));
-            Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2), penumbra)) ;
+            Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + (Height/2) - Barrier.WallThickness, Barrier.WallThickness, Barrier.WallThickness*2), penumbra, false)) ;
             Objects.Add(new Barrier(new Rectangle(StartX + Width - Barrier.WallThickness, StartY + (Height / 2) + Barrier.WallThickness, Barrier.WallThickness, (Height / 2) - Barrier.WallThickness * 2), penumbra));
         }
 
