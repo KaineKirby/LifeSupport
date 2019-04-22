@@ -53,6 +53,7 @@ namespace LifeSupport.Config {
         public SpriteFont smallText;
         public SpriteFont mediumText ;
         public Texture2D healthIcon ;
+        public Texture2D oxygenIcon ;
         public Texture2D speedIcon ;
         public Texture2D moneyIcon ;
         public Texture2D activeRoom ;
@@ -134,6 +135,7 @@ namespace LifeSupport.Config {
             healthIcon = game.Content.Load<Texture2D>("img/hud/health") ;
             speedIcon = game.Content.Load<Texture2D>("img/hud/speed") ;
             moneyIcon = game.Content.Load<Texture2D>("img/hud/money_icon") ;
+            oxygenIcon = game.Content.Load<Texture2D>("img/hud/oxygen_icon") ;
             activeRoom = game.Content.Load<Texture2D>("img/hud/active_room") ;
             beatenRoom = game.Content.Load<Texture2D>("img/hud/beaten_room") ;
 

@@ -41,7 +41,7 @@ namespace LifeSupport.HUD {
             this.money = new HUDString(player.Money.ToString(), Color.White, (this.position + new Vector2(82, 150))) ;
             this.moneyIcon = new HUDImage(Assets.Instance.moneyIcon, (this.position + new Vector2(50, 150))) ;
 
-            this.oxygen = new HUDImage(Assets.Instance.oxygenTank, (this.position + new Vector2(50, 0))) ;
+            this.oxygen = new HUDImage(Assets.Instance.oxygenIcon, (this.position + new Vector2(50, 0))) ;
             this.oxyText = new HUDString(((int)(player.OxygenTime)).ToString(), Color.White, (this.position + new Vector2(82, 0))) ;
 
             this.key = new HUDImage(Assets.Instance.keycard, (this.position + new Vector2(125, 150))) ;

@@ -92,7 +92,7 @@
 #begin img/controls/blk_button.png
 /importer:TextureImporter
 /processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyColor=255,0,255,0
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
@@ -104,7 +104,7 @@
 #begin img/controls/blk_button_large.png
 /importer:TextureImporter
 /processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyColor=255,0,255,0
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
@@ -269,6 +269,18 @@
 /processorParam:TextureFormat=Color
 /build:img/hud/money_icon.png
 
+#begin img/hud/oxygen_icon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/hud/oxygen_icon.png
+
 #begin img/hud/speed.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -305,7 +317,7 @@
 /processorParam:TextureFormat=Color
 /build:img/menus/controlsMenu.png
 
-#begin img/menus/Main_Menu.png
+#begin img/menus/main_menu.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -315,7 +327,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:img/menus/Main_Menu.png;img/menus/main_menu.png
+/build:img/menus/main_menu.png
 
 #begin img/menus/optionsMenu.png
 /importer:TextureImporter

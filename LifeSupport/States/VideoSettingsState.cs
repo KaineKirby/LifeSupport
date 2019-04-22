@@ -151,7 +151,7 @@ namespace LifeSupport.States
             spriteBatch.DrawString(textFont, fullScreenOption[fullScreenIndex], fullScreenValuePosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
             spriteBatch.End();
 
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
+            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
             foreach (var component in components)
             {
                 component.Draw(gameTime, spriteBatch);

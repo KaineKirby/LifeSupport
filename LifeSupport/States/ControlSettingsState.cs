@@ -263,17 +263,17 @@ namespace LifeSupport.States
             spriteBatch.DrawString(textFont, "Move Right:", MoveRightTexturePosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
             spriteBatch.DrawString(textFont, "Open Inventory:", OpenInventoryTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
             spriteBatch.DrawString(textFont, "Pause Game:", OpenPauseMenuTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
-            spriteBatch.DrawString(textFont, "Interact With Object:", InteractWithObjectTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
+            spriteBatch.DrawString(textFont, "Interact:", InteractWithObjectTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
             spriteBatch.End();
             
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
+            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
             foreach (var component in components)
             {
                 component.Draw(gameTime, spriteBatch);
             }
             spriteBatch.End();
 
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
+            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
             foreach (var button in buttons)
             {
                 button.Draw(gameTime, spriteBatch);
