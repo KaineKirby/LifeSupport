@@ -509,8 +509,32 @@
 #begin RoomPrefabs/Level1/Room1.json
 /copy:RoomPrefabs/Level1/Room1.json
 
+#begin RoomPrefabs/Level1/Room10.json
+/copy:RoomPrefabs/Level1/Room10.json
+
 #begin RoomPrefabs/Level1/Room2.json
 /copy:RoomPrefabs/Level1/Room2.json
+
+#begin RoomPrefabs/Level1/Room3.json
+/copy:RoomPrefabs/Level1/Room3.json
+
+#begin RoomPrefabs/Level1/Room4.json
+/copy:RoomPrefabs/Level1/Room4.json
+
+#begin RoomPrefabs/Level1/Room5.json
+/copy:RoomPrefabs/Level1/Room5.json
+
+#begin RoomPrefabs/Level1/Room6.json
+/copy:RoomPrefabs/Level1/Room6.json
+
+#begin RoomPrefabs/Level1/Room7.json
+/copy:RoomPrefabs/Level1/Room7.json
+
+#begin RoomPrefabs/Level1/Room8.json
+/copy:RoomPrefabs/Level1/Room8.json
+
+#begin RoomPrefabs/Level1/Room9.json
+/copy:RoomPrefabs/Level1/Room9.json
 
 #begin RoomPrefabs/Level2/Challenge/Room0.json
 /copy:RoomPrefabs/Level2/Challenge/Room0.json

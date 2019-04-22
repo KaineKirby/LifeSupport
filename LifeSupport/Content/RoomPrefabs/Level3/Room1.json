@@ -1,35 +1,191 @@
 {
-  "Barrier":[
-
-		  {"Row": 12, "Column": 1, "BarrierWidth": 9, "BarrierHeight": 1},
-		  {"Row": 12, "Column": 13, "BarrierWidth": 18, "BarrierHeight": 1},
-		  {"Row": 12, "Column": 34, "BarrierWidth": 18, "BarrierHeight": 1},
-		  {"Row": 12, "Column": 55, "BarrierWidth": 8, "BarrierHeight": 1},
-
-		  {"Row": 1, "Column": 20, "BarrierWidth": 1, "BarrierHeight": 11},
-		  {"Row": 1, "Column": 43, "BarrierWidth": 1, "BarrierHeight": 11},
-
-		  {"Row": 24, "Column":1, "BarrierWidth": 9, "BarrierHeight": 1},
-		  {"Row": 24, "Column": 13, "BarrierWidth": 18, "BarrierHeight": 1},
-		  {"Row": 24, "Column": 34, "BarrierWidth": 18, "BarrierHeight": 1},
-		  {"Row": 24, "Column": 55, "BarrierWidth": 8, "BarrierHeight": 1},
-
-		  {"Row": 25, "Column": 20, "BarrierWidth": 1, "BarrierHeight": 10},
-		  {"Row": 25, "Column": 43, "BarrierWidth": 1, "BarrierHeight": 10}
+  "Barrier": [
+    {
+      "Row": 12,
+      "Column": 1,
+      "BarrierWidth": 9,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 12,
+      "Column": 13,
+      "BarrierWidth": 18,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 12,
+      "Column": 34,
+      "BarrierWidth": 18,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 12,
+      "Column": 55,
+      "BarrierWidth": 8,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 1,
+      "Column": 20,
+      "BarrierWidth": 1,
+      "BarrierHeight": 11
+    },
+    {
+      "Row": 1,
+      "Column": 43,
+      "BarrierWidth": 1,
+      "BarrierHeight": 11
+    },
+    {
+      "Row": 24,
+      "Column": 1,
+      "BarrierWidth": 9,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 24,
+      "Column": 13,
+      "BarrierWidth": 18,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 24,
+      "Column": 34,
+      "BarrierWidth": 18,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 24,
+      "Column": 55,
+      "BarrierWidth": 8,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 25,
+      "Column": 20,
+      "BarrierWidth": 1,
+      "BarrierHeight": 10
+    },
+    {
+      "Row": 25,
+      "Column": 43,
+      "BarrierWidth": 1,
+      "BarrierHeight": 10
+    }
   ],
-
-  "AlienDog":[
-		  {"Row": 1, "Column": 1, "Speed": 300, "Health":  3, "Damage": 1},
-		  {"Row": 34, "Column": 1, "Speed": 300, "Health":  3, "Damage": 1},
-		  {"Row": 34, "Column": 62, "Speed": 300, "Health":  3, "Damage": 1},
-		  {"Row": 1, "Column": 62, "Speed": 300, "Health":  3, "Damage": 1}
+  "AlienDog": [
+    {
+      "Row": 25,
+      "Column": 21,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 25,
+      "Column": 42,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 11,
+      "Column": 21,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 11,
+      "Column": 42,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    }
   ],
-
-  "AlienTurret":[
-		  {"Row": 5, "Column": 11, "Speed": 0, "Health":  5, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1},
-		  {"Row": 34, "Column": 1, "Speed": 0, "Health":  5, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1},
-		  {"Row": 30, "Column": 53, "Speed": 0, "Health":  5, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1},
-		  {"Row": 1, "Column": 62, "Speed": 0, "Health":  5, "Damage": 1, "Range": 1000, "ShotSpeed": 1000, "RateOfFire": 1}
-  ]
-
+  "AlienTurret": [
+    {
+      "Row": 33,
+      "Column": 11,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 2,
+      "Column": 11,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 33,
+      "Column": 53,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 2,
+      "Column": 53,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    }
+  ],
+  "AlienInfantry": [
+    {
+      "Row": 25,
+      "Column": 44,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 25,
+      "Column": 19,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 11,
+      "Column": 19,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 11,
+      "Column": 44,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    }
+  ],
+  "OxygenTank": []
 }

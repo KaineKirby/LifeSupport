@@ -68,7 +68,6 @@ namespace LifeSupport.States
 
             pHud.Draw(hud) ;
             mMap.Draw(hud) ;
-            //wHud.Draw(hud) ;
 
             hud.End();
 
@@ -102,11 +101,12 @@ namespace LifeSupport.States
 
             pHud.Update() ;
             mMap.Update() ;
-            //wHud.Update() ;
         }
 
-        public override void Load()
-        {
+        public override void Load() {
+
+            game.penumbra.Lights.Clear() ;
+            game.penumbra.Hulls.Clear() ;
 
             game.IsMouseVisible = false ;
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -123,7 +123,6 @@ namespace LifeSupport.States
             pHud = new PlayerStatsHUD(new Vector2(0, 850), player) ;
             mMap = new MiniMap(new Vector2(1650, 100), new Rectangle(0, 0, 50, 50), level) ;
             difficulty = 1 ;
-            //wHud = new PlayerWeaponHUD(new Vector2(1650, 800), player) ;
         }
 
         public Song GetSong() {

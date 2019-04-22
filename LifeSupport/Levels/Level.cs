@@ -61,6 +61,9 @@ namespace LifeSupport.Levels {
                 room.RemoveLights() ;
             }
 
+            //clear all additional hulls
+            penumbra.Hulls.Clear() ;
+
             this.Rooms = new List<Room>() ;
 
             //current level increment

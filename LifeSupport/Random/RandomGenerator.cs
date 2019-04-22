@@ -21,6 +21,8 @@ using System.Threading.Tasks;
 namespace LifeSupport.Random {
 
     class RandomGenerator {
+
+        System.Random random ;
         
         private static RandomGenerator instance ;
         public static RandomGenerator Instance {
@@ -37,11 +39,11 @@ namespace LifeSupport.Random {
 
         private RandomGenerator() {
             instance = this ;
+            random = new System.Random() ;
         }
 
         public int GetRandomIntRange(int min, int max) {
-            System.Random rand = new System.Random() ;
-            return rand.Next(min, max+1) ;
+            return random.Next(min, max+1) ;
         }
 
     }

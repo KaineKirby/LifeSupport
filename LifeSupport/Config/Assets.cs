@@ -25,6 +25,8 @@ namespace LifeSupport.Config {
             }
         }
 
+        private bool loaded ;
+
         public Texture2D background ;
         public Texture2D mainMenuBackground;
         public Texture2D optionsBackground;
@@ -88,9 +90,14 @@ namespace LifeSupport.Config {
 
         private Assets() {
             instance = this ;
+            loaded = false ;
         }
 
         public void LoadContent(Game game) {
+            if (loaded)
+                return ;
+
+            loaded = true ;
             background = game.Content.Load<Texture2D>("img/background") ;
             mainMenuBackground = game.Content.Load<Texture2D>("img/menus/main_menu");
             optionsBackground = game.Content.Load<Texture2D>("img/menus/optionsMenu");

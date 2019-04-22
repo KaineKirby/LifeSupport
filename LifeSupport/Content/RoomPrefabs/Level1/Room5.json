@@ -1,0 +1,65 @@
+{
+  "Barrier": [
+    {
+      "Row": 14,
+      "Column": 26,
+      "BarrierWidth": 1,
+      "BarrierHeight": 3
+    },
+    {
+      "Row": 19,
+      "Column": 26,
+      "BarrierWidth": 1,
+      "BarrierHeight": 3
+    },
+    {
+      "Row": 21,
+      "Column": 27,
+      "BarrierWidth": 12,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 19,
+      "Column": 38,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 14,
+      "Column": 38,
+      "BarrierWidth": 1,
+      "BarrierHeight": 3
+    },
+    {
+      "Row": 14,
+      "Column": 27,
+      "BarrierWidth": 11,
+      "BarrierHeight": 1
+    }
+  ],
+  "AlienDog": [],
+  "AlienTurret": [
+    {
+      "Row": 17,
+      "Column": 32,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 18,
+      "Column": 32,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    }
+  ],
+  "AlienInfantry": [],
+  "OxygenTank": []
+}

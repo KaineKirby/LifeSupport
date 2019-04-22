@@ -52,7 +52,6 @@ namespace LifeSupport.GameObjects {
 
         //the player's flashlight
         private Spotlight light ;
-        private bool lightOn ;
 
 
         //will probably be constant
@@ -78,7 +77,6 @@ namespace LifeSupport.GameObjects {
             this.Augments =  new List<Augmentation>() ;
             this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
 
-            this.lightOn = false ;
             this.light = new Spotlight {
                 Position = this.Position,
                 Intensity = 2f,
@@ -87,16 +85,15 @@ namespace LifeSupport.GameObjects {
                 ShadowType = ShadowType.Occluded
             };
 
-            AddAugment(new Augmentation(0f, 0f, 0f, .96f, 0f)) ;
+            penumbra.Lights.Add(light) ;
+
+
+            //AddAugment(new Augmentation(0f, 0f, 0f, .96f, 0f)) ;
 
         }
 
 
         public override void Draw(SpriteBatch spriteBatch) {
-            if (!lightOn) {
-                penumbra.Lights.Add(light) ;
-                lightOn = true ;
-            }
             spriteBatch.Draw(playerLegs, Position, new Rectangle(animFrame*Width, 0, Width, Height), Color.White, legRotation, legOrigin, 1f, SpriteEffects.None, 0);
             base.Draw(spriteBatch) ;
         }
