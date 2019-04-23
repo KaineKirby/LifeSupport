@@ -79,13 +79,13 @@ namespace LifeSupport.Controls
             {
                 currColor = Color.Gray;
             }
-            spriteBatch.Draw(texture, Rect, currColor);
+            spriteBatch.Draw(texture, Rect, null, currColor, 0, Vector2.Zero, SpriteEffects.None, 0f);
 
             if (!string.IsNullOrEmpty(BtnText))
             {
                 var x = (Rect.X + (Rect.Width / 2)) - (font.MeasureString(BtnText).X / 2);
                 var y = (Rect.Y + (Rect.Height / 2)) - (font.MeasureString(BtnText).Y / 2);
-                spriteBatch.DrawString(font, BtnText, new Vector2(x, y), ThisColor);
+                spriteBatch.DrawString(font, BtnText, new Vector2(x, y), ThisColor, 0, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             }
         }
 

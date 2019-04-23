@@ -43,11 +43,8 @@ namespace LifeSupport.GameObjects {
         //whether or not the player has the card to unlock the challenge room
         public bool HasCard ;
 
-        public int augmentIndex;
         //An array of augmentations that the player current holds
         public List<Augmentation> Augments ;
-        //this is the augmentation that will hold all of the statistics currently held
-        private Augmentation MasterAugment ;
 
         //the time the player has left before they die (run out of O2)
         public float OxygenTime ;
@@ -81,7 +78,6 @@ namespace LifeSupport.GameObjects {
             {
                 Augments.Add(null);
             }
-            this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
 
             this.light = new Spotlight {
                 Position = this.Position,
@@ -93,36 +89,8 @@ namespace LifeSupport.GameObjects {
 
             penumbra.Lights.Add(light) ;
 
+            AddAugment(new Augmentation(.5f, 0f, 3f, .95f, 0f), 0) ;
 
-
-            augmentIndex = SearchForNextAvailableSpot();
-            AddAugment(new Augmentation(.1f, .2f, .2f, 0f, 0f), augmentIndex);
-
-            augmentIndex = SearchForNextAvailableSpot();
-            AddAugment(new Augmentation(0f, .2f, 0f, 0f, 0f), augmentIndex);
-
-            augmentIndex = SearchForNextAvailableSpot();
-            AddAugment(new Augmentation(0f, 0f, .3f, 0f, 0f), augmentIndex);
-
-            augmentIndex = SearchForNextAvailableSpot();
-            AddAugment(new Augmentation(0f, 0f, 0f, .4f, 0f), augmentIndex);
-
-            augmentIndex = SearchForNextAvailableSpot();
-            AddAugment(new Augmentation(0f, 0f, 0f, 0f, .1f), augmentIndex);
-
-            augmentIndex = SearchForNextAvailableSpot();
-            AddAugment(new Augmentation(.05f, .06f, .07f, .08f, .09f), augmentIndex);
-
-            augmentIndex = SearchForNextAvailableSpot();
-            AddAugment(new Augmentation(0f, 0f, 0f, 0f, 0f), augmentIndex);
-
-            /*
-            augmentIndex = SearchForFirstAvailableSpot();
-            AddAugment(new Augmentation(.3f, .3f, .3f, .3f, .3f), augmentIndex);
-
-            augmentIndex = SearchForFirstAvailableSpot();
-            AddAugment(new Augmentation(0f, 0f, 1f, 0f, 0f), augmentIndex);
-            */
 
         }
 
@@ -236,7 +204,6 @@ namespace LifeSupport.GameObjects {
         public void RemoveAugment(Augmentation augment) {
             this.Augments.Remove(augment) ;
             ResetStats() ;
-            UpdateMasterAugment() ;
             UpdateStats() ;
         }
 
@@ -253,7 +220,6 @@ namespace LifeSupport.GameObjects {
                 augment.index = spot;
                 //         augment.position = new Vector2(1200, 250);
                 ResetStats();
-                UpdateMasterAugment();
                 UpdateStats();
             }
         }
@@ -295,13 +261,6 @@ namespace LifeSupport.GameObjects {
             this.MoveSpeed = 500f ;
         }
 
-        private void UpdateMasterAugment() {
-            Augmentation a = new Augmentation(0, 0, 0, 0, 0) ;
-            foreach (Augmentation b in Augments) {
-                a += b ;
-            }
-        }
-
         //update the stats based on the master augment
         private void UpdateStats()
         {
@@ -312,7 +271,7 @@ namespace LifeSupport.GameObjects {
                     this.Damage += a.Damage;
                     this.Range += this.Range * a.Range;
                     this.ShotSpeed += this.ShotSpeed * a.ShotSpeed;
-                    this.RateOfFire -= a.RateOfFire;
+                    this.RateOfFire *= (1-a.RateOfFire);
                     this.MoveSpeed += this.MoveSpeed * a.MoveSpeed;
                 }
             }

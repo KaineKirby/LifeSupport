@@ -7,6 +7,7 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/crosshair.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui.spritefont</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/default_ui_18.spritefont</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/large_font.spritefont</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/medium_font.spritefont</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/fonts/small_font.spritefont</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/background.png</File>
@@ -14,6 +15,8 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/arrowRight.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/blk_button.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/blk_button_large.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/hoverBox.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/mediumButton.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/smallBlackButton.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/cursor.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/drops/keycard.png</File>
@@ -24,10 +27,14 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/alien_turret.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/circle.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/active_room.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/augmentation.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/augmentation_large.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/beaten_room.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/challenge_room.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/health.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/keycard_large.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/money_icon.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/money_icon_large.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/non_beaten_room.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/oxygen_icon.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/speed.png</File>
@@ -36,6 +43,7 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/main_menu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/optionsMenu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/pauseMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/playerMenu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/videoMenu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/closed_door.png</File>
@@ -67,6 +75,14 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/square.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

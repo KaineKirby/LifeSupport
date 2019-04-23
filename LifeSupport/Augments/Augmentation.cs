@@ -34,9 +34,8 @@ namespace LifeSupport.Augments {
         public float RateOfFire;
         public float MoveSpeed;
 
-        public Augmentation(float damage, float range, float shotSpeed, float rateOfFire, float moveSpeed)
-        {
-            this.augmentImage = Assets.Instance.alienDog;
+        public Augmentation(float damage, float range, float shotSpeed, float rateOfFire, float moveSpeed) {
+            this.augmentImage = Assets.Instance.augmentationLarge ;
             this.rect = new Rectangle((int)position.X, (int)position.Y, augmentImage.Width, augmentImage.Height);
             this.Damage = damage;
             this.Range = range;
@@ -66,12 +65,9 @@ namespace LifeSupport.Augments {
                 return null;
         }
 
-        public void DrawWithScale(SpriteBatch spriteBatch, float scale)
-        {
-            spriteBatch.Draw(augmentImage, position, rect, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0);
+        public void DrawWithScale(SpriteBatch spriteBatch, float scale) {
+            spriteBatch.Draw(augmentImage, position, rect, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, .05f);
         }
-
-
 
     }
 }

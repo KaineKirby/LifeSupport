@@ -16,125 +16,115 @@ namespace LifeSupport.States.Controls
 {
     public class AugmentTextBox
     {
-        private Texture2D whiteBox = Assets.Instance.infoBox;
+        private Texture2D boxTexture ;
         private SpriteFont font = Assets.Instance.mediumText;
+        private int BoxWidth = 310 ;
 
         public Vector2 position;
-        public int boxWidth;
-        public int boxHeight;
         public Rectangle Rect;
+        public Augmentation augment ;
+        private GraphicsDevice graphicsDevice ;
 
         public String text { get; set; }
 
 
-        public AugmentTextBox(Augmentation augment)
-        {
-            this.boxHeight = whiteBox.Height;
-            this.boxWidth = whiteBox.Width;
-            this.Rect = CreateTextBox(augment);
-        }
+        public AugmentTextBox(Augmentation augment, GraphicsDevice graphicsDevice) {
 
+            this.augment = augment ;
+            this.Rect = GetDrawingRectangle();
+            this.graphicsDevice = graphicsDevice ;
+            this.boxTexture = GenerateTexture() ;
 
-        public void DrawBox(SpriteBatch spriteBatch)
-        {
-            if (boxHeight > 0 && boxWidth > 0)
-            {
-                spriteBatch.Draw(whiteBox, Rect, Color.White);
-                spriteBatch.DrawString(font, text, new Vector2(Rect.X, Rect.Y), Color.Red);
-                spriteBatch.DrawString(font, text, new Vector2(Rect.X, Rect.Y), Color.Red);
-                spriteBatch.DrawString(font, text, new Vector2(Rect.X, Rect.Y), Color.Red);
-                spriteBatch.DrawString(font, text, new Vector2(Rect.X, Rect.Y), Color.Red);
-                spriteBatch.DrawString(font, text, new Vector2(Rect.X, Rect.Y), Color.Red);
-                spriteBatch.DrawString(font, text, new Vector2(Rect.X, Rect.Y), Color.Red);
-                spriteBatch.DrawString(font, text, new Vector2(Rect.X, Rect.Y), Color.Red);
+            text = "" ;
+
+            if (augment != null) {
+                if (augment.Damage > 0f)
+                    text += "+" + augment.Damage*100 + "% Damage\n" ;
+                if (augment.Range > 0f)
+                    text += "+" + augment.Range*100 + "% Range\n" ;
+                if (augment.ShotSpeed > 0f)
+                    text += "+" + augment.ShotSpeed*100 + "% Bullet Speed\n" ;
+                if (augment.RateOfFire > 0f)
+                    text += "+" + augment.RateOfFire*100 + "% Rate Of Fire\n" ;
+                if (augment.MoveSpeed > 0f)
+                    text += "+" + augment.MoveSpeed*100 + "% Movement Speed\n" ;
             }
+
         }
 
 
-        public Rectangle CreateTextBox(Augmentation augment)
-        {
-            Rectangle Box;
+        public void DrawBox(SpriteBatch spriteBatch) {
+
+            if (boxTexture == null)
+                return ;
+            spriteBatch.Draw(boxTexture, Rect, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, .1f) ;
+            spriteBatch.DrawString(font, text, new Vector2(Rect.X+4, Rect.Y+4), Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, .2f);
+
+        }
+
+        private Rectangle GetDrawingRectangle() {
+
             if (augment == null)
-            {
-                text = "";
-                return Box = new Rectangle(0, 0, 0, 0);
-            }
-            int horizontalBoxSections = 5;
-            int oneHorizontalBoxSection = boxHeight / horizontalBoxSections;
-            int rowsRemoved = 0;
+                return new Rectangle() ;
 
-            string damage = augment.Damage.ToString();
-            string range = augment.Range.ToString();
-            string shotSpeed = augment.ShotSpeed.ToString();
-            string rateOfFire = augment.RateOfFire.ToString();
-            string moveSpeed = augment.MoveSpeed.ToString();
+            int rows = 0 ;
 
-            if (damage.Equals("0"))
-            {
-                boxHeight -= oneHorizontalBoxSection;
-                rowsRemoved++;
-            }
-            else if (!damage.Equals("0"))
-            {
-                text += "+" + damage + " Damage \n";
-            }
+            //increase the height of the rectangle depending on the augment
+            if (augment.Damage > 0f)
+                rows++ ;
+            if (augment.Range > 0f)
+                rows++ ;
+            if (augment.ShotSpeed > 0f)
+                rows++ ;
+            if (augment.RateOfFire > 0f)
+                rows++ ;
+            if (augment.MoveSpeed > 0f)
+                rows++ ;
 
-            if (range.Equals("0"))
-            {
-                boxHeight -= oneHorizontalBoxSection;
-                rowsRemoved++;
-            }
-            else if (!range.Equals("0"))
-            {
-                text += "+" + range + " Range \n";
-            }
+            return new Rectangle((int)augment.position.X + 100, (int)augment.position.Y + 100, 310, rows*30) ;
 
-            if (shotSpeed.Equals("0"))
-            {
-                boxHeight -= oneHorizontalBoxSection;
-                rowsRemoved++;
-            }
-            else if (!shotSpeed.Equals("0"))
-            {
-                text += "+" + shotSpeed + " Shot Speed \n";
-            }
-
-            if (rateOfFire.Equals("0"))
-            {
-                boxHeight -= oneHorizontalBoxSection;
-                rowsRemoved++;
-            }
-            else if (!rateOfFire.Equals("0"))
-            {
-                text += "+" + rateOfFire + " Rate of Fire \n";
-            }
-
-            if (moveSpeed.Equals("0"))
-            {
-                boxHeight -= oneHorizontalBoxSection;
-                rowsRemoved++;
-            }
-            else if (!moveSpeed.Equals("0"))
-            {
-                text += "+" + moveSpeed + " Movement Speed \n";
-            }
-
-            if (rowsRemoved == 5)
-            {
-                boxHeight = 0;
-                boxWidth = 0;
-                Box = new Rectangle((int)augment.position.X + 100, (int)augment.position.Y + 100, boxWidth, boxHeight);
-                return Box;
-            }
-            else
-            {
-                Box = new Rectangle((int)augment.position.X + 100, (int)augment.position.Y + 100, boxWidth, boxHeight);
-                Console.WriteLine(Box);
-                return Box;
-            }
         }
 
+        private Texture2D GenerateTexture() {
 
+            if (augment == null)
+                return null ;
+
+            int rows = 0 ;
+
+            //increase the height of the rectangle depending on the augment
+            if (augment.Damage > 0f)
+                rows++ ;
+            if (augment.Range > 0f)
+                rows++ ;
+            if (augment.ShotSpeed > 0f)
+                rows++ ;
+            if (augment.RateOfFire > 0f)
+                rows++ ;
+            if (augment.MoveSpeed > 0f)
+                rows++ ;
+
+            if (rows == 0)
+                return null ;
+
+            Texture2D bg = new Texture2D(graphicsDevice, 310, rows*30) ;
+            Color[] data = new Color[BoxWidth*rows*30] ;
+            for(int i = 0 ; i < data.Length ; i++) {
+                data[i] = new Color(0, 99, 151) ;
+                if (i < BoxWidth)
+                    data[i] = Color.White ;
+                else if (i % BoxWidth == 0)
+                    data[i] = Color.White ;
+                else if (i % BoxWidth == BoxWidth-1)
+                    data[i] = Color.White ;
+                else if (i > (BoxWidth*rows*30)-BoxWidth)
+                    data[i] = Color.White ;
+            }
+            bg.SetData(data) ;
+
+            return bg ;
+            
+        }
 
 
     }

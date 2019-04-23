@@ -27,10 +27,10 @@ namespace LifeSupport.States.Controls
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             var currColor = Color.White;
-            spriteBatch.Draw(texture, Rect, currColor);
             if (hover)
-            {
-                currColor = Color.Blue;
+                currColor = Color.Gray;
+            spriteBatch.Draw(texture, Rect, null, currColor, 0, Vector2.Zero, SpriteEffects.None, 0f);
+            if (hover) {
                 hoverBox.position = this.CurrPosition;
                 hoverBox.DrawBox(spriteBatch);
                 hoverBox.DrawBox(spriteBatch);

@@ -64,6 +64,8 @@ namespace LifeSupport.Config {
         public Texture2D beatenRoom ;
         public Texture2D nonBeatenRoom ;
         public Texture2D challengeRoom ;
+        public Texture2D keycardLarge ;
+        public Texture2D moneyLarge ;
      
 
         //Enemies
@@ -75,6 +77,9 @@ namespace LifeSupport.Config {
         public Texture2D oxygenTank ;
         public Texture2D money ;
         public Texture2D keycard ;
+        public Texture2D augmentation ;
+        public Texture2D augmentationLarge ;
+
 
         //sound effects
         public SoundEffect playerShot ;
@@ -86,7 +91,6 @@ namespace LifeSupport.Config {
         public SoundEffect doorOpen ;
         public SoundEffect enemyHit ;
         public SoundEffect playerHit ;
-
 
         //music
         public Song menuMusic ;
@@ -150,10 +154,15 @@ namespace LifeSupport.Config {
             beatenRoom = game.Content.Load<Texture2D>("img/hud/beaten_room") ;
             nonBeatenRoom = game.Content.Load<Texture2D>("img/hud/non_beaten_room") ;
             challengeRoom = game.Content.Load<Texture2D>("img/hud/challenge_room") ;
-
+            moneyLarge = game.Content.Load<Texture2D>("img/hud/money_icon_large") ;
+            keycardLarge = game.Content.Load<Texture2D>("img/hud/keycard_large") ;
+            augmentationLarge = game.Content.Load<Texture2D>("img/hud/augmentation_large") ;
 
             //aug machine and oxygen tank (usables)
             oxygenTank = game.Content.Load<Texture2D>("img/objects/oxygen_tank") ;
+            augmentation = game.Content.Load<Texture2D>("img/hud/augmentation") ;
+            augmentation = game.Content.Load<Texture2D>("img/hud/augmentation_large") ;
+
 
             //drops
             money = game.Content.Load<Texture2D>("img/drops/money") ;

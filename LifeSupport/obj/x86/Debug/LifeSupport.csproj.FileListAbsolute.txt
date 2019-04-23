@@ -538,3 +538,11 @@ C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\hoverBox.xnb
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\mediumButton.xnb
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\fonts\large_font.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\playerMenu.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\hoverBox.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\mediumButton.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\fonts\large_font.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\hud\augmentation.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\hud\augmentation_large.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\hud\keycard_large.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\hud\money_icon_large.xnb
