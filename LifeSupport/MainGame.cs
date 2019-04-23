@@ -57,6 +57,7 @@ namespace LifeSupport
 
         public void returnToGame(State state) {
             nextState = prevState;
+            ((GameState)state).RecaculateScale() ;
         }
 
         public MainGame() {

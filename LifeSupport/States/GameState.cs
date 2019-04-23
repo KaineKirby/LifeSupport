@@ -138,6 +138,10 @@ namespace LifeSupport.States
             return null ;
 
         }
+
+        public void RecaculateScale() {
+            scale = (float)Settings.Instance.Width/1920 * 1.5f ;
+        }
        
     }
 }

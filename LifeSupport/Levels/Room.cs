@@ -177,6 +177,12 @@ namespace LifeSupport.Levels {
             penumbra.Lights.Remove(light3) ;
             penumbra.Lights.Remove(light4) ;
             penumbra.Lights.Remove(light5) ;
+
+            //remove lights from any alive actors
+            foreach (GameObject obj in Objects) {
+                if (obj is Actor)
+                    ((Actor)obj).RemoveLight() ;
+            }
         }
 
         //called when the room is beaten
@@ -296,7 +302,6 @@ namespace LifeSupport.Levels {
 
         //open all the doors in the room
         public void OpenAllDoors() {
-            Console.WriteLine(level.ChallengeRoom.coordinate) ;
             if ((Objects[1] is Door) && (player.HasCard || level.ChallengeRoom.coordinate != new Point(coordinate.X, coordinate.Y-1))) {
                 ((Door)Objects[1]).OpenDoor() ;
             }
