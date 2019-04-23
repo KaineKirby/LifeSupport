@@ -69,11 +69,13 @@
     <Compile Include="Config\Cursor.cs" />
     <Compile Include="GameObjects\Enemy.cs" />
     <Compile Include="GameObjects\Projectile.cs" />
+    <Compile Include="States\DeathState.cs" />
     <Compile Include="States\GameState.cs" />
     <Compile Include="States\MenuState.cs" />
     <Compile Include="States\OptionsState.cs" />
     <Compile Include="States\PauseState.cs" />
     <Compile Include="States\State.cs" />
+    <Compile Include="States\VictoryState.cs" />
     <Compile Include="States\VideoSettingsState.cs" />
     <Compile Include="Utilities\FrameCounter.cs" />
     <Compile Include="GameObjects\Actor.cs" />

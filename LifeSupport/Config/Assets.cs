@@ -27,6 +27,7 @@ namespace LifeSupport.Config {
 
         private bool loaded ;
 
+        //Menus
         public Texture2D background ;
         public Texture2D mainMenuBackground;
         public Texture2D optionsBackground;
@@ -34,6 +35,9 @@ namespace LifeSupport.Config {
         public Texture2D audioSettingsBackground;
         public Texture2D controlSettingsBackground;
         public Texture2D pauseScreen;
+        public Texture2D deathScreen;
+        public Texture2D victoryScreen;
+
         public Texture2D player ;
         public Texture2D playerLegs ;
         public Texture2D barrier ;
@@ -101,6 +105,7 @@ namespace LifeSupport.Config {
                 return ;
 
             loaded = true ;
+            //Screen Content
             background = game.Content.Load<Texture2D>("img/background") ;
             mainMenuBackground = game.Content.Load<Texture2D>("img/menus/main_menu");
             optionsBackground = game.Content.Load<Texture2D>("img/menus/optionsMenu");
@@ -108,6 +113,9 @@ namespace LifeSupport.Config {
             audioSettingsBackground = game.Content.Load<Texture2D>("img/menus/audioMenu");
             controlSettingsBackground = game.Content.Load<Texture2D>("img/menus/controlsMenu");
             pauseScreen = game.Content.Load<Texture2D>("img/menus/pauseMenu");
+            deathScreen = game.Content.Load<Texture2D>("img/menus/deathMenu");
+            victoryScreen = game.Content.Load<Texture2D>("img/menus/victoryMenu");
+
             player = game.Content.Load<Texture2D>("img/player/player") ;
             playerLegs = game.Content.Load<Texture2D>("img/player/player_legs") ;
             barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;

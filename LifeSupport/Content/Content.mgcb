@@ -341,6 +341,18 @@
 /processorParam:TextureFormat=Color
 /build:img/menus/controlsMenu.png
 
+#begin img/menus/deathMenu.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/menus/deathMenu.png
+
 #begin img/menus/main_menu.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -376,6 +388,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:img/menus/pauseMenu.png
+
+#begin img/menus/victoryMenu.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/menus/victoryMenu.png
 
 #begin img/menus/videoMenu.png
 /importer:TextureImporter
@@ -724,4 +748,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:square.jpg
+
+#begin victoryMenu.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:victoryMenu.png
 

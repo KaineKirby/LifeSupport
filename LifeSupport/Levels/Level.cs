@@ -19,6 +19,7 @@ namespace LifeSupport.Levels {
         private static int minRooms = 10 ;
         private static int maxRooms = 20 ;
         private int CurrentLevel ;
+        public bool gameComplete = false;
 
         public int CurLevel {
             get {
@@ -67,8 +68,14 @@ namespace LifeSupport.Levels {
             this.Rooms = new List<Room>() ;
 
             //current level increment
-            CurrentLevel++ ;
-
+            if(CurrentLevel == 3)
+            {
+                gameComplete = true;
+            } else
+            {
+                CurrentLevel++;
+            }
+            
             //first we place all of the rooms down with no doors
             
             //start with beginning room

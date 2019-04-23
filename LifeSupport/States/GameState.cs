@@ -85,6 +85,11 @@ namespace LifeSupport.States
             if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame)) {
                 game.ChangeState(new PauseState(game, graphDevice, content));
 
+            } else if (player.isDead == true) {
+                game.ChangeState(new DeathState(game, graphDevice, content));
+            } else if (level.gameComplete)
+            {
+                game.ChangeState(new VictoryState(game, graphDevice, content));
             }
 
             level.UpdateRooms(gameTime) ;

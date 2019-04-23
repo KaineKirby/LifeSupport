@@ -54,6 +54,8 @@ namespace LifeSupport.GameObjects {
         //the player's flashlight
         private Spotlight light ;
 
+        public bool isDead = false;
+
 
         //will probably be constant
         public Player(PenumbraComponent penumdra) : base(new Vector2(100, 100), penumdra, 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
@@ -197,6 +199,7 @@ namespace LifeSupport.GameObjects {
         //when the player dies
         public void OnDeath() {
             Console.WriteLine("Player Died") ;
+            isDead = true;
         }
 
         //remove an augment from the augmentations list and apply changes
