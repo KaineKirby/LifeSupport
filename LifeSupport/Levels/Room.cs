@@ -431,6 +431,10 @@ namespace LifeSupport.Levels {
                     level, this, player)) ;
             }
 
+            if (coordinate.Equals(new Point(0, 0))) {
+                Objects.Add(new AugmentationStation(new Vector2(StartX + Width/2, StartY + Height/2 - 400), penumbra, player)) ;
+            }
+
         }
 
     }

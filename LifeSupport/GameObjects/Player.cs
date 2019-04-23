@@ -89,8 +89,7 @@ namespace LifeSupport.GameObjects {
 
             penumbra.Lights.Add(light) ;
 
-            AddAugment(new Augmentation(.5f, 0f, 3f, .95f, 0f), 0) ;
-
+            AddAugment(AugmentationStation.GenerateAugment(10), 0) ;
 
         }
 

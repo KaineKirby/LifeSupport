@@ -47,22 +47,15 @@ namespace LifeSupport.Augments {
         //C# allows the overriding of binary operators like addition and subtraction which will be handy here
         public static Augmentation operator +(Augmentation a1, Augmentation a2)
         {
-            if (a1 != null && a2 != null)
-            {
-                return new Augmentation(a1.Damage + a2.Damage, a1.Range + a2.Range, a1.ShotSpeed + a2.ShotSpeed, a1.RateOfFire + a2.RateOfFire, a1.MoveSpeed + a2.MoveSpeed);
-            }
-            else
-                return null;
+            return new Augmentation(a1.Damage + a2.Damage, a1.Range + a2.Range, a1.ShotSpeed + a2.ShotSpeed, a1.RateOfFire + a2.RateOfFire, a1.MoveSpeed + a2.MoveSpeed);
         }
 
-        public static Augmentation operator -(Augmentation a1, Augmentation a2)
-        {
-            if (a1 != null && a2 != null)
-            {
-                return new Augmentation(a1.Damage - a2.Damage, a1.Range - a2.Range, a1.ShotSpeed - a2.ShotSpeed, a1.RateOfFire - a2.RateOfFire, a1.MoveSpeed - a2.MoveSpeed);
-            }
-            else
-                return null;
+        public static Augmentation operator -(Augmentation a1, Augmentation a2) {
+            return new Augmentation(a1.Damage - a2.Damage, a1.Range - a2.Range, a1.ShotSpeed - a2.ShotSpeed, a1.RateOfFire - a2.RateOfFire, a1.MoveSpeed - a2.MoveSpeed);
+        }
+
+        public static Augmentation operator *(int a1, Augmentation a2) {
+             return new Augmentation(a1 * a2.Damage, a1 *  a2.Range, a1 * a2.ShotSpeed, a1 * a2.RateOfFire, a1 * a2.MoveSpeed);
         }
 
         public void DrawWithScale(SpriteBatch spriteBatch, float scale) {

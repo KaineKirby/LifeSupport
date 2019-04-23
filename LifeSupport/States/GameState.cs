@@ -119,6 +119,8 @@ namespace LifeSupport.States
             level = new Level(game.penumbra) ;
             player = level.player ;
 
+            AugmentationStation.OnPlayerUse = new AugmentationStation.OnUse(OpenAugmentationStationMenu) ;
+
             if (Settings.Instance.ShowFps)
                 frames = new FrameCounter(game);
 
@@ -145,6 +147,10 @@ namespace LifeSupport.States
 
         public void RecaculateScale() {
             scale = (float)Settings.Instance.Width/1920 * 1.5f ;
+        }
+
+        private void OpenAugmentationStationMenu() {
+            Console.WriteLine("Augmentation Station menu opened") ;
         }
        
     }
