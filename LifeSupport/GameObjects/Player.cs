@@ -43,6 +43,7 @@ namespace LifeSupport.GameObjects {
         //whether or not the player has the card to unlock the challenge room
         public bool HasCard ;
 
+        public int augmentIndex;
         //An array of augmentations that the player current holds
         public List<Augmentation> Augments ;
         //this is the augmentation that will hold all of the statistics currently held
@@ -75,7 +76,11 @@ namespace LifeSupport.GameObjects {
             this.HasCard = false ;
             this.OxygenTime = FloorTimer ;
 
-            this.Augments =  new List<Augmentation>() ;
+            this.Augments = new List<Augmentation>(8);
+            for (int i = 0; i < Augments.Capacity; i++)
+            {
+                Augments.Add(null);
+            }
             this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
 
             this.light = new Spotlight {
@@ -89,7 +94,35 @@ namespace LifeSupport.GameObjects {
             penumbra.Lights.Add(light) ;
 
 
-            AddAugment(new Augmentation(0f, 0f, 0f, .96f, 0f)) ;
+
+            augmentIndex = SearchForNextAvailableSpot();
+            AddAugment(new Augmentation(.1f, .2f, .2f, 0f, 0f), augmentIndex);
+
+            augmentIndex = SearchForNextAvailableSpot();
+            AddAugment(new Augmentation(0f, .2f, 0f, 0f, 0f), augmentIndex);
+
+            augmentIndex = SearchForNextAvailableSpot();
+            AddAugment(new Augmentation(0f, 0f, .3f, 0f, 0f), augmentIndex);
+
+            augmentIndex = SearchForNextAvailableSpot();
+            AddAugment(new Augmentation(0f, 0f, 0f, .4f, 0f), augmentIndex);
+
+            augmentIndex = SearchForNextAvailableSpot();
+            AddAugment(new Augmentation(0f, 0f, 0f, 0f, .1f), augmentIndex);
+
+            augmentIndex = SearchForNextAvailableSpot();
+            AddAugment(new Augmentation(.05f, .06f, .07f, .08f, .09f), augmentIndex);
+
+            augmentIndex = SearchForNextAvailableSpot();
+            AddAugment(new Augmentation(0f, 0f, 0f, 0f, 0f), augmentIndex);
+
+            /*
+            augmentIndex = SearchForFirstAvailableSpot();
+            AddAugment(new Augmentation(.3f, .3f, .3f, .3f, .3f), augmentIndex);
+
+            augmentIndex = SearchForFirstAvailableSpot();
+            AddAugment(new Augmentation(0f, 0f, 1f, 0f, 0f), augmentIndex);
+            */
 
         }
 
@@ -208,11 +241,49 @@ namespace LifeSupport.GameObjects {
         }
 
         //add an augment to the augmentations list and apply changes
-        public void AddAugment(Augmentation augment) {
-            this.Augments.Add(augment) ;
-            ResetStats() ;
-            UpdateMasterAugment() ;
-            UpdateStats() ;
+        public void AddAugment(Augmentation augment, int spot)
+        {
+            if (spot < 0 || spot > 8)
+            {
+                return;
+            }
+            else
+            {
+                this.Augments.Insert(spot, augment);
+                augment.index = spot;
+                //         augment.position = new Vector2(1200, 250);
+                ResetStats();
+                UpdateMasterAugment();
+                UpdateStats();
+            }
+        }
+
+
+        public int SearchForNextAvailableSpot()
+        {
+            int spot;
+            int i = 0;
+            if (Augments[i] == null)
+            {
+                spot = 0;
+                return spot;
+            }
+            else
+            {
+                while (this.Augments[i] != null && i < Augments.Count)
+                {
+                    i++;
+                }
+                if (i < 8)
+                {
+                    spot = i;
+                    return spot;
+                }
+                else
+                {
+                    return Augments.Capacity;
+                }
+            }
         }
 
         //reset the stats of the player to their base so we can apply augments
@@ -232,13 +303,18 @@ namespace LifeSupport.GameObjects {
         }
 
         //update the stats based on the master augment
-        private void UpdateStats() {
-            foreach (Augmentation a in Augments) {
-                this.Damage += a.Damage ;
-                this.Range += this.Range*a.Range ;
-                this.ShotSpeed += this.ShotSpeed*a.ShotSpeed ;
-                this.RateOfFire *= (1-a.RateOfFire) ;
-                this.MoveSpeed += this.MoveSpeed*a.MoveSpeed ;
+        private void UpdateStats()
+        {
+            foreach (Augmentation a in Augments)
+            {
+                if (a != null)
+                {
+                    this.Damage += a.Damage;
+                    this.Range += this.Range * a.Range;
+                    this.ShotSpeed += this.ShotSpeed * a.ShotSpeed;
+                    this.RateOfFire -= a.RateOfFire;
+                    this.MoveSpeed += this.MoveSpeed * a.MoveSpeed;
+                }
             }
         }
     }

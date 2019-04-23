@@ -3,7 +3,7 @@
 	"MoveDown": "S",
 	"MoveLeft": "A",
 	"MoveRight": "D",
-	"OpenInventory": "I",
+	"OpenPlayerPage": "I",
   "PauseGame": "Escape",
   "Use": "E"
 }

@@ -33,6 +33,7 @@ namespace LifeSupport.Config {
         public Texture2D videoSettingsBackground;
         public Texture2D audioSettingsBackground;
         public Texture2D controlSettingsBackground;
+        public Texture2D playerPageBackground;
         public Texture2D pauseScreen;
         public Texture2D player ;
         public Texture2D playerLegs ;
@@ -46,12 +47,15 @@ namespace LifeSupport.Config {
         public Texture2D projectile;
         public Texture2D btnTexture;
         public Texture2D btnTextureLarge;
+        public Texture2D btnTextureMedium;
+        public Texture2D infoBox;
         public Texture2D btnTextureSmall;
         public Texture2D leftArrowButton;
         public Texture2D rightArrowButton;
         public SpriteFont btnText;
         public SpriteFont smallText;
         public SpriteFont mediumText ;
+        public SpriteFont largeText;
         public Texture2D healthIcon ;
         public Texture2D oxygenIcon ;
         public Texture2D speedIcon ;
@@ -108,6 +112,7 @@ namespace LifeSupport.Config {
             audioSettingsBackground = game.Content.Load<Texture2D>("img/menus/audioMenu");
             controlSettingsBackground = game.Content.Load<Texture2D>("img/menus/controlsMenu");
             pauseScreen = game.Content.Load<Texture2D>("img/menus/pauseMenu");
+            playerPageBackground = game.Content.Load<Texture2D>("img/menus/playerMenu");
             player = game.Content.Load<Texture2D>("img/player/player") ;
             playerLegs = game.Content.Load<Texture2D>("img/player/player_legs") ;
             barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;
@@ -120,10 +125,13 @@ namespace LifeSupport.Config {
             projectile = game.Content.Load<Texture2D>("img/objects/projectile");
             btnTexture = game.Content.Load<Texture2D>("img/controls/blk_button");
             btnTextureLarge = game.Content.Load<Texture2D>("img/controls/blk_button_large");
+            btnTextureMedium = game.Content.Load<Texture2D>("img/controls/mediumButton");
+            infoBox = game.Content.Load<Texture2D>("img/controls/hoverBox");
             btnTextureSmall = game.Content.Load<Texture2D>("img/controls/smallBlackButton");
             btnText = game.Content.Load<SpriteFont>("fonts/default_ui_18");
             smallText = game.Content.Load<SpriteFont>("fonts/small_Font");
             mediumText = game.Content.Load<SpriteFont>("fonts/medium_font");
+            largeText = game.Content.Load<SpriteFont>("fonts/large_font");
 
             alienDog = game.Content.Load<Texture2D>("img/enemies/alien_dog");
             alienTurret = game.Content.Load<Texture2D>("img/enemies/alien_turret");

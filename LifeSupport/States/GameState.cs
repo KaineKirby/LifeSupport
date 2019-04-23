@@ -86,6 +86,10 @@ namespace LifeSupport.States
                 game.ChangeState(new PauseState(game, graphDevice, content));
 
             }
+            if (Controller.Instance.IsKeyDown(Controller.Instance.OpenPlayerPage))
+            {
+                game.ChangeState(new PlayerPageState(player, game, graphDevice, content));
+            }
 
             level.UpdateRooms(gameTime) ;
             

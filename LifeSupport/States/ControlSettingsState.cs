@@ -43,7 +43,7 @@ namespace LifeSupport.States
         public Keys MoveDown { get; set; }
         public Keys MoveLeft { get; set; }
         public Keys MoveRight { get; set; }
-        public Keys OpenInventory { get; set; }
+        public Keys OpenPlayerPage { get; set; }
         public Keys PauseGame { get; set; }
         public Keys Use { get; set; }
 
@@ -65,8 +65,8 @@ namespace LifeSupport.States
             storeKeys.Add(MoveLeft);
             MoveRight = Controller.Instance.MoveRight;
             storeKeys.Add(MoveRight);
-            OpenInventory = Controller.Instance.OpenInventory;
-            storeKeys.Add(OpenInventory);
+            OpenPlayerPage = Controller.Instance.OpenPlayerPage;
+            storeKeys.Add(OpenPlayerPage);
             PauseGame = Controller.Instance.PauseGame;
             storeKeys.Add(PauseGame);
             Use = Controller.Instance.Use;
@@ -116,7 +116,7 @@ namespace LifeSupport.States
             var openInventoryButton = new Button(btnTexture, btnText)
             {
                 CurrPosition = new Vector2(520, 750),
-                BtnText = OpenInventory.ToString(),
+                BtnText = OpenPlayerPage.ToString(),
             };
             openInventoryButton.Click += Open_Inventory_Click;
 
@@ -289,7 +289,7 @@ namespace LifeSupport.States
             MoveDown = storeKeys[1];
             MoveLeft = storeKeys[2];
             MoveRight = storeKeys[3];
-            OpenInventory = storeKeys[4];
+            OpenPlayerPage = storeKeys[4];
             PauseGame = storeKeys[5];
             Use = storeKeys[6];
 
