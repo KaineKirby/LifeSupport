@@ -25,8 +25,10 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/enemies/circle.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/active_room.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/beaten_room.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/challenge_room.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/health.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/money_icon.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/non_beaten_room.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/oxygen_icon.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/speed.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/audioMenu.png</File>
@@ -49,15 +51,15 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/lighting/PenumbraLight.fx</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/lighting/PenumbraShadow.fx</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/lighting/PenumbraTexture.fx</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/alien_shot.wav</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/door_open.wav</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/alien_shot.ogg</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/door_open.ogg</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/enemy_hit.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/health_pickup.ogg</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/hit.wav</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/keycard_pickup.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/menu_click.ogg</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/money_pickup.wav</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/money_pickup.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/player_hit.ogg</File>
-    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/player_shot.wav</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/effects/player_shot.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/level_1_music.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/level_2_music.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/level_3_music.ogg</File>
@@ -113,7 +115,9 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
-    <File>sound/effects/enemy_hit.wav</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

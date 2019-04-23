@@ -245,6 +245,18 @@
 /processorParam:TextureFormat=Color
 /build:img/hud/beaten_room.png
 
+#begin img/hud/challenge_room.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/hud/challenge_room.png
+
 #begin img/hud/health.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -268,6 +280,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:img/hud/money_icon.png
+
+#begin img/hud/non_beaten_room.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/hud/non_beaten_room.png
 
 #begin img/hud/oxygen_icon.png
 /importer:TextureImporter
@@ -611,29 +635,29 @@
 #begin Settings/Volume_Settings.json
 /copy:Settings/Volume_Settings.json
 
-#begin sound/effects/alien_shot.wav
-/importer:WavImporter
+#begin sound/effects/alien_shot.ogg
+/importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sound/effects/alien_shot.wav
+/build:sound/effects/alien_shot.ogg
 
-#begin sound/effects/door_open.wav
-/importer:WavImporter
+#begin sound/effects/door_open.ogg
+/importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sound/effects/door_open.wav
+/build:sound/effects/door_open.ogg
+
+#begin sound/effects/enemy_hit.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/effects/enemy_hit.ogg
 
 #begin sound/effects/health_pickup.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sound/effects/health_pickup.ogg
-
-#begin sound/effects/hit.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:sound/effects/hit.wav;sound/effects/enemy_hit.wav
 
 #begin sound/effects/keycard_pickup.ogg
 /importer:OggImporter
@@ -647,11 +671,11 @@
 /processorParam:Quality=Best
 /build:sound/effects/menu_click.ogg
 
-#begin sound/effects/money_pickup.wav
-/importer:WavImporter
+#begin sound/effects/money_pickup.ogg
+/importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sound/effects/money_pickup.wav
+/build:sound/effects/money_pickup.ogg
 
 #begin sound/effects/player_hit.ogg
 /importer:OggImporter
@@ -659,11 +683,11 @@
 /processorParam:Quality=Best
 /build:sound/effects/player_hit.ogg
 
-#begin sound/effects/player_shot.wav
-/importer:WavImporter
+#begin sound/effects/player_shot.ogg
+/importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sound/effects/player_shot.wav
+/build:sound/effects/player_shot.ogg
 
 #begin sound/music/level_1_music.ogg
 /importer:OggImporter

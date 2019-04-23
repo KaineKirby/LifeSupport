@@ -54,7 +54,7 @@ namespace LifeSupport.Levels {
         //generate a level and place the player in the starting room
         public void NextLevel() {
 
-            player.OxygenTime = 300f;
+            player.OxygenTime = Player.FloorTimer ;
 
             //clear all of the lights from the room
             foreach (Room room in Rooms) {
@@ -185,7 +185,7 @@ namespace LifeSupport.Levels {
         }
 
         //get the room at a particular coordinate
-        private Room GetRoomAtCoordinate(Point point) {
+        public Room GetRoomAtCoordinate(Point point) {
             foreach (Room room in Rooms) {
                 if (room.coordinate.Equals(point))
                     return room ;

@@ -58,6 +58,8 @@ namespace LifeSupport.Config {
         public Texture2D moneyIcon ;
         public Texture2D activeRoom ;
         public Texture2D beatenRoom ;
+        public Texture2D nonBeatenRoom ;
+        public Texture2D challengeRoom ;
      
 
         //Enemies
@@ -138,6 +140,9 @@ namespace LifeSupport.Config {
             oxygenIcon = game.Content.Load<Texture2D>("img/hud/oxygen_icon") ;
             activeRoom = game.Content.Load<Texture2D>("img/hud/active_room") ;
             beatenRoom = game.Content.Load<Texture2D>("img/hud/beaten_room") ;
+            nonBeatenRoom = game.Content.Load<Texture2D>("img/hud/non_beaten_room") ;
+            challengeRoom = game.Content.Load<Texture2D>("img/hud/challenge_room") ;
+
 
             //aug machine and oxygen tank (usables)
             oxygenTank = game.Content.Load<Texture2D>("img/objects/oxygen_tank") ;

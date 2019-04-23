@@ -27,12 +27,14 @@ namespace LifeSupport.HUD {
         public void Update() {
             map = new List<HUDImage>() ;
             foreach (Room room in level.Rooms) {
-                if (room.IsBeaten || room == level.activeRoom || room.coordinate.Equals(new Point(0,0))) {
-                    if (room == level.activeRoom)
-                        map.Add(new HUDImage(Assets.Instance.activeRoom, (position + new Vector2((room.coordinate.X-level.activeRoom.coordinate.X)*32, (room.coordinate.Y-level.activeRoom.coordinate.Y)*32)))) ;
-                    else
-                        map.Add(new HUDImage(Assets.Instance.beatenRoom, (position + new Vector2((room.coordinate.X-level.activeRoom.coordinate.X)*32, (room.coordinate.Y-level.activeRoom.coordinate.Y)*32)))) ;
-                }
+                if (room == level.activeRoom)
+                    map.Add(new HUDImage(Assets.Instance.activeRoom, (position + new Vector2((room.coordinate.X-level.activeRoom.coordinate.X)*32, (room.coordinate.Y-level.activeRoom.coordinate.Y)*32)))) ;
+                else if (room == level.ChallengeRoom)
+                    map.Add(new HUDImage(Assets.Instance.challengeRoom, (position + new Vector2((room.coordinate.X-level.activeRoom.coordinate.X)*32, (room.coordinate.Y-level.activeRoom.coordinate.Y)*32)))) ;
+                else if (room.IsBeaten)
+                    map.Add(new HUDImage(Assets.Instance.beatenRoom, (position + new Vector2((room.coordinate.X-level.activeRoom.coordinate.X)*32, (room.coordinate.Y-level.activeRoom.coordinate.Y)*32)))) ;
+                else
+                    map.Add(new HUDImage(Assets.Instance.nonBeatenRoom, (position + new Vector2((room.coordinate.X-level.activeRoom.coordinate.X)*32, (room.coordinate.Y-level.activeRoom.coordinate.Y)*32)))) ;
             }
 
         }

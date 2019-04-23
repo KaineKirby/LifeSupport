@@ -30,7 +30,9 @@ namespace LifeSupport.GameObjects {
         public override void UpdatePosition(GameTime gameTime) {
 
             //if the player is inside the use radius and hits the use button
-            if (player.IsInside(Position.X-UseRadius, Position.Y-UseRadius, Position.X+UseRadius, Position.Y+UseRadius) && Controller.Instance.IsKeyDown(Controller.Instance.Use)) {
+            if (player.IsInside(Position.X-UseRadius, Position.Y-UseRadius, Position.X+UseRadius, Position.Y+UseRadius) 
+                && Controller.Instance.IsKeyDown(Controller.Instance.Use) &&
+                room.IsBeaten) {
                 //progress level
                 level.NextLevel() ;
             }

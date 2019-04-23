@@ -296,9 +296,18 @@ namespace LifeSupport.Levels {
 
         //open all the doors in the room
         public void OpenAllDoors() {
-            foreach (GameObject obj in Objects) {
-                if (obj is Door)
-                    ((Door)obj).OpenDoor() ;
+            Console.WriteLine(level.ChallengeRoom.coordinate) ;
+            if ((Objects[1] is Door) && (player.HasCard || level.ChallengeRoom.coordinate != new Point(coordinate.X, coordinate.Y-1))) {
+                ((Door)Objects[1]).OpenDoor() ;
+            }
+            if ((Objects[4] is Door) && (player.HasCard || level.ChallengeRoom.coordinate != new Point(coordinate.X, coordinate.Y+1))) {
+                ((Door)Objects[4]).OpenDoor() ;
+            }
+            if ((Objects[7] is Door) && (player.HasCard || level.ChallengeRoom.coordinate != new Point(coordinate.X-1, coordinate.Y))) {
+                ((Door)Objects[7]).OpenDoor() ;
+            }
+            if ((Objects[10] is Door) && (player.HasCard || level.ChallengeRoom.coordinate != new Point(coordinate.X+1, coordinate.Y))) {
+                ((Door)Objects[10]).OpenDoor() ;
             }
         }
 

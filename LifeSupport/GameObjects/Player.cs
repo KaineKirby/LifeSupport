@@ -25,6 +25,7 @@ namespace LifeSupport.GameObjects {
         private readonly Controller controller;
 
         private static readonly float startPlayerSpeed = 500f ;
+        public static readonly float FloorTimer = 600f ;
 
         //animation stuff
         private Texture2D playerLegs ;
@@ -72,7 +73,7 @@ namespace LifeSupport.GameObjects {
 
             this.Money = 0 ;
             this.HasCard = false ;
-            this.OxygenTime = 300f ;
+            this.OxygenTime = FloorTimer ;
 
             this.Augments =  new List<Augmentation>() ;
             this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
@@ -88,7 +89,7 @@ namespace LifeSupport.GameObjects {
             penumbra.Lights.Add(light) ;
 
 
-            //AddAugment(new Augmentation(0f, 0f, 0f, .96f, 0f)) ;
+            AddAugment(new Augmentation(0f, 0f, 0f, .96f, 0f)) ;
 
         }
 
@@ -236,7 +237,7 @@ namespace LifeSupport.GameObjects {
                 this.Damage += a.Damage ;
                 this.Range += this.Range*a.Range ;
                 this.ShotSpeed += this.ShotSpeed*a.ShotSpeed ;
-                this.RateOfFire -= a.RateOfFire ;
+                this.RateOfFire *= (1-a.RateOfFire) ;
                 this.MoveSpeed += this.MoveSpeed*a.MoveSpeed ;
             }
         }
