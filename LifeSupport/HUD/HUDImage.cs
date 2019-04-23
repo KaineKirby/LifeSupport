@@ -8,22 +8,39 @@ using System.Threading.Tasks;
 
 namespace LifeSupport.HUD {
 
-    class HUDImage {
+    class HUDImage
+    {
 
-        private Texture2D image ;
-        private Vector2 position ;
+        private Texture2D image;
+        private Vector2 position;
 
-        public Rectangle rect ;
-
-        public HUDImage(Texture2D image, Vector2 position) {
-            this.image = image ;
-            this.position = position ;
-            this.rect = new Rectangle(0, 0, image.Width, image.Height) ;
+        public Rectangle rect;
+        public Texture2D Image
+        {
+            get
+            {
+                return image;
+            }
         }
 
-        public void Draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(image, position, rect, Color.White, 0, new Vector2(0,0) , 1f, SpriteEffects.None, 0);
+        public HUDImage(Texture2D image, Vector2 position)
+        {
+            this.image = image;
+            this.position = position;
+            this.rect = new Rectangle(0, 0, image.Width, image.Height);
         }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(image, position, rect, Color.White, 0, new Vector2(0, 0), 1f, SpriteEffects.None, 0);
+        }
+
+        public void DrawWithScale(SpriteBatch spriteBatch, float scale)
+        {
+            spriteBatch.Draw(image, position, rect, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0);
+        }
+
+
 
     }
 }

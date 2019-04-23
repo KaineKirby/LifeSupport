@@ -133,6 +133,11 @@ namespace LifeSupport.GameObjects {
             
         }
 
+        //remove the light from the actor if they are alive and the floor is complete
+        public void RemoveLight() {
+            penumbra.Lights.Remove(light) ;
+        }
+
         protected virtual void Shoot(Vector2 direction, SoundEffect sound) {
             bool isPlayer = false;
             if (this is Player)

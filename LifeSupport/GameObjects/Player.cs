@@ -45,8 +45,6 @@ namespace LifeSupport.GameObjects {
 
         //An array of augmentations that the player current holds
         public List<Augmentation> Augments ;
-        //this is the augmentation that will hold all of the statistics currently held
-        private Augmentation MasterAugment ;
 
         //the time the player has left before they die (run out of O2)
         public float OxygenTime ;
@@ -77,8 +75,11 @@ namespace LifeSupport.GameObjects {
             this.HasCard = false ;
             this.OxygenTime = FloorTimer ;
 
-            this.Augments =  new List<Augmentation>() ;
-            this.MasterAugment = new Augmentation(0, 0, 0, 0, 0) ;
+            this.Augments = new List<Augmentation>(8);
+            for (int i = 0; i < Augments.Capacity; i++)
+            {
+                Augments.Add(null);
+            }
 
             this.light = new Spotlight {
                 Position = this.Position,
@@ -90,8 +91,7 @@ namespace LifeSupport.GameObjects {
 
             penumbra.Lights.Add(light) ;
 
-
-            AddAugment(new Augmentation(0f, 0f, 0f, .96f, 0f)) ;
+            AddAugment(AugmentationStation.GenerateAugment(10), 0) ;
 
         }
 
@@ -206,16 +206,52 @@ namespace LifeSupport.GameObjects {
         public void RemoveAugment(Augmentation augment) {
             this.Augments.Remove(augment) ;
             ResetStats() ;
-            UpdateMasterAugment() ;
             UpdateStats() ;
         }
 
         //add an augment to the augmentations list and apply changes
-        public void AddAugment(Augmentation augment) {
-            this.Augments.Add(augment) ;
-            ResetStats() ;
-            UpdateMasterAugment() ;
-            UpdateStats() ;
+        public void AddAugment(Augmentation augment, int spot)
+        {
+            if (spot < 0 || spot > 8)
+            {
+                return;
+            }
+            else
+            {
+                this.Augments.Insert(spot, augment);
+                augment.index = spot;
+                //         augment.position = new Vector2(1200, 250);
+                ResetStats();
+                UpdateStats();
+            }
+        }
+
+
+        public int SearchForNextAvailableSpot()
+        {
+            int spot;
+            int i = 0;
+            if (Augments[i] == null)
+            {
+                spot = 0;
+                return spot;
+            }
+            else
+            {
+                while (this.Augments[i] != null && i < Augments.Count)
+                {
+                    i++;
+                }
+                if (i < 8)
+                {
+                    spot = i;
+                    return spot;
+                }
+                else
+                {
+                    return Augments.Capacity;
+                }
+            }
         }
 
         //reset the stats of the player to their base so we can apply augments
@@ -227,21 +263,19 @@ namespace LifeSupport.GameObjects {
             this.MoveSpeed = 500f ;
         }
 
-        private void UpdateMasterAugment() {
-            Augmentation a = new Augmentation(0, 0, 0, 0, 0) ;
-            foreach (Augmentation b in Augments) {
-                a += b ;
-            }
-        }
-
         //update the stats based on the master augment
-        private void UpdateStats() {
-            foreach (Augmentation a in Augments) {
-                this.Damage += a.Damage ;
-                this.Range += this.Range*a.Range ;
-                this.ShotSpeed += this.ShotSpeed*a.ShotSpeed ;
-                this.RateOfFire *= (1-a.RateOfFire) ;
-                this.MoveSpeed += this.MoveSpeed*a.MoveSpeed ;
+        private void UpdateStats()
+        {
+            foreach (Augmentation a in Augments)
+            {
+                if (a != null)
+                {
+                    this.Damage += a.Damage;
+                    this.Range += this.Range * a.Range;
+                    this.ShotSpeed += this.ShotSpeed * a.ShotSpeed;
+                    this.RateOfFire *= (1-a.RateOfFire);
+                    this.MoveSpeed += this.MoveSpeed * a.MoveSpeed;
+                }
             }
         }
     }

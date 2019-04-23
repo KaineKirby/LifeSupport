@@ -17,7 +17,7 @@ namespace LifeSupport.Config {
             get {
                 if (instance != null)
                     return instance ;
-                else 
+                else
                     return new Assets() ;
             }
             private set {
@@ -34,6 +34,7 @@ namespace LifeSupport.Config {
         public Texture2D videoSettingsBackground;
         public Texture2D audioSettingsBackground;
         public Texture2D controlSettingsBackground;
+        public Texture2D playerPageBackground;
         public Texture2D pauseScreen;
         public Texture2D deathScreen;
         public Texture2D victoryScreen;
@@ -50,12 +51,15 @@ namespace LifeSupport.Config {
         public Texture2D projectile;
         public Texture2D btnTexture;
         public Texture2D btnTextureLarge;
+        public Texture2D btnTextureMedium;
+        public Texture2D infoBox;
         public Texture2D btnTextureSmall;
         public Texture2D leftArrowButton;
         public Texture2D rightArrowButton;
         public SpriteFont btnText;
         public SpriteFont smallText;
         public SpriteFont mediumText ;
+        public SpriteFont largeText;
         public Texture2D healthIcon ;
         public Texture2D oxygenIcon ;
         public Texture2D speedIcon ;
@@ -64,7 +68,9 @@ namespace LifeSupport.Config {
         public Texture2D beatenRoom ;
         public Texture2D nonBeatenRoom ;
         public Texture2D challengeRoom ;
-     
+        public Texture2D keycardLarge ;
+        public Texture2D moneyLarge ;
+
 
         //Enemies
         public Texture2D alienDog;
@@ -75,6 +81,9 @@ namespace LifeSupport.Config {
         public Texture2D oxygenTank ;
         public Texture2D money ;
         public Texture2D keycard ;
+        public Texture2D augmentation ;
+        public Texture2D augmentationLarge ;
+
 
         //sound effects
         public SoundEffect playerShot ;
@@ -86,7 +95,6 @@ namespace LifeSupport.Config {
         public SoundEffect doorOpen ;
         public SoundEffect enemyHit ;
         public SoundEffect playerHit ;
-
 
         //music
         public Song menuMusic ;
@@ -115,7 +123,7 @@ namespace LifeSupport.Config {
             pauseScreen = game.Content.Load<Texture2D>("img/menus/pauseMenu");
             deathScreen = game.Content.Load<Texture2D>("img/menus/deathMenu");
             victoryScreen = game.Content.Load<Texture2D>("img/menus/victoryMenu");
-
+            playerPageBackground = game.Content.Load<Texture2D>("img/menus/playerMenu");
             player = game.Content.Load<Texture2D>("img/player/player") ;
             playerLegs = game.Content.Load<Texture2D>("img/player/player_legs") ;
             barrier = game.Content.Load<Texture2D>("img/objects/barrier") ;
@@ -128,10 +136,13 @@ namespace LifeSupport.Config {
             projectile = game.Content.Load<Texture2D>("img/objects/projectile");
             btnTexture = game.Content.Load<Texture2D>("img/controls/blk_button");
             btnTextureLarge = game.Content.Load<Texture2D>("img/controls/blk_button_large");
+            btnTextureMedium = game.Content.Load<Texture2D>("img/controls/mediumButton");
+            infoBox = game.Content.Load<Texture2D>("img/controls/hoverBox");
             btnTextureSmall = game.Content.Load<Texture2D>("img/controls/smallBlackButton");
             btnText = game.Content.Load<SpriteFont>("fonts/default_ui_18");
             smallText = game.Content.Load<SpriteFont>("fonts/small_Font");
             mediumText = game.Content.Load<SpriteFont>("fonts/medium_font");
+            largeText = game.Content.Load<SpriteFont>("fonts/large_font");
 
             alienDog = game.Content.Load<Texture2D>("img/enemies/alien_dog");
             alienTurret = game.Content.Load<Texture2D>("img/enemies/alien_turret");
@@ -150,10 +161,15 @@ namespace LifeSupport.Config {
             beatenRoom = game.Content.Load<Texture2D>("img/hud/beaten_room") ;
             nonBeatenRoom = game.Content.Load<Texture2D>("img/hud/non_beaten_room") ;
             challengeRoom = game.Content.Load<Texture2D>("img/hud/challenge_room") ;
-
+            moneyLarge = game.Content.Load<Texture2D>("img/hud/money_icon_large") ;
+            keycardLarge = game.Content.Load<Texture2D>("img/hud/keycard_large") ;
+            augmentationLarge = game.Content.Load<Texture2D>("img/hud/augmentation_large") ;
 
             //aug machine and oxygen tank (usables)
             oxygenTank = game.Content.Load<Texture2D>("img/objects/oxygen_tank") ;
+            augmentation = game.Content.Load<Texture2D>("img/hud/augmentation") ;
+            augmentation = game.Content.Load<Texture2D>("img/hud/augmentation_large") ;
+
 
             //drops
             money = game.Content.Load<Texture2D>("img/drops/money") ;

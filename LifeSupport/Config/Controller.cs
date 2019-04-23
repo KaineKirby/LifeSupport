@@ -13,47 +13,53 @@ using System.Threading.Tasks;
  * 
  */
 
-namespace LifeSupport.Config {
+namespace LifeSupport.Config
+{
 
-    class Controller {
+    class Controller
+    {
 
         //singleton reference
-        public static Controller instance ;
-        public static Controller Instance {
-            get {
+        public static Controller instance;
+        public static Controller Instance
+        {
+            get
+            {
                 if (instance != null)
-                    return instance ;
-                else 
-                    return new Controller() ;
+                    return instance;
+                else
+                    return new Controller();
             }
-            private set {
-                instance = value ;
+            private set
+            {
+                instance = value;
             }
         }
 
         //all of our key controls
         //system
-        public Keys PauseGame ;
-        public Keys OpenInventory;
+        public Keys PauseGame;
+        public Keys OpenPlayerPage;
         public Keys Use;
 
         //movement
-        public Keys MoveUp ;
-        public Keys MoveDown ;
-        public Keys MoveLeft ;
-        public Keys MoveRight ;
+        public Keys MoveUp;
+        public Keys MoveDown;
+        public Keys MoveLeft;
+        public Keys MoveRight;
 
-        private Controller() {
+        private Controller()
+        {
 
             dynamic controllerData = JSONParser.ReadJsonFile("Content/Settings/Control_Settings.json");
 
             //this is temporary for now, explicitly set the keys rather then getting them from user configuration
-            this.MoveUp = (Keys) controllerData.MoveUp ;
+            this.MoveUp = (Keys)controllerData.MoveUp;
             this.MoveDown = (Keys)controllerData.MoveDown;
             this.MoveLeft = (Keys)controllerData.MoveLeft;
             this.MoveRight = (Keys)controllerData.MoveRight;
-            this.OpenInventory = (Keys)controllerData.OpenInventory;
-            this.PauseGame= (Keys)controllerData.PauseGame;
+            this.OpenPlayerPage = (Keys)controllerData.OpenPlayerPage;
+            this.PauseGame = (Keys)controllerData.PauseGame;
             this.Use = (Keys)controllerData.Use;
 
 
@@ -69,15 +75,16 @@ namespace LifeSupport.Config {
             this.MoveDown = (Keys)controlData.MoveDown;
             this.MoveLeft = (Keys)controlData.MoveLeft;
             this.MoveRight = (Keys)controlData.MoveRight;
-            this.OpenInventory = (Keys)controlData.OpenInventory;
+            this.OpenPlayerPage = (Keys)controlData.OpenPlayerPage;
             this.PauseGame = (Keys)controlData.PauseGame;
             this.Use = (Keys)controlData.Use;
 
         }
 
         //just for that central access point to get in our game context
-        public bool IsKeyDown(Keys key) {
-            return Keyboard.GetState().IsKeyDown(key) ;
+        public bool IsKeyDown(Keys key)
+        {
+            return Keyboard.GetState().IsKeyDown(key);
         }
 
         public bool IsMovingUp()

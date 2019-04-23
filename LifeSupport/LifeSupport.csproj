@@ -47,6 +47,7 @@
     <Compile Include="Augments\Augmentation.cs" />
     <Compile Include="GameObjects\AlienInfantry.cs" />
     <Compile Include="GameObjects\AlienTurret.cs" />
+    <Compile Include="GameObjects\AugmentationStation.cs" />
     <Compile Include="GameObjects\Door.cs" />
     <Compile Include="GameObjects\DoorH.cs" />
     <Compile Include="GameObjects\Drop.cs" />
@@ -63,6 +64,8 @@
     <Compile Include="States\AudioSettingsState.cs" />
     <Compile Include="States\Component.cs" />
     <Compile Include="States\ControlSettingsState.cs" />
+    <Compile Include="States\Controls\AugmentSlot.cs" />
+    <Compile Include="States\Controls\AugmentTextBox.cs" />
     <Compile Include="States\Controls\Button.cs" />
     <Compile Include="GameObjects\AlienDog.cs" />
     <Compile Include="GameObjects\DoorV.cs" />
@@ -74,6 +77,7 @@
     <Compile Include="States\MenuState.cs" />
     <Compile Include="States\OptionsState.cs" />
     <Compile Include="States\PauseState.cs" />
+    <Compile Include="States\PlayerPageState.cs" />
     <Compile Include="States\State.cs" />
     <Compile Include="States\VictoryState.cs" />
     <Compile Include="States\VideoSettingsState.cs" />
