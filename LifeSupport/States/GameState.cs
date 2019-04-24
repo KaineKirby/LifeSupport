@@ -154,8 +154,8 @@ namespace LifeSupport.States
             scale = (float)Settings.Instance.Width/1920 * 1.5f ;
         }
 
-        private void OpenAugmentationStationMenu() {
-            Console.WriteLine("Augmentation Station menu opened") ;
+        private void OpenAugmentationStationMenu(AugmentationStation station) {
+            game.ChangeState(new AugmentationStationState(game, game.GraphicsDevice, game.Content, this, player, station)) ;
         }
        
     }

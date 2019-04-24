@@ -38,6 +38,7 @@ namespace LifeSupport.Config {
         public Texture2D pauseScreen;
         public Texture2D deathScreen;
         public Texture2D victoryScreen;
+        public Texture2D augmentMenuScreen ;
 
         public Texture2D player ;
         public Texture2D playerLegs ;
@@ -83,6 +84,7 @@ namespace LifeSupport.Config {
         public Texture2D keycard ;
         public Texture2D augmentation ;
         public Texture2D augmentationLarge ;
+        public Texture2D augmentationStation ;
 
 
         //sound effects
@@ -143,6 +145,7 @@ namespace LifeSupport.Config {
             smallText = game.Content.Load<SpriteFont>("fonts/small_Font");
             mediumText = game.Content.Load<SpriteFont>("fonts/medium_font");
             largeText = game.Content.Load<SpriteFont>("fonts/large_font");
+            augmentMenuScreen = game.Content.Load<Texture2D>("img/menus/augment_menu") ;
 
             alienDog = game.Content.Load<Texture2D>("img/enemies/alien_dog");
             alienTurret = game.Content.Load<Texture2D>("img/enemies/alien_turret");
@@ -164,6 +167,7 @@ namespace LifeSupport.Config {
             moneyLarge = game.Content.Load<Texture2D>("img/hud/money_icon_large") ;
             keycardLarge = game.Content.Load<Texture2D>("img/hud/keycard_large") ;
             augmentationLarge = game.Content.Load<Texture2D>("img/hud/augmentation_large") ;
+            augmentationStation = game.Content.Load<Texture2D>("img/objects/augmentation_station") ;
 
             //aug machine and oxygen tank (usables)
             oxygenTank = game.Content.Load<Texture2D>("img/objects/oxygen_tank") ;

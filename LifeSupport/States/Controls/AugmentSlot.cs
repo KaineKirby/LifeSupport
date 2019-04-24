@@ -1,4 +1,5 @@
-﻿using LifeSupport.Config;
+﻿using LifeSupport.Augments;
+using LifeSupport.Config;
 using LifeSupport.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,13 +15,17 @@ namespace LifeSupport.States.Controls
 {
     public class AugmentSlot : Button
     {
-        AugmentTextBox hoverBox;
+        private AugmentTextBox hoverBox;
+        private Texture2D augmentImage ;
+        private Augmentation augment ;
 
-        public AugmentSlot(Texture2D AugmentButtonTexture, AugmentTextBox box)
-        {
+        public AugmentSlot(Texture2D AugmentButtonTexture, AugmentTextBox box, Augmentation augment) {
             texture = AugmentButtonTexture;
             ThisColor = Color.White;
             this.hoverBox = box;
+            this.augmentImage = Assets.Instance.augmentationLarge ;
+            this.augment = augment ;
+            
         }
 
 
@@ -29,15 +34,19 @@ namespace LifeSupport.States.Controls
             var currColor = Color.White;
             if (hover)
                 currColor = Color.Gray;
+            if (augment != null)
+                spriteBatch.Draw(augmentImage, new Vector2(80, 26) + CurrPosition, null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, .05f) ;
             spriteBatch.Draw(texture, Rect, null, currColor, 0, Vector2.Zero, SpriteEffects.None, 0f);
             if (hover) {
-                hoverBox.position = this.CurrPosition;
-                hoverBox.DrawBox(spriteBatch);
-                hoverBox.DrawBox(spriteBatch);
-                hoverBox.DrawBox(spriteBatch);
-                hoverBox.DrawBox(spriteBatch);
+                hoverBox.position = this.CurrPosition + new Vector2(100, 100) ;
                 hoverBox.DrawBox(spriteBatch);
             }
+        }
+
+        public void UpdateAugment(Augmentation augment) {
+            this.augment = augment ;
+            this.hoverBox.augment = augment ;
+            this.hoverBox.UpdateText() ;
         }
 
 

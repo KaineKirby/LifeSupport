@@ -22,10 +22,7 @@ namespace LifeSupport.Augments {
          * 
          */
 
-        public Texture2D augmentImage;
         public int index;
-        public Vector2 position;
-        public Rectangle rect;
 
         //statistics 
         public float Damage;
@@ -35,8 +32,6 @@ namespace LifeSupport.Augments {
         public float MoveSpeed;
 
         public Augmentation(float damage, float range, float shotSpeed, float rateOfFire, float moveSpeed) {
-            this.augmentImage = Assets.Instance.augmentationLarge ;
-            this.rect = new Rectangle((int)position.X, (int)position.Y, augmentImage.Width, augmentImage.Height);
             this.Damage = damage;
             this.Range = range;
             this.ShotSpeed = shotSpeed;
@@ -56,10 +51,6 @@ namespace LifeSupport.Augments {
 
         public static Augmentation operator *(int a1, Augmentation a2) {
              return new Augmentation(a1 * a2.Damage, a1 *  a2.Range, a1 * a2.ShotSpeed, a1 * a2.RateOfFire, a1 * a2.MoveSpeed);
-        }
-
-        public void DrawWithScale(SpriteBatch spriteBatch, float scale) {
-            spriteBatch.Draw(augmentImage, position, rect, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, .05f);
         }
 
     }

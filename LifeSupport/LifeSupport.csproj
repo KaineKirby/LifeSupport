@@ -62,6 +62,7 @@
     <Compile Include="HUD\PlayerWeaponHUD.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="States\AudioSettingsState.cs" />
+    <Compile Include="States\AugmentationStationState.cs" />
     <Compile Include="States\Component.cs" />
     <Compile Include="States\ControlSettingsState.cs" />
     <Compile Include="States\Controls\AugmentSlot.cs" />

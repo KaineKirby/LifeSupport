@@ -16,11 +16,11 @@ namespace LifeSupport.HUD {
         private Color color;
         private SpriteFont font;
 
-        public HUDString(string text, Color color, Vector2 position)
-        {
+        public HUDString(string text, Color color, Vector2 position) {
             this.text = text;
             this.color = color;
             this.position = position;
+            this.font = Assets.Instance.mediumText ;
         }
 
         public HUDString(SpriteFont font, string text, Color color, Vector2 position)
@@ -38,11 +38,6 @@ namespace LifeSupport.HUD {
         }
 
         public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.DrawString(Assets.Instance.mediumText, text, position, color);
-        }
-
-        public void DrawWithSpecificFont(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(font, text, position, color);
         }

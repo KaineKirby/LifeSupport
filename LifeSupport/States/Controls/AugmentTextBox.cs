@@ -29,10 +29,15 @@ namespace LifeSupport.States.Controls
 
 
         public AugmentTextBox(Augmentation augment, GraphicsDevice graphicsDevice) {
-
             this.augment = augment ;
-            this.Rect = GetDrawingRectangle();
             this.graphicsDevice = graphicsDevice ;
+
+            UpdateText() ;
+
+        }
+
+        public void UpdateText() {
+            this.Rect = GetDrawingRectangle();
             this.boxTexture = GenerateTexture() ;
 
             text = "" ;
@@ -49,7 +54,6 @@ namespace LifeSupport.States.Controls
                 if (augment.MoveSpeed > 0f)
                     text += "+" + augment.MoveSpeed*100 + "% Movement Speed\n" ;
             }
-
         }
 
 
@@ -57,8 +61,8 @@ namespace LifeSupport.States.Controls
 
             if (boxTexture == null)
                 return ;
-            spriteBatch.Draw(boxTexture, Rect, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, .1f) ;
-            spriteBatch.DrawString(font, text, new Vector2(Rect.X+4, Rect.Y+4), Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, .2f);
+            spriteBatch.Draw(boxTexture, position, null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, .1f) ;
+            spriteBatch.DrawString(font, text, position +  new Vector2(4, 4), Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, .2f);
 
         }
 
@@ -81,7 +85,7 @@ namespace LifeSupport.States.Controls
             if (augment.MoveSpeed > 0f)
                 rows++ ;
 
-            return new Rectangle((int)augment.position.X + 100, (int)augment.position.Y + 100, 310, rows*30) ;
+            return new Rectangle((int)position.X + 100, (int)position.Y + 100, 310, rows*30) ;
 
         }
 

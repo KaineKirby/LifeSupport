@@ -63,28 +63,24 @@ namespace LifeSupport.States
 
 
             hud.Begin(SpriteSortMode.FrontToBack, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
-            damage.DrawWithSpecificFont(hud);
-            rateOfFire.DrawWithSpecificFont(hud);
-            shotSpeed.DrawWithSpecificFont(hud);
-            range.DrawWithSpecificFont(hud);
-            movementSpeed.DrawWithSpecificFont(hud);
-            health.DrawWithSpecificFont(hud);
-            oxygenLevel.DrawWithSpecificFont(hud);
+            damage.Draw(hud);
+            rateOfFire.Draw(hud);
+            shotSpeed.Draw(hud);
+            range.Draw(hud);
+            movementSpeed.Draw(hud);
+            health.Draw(hud);
+            oxygenLevel.Draw(hud);
 
             foreach (var item in inventoryItems) {
                 item.DrawWithScale(hud, scale);
                 if (item.Image == Assets.instance.moneyLarge)
                 {
-                    money.DrawWithSpecificFont(hud);
+                    money.Draw(hud);
                 }
                 if (item.Image == Assets.instance.keycardLarge)
                 {
-                    keycard.DrawWithSpecificFont(hud);
+                    keycard.Draw(hud);
                 }
-            }
-
-            foreach (var augment in equippedAugments) {
-                augment.DrawWithScale(hud, scale);
             }
 
             foreach (var component in components) {
@@ -154,86 +150,57 @@ namespace LifeSupport.States
             };
             resumeButton.Click += Resume_Button_Click;
 
-            int yPosition = 400;
-            int loopCount = 0;
-
-            for (int i = 0; i < player.Augments.Count; i++)
-            {
-                if (player.Augments[i] != null)
-                {
-                    equippedAugments.Add(player.Augments[i]);
-                    if (i % 2 == 0)
-                    {
-                        equippedAugments[i].position.X = 1200;
-                        equippedAugments[i].position.Y = yPosition;
-                    }
-                    else
-                    {
-                        equippedAugments[i].position.X = 1500;
-                        equippedAugments[i].position.Y = yPosition;
-                    }
-                }
-                loopCount++;
-                if (loopCount == 2)
-                {
-                    yPosition += 160;
-                    loopCount = 0;
-                }
-            }
-
-            Console.WriteLine(player.Augments[0].position.X);
-
             var hoverBox0 = new AugmentTextBox(player.Augments[0], game.GraphicsDevice);
-            var augmentSlot0 = new AugmentSlot(mediumBtnTexture, hoverBox0)
+            var augmentSlot0 = new AugmentSlot(mediumBtnTexture, hoverBox0, player.Augments[0])
             {
                 CurrPosition = new Vector2(1125, 370)
             };
 
 
             var hoverBox1 = new AugmentTextBox(player.Augments[1], game.GraphicsDevice);
-            var augmentSlot1 = new AugmentSlot(mediumBtnTexture, hoverBox1)
+            var augmentSlot1 = new AugmentSlot(mediumBtnTexture, hoverBox1, player.Augments[1])
             {
                 CurrPosition = new Vector2(1425, 370)
             };
 
 
             var hoverBox2 = new AugmentTextBox(player.Augments[2], game.GraphicsDevice);
-            var augmentSlot2 = new AugmentSlot(mediumBtnTexture, hoverBox2)
+            var augmentSlot2 = new AugmentSlot(mediumBtnTexture, hoverBox2, player.Augments[2])
             {
                 CurrPosition = new Vector2(1125, 530)
             };
 
 
             var hoverBox3 = new AugmentTextBox(player.Augments[3], game.GraphicsDevice);
-            var augmentSlot3 = new AugmentSlot(mediumBtnTexture, hoverBox3)
+            var augmentSlot3 = new AugmentSlot(mediumBtnTexture, hoverBox3, player.Augments[3])
             {
                 CurrPosition = new Vector2(1425, 530)
             };
 
 
             var hoverBox4 = new AugmentTextBox(player.Augments[4], game.GraphicsDevice);
-            var augmentSlot4 = new AugmentSlot(mediumBtnTexture, hoverBox4)
+            var augmentSlot4 = new AugmentSlot(mediumBtnTexture, hoverBox4, player.Augments[4])
             {
                 CurrPosition = new Vector2(1125, 690)
             };
 
 
             var hoverBox5 = new AugmentTextBox(player.Augments[5], game.GraphicsDevice);
-            var augmentSlot5 = new AugmentSlot(mediumBtnTexture, hoverBox5)
+            var augmentSlot5 = new AugmentSlot(mediumBtnTexture, hoverBox5, player.Augments[5])
             {
                 CurrPosition = new Vector2(1425, 690)
             };
 
 
             var hoverBox6 = new AugmentTextBox(player.Augments[6], game.GraphicsDevice);
-            var augmentSlot6 = new AugmentSlot(mediumBtnTexture, hoverBox6)
+            var augmentSlot6 = new AugmentSlot(mediumBtnTexture, hoverBox6, player.Augments[6])
             {
                 CurrPosition = new Vector2(1125, 850)
             };
 
 
             var hoverBox7 = new AugmentTextBox(player.Augments[7], game.GraphicsDevice);
-            var augmentSlot7 = new AugmentSlot(mediumBtnTexture, hoverBox7)
+            var augmentSlot7 = new AugmentSlot(mediumBtnTexture, hoverBox7, player.Augments[7])
             {
                 CurrPosition = new Vector2(1425, 850)
             };

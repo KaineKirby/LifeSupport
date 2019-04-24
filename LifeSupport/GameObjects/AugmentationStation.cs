@@ -16,11 +16,15 @@ namespace LifeSupport.GameObjects {
         private int UseRadius = 30 ;
         private Player player ;
 
-        public delegate void OnUse() ;
+        //the augment the station is holding
+        public Augmentation Augment ;
+
+        public delegate void OnUse(AugmentationStation station) ;
         public static OnUse OnPlayerUse ;
 
-        public AugmentationStation(Vector2 position, PenumbraComponent penumbra, Player player) : base(position, penumbra, 30, 30, 0, Assets.Instance.oxygenTank) {
+        public AugmentationStation(Vector2 position, PenumbraComponent penumbra, Player player) : base(position, penumbra, 30, 30, 0, Assets.Instance.augmentationStation) {
             this.player = player ;
+            this.Augment = null ;
             
         }
 
@@ -29,7 +33,7 @@ namespace LifeSupport.GameObjects {
             //if the player is inside the use radius and hits the use button
             if (player.IsInside(Position.X-UseRadius, Position.Y-UseRadius, Position.X+UseRadius, Position.Y+UseRadius) 
                 && Controller.Instance.IsKeyDown(Controller.Instance.Use)) {
-                OnPlayerUse() ;
+                OnPlayerUse(this) ;
             }
             
         }

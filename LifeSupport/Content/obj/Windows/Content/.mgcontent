@@ -39,14 +39,16 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/oxygen_icon.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/hud/speed.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/audioMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/augment_menu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/controlsMenu.png</File>
-    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/menus/deathMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/deathMenu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/main_menu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/optionsMenu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/pauseMenu.png</File>
-    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/img/menus/victoryMenu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/playerMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/victoryMenu.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/menus/videoMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/augmentation_station.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/barrier.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/closed_door.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/objects/closed_door_h.png</File>
@@ -75,9 +77,14 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/level_3_music.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/sound/music/menu_music.ogg</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/square.jpg</File>
-    <File>C:/Users/Austin/VisualStudioProjects/LifeSupport/LifeSupport/Content/victoryMenu.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/victoryMenu.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

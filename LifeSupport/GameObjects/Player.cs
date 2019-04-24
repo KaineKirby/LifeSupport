@@ -71,7 +71,7 @@ namespace LifeSupport.GameObjects {
 
             this.InvincibleTime = 0f ;
 
-            this.Money = 0 ;
+            this.Money = 10 ;
             this.HasCard = false ;
             this.OxygenTime = FloorTimer ;
 
@@ -91,7 +91,7 @@ namespace LifeSupport.GameObjects {
 
             penumbra.Lights.Add(light) ;
 
-            AddAugment(AugmentationStation.GenerateAugment(10), 0) ;
+            //AddAugment(AugmentationStation.GenerateAugment(10), 0) ;
 
         }
 
