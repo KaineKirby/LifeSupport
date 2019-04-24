@@ -47,7 +47,7 @@ namespace LifeSupport
                 MediaPlayer.Volume = (float)Settings.Instance.MusVolume/100 ;
                 //penumbra.Lights.Remove(menuLight) ;
             }
-            else if (nextState is MenuState && currState is PauseState) {
+            else if (nextState is MenuState && ((currState is PauseState) || (currState is VictoryState) || (currState is DeathState))) {
                 MediaPlayer.Stop() ;
                 MediaPlayer.Play(Assets.Instance.menuMusic) ;
                 MediaPlayer.Volume = (float)Settings.Instance.MusVolume/100 ;

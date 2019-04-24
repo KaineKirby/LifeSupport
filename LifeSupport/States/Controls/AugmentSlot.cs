@@ -18,6 +18,7 @@ namespace LifeSupport.States.Controls
         private AugmentTextBox hoverBox;
         private Texture2D augmentImage ;
         private Augmentation augment ;
+        Texture2D X = Assets.Instance.crossOut;
 
         public AugmentSlot(Texture2D AugmentButtonTexture, AugmentTextBox box, Augmentation augment) {
             texture = AugmentButtonTexture;
@@ -32,8 +33,22 @@ namespace LifeSupport.States.Controls
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             var currColor = Color.White;
-            if (hover)
-                currColor = Color.Gray;
+            if (!PlayerPageState.removeAugmentActive)
+            {
+                if (hover)
+                {
+                    currColor = Color.Gray;
+                }
+            }
+            else if (PlayerPageState.removeAugmentActive)
+            {
+                currColor = Color.Red;
+                if (hover && augment != null)
+                {
+                    spriteBatch.Draw(X, Rect, null, currColor, 0, Vector2.Zero, SpriteEffects.None, .08f);
+                }
+            }
+
             if (augment != null)
                 spriteBatch.Draw(augmentImage, new Vector2(80, 26) + CurrPosition, null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, .05f) ;
             spriteBatch.Draw(texture, Rect, null, currColor, 0, Vector2.Zero, SpriteEffects.None, 0f);

@@ -71,6 +71,7 @@ namespace LifeSupport.Config {
         public Texture2D challengeRoom ;
         public Texture2D keycardLarge ;
         public Texture2D moneyLarge ;
+        public Texture2D crossOut;
 
 
         //Enemies
@@ -146,6 +147,7 @@ namespace LifeSupport.Config {
             mediumText = game.Content.Load<SpriteFont>("fonts/medium_font");
             largeText = game.Content.Load<SpriteFont>("fonts/large_font");
             augmentMenuScreen = game.Content.Load<Texture2D>("img/menus/augment_menu") ;
+            crossOut = game.Content.Load<Texture2D>("img/controls/cross");
 
             alienDog = game.Content.Load<Texture2D>("img/enemies/alien_dog");
             alienTurret = game.Content.Load<Texture2D>("img/enemies/alien_turret");

@@ -91,7 +91,10 @@ namespace LifeSupport.GameObjects {
 
             penumbra.Lights.Add(light) ;
 
-            //AddAugment(AugmentationStation.GenerateAugment(10), 0) ;
+            AddAugment(AugmentationStation.GenerateAugment(10), 0) ;
+            AddAugment(AugmentationStation.GenerateAugment(10), SearchForNextAvailableSpot());
+            AddAugment(AugmentationStation.GenerateAugment(10), SearchForNextAvailableSpot());
+            AddAugment(AugmentationStation.GenerateAugment(10), 7);
 
         }
 
@@ -203,10 +206,16 @@ namespace LifeSupport.GameObjects {
         }
 
         //remove an augment from the augmentations list and apply changes
-        public void RemoveAugment(Augmentation augment) {
-            this.Augments.Remove(augment) ;
-            ResetStats() ;
-            UpdateStats() ;
+        public void RemoveAugment(int spot)
+        {
+            if (Augments[spot] != null)
+            {
+                Augments[spot] = null;
+                ResetStats();
+                UpdateStats();
+            }
+            else
+                return;
         }
 
         //add an augment to the augmentations list and apply changes

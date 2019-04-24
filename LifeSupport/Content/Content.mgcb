@@ -120,6 +120,18 @@
 /processorParam:TextureFormat=Color
 /build:img/controls/blk_button_large.png
 
+#begin img/controls/cross.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img/controls/cross.png
+
 #begin img/controls/hoverBox.png
 /importer:TextureImporter
 /processor:TextureProcessor
