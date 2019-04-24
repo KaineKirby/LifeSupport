@@ -225,6 +225,8 @@ namespace LifeSupport.States {
         private void EquipAugment(object sender, EventArgs e) {
             if (station.Augment == null)
                 return ;
+            if (player.SearchForNextAvailableSpot() == -1)
+                return ;
             player.AddAugment(station.Augment, player.SearchForNextAvailableSpot()) ;
             station.Augment = null ;
             generatedSlot.UpdateAugment(station.Augment) ;

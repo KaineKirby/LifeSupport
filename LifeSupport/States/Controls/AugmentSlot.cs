@@ -45,7 +45,7 @@ namespace LifeSupport.States.Controls
                 currColor = Color.Red;
                 if (hover && augment != null)
                 {
-                    spriteBatch.Draw(X, Rect, null, currColor, 0, Vector2.Zero, SpriteEffects.None, .08f);
+                    spriteBatch.Draw(X, new Vector2(80, 26) + CurrPosition, null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, .08f);
                 }
             }
 

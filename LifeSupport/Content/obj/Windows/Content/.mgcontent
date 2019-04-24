@@ -15,6 +15,7 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/arrowRight.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/blk_button.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/blk_button_large.png</File>
+    <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/cross.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/hoverBox.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/mediumButton.png</File>
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/img/controls/smallBlackButton.png</File>
@@ -80,6 +81,7 @@
     <File>C:/Users/Jeremy/source/repos/LifeSupport/LifeSupport/Content/victoryMenu.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

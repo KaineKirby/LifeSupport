@@ -250,7 +250,7 @@ namespace LifeSupport.States
             };
 
             damageString = "Weapon Damage: " + player.Damage.ToString();
-            rateOfFireString = "Rate of Fire: " + player.RateOfFire.ToString();
+            rateOfFireString = "Rate of Fire: " + (1/(player.RateOfFire)).ToString() + " shot / second";
             shotSpeedString = "Bullet Speed: " + player.ShotSpeed.ToString();
             rangeString = "Bullet Range: " + player.Range.ToString();
             movementSpeedString = "Movement Speed: " + player.MoveSpeed.ToString();
@@ -414,7 +414,7 @@ namespace LifeSupport.States
             }
 
             damage.Update("Weapon Damage: " + player.Damage.ToString());
-            rateOfFire.Update("Rate of Fire: " + player.RateOfFire.ToString());
+            rateOfFire.Update("Rate of Fire: " + (1/(player.RateOfFire)).ToString() + " shot / second");
             shotSpeed.Update("Bullet Speed: " + player.ShotSpeed.ToString());
             range.Update("Bullet Range: " + player.Range.ToString());
             movementSpeed.Update("Movement Speed: " + player.MoveSpeed.ToString());

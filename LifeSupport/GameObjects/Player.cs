@@ -71,7 +71,7 @@ namespace LifeSupport.GameObjects {
 
             this.InvincibleTime = 0f ;
 
-            this.Money = 10 ;
+            this.Money = 0 ;
             this.HasCard = false ;
             this.OxygenTime = FloorTimer ;
 
@@ -90,11 +90,6 @@ namespace LifeSupport.GameObjects {
             };
 
             penumbra.Lights.Add(light) ;
-
-            AddAugment(AugmentationStation.GenerateAugment(10), 0) ;
-            AddAugment(AugmentationStation.GenerateAugment(10), SearchForNextAvailableSpot());
-            AddAugment(AugmentationStation.GenerateAugment(10), SearchForNextAvailableSpot());
-            AddAugment(AugmentationStation.GenerateAugment(10), 7);
 
         }
 
@@ -219,48 +214,25 @@ namespace LifeSupport.GameObjects {
         }
 
         //add an augment to the augmentations list and apply changes
-        public void AddAugment(Augmentation augment, int spot)
-        {
-            if (spot < 0 || spot > 8)
-            {
+        public void AddAugment(Augmentation augment, int spot) {
+            if (spot < 0 || spot > 8) {
                 return;
             }
-            else
-            {
-                this.Augments.Insert(spot, augment);
+            else {
+                this.Augments[spot] = augment;
                 augment.index = spot;
-                //         augment.position = new Vector2(1200, 250);
                 ResetStats();
                 UpdateStats();
             }
         }
 
 
-        public int SearchForNextAvailableSpot()
-        {
-            int spot;
-            int i = 0;
-            if (Augments[i] == null)
-            {
-                spot = 0;
-                return spot;
-            }
-            else
-            {
-                while (this.Augments[i] != null && i < Augments.Count)
-                {
-                    i++;
-                }
-                if (i < 8)
-                {
-                    spot = i;
-                    return spot;
-                }
-                else
-                {
-                    return Augments.Capacity;
-                }
-            }
+        public int SearchForNextAvailableSpot() {
+            for (int i = 0 ; i < 8 ; i++)
+                if (Augments[i] == null)
+                    return i ;
+            return -1 ;
+
         }
 
         //reset the stats of the player to their base so we can apply augments
@@ -273,19 +245,28 @@ namespace LifeSupport.GameObjects {
         }
 
         //update the stats based on the master augment
-        private void UpdateStats()
-        {
-            foreach (Augmentation a in Augments)
-            {
-                if (a != null)
-                {
-                    this.Damage += a.Damage;
-                    this.Range += this.Range * a.Range;
-                    this.ShotSpeed += this.ShotSpeed * a.ShotSpeed;
-                    this.RateOfFire *= (1-a.RateOfFire);
-                    this.MoveSpeed += this.MoveSpeed * a.MoveSpeed;
+        private void UpdateStats() {
+            float dChange = 0f ;
+            float rChange = 0f ;
+            float ssChange = 0f ;
+            float rofChange = 0f ;
+            float msChange = 0f ;
+            foreach (Augmentation a in Augments) {
+                if (a != null) {
+                    dChange += a.Damage;
+                    rChange += this.Range * a.Range;
+                    ssChange += this.ShotSpeed * a.ShotSpeed;
+                    rofChange += a.RateOfFire ;
+                    msChange += this.MoveSpeed * a.MoveSpeed;
                 }
             }
+            //rate of fire has to be handled in a special way because it is exponentially powerful
+            //counteracting the relationship with "shots per second"
+            this.Damage += dChange ;
+            this.Range += rChange ;
+            this.ShotSpeed += ssChange ;
+            this.RateOfFire = 1/(rofChange+1) ;
+            this.MoveSpeed += msChange ;
         }
     }
 }

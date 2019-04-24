@@ -44,15 +44,15 @@ namespace LifeSupport.States.Controls
 
             if (augment != null) {
                 if (augment.Damage > 0f)
-                    text += "+" + augment.Damage*100 + "% Damage\n" ;
+                    text += String.Format("+{0:0.##}% Damage\n", augment.Damage*100) ;
                 if (augment.Range > 0f)
-                    text += "+" + augment.Range*100 + "% Range\n" ;
+                    text += String.Format("+{0:0.##}% Range\n", augment.Range*100) ;
                 if (augment.ShotSpeed > 0f)
-                    text += "+" + augment.ShotSpeed*100 + "% Bullet Speed\n" ;
+                    text += String.Format("+{0:0.##}% Shot Speed\n", augment.ShotSpeed*100) ;
                 if (augment.RateOfFire > 0f)
-                    text += "+" + augment.RateOfFire*100 + "% Rate Of Fire\n" ;
+                    text += String.Format("+{0:0.##} shot / second\n", augment.RateOfFire) ;
                 if (augment.MoveSpeed > 0f)
-                    text += "+" + augment.MoveSpeed*100 + "% Movement Speed\n" ;
+                    text += String.Format("+{0:0.##}% Move Speed\n", augment.MoveSpeed*100) ;
             }
         }
 

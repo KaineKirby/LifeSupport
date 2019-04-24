@@ -39,19 +39,20 @@ namespace LifeSupport.GameObjects {
         }
 
         public static Augmentation GenerateAugment(int money) {
-            Augmentation aug = new Augmentation(0, 0, 0, 0, 0) ;
 
             //first generate random number for the number of stats on the augment
             int numStats = RandomGenerator.Instance.GetRandomIntRange(1, 5) ; //between 1 and 5 stats possible
 
-            Console.WriteLine(numStats) ;
-
             //add the selected stats to stats list
             List<int> stats = new List<int>() ;
+            //whether the stat is positive or negative
+            //false for negative true for positive
+            List<bool> posNeg = new List<bool>() ;
 
             for (int i = 0 ; i < numStats ; i++) {
                 stats.Add(RandomGenerator.Instance.GetRandomIntRange(1, 5)) ; 
             }
+
             /*
              * 1 - damage
              * 2 - range
@@ -63,58 +64,41 @@ namespace LifeSupport.GameObjects {
             //the pool we pull stats fromm
             int pool = money ;
 
+            float d = 0 ;
+            float r = 0 ;
+            float ss = 0 ;
+            //rate of fire is handled in shots per second
+            float rof = 0 ;
+            float ms = 0 ;
+
             while (pool > 0) {
                 //select a stat
                 int selectedStat = RandomGenerator.Instance.GetRandomIntRange(0, stats.Count-1) ;
-                //decide whether we will increment to it or decrement from it
-                int roll = RandomGenerator.Instance.GetRandomIntRange(0, 3) ; //if it lands on 0 it is decrement otherwise inc
-                Augmentation a = new Augmentation(0, 0, 0, 0, 0) ;
+
+                int roll = RandomGenerator.Instance.GetRandomIntRange(1, pool) ;
+                pool -= roll ;
+
                 switch (stats[selectedStat]) {
                     case 1:
-                        a += new Augmentation(.1f, 0, 0, 0, 0) ;
-                        pool-- ;
-                        if (roll == 0) {
-                            a = -1 * a ;
-                            pool += 2 ;
-                        }
+                        d += .1f*roll ;
                         break ;
                     case 2:
-                        a += new Augmentation(0, .2f, 0, 0, 0) ;
-                        pool-- ;
-                        if (roll == 0) {
-                            a = -1 * a ;
-                            pool += 2 ;
-                        }
+                        r += .2f*roll ;
                         break ;
                     case 3:
-                        a += new Augmentation(0, 0, .2f, 0, 0) ;
-                        pool-- ;
-                        if (roll == 0) {
-                            a = -1 * a ;
-                            pool += 2 ;
-                        }
+                        ss += .2f*roll ;
                         break ;
                     case 4:
-                        a += new Augmentation(0, 0, 0, .1f, 0) ;
-                        pool-- ;
-                        if (roll == 0) {
-                            a = -1 * a ;
-                        pool += 2 ;
-                        }
+                        rof += 1*roll ;
+                        //the fire rate is a disproprtionally good upgrade
                         break ;
                     case 5:
-                        a += new Augmentation(0, 0, 0, 0, .05f) ;
-                        pool-- ;
-                        if (roll == 0) {
-                            a = -1 * a ;
-                        pool += 2 ;
-                        }
+                        ms += .05f*roll ;
                         break ;
                 }
-                aug += a ;
             }
 
-            return aug ;
+            return new Augmentation(d, r, ss, rof, ms) ;
 
         }
     }
