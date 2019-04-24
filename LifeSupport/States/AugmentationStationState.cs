@@ -11,6 +11,7 @@ using LifeSupport.States.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace LifeSupport.States {
     class AugmentationStationState : State {
@@ -203,14 +204,29 @@ namespace LifeSupport.States {
         }
 
         private void IncrementMoney(object sender, EventArgs e) {
-            if (this.moneyInMachine < player.Money) {
+            int times = 1 ;
+            if (Controller.Instance.IsKeyDown(Keys.LeftShift))
+                times = 10 ;
+
+            int count = 0 ;
+            while (count < times && this.moneyInMachine < player.Money) {
                 moneyInMachine++ ;
+                count++ ;
             }
+
         }
 
         private void DecrementMoney(object sender, EventArgs e) {
-            if (moneyInMachine > 0)
+            int times = 1 ;
+            if (Controller.Instance.IsKeyDown(Keys.LeftShift))
+                times = 10 ;
+
+            int count = 0 ;
+            while (count < times && this.moneyInMachine > 0) {
                 moneyInMachine-- ;
+                count++ ;
+            }
+
         }
 
         private void GenerateAugment(object sender, EventArgs e) {
