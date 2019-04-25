@@ -205,6 +205,7 @@ namespace LifeSupport.Levels {
             Room canidate = GetRoomAtCoordinate(GetPlayerRoomPosition()) ;
             if (player.CurrentRoom != canidate) {
                 player.CurrentRoom = canidate ;
+                activeRoom.OnPlayerLeave() ;
                 activeRoom = canidate ;
             }
             if (activeRoom.PlayerInside())
