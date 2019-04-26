@@ -1,0 +1,134 @@
+{
+  "Barrier": [
+    {
+      "Row": 3,
+      "Column": 28,
+      "BarrierWidth": 1,
+      "BarrierHeight": 30
+    },
+    {
+      "Row": 3,
+      "Column": 31,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 32,
+      "Column": 31,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 3,
+      "Column": 35,
+      "BarrierWidth": 1,
+      "BarrierHeight": 30
+    }
+  ],
+  "AlienDog": [],
+  "AlienTurret": [
+    {
+      "Row": 16,
+      "Column": 29,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 16,
+      "Column": 34,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 18,
+      "Column": 29,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 18,
+      "Column": 34,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    }
+  ],
+  "AlienInfantry": [
+    {
+      "Row": 7,
+      "Column": 27,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 17,
+      "Column": 27,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 29,
+      "Column": 27,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 7,
+      "Column": 36,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 17,
+      "Column": 36,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 29,
+      "Column": 36,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    }
+  ],
+  "OxygenTank": []
+}

@@ -1,101 +1,101 @@
 {
   "Barrier": [
     {
-      "Row": 1,
-      "Column": 28,
-      "BarrierWidth": 1,
-      "BarrierHeight": 4
-    },
-    {
-      "Row": 4,
-      "Column": 29,
-      "BarrierWidth": 2,
-      "BarrierHeight": 1
-    },
-    {
-      "Row": 4,
+      "Row": 3,
       "Column": 33,
-      "BarrierWidth": 3,
+      "BarrierWidth": 27,
       "BarrierHeight": 1
     },
     {
-      "Row": 1,
-      "Column": 35,
+      "Row": 3,
+      "Column": 4,
+      "BarrierWidth": 27,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 7,
+      "Column": 14,
       "BarrierWidth": 1,
-      "BarrierHeight": 3
+      "BarrierHeight": 25
+    },
+    {
+      "Row": 7,
+      "Column": 49,
+      "BarrierWidth": 1,
+      "BarrierHeight": 25
+    },
+    {
+      "Row": 3,
+      "Column": 3,
+      "BarrierWidth": 1,
+      "BarrierHeight": 14
+    },
+    {
+      "Row": 20,
+      "Column": 3,
+      "BarrierWidth": 1,
+      "BarrierHeight": 13
+    },
+    {
+      "Row": 3,
+      "Column": 60,
+      "BarrierWidth": 1,
+      "BarrierHeight": 14
+    },
+    {
+      "Row": 19,
+      "Column": 60,
+      "BarrierWidth": 1,
+      "BarrierHeight": 13
+    },
+    {
+      "Row": 27,
+      "Column": 30,
+      "BarrierWidth": 1,
+      "BarrierHeight": 8
+    },
+    {
+      "Row": 27,
+      "Column": 33,
+      "BarrierWidth": 1,
+      "BarrierHeight": 8
+    },
+    {
+      "Row": 26,
+      "Column": 26,
+      "BarrierWidth": 5,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 26,
+      "Column": 33,
+      "BarrierWidth": 5,
+      "BarrierHeight": 1
     },
     {
       "Row": 32,
-      "Column": 28,
-      "BarrierWidth": 1,
-      "BarrierHeight": 3
-    },
-    {
-      "Row": 31,
-      "Column": 28,
-      "BarrierWidth": 3,
+      "Column": 4,
+      "BarrierWidth": 26,
       "BarrierHeight": 1
     },
     {
-      "Row": 31,
-      "Column": 35,
-      "BarrierWidth": 1,
-      "BarrierHeight": 4
-    },
-    {
-      "Row": 31,
-      "Column": 33,
-      "BarrierWidth": 2,
+      "Row": 32,
+      "Column": 34,
+      "BarrierWidth": 27,
       "BarrierHeight": 1
-    },
-    {
-      "Row": 13,
-      "Column": 5,
-      "BarrierWidth": 1,
-      "BarrierHeight": 10
-    },
-    {
-      "Row": 9,
-      "Column": 9,
-      "BarrierWidth": 1,
-      "BarrierHeight": 19
-    },
-    {
-      "Row": 13,
-      "Column": 58,
-      "BarrierWidth": 1,
-      "BarrierHeight": 10
-    },
-    {
-      "Row": 9,
-      "Column": 54,
-      "BarrierWidth": 1,
-      "BarrierHeight": 18
-    },
-    {
-      "Row": 7,
-      "Column": 25,
-      "BarrierWidth": 1,
-      "BarrierHeight": 23
-    },
-    {
-      "Row": 7,
-      "Column": 38,
-      "BarrierWidth": 1,
-      "BarrierHeight": 23
     }
   ],
   "AlienDog": [
     {
-      "Row": 17,
-      "Column": 27,
+      "Row": 34,
+      "Column": 1,
       "Speed": 300,
       "Health": 3,
       "Damage": 1
     },
     {
-      "Row": 17,
-      "Column": 36,
+      "Row": 34,
+      "Column": 62,
       "Speed": 300,
       "Health": 3,
       "Damage": 1
@@ -103,8 +103,8 @@
   ],
   "AlienTurret": [
     {
-      "Row": 17,
-      "Column": 8,
+      "Row": 31,
+      "Column": 4,
       "Speed": 0,
       "Health": 5,
       "Damage": 1,
@@ -113,8 +113,8 @@
       "RateOfFire": 1
     },
     {
-      "Row": 18,
-      "Column": 8,
+      "Row": 31,
+      "Column": 59,
       "Speed": 0,
       "Health": 5,
       "Damage": 1,
@@ -123,8 +123,8 @@
       "RateOfFire": 1
     },
     {
-      "Row": 18,
-      "Column": 55,
+      "Row": 31,
+      "Column": 27,
       "Speed": 0,
       "Health": 5,
       "Damage": 1,
@@ -133,8 +133,8 @@
       "RateOfFire": 1
     },
     {
-      "Row": 17,
-      "Column": 55,
+      "Row": 31,
+      "Column": 36,
       "Speed": 0,
       "Health": 5,
       "Damage": 1,
@@ -145,8 +145,8 @@
   ],
   "AlienInfantry": [
     {
-      "Row": 17,
-      "Column": 26,
+      "Row": 1,
+      "Column": 1,
       "Speed": 150,
       "Health": 3,
       "Damage": 1,
@@ -155,8 +155,8 @@
       "RateOfFire": 1
     },
     {
-      "Row": 17,
-      "Column": 37,
+      "Row": 1,
+      "Column": 62,
       "Speed": 150,
       "Health": 3,
       "Damage": 1,

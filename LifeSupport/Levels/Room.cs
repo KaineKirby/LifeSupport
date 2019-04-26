@@ -189,7 +189,7 @@ namespace LifeSupport.Levels {
         private void OnRoomComplete() {
             //roll for a chance to drop an item
 
-            int roll = RandomGenerator.Instance.GetRandomIntRange(0, 7) ;
+            int roll = RandomGenerator.Instance.GetRandomIntRange(0, 3) ;
 
             //25 percent chance to drop some money
             if (roll == 0) {
@@ -279,6 +279,13 @@ namespace LifeSupport.Levels {
         public void OnPlayerEntered() {
             if (HasEnemies() && PlayerInside())
                 CloseAllDoors() ;
+        }
+
+        public void OnPlayerLeave() {
+            for (int i = 0 ; i < Objects.Count ; i++) {
+                if (Objects[i] is Projectile)
+                    ((Projectile)Objects[i]).Destroy() ;
+            }
         }
 
         //check whether or not the player lies within the boundaries of the room

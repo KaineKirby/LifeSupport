@@ -102,5 +102,10 @@ namespace LifeSupport.GameObjects
             spriteBatch.Draw(sprite, Position, spriteRectangle, color, Rotation, origin, 1f, SpriteEffects.None, 0);
         }
 
+        public void Destroy() {
+            CurrentRoom.DestroyObject(this) ;
+            penumbra.Lights.Remove(light) ;
+        }
+
     }
 }
