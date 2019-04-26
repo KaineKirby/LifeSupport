@@ -79,7 +79,7 @@ namespace LifeSupport.GameObjects {
             float ms = 0 ;
             bool spr = false ;
 
-            while (pool > 0) {
+            while (pool > 0 && stats.Count > 0) {
                 //select a stat
                 int selectedStat = RandomGenerator.Instance.GetRandomIntRange(0, stats.Count-1) ;
 
