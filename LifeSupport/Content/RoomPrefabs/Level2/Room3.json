@@ -163,12 +163,6 @@
       "BarrierHeight": 3
     },
     {
-      "Row": 15,
-      "Column": 39,
-      "BarrierWidth": 1,
-      "BarrierHeight": 6
-    },
-    {
       "Row": 16,
       "Column": 27,
       "BarrierWidth": 9,
@@ -179,6 +173,12 @@
       "Column": 27,
       "BarrierWidth": 9,
       "BarrierHeight": 1
+    },
+    {
+      "Row": 16,
+      "Column": 39,
+      "BarrierWidth": 1,
+      "BarrierHeight": 4
     }
   ],
   "AlienDog": [

@@ -37,111 +37,111 @@
       "BarrierHeight": 15
     },
     {
-      "Row": 1,
-      "Column": 10,
-      "BarrierWidth": 1,
-      "BarrierHeight": 16
-    },
-    {
-      "Row": 1,
-      "Column": 14,
-      "BarrierWidth": 1,
-      "BarrierHeight": 16
-    },
-    {
       "Row": 16,
       "Column": 1,
-      "BarrierWidth": 9,
+      "BarrierWidth": 8,
       "BarrierHeight": 1
     },
     {
+      "Row": 1,
+      "Column": 8,
+      "BarrierWidth": 1,
+      "BarrierHeight": 15
+    },
+    {
+      "Row": 1,
+      "Column": 16,
+      "BarrierWidth": 1,
+      "BarrierHeight": 16
+    },
+    {
       "Row": 16,
-      "Column": 15,
-      "BarrierWidth": 16,
+      "Column": 17,
+      "BarrierWidth": 14,
       "BarrierHeight": 1
     },
     {
       "Row": 3,
-      "Column": 11,
-      "BarrierWidth": 2,
+      "Column": 9,
+      "BarrierWidth": 5,
       "BarrierHeight": 1
     },
     {
       "Row": 6,
-      "Column": 12,
-      "BarrierWidth": 2,
+      "Column": 11,
+      "BarrierWidth": 5,
       "BarrierHeight": 1
     },
     {
       "Row": 9,
-      "Column": 11,
-      "BarrierWidth": 2,
+      "Column": 9,
+      "BarrierWidth": 5,
       "BarrierHeight": 1
     },
     {
       "Row": 12,
-      "Column": 12,
-      "BarrierWidth": 2,
+      "Column": 11,
+      "BarrierWidth": 5,
       "BarrierHeight": 1
     },
     {
       "Row": 15,
-      "Column": 11,
-      "BarrierWidth": 2,
+      "Column": 9,
+      "BarrierWidth": 5,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 16,
+      "Column": 55,
+      "BarrierWidth": 8,
       "BarrierHeight": 1
     },
     {
       "Row": 1,
-      "Column": 53,
+      "Column": 55,
       "BarrierWidth": 1,
-      "BarrierHeight": 16
+      "BarrierHeight": 15
     },
     {
       "Row": 1,
-      "Column": 49,
+      "Column": 47,
       "BarrierWidth": 1,
       "BarrierHeight": 16
     },
     {
       "Row": 16,
       "Column": 34,
-      "BarrierWidth": 15,
-      "BarrierHeight": 1
-    },
-    {
-      "Row": 16,
-      "Column": 54,
-      "BarrierWidth": 9,
+      "BarrierWidth": 13,
       "BarrierHeight": 1
     },
     {
       "Row": 3,
-      "Column": 51,
-      "BarrierWidth": 2,
+      "Column": 48,
+      "BarrierWidth": 5,
       "BarrierHeight": 1
     },
     {
       "Row": 6,
       "Column": 50,
-      "BarrierWidth": 2,
+      "BarrierWidth": 5,
       "BarrierHeight": 1
     },
     {
       "Row": 9,
-      "Column": 51,
-      "BarrierWidth": 2,
+      "Column": 48,
+      "BarrierWidth": 5,
       "BarrierHeight": 1
     },
     {
       "Row": 12,
       "Column": 50,
-      "BarrierWidth": 2,
+      "BarrierWidth": 5,
       "BarrierHeight": 1
     },
     {
       "Row": 15,
-      "Column": 51,
-      "BarrierWidth": 2,
+      "Column": 48,
+      "BarrierWidth": 5,
       "BarrierHeight": 1
     }
   ],
