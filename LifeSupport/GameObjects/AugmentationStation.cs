@@ -41,7 +41,11 @@ namespace LifeSupport.GameObjects {
         public static Augmentation GenerateAugment(int money) {
 
             //first generate random number for the number of stats on the augment
-            int numStats = RandomGenerator.Instance.GetRandomIntRange(1, 5) ; //between 1 and 5 stats possible
+            int numStats ;
+            if (money >= 10)
+                numStats = RandomGenerator.Instance.GetRandomIntRange(1, 6) ; //between 1 and 6 stats possible when money >10
+            else 
+                numStats = RandomGenerator.Instance.GetRandomIntRange(1, 5) ;
 
             //add the selected stats to stats list
             List<int> stats = new List<int>() ;
@@ -50,7 +54,10 @@ namespace LifeSupport.GameObjects {
             List<bool> posNeg = new List<bool>() ;
 
             for (int i = 0 ; i < numStats ; i++) {
-                stats.Add(RandomGenerator.Instance.GetRandomIntRange(1, 5)) ; 
+                if (money >= 10)
+                    stats.Add(RandomGenerator.Instance.GetRandomIntRange(1, 6)) ; 
+                else
+                    stats.Add(RandomGenerator.Instance.GetRandomIntRange(1, 5)) ;
             }
 
             /*
@@ -70,35 +77,47 @@ namespace LifeSupport.GameObjects {
             //rate of fire is handled in shots per second
             float rof = 0 ;
             float ms = 0 ;
+            bool spr = false ;
 
             while (pool > 0) {
                 //select a stat
                 int selectedStat = RandomGenerator.Instance.GetRandomIntRange(0, stats.Count-1) ;
 
                 int roll = RandomGenerator.Instance.GetRandomIntRange(1, pool) ;
-                pool -= roll ;
 
                 switch (stats[selectedStat]) {
                     case 1:
                         d += .1f*roll ;
+                        pool -= roll ;
                         break ;
                     case 2:
                         r += .2f*roll ;
+                        pool -= roll ;
                         break ;
                     case 3:
                         ss += .2f*roll ;
+                        pool -= roll ;
                         break ;
                     case 4:
                         rof += 1*roll ;
                         //the fire rate is a disproprtionally good upgrade
+                        pool -= roll;
                         break ;
                     case 5:
                         ms += .05f*roll ;
+                        pool -= roll ;
+                        break ;
+                    case 6:
+                        if (pool >= 10) {
+                            spr = true ;
+                            pool -= 10 ;
+                            stats.Remove(6) ;
+                        }
                         break ;
                 }
             }
 
-            return new Augmentation(d, r, ss, rof, ms) ;
+            return new Augmentation(d, r, ss, rof, ms, spr) ;
 
         }
     }

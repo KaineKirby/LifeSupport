@@ -54,6 +54,9 @@ namespace LifeSupport.GameObjects {
 
         public bool isDead = false;
 
+        //spreadshot
+        private bool SpreadShot ;
+
 
         //will probably be constant
         public Player(PenumbraComponent penumdra) : base(new Vector2(100, 100), penumdra, 32, 32, 0, Assets.Instance.player, null, startPlayerSpeed, 3f, 1f, 1000f, 1000f, 1f) {
@@ -71,7 +74,7 @@ namespace LifeSupport.GameObjects {
 
             this.InvincibleTime = 0f ;
 
-            this.Money = 0 ;
+            this.Money = 100 ;
             this.HasCard = false ;
             this.OxygenTime = FloorTimer ;
 
@@ -213,6 +216,27 @@ namespace LifeSupport.GameObjects {
                 return;
         }
 
+        //override the shoot method for spreadshot
+        protected override void Shoot(Vector2 direction, SoundEffect sound) {
+
+            if (SpreadShot) {
+                if (TimeBeforeShooting == 0f) {
+                    Vector2 shot1 = direction + (new Vector2(direction.Y, -direction.X)*.1f) ;
+                    shot1.Normalize() ;
+
+                    Vector2 shot2 = direction + (new Vector2(direction.Y, direction.X)*.1f) ;
+                    shot2.Normalize() ;
+
+                    CurrentRoom.AddObject(new Projectile(Position, shot1, Damage, ShotSpeed, Range, true, CurrentRoom, penumbra)) ;
+                    CurrentRoom.AddObject(new Projectile(Position, shot2, Damage, ShotSpeed, Range, true, CurrentRoom, penumbra)) ;
+
+                }
+            }
+
+            base.Shoot(direction, sound) ;
+
+        }
+
         //add an augment to the augmentations list and apply changes
         public void AddAugment(Augmentation augment, int spot) {
             if (spot < 0 || spot > 8) {
@@ -251,6 +275,7 @@ namespace LifeSupport.GameObjects {
             float ssChange = 0f ;
             float rofChange = 0f ;
             float msChange = 0f ;
+            bool spread = false ;
             foreach (Augmentation a in Augments) {
                 if (a != null) {
                     dChange += a.Damage;
@@ -258,6 +283,7 @@ namespace LifeSupport.GameObjects {
                     ssChange += this.ShotSpeed * a.ShotSpeed;
                     rofChange += a.RateOfFire ;
                     msChange += this.MoveSpeed * a.MoveSpeed;
+                    spread = a.SpreadShot ;
                 }
             }
             //rate of fire has to be handled in a special way because it is exponentially powerful
@@ -267,6 +293,7 @@ namespace LifeSupport.GameObjects {
             this.ShotSpeed += ssChange ;
             this.RateOfFire = 1/(rofChange+1) ;
             this.MoveSpeed += msChange ;
+            this.SpreadShot = spread ;
         }
     }
 }

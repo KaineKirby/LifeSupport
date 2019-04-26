@@ -53,6 +53,8 @@ namespace LifeSupport.States.Controls
                     text += String.Format("+{0:0.##} shot / second\n", augment.RateOfFire) ;
                 if (augment.MoveSpeed > 0f)
                     text += String.Format("+{0:0.##}% Move Speed\n", augment.MoveSpeed*100) ;
+                if (augment.SpreadShot)
+                    text += String.Format("Multishot\n") ;
             }
         }
 
@@ -106,6 +108,8 @@ namespace LifeSupport.States.Controls
             if (augment.RateOfFire > 0f)
                 rows++ ;
             if (augment.MoveSpeed > 0f)
+                rows++ ;
+            if (augment.SpreadShot)
                 rows++ ;
 
             if (rows == 0)

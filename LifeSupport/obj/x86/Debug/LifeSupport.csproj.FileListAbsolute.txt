@@ -547,7 +547,6 @@ C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Conte
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\deathMenu.xnb
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\victoryMenu.xnb
 C:\Users\Austin\VisualStudioProjects\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\victoryMenu.xnb
-C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\sound\effects\hit.xnb
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\deathMenu.xnb
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\menus\victoryMenu.xnb
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\victoryMenu.xnb
@@ -564,3 +563,6 @@ C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\victoryMenu.xnb
 C:\Users\anton\Desktop\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\cross.xnb
 C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\img\controls\cross.xnb
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Room0.json
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Room1.json
+C:\Users\Jeremy\source\repos\LifeSupport\LifeSupport\bin\Windows\x86\Debug\Content\RoomPrefabs\Room2.json

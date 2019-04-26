@@ -30,13 +30,15 @@ namespace LifeSupport.Augments {
         public float ShotSpeed;
         public float RateOfFire;
         public float MoveSpeed;
+        public bool SpreadShot;
 
-        public Augmentation(float damage, float range, float shotSpeed, float rateOfFire, float moveSpeed) {
+        public Augmentation(float damage, float range, float shotSpeed, float rateOfFire, float moveSpeed, bool spreadShot = false) {
             this.Damage = damage;
             this.Range = range;
             this.ShotSpeed = shotSpeed;
             this.RateOfFire = rateOfFire;
             this.MoveSpeed = moveSpeed;
+            this.SpreadShot = spreadShot;
         }
 
         //C# allows the overriding of binary operators like addition and subtraction which will be handy here

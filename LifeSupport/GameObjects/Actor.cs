@@ -139,16 +139,14 @@ namespace LifeSupport.GameObjects {
         }
 
         protected virtual void Shoot(Vector2 direction, SoundEffect sound) {
-            bool isPlayer = false;
-            if (this is Player)
-            {
-                isPlayer = true;
+            bool isPlayer = false ;
+            if (this is Player) {
+                isPlayer = true ;
             }
             //set the time before shooting to rate of fire before counting down
-            if(TimeBeforeShooting == 0f)
-            {
-                CurrentRoom.AddObject(new Projectile(Position, direction, Damage, ShotSpeed, Range, isPlayer, CurrentRoom, penumbra));
-                this.TimeBeforeShooting = RateOfFire;
+            if(TimeBeforeShooting == 0f) {
+                CurrentRoom.AddObject(new Projectile(Position, direction, Damage, ShotSpeed, Range, isPlayer, CurrentRoom, penumbra)) ;
+                this.TimeBeforeShooting = RateOfFire ;
                 sound.Play((float)(Settings.Instance.SfxVolume/100), 0f, 0f) ;
             }
         }
