@@ -74,7 +74,7 @@ namespace LifeSupport.GameObjects {
 
             this.InvincibleTime = 0f ;
 
-            this.Money = 100 ;
+            this.Money = 0;
             this.HasCard = false ;
             this.OxygenTime = FloorTimer ;
 
