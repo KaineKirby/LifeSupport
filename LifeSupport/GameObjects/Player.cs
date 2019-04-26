@@ -283,7 +283,8 @@ namespace LifeSupport.GameObjects {
                     ssChange += this.ShotSpeed * a.ShotSpeed;
                     rofChange += a.RateOfFire ;
                     msChange += this.MoveSpeed * a.MoveSpeed;
-                    spread = a.SpreadShot ;
+                    if (!spread)
+                        spread = a.SpreadShot ;
                 }
             }
             //rate of fire has to be handled in a special way because it is exponentially powerful
