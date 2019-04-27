@@ -1,5 +1,6 @@
 ﻿using LifeSupport.Config;
 using LifeSupport.Controls;
+using LifeSupport.HUD;
 using LifeSupport.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -22,22 +23,28 @@ namespace LifeSupport.States
    
         private List<Button> buttons;
         private List<Component> components;
-        private List<Keys> defaultControls = new List<Keys> { Keys.W, Keys.S, Keys.A, Keys.D, Keys.I, Keys.Escape, Keys.E };
-        private List<Keys> storeKeys = new List<Keys>();
+
+
+        private Dictionary<int, Keys> currentKeys = new Dictionary<int, Keys>();
+        private Dictionary<string, Keys> keysToSave = new Dictionary<string, Keys>();
+        private Dictionary<string, Keys> defaultKeys;
+
 
         private SpriteFont textFont;
-        private Vector2 MoveUpTextPosition;
-        private Vector2 MoveDownTextPosition;
-        private Vector2 MoveLeftTextPosition;
-        private Vector2 MoveRightTexturePosition;
-        private Vector2 OpenInventoryTextPosition;
-        private Vector2 OpenPauseMenuTextPosition;
-        private Vector2 InteractWithObjectTextPosition;
+        private HUDString MoveUpText;
+        private HUDString MoveDownText;
+        private HUDString MoveLeftText;
+        private HUDString MoveRightText;
+        private HUDString OpenInventoryText;
+        private HUDString OpenPauseMenuText;
+        private HUDString InteractText;
+
 
         private string oldKeyAsString = "";
         private Keys oldKeyAsKey;
         private string newKey;
         private int clickedButtonIndex;
+
 
         public Keys MoveUp{ get; set; }
         public Keys MoveDown { get; set; }
@@ -48,9 +55,20 @@ namespace LifeSupport.States
         public Keys Use { get; set; }
 
 
+
+
         public ControlSettingsState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
-
+            this.defaultKeys = new Dictionary<string, Keys>
+            {
+                {"MoveUp", Keys.W },
+                {"MoveDown", Keys.S},
+                {"MoveLeft", Keys.A},
+                {"MoveRight", Keys.D },
+                {"OpenPlayerPage", Keys.I },
+                {"PauseGame", Keys.Escape },
+                {"Use", Keys.E },
+            };
         }
 
 
@@ -58,19 +76,33 @@ namespace LifeSupport.States
         public override void Load()
         {
             MoveUp = Controller.Instance.MoveUp;
-            storeKeys.Add(MoveUp);
+            keysToSave.Add("MoveUp", MoveUp);
+ 
             MoveDown = Controller.Instance.MoveDown;
-            storeKeys.Add(MoveDown);
+            keysToSave.Add("MoveDown", MoveDown);
+
             MoveLeft = Controller.Instance.MoveLeft;
-            storeKeys.Add(MoveLeft);
+            keysToSave.Add("MoveLeft", MoveLeft);
+
             MoveRight = Controller.Instance.MoveRight;
-            storeKeys.Add(MoveRight);
+            keysToSave.Add("MoveRight", MoveRight);
+
             OpenPlayerPage = Controller.Instance.OpenPlayerPage;
-            storeKeys.Add(OpenPlayerPage);
+            keysToSave.Add("OpenPlayerPage", OpenPlayerPage);
+
             PauseGame = Controller.Instance.PauseGame;
-            storeKeys.Add(PauseGame);
+            keysToSave.Add("PauseGame", PauseGame);
+
             Use = Controller.Instance.Use;
-            storeKeys.Add(Use);
+            keysToSave.Add("Use", Use);
+
+            int count = 0;
+            foreach(KeyValuePair<string, Keys> key in keysToSave)
+            {
+                currentKeys.Add(count, key.Value);
+                count++;
+            }
+            count = 0;
 
             Assets.Instance.LoadContent(game);
             game.IsMouseVisible = true;
@@ -156,7 +188,7 @@ namespace LifeSupport.States
                 CurrPosition = new Vector2(1200, 950),
                 BtnText = "Save Changes",
             };
-            applyControlChangesButton.Click += ApplyVolumeChangesButton_Click;
+            applyControlChangesButton.Click += Save_Controls;
 
 
             buttons = new List<Button>() {
@@ -177,26 +209,19 @@ namespace LifeSupport.States
             };
 
 
+            MoveUpText = new HUDString(textFont, "Move Up: ", Color.White, new Vector2(200, 340));
 
-            MoveUpTextPosition = new Vector2(200, 340);
+            MoveDownText = new HUDString(textFont, "Move Down: ", Color.White, new Vector2(200, 450));
 
+            MoveLeftText = new HUDString(textFont, "Move Left: ", Color.White, new Vector2(200, 560));
 
-            MoveDownTextPosition = new Vector2(200, 450);
+            MoveRightText = new HUDString(textFont, "Move Right: ", Color.White, new Vector2(200, 670));
 
+            OpenInventoryText = new HUDString(textFont, "Open Inventory: ", Color.White, new Vector2(200, 780));
 
-            MoveLeftTextPosition = new Vector2(200, 560);
+            OpenPauseMenuText = new HUDString(textFont, "Open Pause Menu: ", Color.White, new Vector2(1130, 340));
 
-
-            MoveRightTexturePosition = new Vector2(200, 670);
-
-
-            OpenInventoryTextPosition = new Vector2(200, 780);
-
-
-            OpenPauseMenuTextPosition = new Vector2(1130, 340);
-
-
-            InteractWithObjectTextPosition = new Vector2(1130, 450);
+            InteractText = new HUDString(textFont, "Interact: ", Color.White, new Vector2(1130, 450));
 
     }
 
@@ -226,7 +251,7 @@ namespace LifeSupport.States
                         newKey = keys[0].ToString();
                         buttons[i].BtnText = newKey;
                         buttons[i].ThisColor = Color.White;
-                        storeKeys[i] = keys[0];
+                        currentKeys[i] = keys[0];
                     }
                 }
             }
@@ -237,7 +262,7 @@ namespace LifeSupport.States
                 if(buttons[i].BtnText == buttons[clickedButtonIndex].BtnText && i != clickedButtonIndex)      
                 {
                     buttons[i].BtnText = oldKeyAsString;
-                    storeKeys[i] = oldKeyAsKey;
+                    currentKeys[i] = oldKeyAsKey;
                 }
             }
 
@@ -257,13 +282,13 @@ namespace LifeSupport.States
 
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920, (float)Settings.Instance.Height / 1080, 1.0f));
-            spriteBatch.DrawString(textFont, "Move Up:", MoveUpTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
-            spriteBatch.DrawString(textFont, "Move Down:", MoveDownTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
-            spriteBatch.DrawString(textFont, "Move Left:", MoveLeftTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
-            spriteBatch.DrawString(textFont, "Move Right:", MoveRightTexturePosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
-            spriteBatch.DrawString(textFont, "Open Inventory:", OpenInventoryTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
-            spriteBatch.DrawString(textFont, "Pause Game:", OpenPauseMenuTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
-            spriteBatch.DrawString(textFont, "Interact:", InteractWithObjectTextPosition, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1.0f);
+            MoveUpText.Draw(spriteBatch);
+            MoveDownText.Draw(spriteBatch);
+            MoveLeftText.Draw(spriteBatch);
+            MoveRightText.Draw(spriteBatch);
+            OpenInventoryText.Draw(spriteBatch);
+            OpenPauseMenuText.Draw(spriteBatch);
+            InteractText.Draw(spriteBatch); 
             spriteBatch.End();
             
             spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
@@ -283,15 +308,44 @@ namespace LifeSupport.States
 
 
 
-        private void ApplyVolumeChangesButton_Click(object sender, EventArgs e)
+        private void Save_Controls(object sender, EventArgs e)
         {
-            MoveUp = storeKeys[0];
-            MoveDown = storeKeys[1];
-            MoveLeft = storeKeys[2];
-            MoveRight = storeKeys[3];
-            OpenPlayerPage = storeKeys[4];
-            PauseGame = storeKeys[5];
-            Use = storeKeys[6];
+            foreach(KeyValuePair<int, Keys> control in currentKeys)
+            {
+                switch(control.Key)
+                {
+                    case 0:
+                        keysToSave["MoveUp"] = control.Value;
+                        break;
+                    case 1:
+                        keysToSave["MoveDown"] = control.Value;
+                        break;
+                    case 2:
+                        keysToSave["MoveLeft"] = control.Value;
+                        break;
+                    case 3:
+                        keysToSave["MoveRight"] = control.Value;
+                        break;
+                    case 4:
+                        keysToSave["OpenPlayerPage"] = control.Value;
+                        break;
+                    case 5:
+                        keysToSave["PauseGame"] = control.Value;
+                        break;
+                    case 6:
+                        keysToSave["Use"] = control.Value;
+                        break;
+                    default:
+                        break;
+                };
+            }
+            MoveUp = keysToSave["MoveUp"];
+            MoveDown = keysToSave["MoveDown"];
+            MoveLeft = keysToSave["MoveLeft"];
+            MoveRight = keysToSave["MoveRight"];
+            OpenPlayerPage = keysToSave["OpenPlayerPage"];
+            PauseGame = keysToSave["PauseGame"];
+            Use = keysToSave["Use"];
 
             File.WriteAllText("Content/Settings/Control_Settings.json", JsonConvert.SerializeObject(this));
             Controller.Instance.reloadControls();
@@ -309,7 +363,7 @@ namespace LifeSupport.States
         {
             clickedButtonIndex = 0;
             oldKeyAsString = buttons[clickedButtonIndex].BtnText;
-            oldKeyAsKey = storeKeys[clickedButtonIndex];
+            oldKeyAsKey = currentKeys[clickedButtonIndex];
             buttons[clickedButtonIndex].ThisColor = Color.Black;
 
             for(int i = 0; i < buttons.Count; i++)
@@ -328,8 +382,9 @@ namespace LifeSupport.States
         private void Move_Down_Click(object sender, EventArgs e)
         {
             clickedButtonIndex = 1;
+
             oldKeyAsString = buttons[clickedButtonIndex].BtnText;
-            oldKeyAsKey = storeKeys[clickedButtonIndex];
+            oldKeyAsKey = currentKeys[clickedButtonIndex];
             buttons[clickedButtonIndex].ThisColor = Color.Black;
 
             for (int i = 0; i < buttons.Count; i++)
@@ -348,8 +403,9 @@ namespace LifeSupport.States
         private void Move_Left_Click(object sender, EventArgs e)
         {
             clickedButtonIndex = 2;
+
             oldKeyAsString = buttons[clickedButtonIndex].BtnText;
-            oldKeyAsKey = storeKeys[clickedButtonIndex];
+            oldKeyAsKey = currentKeys[clickedButtonIndex];
             buttons[clickedButtonIndex].ThisColor = Color.Black;
 
             for (int i = 0; i < buttons.Count; i++)
@@ -368,8 +424,9 @@ namespace LifeSupport.States
         private void Move_Right_Click(object sender, EventArgs e)
         {
             clickedButtonIndex = 3;
+
             oldKeyAsString = buttons[clickedButtonIndex].BtnText;
-            oldKeyAsKey = storeKeys[clickedButtonIndex];
+            oldKeyAsKey = currentKeys[clickedButtonIndex];
             buttons[clickedButtonIndex].ThisColor = Color.Black;
 
             for (int i = 0; i < buttons.Count; i++)
@@ -385,8 +442,9 @@ namespace LifeSupport.States
         private void Open_Inventory_Click(object sender, EventArgs e)
         {
             clickedButtonIndex = 4;
+
             oldKeyAsString = buttons[clickedButtonIndex].BtnText;
-            oldKeyAsKey = storeKeys[clickedButtonIndex];
+            oldKeyAsKey = currentKeys[clickedButtonIndex];
             buttons[clickedButtonIndex].ThisColor = Color.Black;
 
             for (int i = 0; i < buttons.Count; i++)
@@ -401,8 +459,9 @@ namespace LifeSupport.States
         private void Pause_Menu_Click(object sender, EventArgs e)
         {
             clickedButtonIndex = 5;
+
             oldKeyAsString = buttons[clickedButtonIndex].BtnText;
-            oldKeyAsKey = storeKeys[clickedButtonIndex];
+            oldKeyAsKey = currentKeys[clickedButtonIndex];
             buttons[clickedButtonIndex].ThisColor = Color.Black;
 
             for (int i = 0; i < buttons.Count; i++)
@@ -417,8 +476,9 @@ namespace LifeSupport.States
         private void Interact_With_Object_Click(object sender, EventArgs e)
         {
             clickedButtonIndex = 6;
+
             oldKeyAsString = buttons[clickedButtonIndex].BtnText;
-            oldKeyAsKey = storeKeys[clickedButtonIndex];
+            oldKeyAsKey = currentKeys[clickedButtonIndex];
             buttons[clickedButtonIndex].ThisColor = Color.Black;
 
             for (int i = 0; i < buttons.Count; i++)
@@ -433,11 +493,13 @@ namespace LifeSupport.States
 
         private void DefaultButton_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < defaultControls.Count; i++)
+            int i = 0;
+            foreach(KeyValuePair<string, Keys> control in defaultKeys)
             {
                 buttons[i].BtnText = "";
-                buttons[i].BtnText = defaultControls[i].ToString();
-                storeKeys[i] = defaultControls[i];
+                buttons[i].BtnText = control.Value.ToString();
+                currentKeys[i] = control.Value;
+                i++;
             }
         }
         
@@ -446,6 +508,10 @@ namespace LifeSupport.States
         {
             game.ChangeState(new OptionsState(game, graphDevice, content));
         }
+
+
+
+
     }
 
 }

@@ -68,7 +68,7 @@ namespace LifeSupport.States
             var menuButton = new Button(btnTexture, btnText)
             {
                 CurrPosition = new Vector2(750, 700),
-                BtnText = "Start A New Game",
+                BtnText = "Restart Game",
             };
             menuButton.Click += Menu_Button_Click;
 
