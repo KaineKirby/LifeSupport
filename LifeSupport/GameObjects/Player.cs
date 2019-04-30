@@ -83,6 +83,8 @@ namespace LifeSupport.GameObjects {
             {
                 Augments.Add(null);
             }
+            //    Augmentation powerfulAugmentForTesting = new Augmentation(100, 0, 0, 100, 0, true);
+            //   AddAugment(powerfulAugmentForTesting, 0);
 
             this.light = new Spotlight {
                 Position = this.Position,

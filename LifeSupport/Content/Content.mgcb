@@ -822,8 +822,32 @@
 #begin RoomPrefabs/Level3/Room1.json
 /copy:RoomPrefabs/Level3/Room1.json
 
+#begin RoomPrefabs/Level3/Room10.json
+/copy:RoomPrefabs/Level3/Room10.json
+
 #begin RoomPrefabs/Level3/Room2.json
 /copy:RoomPrefabs/Level3/Room2.json
+
+#begin RoomPrefabs/Level3/Room3.json
+/copy:RoomPrefabs/Level3/Room3.json
+
+#begin RoomPrefabs/Level3/Room4.json
+/copy:RoomPrefabs/Level3/Room4.json
+
+#begin RoomPrefabs/Level3/Room5.json
+/copy:RoomPrefabs/Level3/Room5.json
+
+#begin RoomPrefabs/Level3/Room6.json
+/copy:RoomPrefabs/Level3/Room6.json
+
+#begin RoomPrefabs/Level3/Room7.json
+/copy:RoomPrefabs/Level3/Room7.json
+
+#begin RoomPrefabs/Level3/Room8.json
+/copy:RoomPrefabs/Level3/Room8.json
+
+#begin RoomPrefabs/Level3/Room9.json
+/copy:RoomPrefabs/Level3/Room9.json
 
 #begin Settings/Control_Settings.json
 /copy:Settings/Control_Settings.json
