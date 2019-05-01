@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LifeSupport.Augments.Augmentation" Collapsed="true">
+    <Position X="33" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAACBAAYAEAAAFAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Augments\Augmentation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Config.Assets" Collapsed="true">
+    <Position X="31.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DIYgQAAAC0EA0CFHCIUg0gIADAnAsQANwoIEMCEIMCQ=</HashCode>
+      <FileName>Config\Assets.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Config.Controller" Collapsed="true">
+    <Position X="36.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAgAAAAAQAAAAAAAIAAAAABEAAAIQAAJQAEAAAA=</HashCode>
+      <FileName>Config\Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Config.Cursor" Collapsed="true">
+    <Position X="38.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAIAgEAAAAQAgACAABAAAAAQAAAAAACAgA=</HashCode>
+      <FileName>Config\Cursor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Config.Settings" Collapsed="true">
+    <Position X="34.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABQAAAAAAAACACEAAAABAAAIAQAAAAEAQEAA=</HashCode>
+      <FileName>Config\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.Actor" Collapsed="true">
+    <Position X="14.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAADDEAAAAIAABAAgIAgABAAgAAAAAAiAA=</HashCode>
+      <FileName>GameObjects\Actor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.AlienDog" Collapsed="true">
+    <Position X="15.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUBAAAAAAAAAiAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\AlienDog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.AlienInfantry" Collapsed="true">
+    <Position X="17.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUBAAAAAEAAAiAAAAAAAAAAAAAAAABBAAAAEQAAAAA=</HashCode>
+      <FileName>GameObjects\AlienInfantry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.AlienTurret" Collapsed="true">
+    <Position X="13" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\AlienTurret.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.AugmentationStation" Collapsed="true">
+    <Position X="1.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAACCAgAAgAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\AugmentationStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.Barrier" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAACAIAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>GameObjects\Barrier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.DoorH" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAQCAAAAACAAAAAABAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\DoorH.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LifeSupport.GameObjects.DoorV" Collapsed="true">
+    <Position X="19.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAQCAAAAACAAAAAABAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\DoorV.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LifeSupport.GameObjects.Drop" Collapsed="true">
+    <Position X="24.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAACAAAAAAAAAQAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Drop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.Enemy" Collapsed="true">
+    <Position X="15.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEAAICAAAAACBAAAAAAAAABBAAAAAAIAAAA=</HashCode>
+      <FileName>GameObjects\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.GameObject" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAABAAAArAgAAAQAEAAABAIACAACECAAAAAAAA=</HashCode>
+      <FileName>GameObjects\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.Health" Collapsed="true">
+    <Position X="22" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Health.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.Keycard" Collapsed="true">
+    <Position X="24.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Keycard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.Money" Collapsed="true">
+    <Position X="26.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Money.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.OxygenTank" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAgAAAQAAEAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\OxygenTank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.Player" Collapsed="true">
+    <Position X="10.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAURAAAAFAAEBiEIAAAAAImAADIAgABIQAAAQQEAAAE=</HashCode>
+      <FileName>GameObjects\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.GameObjects.Projectile" Collapsed="true">
+    <Position X="28.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAgAACiAAACAAAAAAgAJEAACBBgAAAAAEAAA=</HashCode>
+      <FileName>GameObjects\Projectile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.HUD.HUDImage" Collapsed="true">
+    <Position X="33" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAIAAAEAAAgBAAAAAAAAAAAAA=</HashCode>
+      <FileName>HUD\HUDImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.HUD.HUDString" Collapsed="true">
+    <Position X="34.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAgAAAAAAIAAAAAAAAACIAAAAAAAAAAA=</HashCode>
+      <FileName>HUD\HUDString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.HUD.MiniMap" Collapsed="true">
+    <Position X="33" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAgAAAAAAIAAAAAEAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>HUD\MiniMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.HUD.PlayerStatsHUD" Collapsed="true">
+    <Position X="34.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAAAAAAgAAAAAEIAAAAABAAAAFAAAAACQAEAg=</HashCode>
+      <FileName>HUD\PlayerStatsHUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.HUD.PlayerWeaponHUD" Collapsed="true">
+    <Position X="36.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIAAAAggAAAEAAKAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>HUD\PlayerWeaponHUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Levels.Level" Collapsed="true">
+    <Position X="38.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEGEAEAAAAgAACCAIDAAAEAAABAEAAAAIAAAA=</HashCode>
+      <FileName>Levels\Level.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Levels.Room" Collapsed="true">
+    <Position X="33" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgECQAAQBCAABBEAIEQAAEAABAMBAYEBBEQAAAAEmAA=</HashCode>
+      <FileName>Levels\Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.MainGame" Collapsed="true">
+    <Position X="31.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggQAEEgAAAAAJwaBAAAAAAAAAAAAAAgAAEAAAAAAAAQ=</HashCode>
+      <FileName>MainGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Program" Collapsed="true">
+    <Position X="38.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Component" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\Component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Random.RandomGenerator" Collapsed="true">
+    <Position X="31.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAABAAAAAQAQAAAAAAAA=</HashCode>
+      <FileName>Random\RandomGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.AudioSettingsState" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQwgAABAAIACgAQAAHACACAAAEIAABIEBAACEAUAAg=</HashCode>
+      <FileName>States\AudioSettingsState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.AugmentationStationState" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAQAgCAoIBIEAAAABRiAAQJAAAgAAAAAAA=</HashCode>
+      <FileName>States\AugmentationStationState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.ControlSettingsState" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AA0QgAgAEABICgAAJADIIgEgBgAEAgVIQAAAMAYAAAg=</HashCode>
+      <FileName>States\ControlSettingsState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.DeathState" Collapsed="true">
+    <Position X="17.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAgAAAADAAAAAAAAAAAAAAAAAAAAQAgg=</HashCode>
+      <FileName>States\DeathState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.GameState" Collapsed="true">
+    <Position X="21.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAgAABAgABCgAAAABAAAACBAEAAAABAAAAAQAAAAA=</HashCode>
+      <FileName>States\GameState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.MenuState" Collapsed="true">
+    <Position X="24" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAgAAEAAAAAgIAAADAAAAAAAIAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>States\MenuState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.OptionsState" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAECAgIAAADAAAACAAAAAAAIBEAAgAAAAAA=</HashCode>
+      <FileName>States\OptionsState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.PauseState" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAgAAAAAgAAgAAAADAAAAAAAAAAAAAAAAAAAAQAgg=</HashCode>
+      <FileName>States\PauseState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.PlayerPageState" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgQQgIBIhAEAgoAAQEDASABCBAIAAgAJAQAAABAAEIg=</HashCode>
+      <FileName>States\PlayerPageState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.State" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQDgAAAAAAAAgAAAABAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>States\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.VictoryState" Collapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAgAAAADAAAAAAAAAAAAAAAAAAAAQAgg=</HashCode>
+      <FileName>States\VictoryState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.VideoSettingsState" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAABAACAgAAAADAAEAEQAQgCILAAAgAAIJCgAo=</HashCode>
+      <FileName>States\VideoSettingsState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.Controls.AugmentSlot" Collapsed="true">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAgAEgAAAAAAAAAAAAAAACAAAAAAAQAA=</HashCode>
+      <FileName>States\Controls\AugmentSlot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.States.Controls.AugmentTextBox" Collapsed="true">
+    <Position X="34.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAEQAAgAAAAEAAAAIAAAACAgAAQYAAAAAAAAAAA=</HashCode>
+      <FileName>States\Controls\AugmentTextBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Controls.Button" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYgAAAACIIAIgAAAAAAAAgAACABEgAAAAAAAAgAAgA=</HashCode>
+      <FileName>States\Controls\Button.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Utilities.FrameCounter" Collapsed="true">
+    <Position X="31.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAAAAAACgCAAAIAAAAAAAAAAAAIAQABAAAAAAA=</HashCode>
+      <FileName>Utilities\FrameCounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LifeSupport.Utilities.JSONParser" Collapsed="true">
+    <Position X="36.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Utilities\JSONParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="LifeSupport.GameObjects.Door" Collapsed="true">
+    <Position X="31.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Door.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

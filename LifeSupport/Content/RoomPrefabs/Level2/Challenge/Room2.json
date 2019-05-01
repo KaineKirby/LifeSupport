@@ -601,5 +601,22 @@
       "RateOfFire": 1
     }
   ],
-  "OxygenTank": []
+  "OxygenTank": [
+    {
+      "Row": 1,
+      "Column": 62
+    },
+    {
+      "Row": 1,
+      "Column": 1
+    },
+    {
+      "Row": 34,
+      "Column": 1
+    },
+    {
+      "Row": 34,
+      "Column": 62
+    }
+  ]
 }
