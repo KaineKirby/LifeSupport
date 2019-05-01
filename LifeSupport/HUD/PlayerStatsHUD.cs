@@ -32,7 +32,7 @@ namespace LifeSupport.HUD {
             this.player = player ;
 
             this.health = new List<HUDImage>() ;
-            for (int i = 0 ; i < 12 ; i++) {
+            for (int i = 0 ; i < 32 ; i++) {
                 this.health.Add(new HUDImage(Assets.Instance.healthIcon, (this.position + new Vector2(50, 50)) + new Vector2((i*32), 0))) ;
             }
             this.speedIcon = new HUDImage(Assets.Instance.speedIcon, (this.position + new Vector2(50, 100))) ;
@@ -58,7 +58,7 @@ namespace LifeSupport.HUD {
 
             this.oxygen.Draw(spriteBatch) ;
             this.oxyText.Draw(spriteBatch) ;
-            for (int i = 0 ; i < player.Health ; i++) {
+            for (int i = 0 ; i < player.Health && i < health.Count ; i++) {
                 health[i].Draw(spriteBatch) ;
             }
             this.speedIcon.Draw(spriteBatch) ;
