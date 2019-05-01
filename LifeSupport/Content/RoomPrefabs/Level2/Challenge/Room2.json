@@ -1,0 +1,605 @@
+{
+  "Barrier": [
+    {
+      "Row": 1,
+      "Column": 30,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 2,
+      "Column": 29,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 3,
+      "Column": 28,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 4,
+      "Column": 27,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 5,
+      "Column": 26,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 6,
+      "Column": 25,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 7,
+      "Column": 24,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 8,
+      "Column": 23,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 9,
+      "Column": 22,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 1,
+      "Column": 33,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 2,
+      "Column": 34,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 3,
+      "Column": 35,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 4,
+      "Column": 36,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 5,
+      "Column": 37,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 6,
+      "Column": 38,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 7,
+      "Column": 39,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 8,
+      "Column": 40,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 9,
+      "Column": 41,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 14,
+      "Column": 21,
+      "BarrierWidth": 1,
+      "BarrierHeight": 6
+    },
+    {
+      "Row": 28,
+      "Column": 55,
+      "BarrierWidth": 1,
+      "BarrierHeight": 7
+    },
+    {
+      "Row": 28,
+      "Column": 58,
+      "BarrierWidth": 5,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 28,
+      "Column": 8,
+      "BarrierWidth": 1,
+      "BarrierHeight": 7
+    },
+    {
+      "Row": 28,
+      "Column": 1,
+      "BarrierWidth": 5,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 16,
+      "Column": 1,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 15,
+      "Column": 2,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 14,
+      "Column": 3,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 13,
+      "Column": 4,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 12,
+      "Column": 5,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 11,
+      "Column": 6,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 10,
+      "Column": 7,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 19,
+      "Column": 1,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 20,
+      "Column": 2,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 21,
+      "Column": 3,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 22,
+      "Column": 4,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 23,
+      "Column": 5,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 24,
+      "Column": 6,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 25,
+      "Column": 7,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 16,
+      "Column": 61,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 15,
+      "Column": 60,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 14,
+      "Column": 59,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 13,
+      "Column": 58,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 12,
+      "Column": 57,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 11,
+      "Column": 56,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 10,
+      "Column": 55,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 19,
+      "Column": 61,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 20,
+      "Column": 60,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 21,
+      "Column": 59,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 22,
+      "Column": 58,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 23,
+      "Column": 57,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 24,
+      "Column": 56,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 25,
+      "Column": 55,
+      "BarrierWidth": 2,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 33,
+      "Column": 30,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 32,
+      "Column": 29,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 31,
+      "Column": 28,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 30,
+      "Column": 27,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 29,
+      "Column": 26,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 28,
+      "Column": 25,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 27,
+      "Column": 24,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 26,
+      "Column": 23,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 25,
+      "Column": 22,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 33,
+      "Column": 33,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 32,
+      "Column": 34,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 31,
+      "Column": 35,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 30,
+      "Column": 36,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 29,
+      "Column": 37,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 28,
+      "Column": 38,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 27,
+      "Column": 39,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 26,
+      "Column": 40,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 25,
+      "Column": 41,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 20,
+      "Column": 21,
+      "BarrierWidth": 1,
+      "BarrierHeight": 2
+    },
+    {
+      "Row": 14,
+      "Column": 42,
+      "BarrierWidth": 1,
+      "BarrierHeight": 8
+    },
+    {
+      "Row": 1,
+      "Column": 55,
+      "BarrierWidth": 1,
+      "BarrierHeight": 7
+    },
+    {
+      "Row": 7,
+      "Column": 58,
+      "BarrierWidth": 5,
+      "BarrierHeight": 1
+    },
+    {
+      "Row": 1,
+      "Column": 8,
+      "BarrierWidth": 1,
+      "BarrierHeight": 7
+    },
+    {
+      "Row": 7,
+      "Column": 1,
+      "BarrierWidth": 5,
+      "BarrierHeight": 1
+    }
+  ],
+  "AlienDog": [
+    {
+      "Row": 3,
+      "Column": 2,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 3,
+      "Column": 4,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 3,
+      "Column": 6,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 32,
+      "Column": 2,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 32,
+      "Column": 4,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 32,
+      "Column": 6,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 32,
+      "Column": 57,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 32,
+      "Column": 59,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 32,
+      "Column": 61,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 3,
+      "Column": 57,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 3,
+      "Column": 59,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    },
+    {
+      "Row": 3,
+      "Column": 61,
+      "Speed": 300,
+      "Health": 3,
+      "Damage": 1
+    }
+  ],
+  "AlienTurret": [
+    {
+      "Row": 3,
+      "Column": 24,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 3,
+      "Column": 39,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 32,
+      "Column": 24,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 32,
+      "Column": 39,
+      "Speed": 0,
+      "Health": 5,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    }
+  ],
+  "AlienInfantry": [
+    {
+      "Row": 25,
+      "Column": 60,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    },
+    {
+      "Row": 10,
+      "Column": 3,
+      "Speed": 150,
+      "Health": 3,
+      "Damage": 1,
+      "Range": 1000,
+      "ShotSpeed": 1000,
+      "RateOfFire": 1
+    }
+  ],
+  "OxygenTank": []
+}
