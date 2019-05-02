@@ -99,11 +99,11 @@ namespace LifeSupport.GameObjects {
             foreach (GameObject obj in CurrentRoom.Objects) {
 
                 //see if we can update JUST the X direction
-                if (!(obj is Enemy) && obj.HasCollision && obj != this && obj.IsInside(newPosition.X-(Width/2), Position.Y-(Height/2), newPosition.X+(Width/2), Position.Y+(Height/2))) {
+                if (!(obj is Enemy && this is Player) && obj.HasCollision && obj != this && obj.IsInside(newPosition.X-(Width/2), Position.Y-(Height/2), newPosition.X+(Width/2), Position.Y+(Height/2))) {
                     canMoveX = false ;
                 }
                 //see if we can move JUST in the Y direction
-                if (!(obj is Enemy) && obj.HasCollision && obj != this && obj.IsInside(Position.X-(Width/2), newPosition.Y-(Height/2), Position.X+(Width/2), newPosition.Y+(Height/2))) {
+                if (!(obj is Enemy && this is Player) && obj.HasCollision && obj != this && obj.IsInside(Position.X-(Width/2), newPosition.Y-(Height/2), Position.X+(Width/2), newPosition.Y+(Height/2))) {
                     canMoveY = false ;
                 }
 
