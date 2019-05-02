@@ -41,7 +41,8 @@ namespace LifeSupport.GameObjects
 
         public override void UpdatePosition(GameTime gameTime) {
             base.UpdatePosition(gameTime);
-
+            
+            //only shoot if we have line of sight
             if (this.HasLineOfSight()) {
                 Vector2 dir = player.Position - this.Position;
                 dir.Normalize();
@@ -72,6 +73,7 @@ namespace LifeSupport.GameObjects
             }
         }
 
+        //slowly change the direction, but do it even slower for infantry
         protected override void InfluenceDirection(Vector2 direction, GameTime gameTime) {
             this.MoveDirection = ((MoveDirection * (.6f) / (float)gameTime.ElapsedGameTime.TotalSeconds) + direction)/30 ;
             if (!MoveDirection.Equals(Vector2.Zero))

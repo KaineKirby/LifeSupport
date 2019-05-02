@@ -9,10 +9,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Penumbra;
 
-namespace LifeSupport.GameObjects
-{
-    public class Projectile : GameObject
-    {
+namespace LifeSupport.GameObjects {
+    public class Projectile : GameObject {
         public Vector2 Source;
         public Vector2 Direction;
         public Room CurrentRoom;
@@ -37,10 +35,14 @@ namespace LifeSupport.GameObjects
             this.CurrentRoom = room;
             this.HasCollision = false ;
             this.isPlayer = isPlayer ;
+
+            //the color of the projectile should be different for the player vs the enemies
             if (isPlayer)
                 this.color = Color.GreenYellow ;
             else
                 this.color = Color.Red ;
+
+            //the glow of the bullet in the air
             this.light = new PointLight {
                 Position = this.Position,
                 Scale = new Vector2(20f),
@@ -89,8 +91,8 @@ namespace LifeSupport.GameObjects
                 this.light.Position = this.Position ;
             }
 
-            if (CurrentRoom.player.IsInside(this) && !isPlayer)
-            {
+            //when the player gets hit
+            if (CurrentRoom.player.IsInside(this) && !isPlayer) {
                 CurrentRoom.player.OnHit(this);
                 CurrentRoom.DestroyObject(this) ;
                 penumbra.Lights.Remove(light) ;
@@ -102,6 +104,7 @@ namespace LifeSupport.GameObjects
             spriteBatch.Draw(sprite, Position, spriteRectangle, color, Rotation, origin, 1f, SpriteEffects.None, 0);
         }
 
+        //method to destroy the projectile
         public void Destroy() {
             CurrentRoom.DestroyObject(this) ;
             penumbra.Lights.Remove(light) ;

@@ -196,7 +196,7 @@ namespace LifeSupport.States
         private void ApplyVolumeChangesButton_Click(object sender, EventArgs e)
         {
             File.WriteAllText("Content/Settings/Volume_Settings.json", JsonConvert.SerializeObject(this));
-            Settings.Instance.reloadAudioSettings();
+            Settings.Instance.ReloadAudioSettings();
             isVolumeChanged = true;
         }
 

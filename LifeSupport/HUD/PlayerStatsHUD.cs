@@ -12,6 +12,8 @@ namespace LifeSupport.HUD {
 
     class PlayerStatsHUD {
 
+        //the player stats hud contains all the player's stats at a glance
+
         private Vector2 position ;
         private Player player ;
 
@@ -30,8 +32,12 @@ namespace LifeSupport.HUD {
 
             this.position = position ;
             this.player = player ;
+            
+            //we require health icons, money and oxygen icons
+            //then the strings for each value
 
             this.health = new List<HUDImage>() ;
+            //we can only show up to 32 hearts at once
             for (int i = 0 ; i < 32 ; i++) {
                 this.health.Add(new HUDImage(Assets.Instance.healthIcon, (this.position + new Vector2(50, 50)) + new Vector2((i*32), 0))) ;
             }
@@ -48,6 +54,7 @@ namespace LifeSupport.HUD {
         }
 
         public void Update() {
+            //update the values
             this.playerSpeed.Update(player.MoveSpeed.ToString()) ;
             this.money.Update(player.Money.ToString()) ;
             this.oxyText.Update(((int)(player.OxygenTime)).ToString()) ;
@@ -56,8 +63,10 @@ namespace LifeSupport.HUD {
 
         public void Draw(SpriteBatch spriteBatch) {
 
+            //draw everything
             this.oxygen.Draw(spriteBatch) ;
             this.oxyText.Draw(spriteBatch) ;
+            //we can only show up to 32 hearts at once
             for (int i = 0 ; i < player.Health && i < health.Count ; i++) {
                 health[i].Draw(spriteBatch) ;
             }

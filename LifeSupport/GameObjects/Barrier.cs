@@ -39,7 +39,6 @@ namespace LifeSupport.GameObjects {
                 penumbra.Hulls.Add(hull) ;
         }
 
-
         public override void UpdatePosition(GameTime gameTime) {
             //also do nothing because it does not move
         }

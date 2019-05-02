@@ -16,15 +16,14 @@ namespace LifeSupport.GameObjects {
         private Player player ;
         private Room room ;
 
+        //the radius (not really radius, but whatever) that the player can activate the oxygen tank
         private int UseRadius = 30 ;
 
 
         public OxygenTank(Vector2 position, Level level, Room room, Player player) : base(position, null, 30, 30, 0, Assets.Instance.oxygenTank) {
-
             this.level = level ;
             this.player = player ;
             this.room = room ;
-
         }
 
         public override void UpdatePosition(GameTime gameTime) {

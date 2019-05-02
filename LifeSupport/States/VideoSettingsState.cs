@@ -187,7 +187,7 @@ namespace LifeSupport.States
         private void ApplyChangesButton_Click(object sender, EventArgs e)
         {
             File.WriteAllText("Content/Settings/Video_Settings.json", JsonConvert.SerializeObject(this));
-            Settings.Instance.reloadVideoSettings();
+            Settings.Instance.ReloadVideoSettings();
             isVideoChanged = true;
         }
 

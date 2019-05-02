@@ -8,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LifeSupport.GameObjects {
+
     class Money : Drop {
 
+        //the amount of money in tehe drop
         private int amount ;
 
         public Money(Vector2 position, Player player, Room room, int amount) : base(position, 30, 30, Assets.Instance.money, player, room) {
@@ -17,6 +19,7 @@ namespace LifeSupport.GameObjects {
         }
 
         public override void OnPickup() {
+            //give the money to the player
             player.Money += amount ;
             Assets.Instance.moneyPickup.Play((float)Settings.Instance.SfxVolume/100, 0f, 0f) ;
             Console.WriteLine("Player picked up money: " + player.Money) ;

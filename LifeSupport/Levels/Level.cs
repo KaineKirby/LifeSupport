@@ -15,6 +15,8 @@ namespace LifeSupport.Levels {
 
     public class Level {
 
+        //Level class contains all the rooms
+
         //constants for the min/max number of rooms
         private static int minRooms = 10 ;
         private static int maxRooms = 20 ;

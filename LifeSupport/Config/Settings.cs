@@ -28,8 +28,6 @@ namespace LifeSupport.Config {
 
         //settings object singleton
         private static Settings instance;
-
-
         public static Settings Instance {
             get {
                 if (instance != null)
@@ -90,8 +88,8 @@ namespace LifeSupport.Config {
     
         }
 
-        public void reloadVideoSettings()
-        {
+        //reload the video settings from the file
+        public void ReloadVideoSettings() {
                 dynamic videoData = JSONParser.ReadJsonFile("Content/Settings/Video_Settings.json");
                 this.Width = videoData.Width;
                 this.Height = videoData.Height;
@@ -99,15 +97,13 @@ namespace LifeSupport.Config {
             
         }
 
-        public void reloadAudioSettings()
-        {
+        //reload the audio settings from the file
+        public void ReloadAudioSettings() {
             dynamic audioData = JSONParser.ReadJsonFile("Content/Settings/Volume_Settings.json");
             this.SfxVolume = audioData.SfxVolume;
             this.MusVolume = audioData.MusVolume;
             MediaPlayer.Volume = (float)MusVolume/100 ;
         }
-
-
 
     }
 }

@@ -83,11 +83,11 @@ namespace LifeSupport.States
 
             foreach (var item in inventoryItems) {
                 item.DrawWithScale(hud, scale);
-                if (item.Image == Assets.instance.moneyLarge)
+                if (item.Image == Assets.Instance.moneyLarge)
                 {
                     money.Draw(hud);
                 }
-                if (item.Image == Assets.instance.keycardLarge)
+                if (item.Image == Assets.Instance.keycardLarge)
                 {
                     keycard.Draw(hud);
                 }

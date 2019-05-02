@@ -105,15 +105,17 @@ namespace LifeSupport.GameObjects
 
         }
 
+        //whether or not the enemy has line of sight of the player
         public bool HasLineOfSight() {
+            
             if (path == null)
                 return false;
+            //the rationale behind this algorithm is that the enemy has line of sight if its path to the player is a straight line
             Position enemy = this.GetGridPosition();
             Position player = this.player.GetGridPosition();
             Grid emptyGrid = new Grid(36, 64);
             IList<Position> straightPath = emptyGrid.GetPath(enemy, player);
-            for(int i = 0; i < straightPath.Count && i < path.Count; i++)
-            {
+            for(int i = 0; i < straightPath.Count && i < path.Count; i++) {
                 if (straightPath[i] != path[i])
                     return false;
             }

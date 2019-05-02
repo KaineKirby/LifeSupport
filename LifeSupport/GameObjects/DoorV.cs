@@ -39,9 +39,8 @@ namespace LifeSupport.GameObjects {
             this.HasCollision = true ;
         }
 
-        public override void UpdatePosition(GameTime gameTime) {
-
-        }
+        //the door does not move
+        public override void UpdatePosition(GameTime gameTime) {}
 
 
     }

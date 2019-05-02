@@ -12,12 +12,12 @@ namespace LifeSupport.GameObjects {
 
     class Keycard : Drop {
 
+        //the keycard drop to open the challenge room
+
         private Level level ;
 
         public Keycard(Vector2 position, Player player, Room room, Level level) : base(position, 30, 30, Assets.Instance.keycard, player, room) {
-
             this.level = level ;
-
         }
 
         public override void OnPickup() {
@@ -29,7 +29,7 @@ namespace LifeSupport.GameObjects {
             Room top = level.GetRoomAtCoordinate(level.ChallengeRoom.coordinate + new Point(0, -1)) ;
             Room bot = level.GetRoomAtCoordinate(level.ChallengeRoom.coordinate + new Point(0, 1)) ;
 
-
+            //if the side isnt null then open the door
             if (left != null) 
                 left.OpenAllDoors() ;
             if (right != null) 

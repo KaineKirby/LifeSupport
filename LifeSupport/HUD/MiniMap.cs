@@ -12,6 +12,9 @@ namespace LifeSupport.HUD {
 
     class MiniMap {
 
+        //this is the minimap on the screen, reads the level and draws it
+        //keeps the active room centered at an anchor point
+
         private Rectangle bounds ;
         private Vector2 position ;
         private Level level ;

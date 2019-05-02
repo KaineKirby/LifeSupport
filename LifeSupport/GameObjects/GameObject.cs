@@ -13,20 +13,20 @@ using System.Collections;
 using Penumbra;
 
 
-/*
-* GameObject Class (Abstract)
-* 
-* The GameObject class will be the superclass from which all visuals objects in the game are derived
-* This can include the player, enemies, barriers, etc, anything drawn on screen (probably)
-* 
-* Anything that we plan to implement must use the gameobject as its parent, otherwise we can not use it nicely in the Main (or level)
-* 
-* For the width and height of the image representation, we assume the pixels at 1920x1080, and then scaling is taken into account for 16:9
-*/
-
 namespace LifeSupport.GameObjects {
 
    public abstract class GameObject {
+
+        /*
+        * GameObject Class (Abstract)
+        * 
+        * The GameObject class will be the superclass from which all visuals objects in the game are derived
+        * This can include the player, enemies, barriers, etc, anything drawn on screen (probably)
+        * 
+        * Anything that we plan to implement must use the gameobject as its parent, otherwise we can not use it nicely in the Main (or level)
+        * 
+        * For the width and height of the image representation, we assume the pixels at 1920x1080, and then scaling is taken into account for 16:9
+        */
 
         //position on screen
         public Vector2 Position ;

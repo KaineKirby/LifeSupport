@@ -20,7 +20,7 @@ namespace LifeSupport.Config
     {
 
         //singleton reference
-        public static Controller instance;
+        private static Controller instance;
         public static Controller Instance
         {
             get
@@ -48,12 +48,11 @@ namespace LifeSupport.Config
         public Keys MoveLeft;
         public Keys MoveRight;
 
-        private Controller()
-        {
+        private Controller() {
 
+            //load the keys from the json file that defines the user settings
             dynamic controllerData = JSONParser.ReadJsonFile("Content/Settings/Control_Settings.json");
 
-            //this is temporary for now, explicitly set the keys rather then getting them from user configuration
             this.MoveUp = (Keys)controllerData.MoveUp;
             this.MoveDown = (Keys)controllerData.MoveDown;
             this.MoveLeft = (Keys)controllerData.MoveLeft;
@@ -62,14 +61,13 @@ namespace LifeSupport.Config
             this.PauseGame = (Keys)controllerData.PauseGame;
             this.Use = (Keys)controllerData.Use;
 
-
+            //set the singleton instance
             Instance = this;
 
         }
 
-
-        public void reloadControls()
-        {
+        //reload the controls from the json file after we save them
+        public void reloadControls() {
             dynamic controlData = JSONParser.ReadJsonFile("Content/Settings/Control_Settings.json");
             this.MoveUp = (Keys)controlData.MoveUp;
             this.MoveDown = (Keys)controlData.MoveDown;
@@ -82,25 +80,19 @@ namespace LifeSupport.Config
         }
 
         //just for that central access point to get in our game context
-        public bool IsKeyDown(Keys key)
-        {
+        public bool IsKeyDown(Keys key) {
             return Keyboard.GetState().IsKeyDown(key);
         }
-
-        public bool IsMovingUp()
-        {
+        public bool IsMovingUp() {
             return Keyboard.GetState().IsKeyDown(MoveUp);
         }
-        public bool IsMovingDown()
-        {
+        public bool IsMovingDown() {
             return Keyboard.GetState().IsKeyDown(MoveDown);
         }
-        public bool IsMovingLeft()
-        {
+        public bool IsMovingLeft() {
             return Keyboard.GetState().IsKeyDown(MoveLeft);
         }
-        public bool IsMovingRight()
-        {
+        public bool IsMovingRight() {
             return Keyboard.GetState().IsKeyDown(MoveRight);
         }
     }

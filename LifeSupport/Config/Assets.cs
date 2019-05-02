@@ -12,7 +12,7 @@ namespace LifeSupport.Config {
     class Assets {
 
         //singleton reference
-        public static Assets instance ;
+        private static Assets instance ;
         public static Assets Instance {
             get {
                 if (instance != null)
@@ -25,7 +25,14 @@ namespace LifeSupport.Config {
             }
         }
 
+        //whether or not the assets have been loaded into memory
         private bool loaded ;
+
+        //constructor
+        private Assets() {
+            instance = this ;
+            loaded = false ;
+        }
 
         //Menus
         public Texture2D background ;
@@ -40,6 +47,7 @@ namespace LifeSupport.Config {
         public Texture2D victoryScreen;
         public Texture2D augmentMenuScreen ;
 
+        //game
         public Texture2D player ;
         public Texture2D playerLegs ;
         public Texture2D barrier ;
@@ -80,6 +88,7 @@ namespace LifeSupport.Config {
         public Texture2D alienInfantry;
         public Texture2D alienInfantryLegs;
 
+        //usables
         public Texture2D oxygenTank ;
         public Texture2D money ;
         public Texture2D keycard ;
@@ -105,13 +114,8 @@ namespace LifeSupport.Config {
         public Song level2 ;
         public Song level3 ;
 
-
-        private Assets() {
-            instance = this ;
-            loaded = false ;
-        }
-
         public void LoadContent(Game game) {
+            //if the content has already been loaded then terminate the method
             if (loaded)
                 return ;
 

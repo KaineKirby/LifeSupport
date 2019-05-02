@@ -18,6 +18,8 @@ namespace LifeSupport.Levels {
 
     public class Room {
 
+        //represents a room that loads from json
+
 
         //an array of game objects
         public List<GameObject> Objects ;
@@ -420,8 +422,7 @@ namespace LifeSupport.Levels {
                     (float)jsonData.AlienTurret[i].ShotSpeed, 
                     (float)jsonData.AlienTurret[i].RateOfFire));
             }
-            for (int i = 0; jsonData.AlienInfantry != null && i < jsonData.AlienInfantry.Count; i++)
-            {
+            for (int i = 0; jsonData.AlienInfantry != null && i < jsonData.AlienInfantry.Count; i++) {
                 Objects.Add(new AlienInfantry(player,
                     new Vector2(StartX + (15) + (SquareTileLength * (int)jsonData.AlienInfantry[i].Column), StartY + (15) + (SquareTileLength * (int)jsonData.AlienInfantry[i].Row)),
                     penumbra,
