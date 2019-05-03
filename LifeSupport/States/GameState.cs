@@ -17,25 +17,39 @@ using Penumbra;
 
 namespace LifeSupport.States
 {
+    // This class is the main window where the game is drawn and played
     public class GameState : State {
+
+
+        /*Attributes*/
+
 
         private FrameCounter frames;
 
-
+        // Create an instance of a player
         private Player player ;
+
+        // Create a level
         private Level level ;
 
         private float scale ;
 
+        // Used Player health, moveSpeed, and items are drawn onto screen
         private PlayerStatsHUD pHud ;
+
+        // Used to draw the minimap on the top right side of the screen
         private MiniMap mMap ;
 
+        // Used to determine music (based on level)
         private int difficulty ;
 
 
+        /*Constructor*/
         public GameState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content) {
 
         }
+
+
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud, SpriteBatch fg) {
 
             //two separate sprite batches for HUD/UI/background elements and then game content itself
@@ -47,15 +61,15 @@ namespace LifeSupport.States
             bg.Draw(Assets.Instance.background, new Rectangle(0, 0, 1920, 1080), Color.White);
             bg.End();
             
+            // Draw the lights
             game.penumbra.BeginDraw() ;
-
             game.penumbra.Transform = Matrix.CreateTranslation(-player.Position.X, -player.Position.Y, 0)*Matrix.CreateScale(scale)*Matrix.CreateTranslation(Settings.Instance.Width*.5f, Settings.Instance.Height*.5f, 0) ;
+
 
             //draw the game objects
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, SamplerState.PointWrap, null, null, null, Matrix.CreateTranslation(-player.Position.X, -player.Position.Y, 0)*Matrix.CreateScale(scale)*Matrix.CreateTranslation(Settings.Instance.Width*.5f, Settings.Instance.Height*.5f, 0)); // a transformation matrix is applied to keep the player centered on screen
             //render the player and the objects in the room
             level.DrawRooms(spriteBatch) ;
-
             spriteBatch.End();
 
             game.penumbra.Draw(gameTime) ;
@@ -65,12 +79,11 @@ namespace LifeSupport.States
             //render the FPS counter if it is enabled
             if (Settings.Instance.ShowFps)
                 frames.Draw(hud, gameTime);
-
             pHud.Draw(hud) ;
             mMap.Draw(hud) ;
-
             hud.End();
 
+            // Draw the cursor
             fg.Begin() ;
             Cursor.Instance.Draw(fg);
             fg.End() ;
@@ -81,7 +94,10 @@ namespace LifeSupport.States
 
         }
 
+        // This function is executed many times per second during gameplay
         public override void Update(GameTime gameTime) {
+
+            //Check to see if the player pauses, dies, beats the game, or opens the menu. If true, switch screens
             if (Controller.Instance.IsKeyDown(Controller.Instance.PauseGame)) {
                 game.ChangeState(new PauseState(game, graphDevice, content));
 
@@ -96,6 +112,7 @@ namespace LifeSupport.States
                 game.ChangeState(new PlayerPageState(player, game, graphDevice, content));
             }
 
+            // Update all the rooms
             level.UpdateRooms(gameTime) ;
             
             //change the song if the level changed
@@ -112,6 +129,8 @@ namespace LifeSupport.States
             mMap.Update() ;
         }
 
+
+        // Load all this content into the gamewindow first before updating
         public override void Load() {
 
             game.penumbra.Lights.Clear() ;
@@ -121,9 +140,13 @@ namespace LifeSupport.States
             // Create a new SpriteBatch, which can be used to draw textures.
             Assets.Instance.LoadContent(game);
     
+            // Create a new level
             level = new Level(game.penumbra) ;
+
+            // Assign the player to the current level
             player = level.player ;
 
+            //IF the player uses the augment machine, open the augmentation screen
             AugmentationStation.OnPlayerUse = new AugmentationStation.OnUse(OpenAugmentationStationMenu) ;
 
             if (Settings.Instance.ShowFps)
@@ -136,6 +159,7 @@ namespace LifeSupport.States
             difficulty = 1 ;
         }
 
+        // Music funtion
         public Song GetSong() {
             switch (level.CurLevel) {
                 case 1:
@@ -154,6 +178,7 @@ namespace LifeSupport.States
             scale = (float)Settings.Instance.Width/1920 * 1.5f ;
         }
 
+        // Change to the augmentation screen if the player uses the machine
         private void OpenAugmentationStationMenu(AugmentationStation station) {
             game.ChangeState(new AugmentationStationState(game, game.GraphicsDevice, game.Content, this, player, station)) ;
         }

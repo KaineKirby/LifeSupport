@@ -19,10 +19,15 @@ using System.Threading.Tasks;
 
 namespace LifeSupport.States
 {
+    // This class contains all the content for the player gear screen
     public class PlayerPageState : State
     {
+        /* Attributes*/
+
+        // This boolean checks to see if the player wants to delete an augment
         public static bool removeAugmentActive = false;
 
+        // All player stats (drawn onto screen as strings)
         private HUDString damage;
         private HUDString rateOfFire;
         private HUDString shotSpeed;
@@ -31,6 +36,7 @@ namespace LifeSupport.States
         private HUDString health;
         private HUDString oxygenLevel;
 
+        // Player stats are updated through these strings
         private string damageString;
         private string rateOfFireString;
         private string shotSpeedString;
@@ -39,39 +45,57 @@ namespace LifeSupport.States
         private string healthString;
         private string oxygenLevelString;
 
+        // These strings show how much money the player has, and whether they have a keycard
         private HUDString money;
         private HUDString keycard;
 
-
+        // This list will contain the delete augment button and resume game button
         private List<Component> components;
+
+        // This list will contain all the augment slots (the rectangular button backgrounds behind the augments,
+        // the augment textures themselves, and the augment text boxes that pop up when the slot is hovered over)
         private List<AugmentSlot> augmentSlots;
+
+        // This list will store the money and keycard pictures (located in the inventory section)
         private List<Texture2D> inventoryItemTextures = new List<Texture2D>();
+
+        // This list will store the positions of each inventory item (money and keycard)
         private List<Vector2> inventoryItemPositions = new List<Vector2>();
+
+        // This list stores the textures of the money and keycard 
         private List<HUDImage> inventoryItems = new List<HUDImage>();
 
-
+        // Used to scale the inventory item textures on screen
         private int scale = 1;
+
+        // Checks to see if the player has a keycard
         private int keyCardCount = 0;
 
 
         private SpriteFont btnTextFont;
         private SpriteFont largeTextFont;
+
+        // Player is declared in this class to access their stats, augments, money, and keycard values
         private Player player;
 
-
+        /*Constructor*/
         public PlayerPageState(Player player, MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
             this.player = player;
         }
 
 
+        /*Methods*/
+
+        // Draw everything on screen
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud, SpriteBatch fg) {
 
+            // Draw the background
             bg.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
             bg.Draw(Assets.Instance.playerPageBackground, new Rectangle(0, 0, 1920, 1080), Color.White);
             bg.End();
 
-
+            // Draw all the character statistics 
             hud.Begin(SpriteSortMode.FrontToBack, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
             damage.Draw(hud);
             rateOfFire.Draw(hud);
@@ -81,6 +105,7 @@ namespace LifeSupport.States
             health.Draw(hud);
             oxygenLevel.Draw(hud);
 
+            // Draw all of the items in the inventory section
             foreach (var item in inventoryItems) {
                 item.DrawWithScale(hud, scale);
                 if (item.Image == Assets.Instance.moneyLarge)
@@ -94,12 +119,13 @@ namespace LifeSupport.States
             }
 
 
-
+            // Draw each augmentation and augment slot within the augmentation section
             foreach (var augmentSlot in augmentSlots)
             {
                 augmentSlot.Draw(gameTime, hud);
             }
 
+            // Draw the remaining buttons on screen
             foreach (var component in components)
             {
                 component.Draw(gameTime, hud);
@@ -109,11 +135,18 @@ namespace LifeSupport.States
 
         }
 
+
+
+
+        // Load function. This function is called before updatin the page
         public override void Load()
         {
+
+            // Load game assets
             Assets.Instance.LoadContent(game);
             game.IsMouseVisible = true;
 
+            // Used to position inventory items
             int xPos = 110;
             int yPos = 910;
 
@@ -126,6 +159,7 @@ namespace LifeSupport.States
             largeTextFont = largeText;
 
 
+            // If the player has a money or keycard, add those textures to the inventory items list (will be used to draw textures on screen)
             if (player.Money > 0)
             {
                 inventoryItemTextures.Add(Assets.Instance.moneyLarge);
@@ -142,7 +176,7 @@ namespace LifeSupport.States
             }
 
 
-
+            // If the player has money or a card, display the correct amount they possess
             for (int i = 0; i < inventoryItemTextures.Count; i++)
             {
                 inventoryItemPositions.Add(new Vector2(xPos, yPos));
@@ -160,7 +194,7 @@ namespace LifeSupport.States
             }
 
 
-
+            // Resume game button
             var resumeButton = new Button(btnTexture, btnText)
             {
                 CurrPosition = new Vector2(1410, 75),
@@ -168,12 +202,21 @@ namespace LifeSupport.States
             };
             resumeButton.Click += Resume_Button_Click;
 
+
+            // Delete augment button
             var deleteAugmentButton = new Button(btnTexture, btnText)
             {
                 CurrPosition = new Vector2(810, 75),
                 BtnText = "Destroy Augment",
             };
             deleteAugmentButton.Click += Delete_Augment_Click;
+            
+            /*Each of the following objects declare an augmentation slot and a Augment text box.
+             *The augment text box contains augment information, and it hovers over the slot (and drawn) if the slot is
+             * is occupied with an augment. The slot takes in a texture, augment text box, and an augment from the player augment
+             * list as parameters
+             * */
+             
 
             var hoverBox0 = new AugmentTextBox(player.Augments[0], game.GraphicsDevice);
             var augmentSlot0 = new AugmentSlot(mediumBtnTexture, hoverBox0, player.Augments[0])
@@ -231,12 +274,15 @@ namespace LifeSupport.States
             };
             augmentSlot7.Click += Delete_Augment7_Click;
 
+
+            // Instantiate list of buttons not related to augmentations
             components = new List<Component>()
             {
                 deleteAugmentButton,
                 resumeButton,
             };
 
+            // Instantiate a list of augmentation slots 
             augmentSlots = new List<AugmentSlot>()
             {
                 augmentSlot0,
@@ -268,6 +314,7 @@ namespace LifeSupport.States
         }
 
 
+        // Go back to the game function
         private void Resume_Button_Click(object sender, EventArgs e)
         {
             removeAugmentActive = false;
@@ -276,6 +323,9 @@ namespace LifeSupport.States
         }
 
 
+        // If the Destroy augment button is pressed and active, then the player can delete
+        // any augment by clicking on it's augmentation slot. All augment slots will turn red,
+        // and a red x will be drawn if it the mouse is hovering over it.
         private void Delete_Augment_Click(object sender, EventArgs e)
         {
             if (removeAugmentActive == true)
@@ -288,6 +338,9 @@ namespace LifeSupport.States
             }
         }
 
+        // The following functions will work only if removeAugmentActive is true (all augment slots are red)
+        // If an augment is clicked on while this bool is true, then it is removed from the player augmentation list,
+        // and their stats are updated. 
 
         public void Delete_Augment0_Click(object sender, EventArgs e)
         {
@@ -401,18 +454,22 @@ namespace LifeSupport.States
 
         }
 
+        // Update all content with the page
         public override void Update(GameTime gameTime)
         {
+            // Update the resume button and destroy augment button
             foreach (var component in components)
             {
                 component.Update(gameTime);
             }
 
+            // Update all augment slots
             foreach (var augmentSlot in augmentSlots)
             {
                 augmentSlot.Update(gameTime);
             }
 
+            // Update the player statistics if an augment is removed
             damage.Update("Weapon Damage: " + player.Damage.ToString());
             rateOfFire.Update("Rate of Fire: " + (1/(player.RateOfFire)).ToString() + " shot / second");
             shotSpeed.Update("Bullet Speed: " + player.ShotSpeed.ToString());

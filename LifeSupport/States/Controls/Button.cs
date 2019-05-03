@@ -11,6 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace LifeSupport.Controls
 {
+    // This class serves as the default button that will be used in all the interactive menu screens
     public class Button : Component
     {
         #region Fields
@@ -42,6 +43,8 @@ namespace LifeSupport.Controls
         #endregion
 
         #region Methods
+
+        // This constructor takes in the button image and text to go inside the button
         public Button(Texture2D BtnTexture, SpriteFont BtnFont)
         {
             texture = BtnTexture;
@@ -51,6 +54,7 @@ namespace LifeSupport.Controls
             Click += PlaySound;
         }
 
+        // This constructor does not need text inside the button
         public Button(Texture2D BtnTexture)
         {
             texture = BtnTexture;
@@ -70,17 +74,20 @@ namespace LifeSupport.Controls
         }
 
 
+        // How the button will be drawn
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
+            // All buttons are outlined in white
             var currColor = Color.White;
 
+            // If the button is hovered over with the mouse, change the outline to gray
             if (hover)
             {
                 currColor = Color.Gray;
             }
             spriteBatch.Draw(texture, Rect, null, currColor, 0, Vector2.Zero, SpriteEffects.None, 0f);
 
+            // Draw the text inside the button if it has text
             if (!string.IsNullOrEmpty(BtnText))
             {
                 var x = (Rect.X + (Rect.Width / 2)) - (font.MeasureString(BtnText).X / 2);
@@ -89,8 +96,10 @@ namespace LifeSupport.Controls
             }
         }
 
+        // How the button will be updated
         public override void Update(GameTime gameTime)
         {
+            // Get the mouse position (used to determine if it is being hovered over)
             prevMouse = currMouse;
             currMouse = Mouse.GetState();
             float scalar = (1920 / (float)Settings.Instance.Width);
@@ -99,6 +108,7 @@ namespace LifeSupport.Controls
 
             hover = false;
 
+            // If the button is hovered over with the mouse, then the user can click on the button to call it's special function defined in other classes
             if (MouseRect.Intersects(Rect))
             {
                 hover = true;

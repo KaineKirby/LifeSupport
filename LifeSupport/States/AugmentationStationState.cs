@@ -14,7 +14,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace LifeSupport.States {
+
+    // This class contains all the content for the augmentation menu screen
     class AugmentationStationState : State {
+
+        /*Attributes*/
 
         private MainGame game ;
         private GraphicsDevice graphicsDevice ;
@@ -32,8 +36,10 @@ namespace LifeSupport.States {
         private HUDImage moneyIcon ;
         private HUDString outputLabel ;
 
+        // This is where the newly generated augment is placed
         private AugmentSlot generatedSlot ;
 
+        /*Constructor*/
         public AugmentationStationState(MainGame game, GraphicsDevice graphicsDevice, ContentManager state_content, GameState gameState, Player player, AugmentationStation station) : base(game, graphicsDevice, state_content) {
             this.game = game ;
             this.graphicsDevice = graphicsDevice ;
@@ -47,14 +53,16 @@ namespace LifeSupport.States {
 
         }
 
+
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud, SpriteBatch fg) {
-            
+           
+            //Draw the background
             bg.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920)) ;
             bg.Draw(Assets.Instance.augmentMenuScreen, new Rectangle(0, 0, 1920, 1080), Color.White) ;
             bg.End() ;
 
+            // Draw the buttons, augments, and all other hud elements
             hud.Begin(SpriteSortMode.FrontToBack, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920)) ;
-
             foreach (Component c in buttons)
                 c.Draw(gameTime, hud) ;
 
@@ -68,6 +76,8 @@ namespace LifeSupport.States {
             hud.End() ;
         }
 
+
+        // Load this content first
         public override void Load() {
 
             game.IsMouseVisible = true ;
@@ -75,6 +85,7 @@ namespace LifeSupport.States {
             int xAnchor = 200 ;
             int yAnchor = 550 ;
             
+            // Resume button
             Button resume = new Button(Assets.Instance.btnTextureLarge, Assets.Instance.btnText) {
                 CurrPosition = new Vector2(1410, 75),
                 BtnText = "Resume Game"
@@ -82,6 +93,7 @@ namespace LifeSupport.States {
             resume.Click += ResumeGame ;
             buttons.Add(resume) ;
 
+            // Add more money button
             Button inc = new Button(Assets.Instance.btnTextureSmall, Assets.Instance.btnText) {
                 CurrPosition = new Vector2(xAnchor+325, yAnchor),
                 BtnText = "+"
@@ -89,6 +101,7 @@ namespace LifeSupport.States {
             inc.Click += IncrementMoney ;
             buttons.Add(inc) ;
 
+            // Take away money button
             Button dec = new Button(Assets.Instance.btnTextureSmall, Assets.Instance.btnText) {
                 CurrPosition = new Vector2(xAnchor, yAnchor),
                 BtnText = "-"
@@ -96,6 +109,7 @@ namespace LifeSupport.States {
             dec.Click += DecrementMoney ;
             buttons.Add(dec) ;
 
+            // Create augment button
             Button gen = new Button(Assets.Instance.btnTextureLarge, Assets.Instance.btnText) {
                 CurrPosition = new Vector2(xAnchor, yAnchor+150),
                 BtnText = "Create Augment"
@@ -119,7 +133,9 @@ namespace LifeSupport.States {
             int xAnchorP = 1240 ;
             int yAnchorP = 370 ;
 
-            //player inventory augments
+            // Create player inventory augments (objects)
+            // each augment comes with an augment slot and an augment text box
+            // Add the augment to the player's list of augments if it is placed in a slot
             AugmentTextBox hoverBox0 = new AugmentTextBox(player.Augments[0], game.GraphicsDevice);
             AugmentSlot augmentSlot0 = new AugmentSlot(Assets.Instance.btnTextureMedium, hoverBox0, player.Augments[0])
             {
@@ -188,6 +204,7 @@ namespace LifeSupport.States {
 
         }
 
+        // Update all items on the page
         public override void Update(GameTime gameTime) {
             foreach (Component c in buttons)
                 c.Update(gameTime) ;
@@ -238,6 +255,7 @@ namespace LifeSupport.States {
             moneyInMachine = 0 ;
         }
 
+        // Equip the augment on the next empty slot on the player
         private void EquipAugment(object sender, EventArgs e) {
             if (station.Augment == null)
                 return ;

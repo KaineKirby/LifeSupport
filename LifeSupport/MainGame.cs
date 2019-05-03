@@ -26,18 +26,26 @@ namespace LifeSupport
         public SpriteBatch hud;
         public SpriteBatch fg ;
 
+        // PrevState is used to return to the same game a different screen
         private State prevState;
+
+        // currState is the current screen drawn on the window
         private State currState;
+
+        // nextState is the new screen the player wants to view
         private State nextState;
 
         public PenumbraComponent penumbra ;
 
+        // this function changes the window between the game and other menu interfaces
         public void ChangeState(State state) {
 
             if (currState is GameState) {
                 prevState = currState;
             }
             nextState = state ;
+
+            // Call the load function (this is defined in every state)
             nextState.Load() ;
 
             //music and light management
@@ -55,6 +63,7 @@ namespace LifeSupport
 
         }
 
+        // Return to the same game, progress is halted
         public void returnToGame(State state) {
             nextState = prevState;
             ((GameState)state).RecaculateScale() ;
@@ -80,7 +89,7 @@ namespace LifeSupport
             base.Initialize();
         }
 
-
+        // Load content into the game
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             bg = new SpriteBatch(GraphicsDevice);
@@ -103,6 +112,7 @@ namespace LifeSupport
         }
 
 
+        // Update the game many times a second
         protected override void Update(GameTime gameTime) {
             if (nextState != null) {
                 currState = nextState;
@@ -125,6 +135,7 @@ namespace LifeSupport
             base.Update(gameTime);
         }
 
+        // Draw the game
         protected override void Draw(GameTime gameTime) {
 
             GraphicsDevice.Clear(Color.Black);

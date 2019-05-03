@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LifeSupport.Utilities {
+
+    // This class uses the Newtonsoft library to read, write, and convert objects into json. Json files are located in the content namespace
     class JSONParser {
 
         //GIVEN: A string to the JSON file path

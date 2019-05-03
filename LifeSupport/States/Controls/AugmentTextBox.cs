@@ -14,20 +14,30 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace LifeSupport.States.Controls
 {
+    // This class is used to display augment information when it an augment is hovered over on screen
     public class AugmentTextBox
     {
+        /*Attributes*/
+
+        // The text box image
         private Texture2D boxTexture ;
         private SpriteFont font = Assets.Instance.mediumText;
         private int BoxWidth = 310 ;
 
+
         public Vector2 position;
         public Rectangle Rect;
+
+        // Used to retrieve the augment information and display it
         public Augmentation augment ;
+
         private GraphicsDevice graphicsDevice ;
 
         public String text { get; set; }
 
+        /*Constructor*/
 
+        // The augment text box takes in an augment as a paramter to access it's information
         public AugmentTextBox(Augmentation augment, GraphicsDevice graphicsDevice) {
             this.augment = augment ;
             this.graphicsDevice = graphicsDevice ;
@@ -36,6 +46,7 @@ namespace LifeSupport.States.Controls
 
         }
 
+        //This function writes text into the custom AugmentTextBox image
         public void UpdateText() {
             this.Rect = GetDrawingRectangle();
             this.boxTexture = GenerateTexture() ;
@@ -58,7 +69,7 @@ namespace LifeSupport.States.Controls
             }
         }
 
-
+        // Draw the text box
         public void DrawBox(SpriteBatch spriteBatch) {
 
             if (boxTexture == null)
@@ -68,6 +79,8 @@ namespace LifeSupport.States.Controls
 
         }
 
+
+        // This function determines the size of the AugmentTextBox and returns the appropriate rectangle
         private Rectangle GetDrawingRectangle() {
 
             if (augment == null)
@@ -91,6 +104,8 @@ namespace LifeSupport.States.Controls
 
         }
 
+
+        // This function creates the custom AugmentTextBox texture
         private Texture2D GenerateTexture() {
 
             if (augment == null)

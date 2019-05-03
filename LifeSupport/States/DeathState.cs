@@ -12,22 +12,34 @@ using System.Threading.Tasks;
 
 namespace LifeSupport.States
 {
+    // The death screen class that is displayed when the player dies
     class DeathState : State
     {
+        /*Attributes*/
+
+        // All buttons are stored in this list
         private List<Component> components;
+
+
         private SpriteFont textFont;
 
+        /*Constructor*/
         public DeathState(MainGame game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
 
         }
 
+        /*Methods*/
+
+        // Draw all content on the screen
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, SpriteBatch bg, SpriteBatch hud, SpriteBatch fg)
         {
+            // Draw the background
             bg.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
             bg.Draw(Assets.Instance.deathScreen, new Rectangle(0, 0, 1920, 1080), Color.White);
             bg.End();
 
+            // Draw the buttons
             spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Matrix.CreateScale((float)Settings.Instance.Width / 1920));
             foreach (var component in components)
             {
@@ -37,8 +49,11 @@ namespace LifeSupport.States
 
         }
 
+        // Everything in this function is called when the page is first loaded
         public override void Load()
         {
+
+            //Load assets
             Assets.Instance.LoadContent(game);
             game.IsMouseVisible = true;
 
@@ -46,6 +61,7 @@ namespace LifeSupport.States
             var btnText = Assets.Instance.btnText;
             textFont = btnText;
 
+            // Return to menu button
             var menuButton = new Button(btnTexture, btnText)
             {
                 CurrPosition = new Vector2(200, 400),
@@ -53,6 +69,7 @@ namespace LifeSupport.States
             };
             menuButton.Click += Menu_Button_Click;
 
+            // Quit game button
             var quitButton = new Button(btnTexture, btnText)
             {
                 CurrPosition = new Vector2(200, 550),
@@ -60,6 +77,8 @@ namespace LifeSupport.States
             };
             quitButton.Click += Quit_Button_Click;
 
+
+            // Intitialize list of buttons as of type components
             components = new List<Component>()
             {
                 menuButton,
@@ -72,6 +91,8 @@ namespace LifeSupport.States
 
         }
 
+
+        // Update each button
         public override void Update(GameTime gameTime)
         {
             foreach (var component in components)
@@ -80,12 +101,15 @@ namespace LifeSupport.States
             }
         }
 
+        // Return to menu function
         private void Menu_Button_Click(object sender, EventArgs e)
         {
             OptionsState.openedFromPause = false;
             game.ChangeState(new MenuState(game, graphDevice, content));
         }
 
+
+        // Quit game function
         private void Quit_Button_Click(object sender, EventArgs e)
         {
             game.Exit();

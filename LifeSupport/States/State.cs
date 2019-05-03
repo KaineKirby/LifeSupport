@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace LifeSupport.States
 {
+    // This class serves as the parent class for all states (screens) within the game
     public abstract class State
     {
         #region Fields
