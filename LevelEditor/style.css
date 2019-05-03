@@ -1,0 +1,70 @@
+td {
+  border: 1px solid black ;
+  width: 20px ;
+  height: 20px ;
+  text-align: center ;
+}
+td:hover {
+  background-color: lightgray ;
+}
+.barrier {
+  background-color: black ;
+}
+.barrierunbuilt {
+  background-color: darkgray ;
+}
+.door {
+  background-color: firebrick ;
+}
+.turret {
+  background-color: red ;
+}
+.inf {
+  background-color: green ;
+}
+.dog {
+  background-color: blue ;
+}
+.oxy {
+  background-color: cyan ;
+}
+#controls {
+  vertical-align: top ;
+  margin: auto ;
+  background-color: white ;
+}
+button {
+  padding: 5px ;
+  margin: 5px ;
+  vertical-align: top ;
+  margin: auto ;
+}
+div {
+  vertical-align: top ;
+  margin: auto ;
+}
+body {
+  vertical-align: top ;
+  margin: auto ;
+}
+#delete {
+  background-color: white ;
+}
+#dog {
+  background-color: blue ;
+  color: white ;
+}
+#turret {
+  background-color: red ;
+}
+#barrier {
+  background-color: black ;
+  color: white ;
+}
+#inf {
+  background-color: green ;
+  color: white ;
+}
+#oxy {
+  background-color: cyan ;
+}

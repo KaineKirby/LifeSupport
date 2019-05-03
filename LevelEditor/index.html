@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+  <head>
+      <title>LS Level Editor</title>
+      <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div id="main">
+    </div>
+
+    <div id="controls">
+      <button onclick="switchTool(0)" id="delete">Delete</button>
+      <button onclick="switchTool(1)" id="barrier">Barrier</button>
+      <button onclick="switchTool(4)" id="dog">Dog</button>
+      <button onclick="switchTool(2)" id="turret">Turret</button>
+      <button onclick="switchTool(3)" id="inf">Infantry</button>
+      <button onclick="switchTool(5)" id="oxy">OxygenTank</button>
+      <textarea id="out" rows="30" cols="200"></textarea>
+      <button onclick="upload()">Push</button>
+    </div>
+
+  </body>
+
+  <script src="jquery.js"></script>
+  <script src="main.js"></script>
+
+</html>
